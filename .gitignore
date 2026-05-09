@@ -1,0 +1,6 @@
+.DS_Store
+*.bak
+*.bak-*
+*.backup
+node_modules/
+.env
