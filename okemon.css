@@ -576,7 +576,7 @@
 .v-mit::before    { background: #B8689A; }
 .v-kyo::before    { background: #7BA89A; }
 .v-kou::before    { background: var(--exec); }
-.v-sumi::before   { background: var(--relation); }
+.v-natchan::before { background: var(--relation); }
 .v-okemon::before { background: var(--primary); }
 
 .v-okemon {
