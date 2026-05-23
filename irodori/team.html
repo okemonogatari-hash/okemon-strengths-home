@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Team Grid — irodoriのみんなのストレングス入門</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="branch.css">
+  <style>
+    /* Team Grid 専用スタイル */
+    .grid-table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 8px;
+      background: transparent;
+    }
+    .grid-table th, .grid-table td {
+      padding: 16px 12px;
+      vertical-align: top;
+      border-radius: 14px;
+      font-size: 13.5px;
+      line-height: 1.7;
+    }
+    .grid-table thead th {
+      background: #FFF;
+      color: var(--ink);
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 14px;
+      text-align: center;
+      border-top: 4px solid var(--col-color, var(--primary));
+    }
+    .grid-table .domain-cell {
+      text-align: left;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 15px;
+      background: var(--row-color-light, #FFF);
+      color: var(--row-color, var(--ink));
+      width: 130px;
+      border-left: 4px solid var(--row-color, var(--primary));
+    }
+    .grid-table td.cell {
+      background: #FFF;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .grid-table td.cell:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.10);
+    }
+    .grid-table td.cell.empty {
+      background: rgba(0,0,0,0.02);
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      font-size: 12px;
+    }
+    .qual-chip {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-family: "Noto Serif JP", serif;
+      font-weight: 500;
+      font-size: 12px;
+      margin: 2px;
+      background: var(--chip-bg, #FFF);
+      color: var(--chip-fg, var(--ink));
+      border: 1.5px solid var(--chip-bd, var(--accent));
+    }
+    .qual-chip.top { font-weight: 600; }
+    .qual-chip .num { font-family: "Inter", sans-serif; font-size: 10px; opacity: 0.7; margin-right: 4px; }
+
+    .row-exec { --row-color: var(--exec); --row-color-light: rgba(182, 164, 222, 0.10); }
+    .row-influence { --row-color: var(--influence); --row-color-light: rgba(244, 181, 86, 0.12); }
+    .row-relation { --row-color: var(--relation); --row-color-light: rgba(143, 190, 223, 0.12); }
+    .row-thinking { --row-color: var(--thinking); --row-color-light: rgba(155, 211, 176, 0.12); }
+
+    .col-okemon { --col-color: var(--okemon); }
+    .col-natsuun { --col-color: var(--natsuun); }
+    .col-kuu { --col-color: var(--kuu); }
+    .col-rie { --col-color: var(--rie); }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+    .insight-card {
+      padding: 28px 28px;
+      background: #FFFCF8;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      border-left: 4px solid var(--insight-color, var(--accent));
+    }
+    .insight-card.strong { --insight-color: #5FAA5F; }
+    .insight-card.warning { --insight-color: var(--sun-coral); }
+    .insight-card.shine { --insight-color: var(--accent); }
+    .insight-card.tip { --insight-color: var(--ocean-teal); }
+    .insight-card h3 {
+      font-size: 18px;
+      margin: 0 0 14px;
+      color: var(--insight-color);
+    }
+    .insight-card h3 i { margin-right: 8px; }
+    .insight-card p { color: var(--ink-soft); font-size: 14px; line-height: 1.95; margin: 0 0 10px; }
+    .insight-card p:last-child { margin-bottom: 0; }
+    .insight-card strong { color: var(--ink); font-weight: 600; }
+
+    .common-fuels {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+    .fuel-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      background: #FFF;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+      border-top: 3px solid var(--accent);
+    }
+    .fuel-row .fuel-name {
+      font-family: "Noto Serif JP", serif;
+      font-weight: 600;
+      font-size: 17px;
+      color: var(--accent);
+      min-width: 95px;
+    }
+    .fuel-row .fuel-members {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 880px) {
+      .grid-table { font-size: 12px; }
+      .insight-grid, .common-fuels { grid-template-columns: 1fr; }
+      .grid-wrap { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body data-character="team">
+
+  <header class="topbar">
+    <a class="brand" href="index.html"><i class="fa-solid fa-arrow-left"></i> 入門ホームへ</a>
+    <nav class="nav-links">
+      <a href="okemon.html">おけもん</a>
+      <a href="natsuun.html">なっつん</a>
+      <a href="kuu.html">くう</a>
+      <a href="rie.html">りえ</a>
+      <a href="team.html" class="is-active">Team Grid</a>
+    </nav>
+  </header>
+
+  <section class="branch-hero">
+    <div class="hero-content">
+      <p class="hero-label">— Team Grid / 4人の補完マップ —</p>
+      <h1 class="hero-title">
+        Team Grid
+        <small>OKEMON × NATSUUN × KUU × RIE</small>
+      </h1>
+      <p class="hero-tagline">4人のTOP5を、4領域に重ねて並べると、<br>「どこが強くて、どこは助け合いが必要か」がパッと見える。</p>
+    </div>
+  </section>
+
+  <!-- 4×4 Grid -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">The Grid — 4 members × 4 domains</p>
+      <h2>4人 × 4領域のマトリクス。</h2>
+      <p>各セルに <strong>その人のその領域の TOP10入り資質</strong> を表示。
+      <em>埋まってるところ＝チームの強み。空いてるところ＝助け合いが必要な場所。</em></p>
+    </div>
+
+    <div class="grid-wrap">
+    <table class="grid-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="col-okemon">🌷 おけもん</th>
+          <th class="col-natsuun">🌻 なっつん</th>
+          <th class="col-kuu">🌿 くう</th>
+          <th class="col-rie">🌸 りえ</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="row-relation">
+          <td class="domain-cell">🔵<br>人間関係<br>構築力</td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">1</span>調和性</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">2</span>共感性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">4</span>親密性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">9</span>ポジティブ</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">2</span>適応性</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">3</span>ポジティブ</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">4</span>共感性</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">5</span>包含</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">1</span>個別化</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">2</span>共感性</span>
+            <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">4</span>ポジティブ</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">6</span>調和性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">9</span>成長促進</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">6</span>親密性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">7</span>調和性</span>
+          </td>
+        </tr>
+
+        <tr class="row-exec">
+          <td class="domain-cell">🟣<br>実行力</td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">3</span>アレンジ</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">6</span>責任感</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">8</span>公平性</span>
+          </td>
+          <td class="cell empty">TOP5になし<br>（りえと補完）</td>
+          <td class="cell empty">TOP10になし<br>（りえと補完）</td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">1</span>回復志向</span>
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">3</span>慎重さ</span>
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">5</span>規律性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">10</span>公平性</span>
+          </td>
+        </tr>
+
+        <tr class="row-influence">
+          <td class="domain-cell">🟠<br>影響力</td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--influence); --chip-fg: #FFF; --chip-bd: var(--influence);"><span class="num">5</span>最上志向</span>
+            <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--sun-rose); --chip-bd: var(--influence);"><span class="num">7</span>コミュ</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--influence); --chip-fg: #FFF; --chip-bd: var(--influence);"><span class="num">1</span>最上志向</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--sun-rose); --chip-bd: var(--influence);"><span class="num">7</span>コミュ</span>
+            <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--sun-rose); --chip-bd: var(--influence);"><span class="num">8</span>最上志向</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--sun-rose); --chip-bd: var(--influence);"><span class="num">9</span>自我</span>
+          </td>
+        </tr>
+
+        <tr class="row-thinking">
+          <td class="domain-cell">🟢<br>戦略的<br>思考力</td>
+          <td class="cell">
+            <span class="qual-chip" style="--chip-bg: rgba(155,211,176,0.18); --chip-fg: #5FAA5F; --chip-bd: var(--thinking);"><span class="num">10</span>未来志向</span>
+          </td>
+          <td class="cell empty">TOP5になし<br>（くう・りえと補完）</td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">3</span>未来志向</span>
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">5</span>学習欲</span>
+            <span class="qual-chip" style="--chip-bg: rgba(155,211,176,0.18); --chip-fg: #5FAA5F; --chip-bd: var(--thinking);"><span class="num">10</span>収集心</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">2</span>分析思考</span>
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">4</span>学習欲</span>
+            <span class="qual-chip" style="--chip-bg: rgba(155,211,176,0.18); --chip-fg: #5FAA5F; --chip-bd: var(--thinking);"><span class="num">8</span>内省</span>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+
+    <p style="margin-top: 24px; text-align: center; color: var(--muted); font-size: 13px;">
+      <span class="qual-chip top" style="--chip-bg: var(--accent); --chip-fg: #FFF; --chip-bd: var(--accent);">塗りつぶし＝TOP5</span>
+      <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--accent); --chip-bd: var(--accent);">枠だけ＝TOP10内</span>
+      <span class="qual-chip" style="--chip-bg: rgba(0,0,0,0.04); --chip-fg: var(--muted); --chip-bd: rgba(0,0,0,0.10);">薄字＝補完が必要</span>
+    </p>
+  </section>
+
+  <!-- Common Fuels -->
+  <section class="content" style="background: var(--sand-deep);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Common fuels — 4人で響き合う軸</p>
+      <h2>4人が揃ったとき、必ず効く「共通燃料」。</h2>
+      <p>同じ資質が複数人のTOP5入りしてる＝<strong>その軸でチームが自然に共鳴できる</strong>。</p>
+    </div>
+
+    <div class="common-fuels stagger">
+      <div class="fuel-row">
+        <span class="fuel-name">共感性</span>
+        <span class="fuel-members">🌷おけもん②・🌻なっつん④・🌿くう②（3人がTOP5入り）<br>→ <strong>「気持ちを汲む」が共通言語。</strong>感情を切り捨てない文化が自然に走る。</span>
+      </div>
+      <div class="fuel-row">
+        <span class="fuel-name">最上志向</span>
+        <span class="fuel-members">🌷おけもん⑤・🌻なっつん①・🌿くう⑧（3人）<br>→ <strong>「もっと良くしたい」品質ベクトル</strong>が揃う。妥協で止まれないチーム。</span>
+      </div>
+      <div class="fuel-row">
+        <span class="fuel-name">ポジティブ</span>
+        <span class="fuel-members">🌷おけもん⑨・🌻なっつん③・🌿くう④（3人）<br>→ <strong>明るく挑戦的な空気</strong>が3人で増幅。場の温度を作る燃料。</span>
+      </div>
+      <div class="fuel-row">
+        <span class="fuel-name">学習欲</span>
+        <span class="fuel-members">🌿くう⑤・🌸りえ④（2人がTOP5）<br>→ <strong>新しいものを一緒に学ぶ</strong>ペア。仕組み・ツールの導入はこの2人が起点。</span>
+      </div>
+      <div class="fuel-row">
+        <span class="fuel-name">調和性</span>
+        <span class="fuel-members">🌷おけもん①・🌿くう⑥・🌸りえ⑦（3人）<br>→ <strong>「対立より共通項を探す」</strong>が3人ベース。場が荒れにくい構造。</span>
+      </div>
+      <div class="fuel-row">
+        <span class="fuel-name">未来志向</span>
+        <span class="fuel-members">🌿くう③・🌷おけもん⑩（2人）<br>→ <strong>未来の絵を一緒に描けるペア</strong>。長期方針を語る時はこの2人軸。</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Insights / 注意点 -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Insights — 4つの発見</p>
+      <h2>このグリッドから見えてくる4つのこと。</h2>
+    </div>
+
+    <div class="insight-grid stagger">
+
+      <article class="insight-card shine">
+        <h3><i class="fa-solid fa-heart"></i> 強み① 人間関係構築力が異常に厚い</h3>
+        <p>🌷おけもん4資質・🌻なっつん4資質・🌿くう5資質。<strong>4人の合計で13資質が人間関係TOP10入り</strong>。</p>
+        <p>→ チーム内の <strong>結束・対人ケア・空気感の柔らかさ</strong>は無双の強み。共感性は3人共通TOP5、調和性も3人共通TOP10。<em>「誰かが落ちそうな時、必ず誰かが気づく」</em>構造。</p>
+      </article>
+
+      <article class="insight-card warning">
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> 注意① 実行力＝りえ一人で背負ってる</h3>
+        <p>実行力TOP5に入ってるのは <strong>🌸りえだけ</strong>（回復志向①・慎重さ③・規律性⑤）。<br>おけもんは3資質あるけど中位、なっつん・くうはゼロ。</p>
+        <p>→ <strong>りえが抜けると、チーム全体の継続力・規律・着地点が一気に弱くなる</strong>。<br><em>意識的にりえへの感謝とリスペクトを言葉にすること</em>／なっつんとくうも <em>「規律性は意識的に補う領域」</em> として向き合う。</p>
+      </article>
+
+      <article class="insight-card strong">
+        <h3><i class="fa-solid fa-compass"></i> 強み② 戦略思考も2人がしっかり</h3>
+        <p>🌿くうが3資質（未来志向③・学習欲⑤・収集心⑩）、🌸りえも3資質（分析思考②・学習欲④・内省⑧）。</p>
+        <p>→ <strong>くうが「未来を描く」、りえが「分析して整える」</strong>のペアで、<em>長期方針も足元の精度も両方カバー</em>できる。学習欲が2人共通TOP5＝新しい仕組みを一緒に吸収。</p>
+      </article>
+
+      <article class="insight-card tip">
+        <h3><i class="fa-solid fa-lightbulb"></i> 注意② 影響力は「ペア依存」</h3>
+        <p>影響力TOP5に入ってるのは <strong>🌻なっつん（最上志向①）だけ</strong>。<br>おけもん⑤・くう⑧は中位、りえは自我⑨のみ。</p>
+        <p>→ <strong>対外発信・代表挨拶・営業の場</strong>はなっつんに集中しやすい構造。<em>なっつんが疲弊しないよう、おけもんのコミュ⑦＋最上志向⑤で意識的にサポート</em>。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Synergy Patterns -->
+  <section class="content" style="background: var(--sand-deep);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Synergy patterns — 4人で動く時のフォーメーション</p>
+      <h2>場面ごとの、4人フォーメーション例。</h2>
+    </div>
+
+    <div class="insight-grid stagger">
+      <article class="insight-card shine">
+        <h3><i class="fa-solid fa-bullhorn"></i> 新メンバーをirodoriに迎える時</h3>
+        <p><strong>🌻なっつん（包含⑤）</strong>＝歓迎の声かけ／<strong>🌿くう（個別化①）</strong>＝個性を見抜く／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で深く話を聴く／<strong>🌸りえ（規律性⑤）</strong>＝オリエン手順を整える。<br>→ <strong>「全員を巻き込み、個性を見て、深く話を聴き、丁寧に運用に乗せる」</strong>の完成形。</p>
+      </article>
+      <article class="insight-card shine">
+        <h3><i class="fa-solid fa-chart-line"></i> 大事な意思決定の時</h3>
+        <p><strong>🌿くう（未来志向③）</strong>＝3年後の絵を描く／<strong>🌸りえ（分析思考②＋慎重さ③）</strong>＝リスクとデータで検証／<strong>🌷おけもん（調和性①）</strong>＝合意点を探す／<strong>🌻なっつん（適応性②＋最上志向①）</strong>＝「これで行こう！」と旗を振る。<br>→ <strong>「描く → 検証 → 合意 → 決断」</strong>の流れがそのまま4人で組める。</p>
+      </article>
+      <article class="insight-card shine">
+        <h3><i class="fa-solid fa-fire-extinguisher"></i> トラブル発生時</h3>
+        <p><strong>🌸りえ（回復志向①）</strong>＝原因究明・修復／<strong>🌷おけもん（共感性②）</strong>＝関係者の感情ケア／<strong>🌻なっつん（適応性②）</strong>＝即座に方針転換／<strong>🌿くう（共感性②＋ポジティブ④）</strong>＝場の温度を保つ。<br>→ <strong>「直す × ケアする × 動かす × 明るく保つ」</strong>の4方向同時対応。</p>
+      </article>
+      <article class="insight-card shine">
+        <h3><i class="fa-solid fa-seedling"></i> メンバーを育てる時</h3>
+        <p><strong>🌿くう（成長促進⑨＋個別化①）</strong>＝伸びしろを見抜く／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で寄り添う／<strong>🌻なっつん（ポジティブ③）</strong>＝明るくチャレンジを促す／<strong>🌸りえ（規律性⑤）</strong>＝育成の枠組みを整える。<br>→ irodoriが <strong>「メンバーが育つ場」</strong> である理由が、この4資質の組み合わせに集約。</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- メンバーへ -->
+  <section class="content back-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: var(--accent);">For the team</p>
+      <h2>4人それぞれの取説を見る</h2>
+      <p>このグリッドを踏まえて、もう一度それぞれの取説を読むと、<br>「あ、この人のこの資質が、ここで効くんだ」が立体的に見える。</p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+        <a href="okemon.html" class="back-btn" style="background: var(--okemon); color: #FFF;">🌷 おけもん</a>
+        <a href="natsuun.html" class="back-btn" style="background: var(--natsuun); color: #FFF;">🌻 なっつん</a>
+        <a href="kuu.html" class="back-btn" style="background: var(--kuu); color: #FFF;">🌿 くう</a>
+        <a href="rie.html" class="back-btn" style="background: var(--rie); color: #FFF;">🌸 りえ</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 — A private map for irodori. Not for public distribution.</p>
+  </footer>
+
+  <script>
+    const animEls = document.querySelectorAll('.fade-in, .stagger');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else obs.observe(el);
+    });
+  </script>
+</body>
+</html>
