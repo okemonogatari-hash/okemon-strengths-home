@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>おけもんの投資の実例集 — Talent × Investment = Strength</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="branch.css">
+  <style>
+    .formula-box {
+      max-width: 720px; margin: 0 auto 40px;
+      padding: 36px 40px;
+      background: #FFF; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      text-align: center;
+      border: 2px solid var(--okemon);
+    }
+    .formula-box .formula {
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 600;
+      color: var(--ink);
+      margin: 16px 0 24px;
+      line-height: 1.5;
+    }
+    .formula-box .formula em {
+      font-style: normal;
+      color: var(--okemon);
+      background: linear-gradient(transparent 60%, rgba(74,143,202,0.20) 60%);
+      padding: 0 6px;
+    }
+    .formula-box .formula .mul {
+      color: var(--sun-coral); margin: 0 8px; font-weight: 400;
+    }
+    .invest-quad {
+      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
+      max-width: 700px; margin: 0 auto;
+    }
+    .invest-quad div {
+      padding: 16px 20px; background: rgba(74,143,202,0.06);
+      border-radius: 12px; text-align: left;
+      font-size: 14px; line-height: 1.85;
+    }
+    .invest-quad div strong {
+      display: block; color: var(--okemon); font-size: 13px;
+      letter-spacing: 0.08em; margin-bottom: 4px;
+    }
+
+    .invest-case {
+      max-width: 920px; margin: 0 auto 28px;
+      padding: 36px 40px;
+      background: #FFF; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      border-left: 5px solid var(--accent);
+    }
+    .invest-case .qual-tag {
+      display: inline-block; padding: 5px 14px;
+      background: linear-gradient(135deg, var(--okemon) 0%, var(--accent) 100%);
+      color: #FFF; border-radius: 999px;
+      font-family: "Inter", sans-serif; font-size: 12px;
+      font-weight: 600; letter-spacing: 0.08em;
+      margin-bottom: 14px;
+    }
+    .invest-case h3 {
+      font-size: 24px; margin: 0 0 20px; color: var(--ink);
+    }
+    .invest-case h3 small {
+      display: block; font-size: 13px; color: var(--muted);
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic; margin-top: 6px;
+      letter-spacing: 0.08em;
+    }
+    .invest-case .invest-row {
+      display: grid; grid-template-columns: 100px 1fr; gap: 18px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line-soft);
+      align-items: start;
+    }
+    .invest-case .invest-row:last-child { border-bottom: none; }
+    .invest-case .invest-label {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--okemon);
+      font-weight: 500;
+      letter-spacing: 0.08em;
+    }
+    .invest-case .invest-content {
+      font-size: 14px; line-height: 1.95;
+      color: var(--ink-soft);
+    }
+    .invest-case .invest-content strong {
+      color: var(--accent); font-weight: 600;
+    }
+    .invest-case .invest-content em {
+      font-style: normal; font-weight: 500;
+      background: linear-gradient(transparent 62%, rgba(244,181,86,0.20) 62%);
+      padding: 0 3px;
+      color: var(--ink);
+    }
+
+    .results-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+      margin-top: 32px;
+    }
+    .result-card {
+      padding: 24px 22px; background: #FFF;
+      border-radius: var(--radius); box-shadow: var(--shadow-soft);
+      border-top: 3px solid var(--okemon);
+      text-align: center;
+    }
+    .result-card .icon {
+      font-size: 32px; margin-bottom: 12px; color: var(--okemon);
+    }
+    .result-card .num {
+      font-family: "Noto Serif JP", serif;
+      font-size: 28px; font-weight: 600;
+      color: var(--okemon); line-height: 1;
+      margin-bottom: 6px;
+    }
+    .result-card .label {
+      font-size: 13px; color: var(--ink); font-weight: 500;
+    }
+    .result-card .sub {
+      font-size: 11px; color: var(--muted);
+      margin-top: 6px;
+    }
+
+    @media (max-width: 720px) {
+      .invest-quad { grid-template-columns: 1fr; }
+      .invest-case .invest-row { grid-template-columns: 1fr; gap: 6px; }
+      .results-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body data-character="okemon">
+
+  <header class="topbar">
+    <a class="brand" href="index.html"><i class="fa-solid fa-arrow-left"></i> 入門ホームへ</a>
+    <nav class="nav-links">
+      <a href="okemon.html">🌷 おけもん</a>
+      <a href="okemon-investment.html" class="is-active">📈 投資の実例</a>
+      <a href="natsuun.html">🌻 なっつん</a>
+      <a href="kuu.html">🌿 くう</a>
+      <a href="rie.html">🌸 りえ</a>
+      <a href="team.html" class="nav-cta">→ Team Grid</a>
+    </nav>
+  </header>
+
+  <section class="branch-hero">
+    <div class="hero-content">
+      <p class="hero-label">— Talent × Investment = Strength —</p>
+      <h1 class="hero-title">
+        おけもんの<br>「投資」の実例集
+        <small>HOW OKEMON HAS BEEN INVESTING IN HIS TALENTS</small>
+      </h1>
+      <p class="hero-tagline">
+        ストレングスの根本式 <em style="font-style:normal;font-weight:600;color:var(--okemon);">「才能 × 投資 = 強み」</em>。<br>
+        投資って、実際どうやるの？ おけもん本人がやってきた <strong>リアルな実例</strong> から、その正体を覗いてみる。
+      </p>
+    </div>
+  </section>
+
+  <!-- 公式の式をおさらい -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">First, the equation</p>
+      <h2>そもそも「投資」って、なに？</h2>
+      <p>
+        Gallup公式が定めるストレングスの根本式：<br>
+        <strong>才能（Talent）</strong>＝自然に出るクセ。<strong>投資（Investment）</strong>＝知識・練習・環境・仲間。<br>
+        この2つが噛み合って初めて、<strong>強み（Strength）</strong>になります。
+      </p>
+    </div>
+
+    <div class="formula-box fade-in">
+      <p style="margin:0;font-family:'Inter',sans-serif;font-size:11px;letter-spacing:0.2em;color:var(--okemon);text-transform:uppercase;">The Strengths Equation</p>
+      <p class="formula">
+        <em>才能</em> <span class="mul">×</span> <em>投資</em> <span class="mul">=</span> <em>強み</em>
+      </p>
+      <p style="font-size:14px;color:var(--ink-soft);margin:0 0 24px;">
+        才能だけでは「種」のまま。<br>
+        <strong>投資（時間・経験・環境・仲間）</strong>を続けてはじめて、収穫できる「強み」に育つ。
+      </p>
+      <div class="invest-quad">
+        <div><strong>📚 知識</strong>学ぶ・読む・観察する。資質の出方や使い方を理解する。</div>
+        <div><strong>🏃 練習</strong>小さくでも試す。失敗ごと体験して身体で覚える。</div>
+        <div><strong>🏡 環境</strong>その才能が出やすい場・道具・仕組みを自分で設計する。</div>
+        <div><strong>🤝 仲間</strong>補完してくれる人と組む。一人で全部やらない。</div>
+      </div>
+    </div>
+
+    <p style="max-width:720px;margin:0 auto;text-align:center;color:var(--ink-soft);font-size:14.5px;line-height:1.95;" class="fade-in">
+      …で、ここまでは概念の話。<strong>「実際どうやるの？」</strong>を、おけもん本人の事例で見ていきます🌷
+    </p>
+  </section>
+
+  <!-- 投資の原則 -->
+  <section class="content" style="background: var(--sand-deep);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Okemon's investment principles</p>
+      <h2>おけもんの投資、5つの原則。</h2>
+      <p>これは「正解」じゃなくて、おけもんが <strong>13年〜の試行錯誤の末に行き着いた</strong> やり方。<br>同じことを真似する必要はないけど、<em>「自分はどう投資する？」</em>を考えるヒントとして。</p>
+    </div>
+
+    <div class="insight-grid stagger" style="max-width: 1100px; margin: 0 auto;">
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-database"></i> ① コンテキストを「森」に貯める</h3>
+        <p>毎日の対話・気づき・失敗・学びを、すべて <strong>「未来の自分が読み返せる形」</strong> でMarkdownに残す。AIが発達するほど、この蓄積が <em>「最大の投資」</em> に変わる。</p>
+        <p style="margin-top:10px;color:var(--accent);font-size:13px;">→ <strong>「コンテキストをいかにためていくかが基本ベース」</strong>（2026-05-04 朝散歩で言語化）</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-handshake-angle"></i> ② 下位資質は「人と組んで」補う</h3>
+        <p>慎重さ34・規律性27・達成欲29…自分にない燃料を <em>「自分で頑張って身につける」</em> んじゃなく、<strong>別の人格（AI11人カンパニー）</strong>に持たせて補う。</p>
+        <p style="margin-top:10px;color:var(--accent);font-size:13px;">→ ストレングス公式哲学『足りない資質は組み合わせる』のAI実装。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-rotate"></i> ③ 「動きながら磨く」を仕組み化</h3>
+        <p>完璧を待たない。<strong>「やりながら直す」</strong>を毎日のサイクルに。事案→法則昇格、PDCA自動化、自己成長サイクル。<em>「失敗」も投資の一部</em>として記録する。</p>
+        <p style="margin-top:10px;color:var(--accent);font-size:13px;">→ アレンジ③＋最上志向⑤の合わせ技。「磨き続けるループ」が筋肉になる。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-leaf"></i> ④ 1対1の対話を「資産化」する</h3>
+        <p>毎回のコーチングセッション・オフ会・朝礼の対話を、<strong>「その人の取扱説明書」「ことばの宝箱」</strong>として残す。共感性②＋親密性④の蓄積を、構造化して未来に渡す。</p>
+        <p style="margin-top:10px;color:var(--accent);font-size:13px;">→ 「狭く深く」の蓄積が、コーチング37人＋オフ会20回＋ことばの宝箱56カードに。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-seedling"></i> ⑤ 「今日の手間」を「明日の資産」に変える</h3>
+        <p>面倒なことを「やる」だけじゃなく、<strong>「同じ作業を二度やらない仕組み」</strong>に必ず変換。スキル化・テンプレ化・自動化。<em>未来志向⑩の物理的実装</em>。</p>
+        <p style="margin-top:10px;color:var(--accent);font-size:13px;">→ 「次回別案件で5分量産可能な経験値資産化」（営業100本ノック・5/8）。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 各資質ごとの投資の実例 -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Cases — TOP5それぞれへの投資</p>
+      <h2>TOP5に、どう投資してきたか。</h2>
+      <p>各資質ごとに「何を学び／どう練習し／どんな環境を作り／誰と組んだか」を、具体的なエピソードで見ていきます。</p>
+    </div>
+
+    <!-- 調和性① -->
+    <div class="invest-case fade-in">
+      <span class="qual-tag">No.1 調和性</span>
+      <h3>「合意を作る場」を意図的に量産する<small>調和性に投資する</small></h3>
+      <div class="invest-row">
+        <div class="invest-label">📚 知識</div>
+        <div class="invest-content">調和性は「対立より共通項を探す」資質。ただし <em>「事なかれ主義」「自分の意見を出さない」</em> という影もある。これを学んで、<strong>「自分の本音を出した上で合意を作る」</strong> が真の使い方だと理解した。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏃 練習</div>
+        <div class="invest-content"><strong>AI11人カンパニーの会議</strong> を毎日回す。11人それぞれが意見を出して、最後に合意する流れを <em>「合意を作る筋トレ」</em> として活用。「みんなで決めたよね」を作るプロセスを毎日反復。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏡 環境</div>
+        <div class="invest-content">「コーチは決めつけちゃダメ」を <strong>運用ルールとして言語化</strong>してVaultに格納。「決めつけない」が思想じゃなく <em>毎日参照する文書</em> になってる。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🤝 仲間</div>
+        <div class="invest-content"><strong>みっちゃん（収益部門責任者）</strong> が「合意ばかりで決断遅い」とツッコむ役で衝突を作る。あえて衝突を仕掛けることで、調和性が <em>「事なかれ主義」</em> に堕ちないチェック構造。</div>
+      </div>
+    </div>
+
+    <!-- 共感性② -->
+    <div class="invest-case fade-in">
+      <span class="qual-tag">No.2 共感性</span>
+      <h3>感情の察知を「言語化」して資産にする<small>共感性に投資する</small></h3>
+      <div class="invest-row">
+        <div class="invest-label">📚 知識</div>
+        <div class="invest-content">共感性の <em>「相手の感情を背負いすぎて疲弊」</em> の罠を、介護現場16年で痛感して学んだ。<strong>「察する」と「背負う」は別物</strong> という線引きを理解。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏃 練習</div>
+        <div class="invest-content"><strong>コーチング37人＋</strong>。毎セッション「相手の感情を察知して言葉にする」を反復。<em>「あ、それしんどかったでしょ？」</em> を本人が言う前に出す筋肉を、ここで磨いた。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏡 環境</div>
+        <div class="invest-content">セッション要約MDを <strong>毎回1人1記録で蓄積</strong>。共感した内容を文字化することで、感情を「持ち越さず」整理して手放せる仕組み。<em>「人の感情から離れる時間」</em>も意識的に取る。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🤝 仲間</div>
+        <div class="invest-content"><strong>ゆいCPO（傾聴の専門家AI）</strong> と組んで、コーチングノートを共同管理。一人で受け止めず、AIに半分聴いてもらう構造で、共感性が <em>「枯渇しないループ」</em> を作った。</div>
+      </div>
+    </div>
+
+    <!-- アレンジ③ -->
+    <div class="invest-case fade-in">
+      <span class="qual-tag">No.3 アレンジ</span>
+      <h3>「組み合わせの力」を物理的な作品に変える<small>アレンジに投資する</small></h3>
+      <div class="invest-row">
+        <div class="invest-label">📚 知識</div>
+        <div class="invest-content">アレンジは <em>「組み替えすぎて決めたことをやらない」</em> 罠を持つ。これを <strong>「組み替えていい日／実行する日」を分ける</strong> ことで対処すると学習。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏃 練習</div>
+        <div class="invest-content"><strong>AI11人カンパニーの体制設計</strong>＝最大の練習作品。<strong>ことばの宝箱56カード × 8カテゴリ × ガチャ式</strong> も、自分の言葉を「組み替え続ける」ためのアレンジ実験。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏡 環境</div>
+        <div class="invest-content"><strong>MCP × スキル × Hooks × Vault</strong> という <em>「組み合わせ自由な技術基盤」</em> を整える。要素が増えるほどアレンジ③が燃える環境を、自ら構築。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🤝 仲間</div>
+        <div class="invest-content"><strong>あおいCDO（技術担当）</strong> が「設計図を書いてから走って」と止め役。アレンジが <em>「思いつき暴走」</em> しないように、設計フェーズを必ず挟む仕組み。</div>
+      </div>
+    </div>
+
+    <!-- 親密性④ -->
+    <div class="invest-case fade-in">
+      <span class="qual-tag">No.4 親密性</span>
+      <h3>「1対1の深い対話」を未来資産にする<small>親密性に投資する</small></h3>
+      <div class="invest-row">
+        <div class="invest-label">📚 知識</div>
+        <div class="invest-content">親密性の <em>「少数だけ深く、新メンバーに冷たく見える」</em> 罠を学んだ。<strong>「新しい人にも、最初の一歩だけは意識的に踏み込む」</strong> を投資の方針に。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏃 練習</div>
+        <div class="invest-content"><strong>オフ会20回主催 × 毎朝の朝礼参加</strong>。「狭く深く」を選びつつ、新しい人にも自然に話しかける筋肉を訓練。1対1の対話で会話の温度を作る練習。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏡 環境</div>
+        <div class="invest-content"><strong>クライアント1人=1ノート（37人＋）</strong>。1対1の対話記録を <em>「未来の自分が読み返せる」</em> 形で残す環境。「狭く深く」の蓄積が、時間が経つほど価値を増す構造。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🤝 仲間</div>
+        <div class="invest-content"><strong>UPW3人（角・野澤・おけもん）</strong> の「5年後ハワイで乾杯」プロジェクト。<em>長期的な親密性の投資</em>として、5年単位で組む仲間を持つ。</div>
+      </div>
+    </div>
+
+    <!-- 最上志向⑤ -->
+    <div class="invest-case fade-in">
+      <span class="qual-tag">No.5 最上志向</span>
+      <h3>「もっと良くする」を仕組みに落とす<small>最上志向に投資する</small></h3>
+      <div class="invest-row">
+        <div class="invest-label">📚 知識</div>
+        <div class="invest-content">最上志向の <em>「永遠に完成しない・十分良いで止まれない」</em> 罠を、いくつもの自作プロジェクトで痛感。<strong>「ここまでで一旦リリース」のラインを先に決める</strong> を方針に。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏃 練習</div>
+        <div class="invest-content"><strong>毎日のデイリーログ＋自己成長サイクル（PDCA自動化）</strong>。毎朝06:00に <em>「昨日の指摘・反省・気づき」</em> を自動集計→法則昇格判定。「もっと良くする」を <strong>毎日のループ</strong> に落とし込んだ。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🏡 環境</div>
+        <div class="invest-content"><strong>事案→法則昇格システム</strong>。失敗を「失敗のまま」終わらせず、<em>必ず「法則」として運用ルールに昇格</em>させる仕組み。最上志向⑤の燃料を、未来へ運ぶ装置。</div>
+      </div>
+      <div class="invest-row">
+        <div class="invest-label">🤝 仲間</div>
+        <div class="invest-content"><strong>はるか（CEO・パートナー）</strong> が「もうそれ十分やで」とブレーキを踏む役。最上志向が <em>「完璧主義に堕ちる」</em> 前に止めてくれる存在。</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- コンテキストを森に貯める：独自戦略 -->
+  <section class="content" style="background: linear-gradient(135deg, #FFF8F0 0%, #FFEFE0 100%);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Okemon's signature strategy</p>
+      <h2>独自の投資戦略：<br><em style="font-style:normal;color:var(--okemon);">「コンテキストを森に貯める」</em></h2>
+      <p>
+        おけもんの投資の <strong>核心</strong> は、ここ。<br>
+        他の人がやってない、おけもん特有の長期投資戦略です。
+      </p>
+    </div>
+
+    <div style="max-width: 880px; margin: 0 auto; padding: 36px 40px; background: #FFF; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);" class="fade-in">
+      <p style="margin: 0 0 20px; font-family: 'Noto Serif JP', serif; font-size: 17px; line-height: 1.95; color: var(--ink); padding: 22px 26px; background: rgba(74,143,202,0.08); border-radius: 12px;">
+        <strong style="color: var(--okemon);">「コンテキストをいかにためていくかが基本ベース。<br>
+        今はできなくても、AIが発達していく未来では絶対これは大切な宝物になる」</strong><br>
+        <span style="font-size: 13px; color: var(--muted);">— 2026-05-04 朝散歩で言語化</span>
+      </p>
+
+      <p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.95; color: var(--ink-soft);">
+        毎日の対話・気づき・失敗・学び・成功体験を、<strong>すべてMarkdownでVault（おけ森）に貯める</strong>。<br>
+        単発の記録じゃなく、<em>「未来の自分が読み返せる構造」</em>で残す。
+      </p>
+      <p style="margin: 0 0 14px; font-size: 14.5px; line-height: 1.95; color: var(--ink-soft);">
+        これは <strong>未来志向⑩ × アレンジ③ × 最上志向⑤</strong> の掛け算の結晶。<br>
+        「今日の対話」は、明日には <em>「資産」</em> になり、5年後には <em>「圧倒的な唯一無二の差別化」</em> になる。
+      </p>
+
+      <p style="margin: 24px 0 0; padding: 22px 26px; background: rgba(244,181,86,0.10); border-radius: 12px; font-family: 'Noto Serif JP', serif; font-size: 15px; line-height: 1.95; color: var(--ink);">
+        <strong style="color: var(--accent);">この戦略のすごいところ：</strong>
+        投資は <em>「時間が経つほど効果が増える」</em>。新しいスキル習得は時間とともに陳腐化するが、<strong>蓄積されたコンテキストは時間とともに価値が増していく</strong>。AIが進化するほど、過去のログから「自分らしさ」を再構築できる。
+      </p>
+    </div>
+  </section>
+
+  <!-- 投資の結果生まれたもの -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">The harvest — 投資の結果、生まれたもの</p>
+      <h2>13年〜の投資が、いま何になっているか。</h2>
+      <p>2025〜2026年時点で、おけもんが <em>「投資の結果」</em> として手にしている資産。<br>これらは <strong>明日から急に作れるもの</strong> じゃなく、<em>「毎日の投資の積み重ね」</em> でしか到達できないもの。</p>
+    </div>
+
+    <div class="results-grid stagger">
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-people-group"></i></div>
+        <p class="num">11<small style="font-size:0.4em">人</small></p>
+        <p class="label">AIキャラ・カンパニー</p>
+        <p class="sub">アレンジ × 最上志向 の結晶</p>
+      </div>
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-heart"></i></div>
+        <p class="num">37<small style="font-size:0.4em">人＋</small></p>
+        <p class="label">コーチング1対1記録</p>
+        <p class="sub">共感性 × 親密性 の蓄積</p>
+      </div>
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-handshake"></i></div>
+        <p class="num">20<small style="font-size:0.4em">回</small></p>
+        <p class="label">主催したオフ会</p>
+        <p class="sub">親密性 × ポジティブ</p>
+      </div>
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-treasure-chest"></i></div>
+        <p class="num">56<small style="font-size:0.4em">枚</small></p>
+        <p class="label">ことばの宝箱カード</p>
+        <p class="sub">アレンジの極致</p>
+      </div>
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-rotate"></i></div>
+        <p class="num">毎日</p>
+        <p class="label">自己成長サイクル</p>
+        <p class="sub">最上志向の仕組み化</p>
+      </div>
+      <div class="result-card">
+        <div class="icon"><i class="fa-solid fa-book"></i></div>
+        <p class="num">数百<small style="font-size:0.4em">本</small></p>
+        <p class="label">デイリーログ蓄積</p>
+        <p class="sub">未来志向 × コンテキスト戦略</p>
+      </div>
+    </div>
+
+    <p style="max-width: 720px; margin: 32px auto 0; text-align: center; color: var(--ink-soft); font-size: 14px; line-height: 1.95;" class="fade-in">
+      これは <em>「才能だけ」</em> では絶対に作れない。<br>
+      <strong>才能 × 投資（時間・経験・環境・仲間）</strong> の掛け算でしか到達できない場所🌷
+    </p>
+  </section>
+
+  <!-- 投資を始めたい人へ -->
+  <section class="content" style="background: var(--sand-deep);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">For you — 投資を始めたい人へ</p>
+      <h2>あなたが今日からできる<br>「最初の一歩」。</h2>
+      <p>「自分のTOP5、どう投資しよう？」を考える時のヒント。<br><em>真似しなくていい。ただ「考えるきっかけ」になれば。</em></p>
+    </div>
+
+    <div class="insight-grid stagger" style="max-width: 1000px; margin: 0 auto;">
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-1"></i> TOP1の資質を、1週間「観察」する</h3>
+        <p>自分のTOP1が「どんな場面で出てるか」を1週間メモする。<em>「あ、これ◯◯資質が動いた瞬間だ」</em>に気付くだけで、<strong>使い方が見えてくる</strong>。投資のスタート地点。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-2"></i> 下位資質を「諦める」と決める</h3>
+        <p>下位資質を <strong>「直そう」と思わない</strong>。代わりに「誰と組めば補えるか」を考える。<em>これだけで人生がだいぶ楽になる</em>。Team Gridはここで使う。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-3"></i> 「今日の対話」を1行で残す</h3>
+        <p>毎日の対話・気づき・失敗を、1日1行でいいから書き残す。<strong>「未来の自分が読み返せる」</strong> ことだけ意識すれば、5年後それが <em>あなた専用のVault（森）</em> になる。</p>
+      </article>
+
+      <article class="insight-card" style="border-left-color: var(--okemon);">
+        <h3 style="color: var(--okemon);"><i class="fa-solid fa-4"></i> 「ここまでで一旦」ラインを決める</h3>
+        <p>最上志向系の人は <em>完璧主義で止まれない</em>。<strong>始める前に「ここまでで一旦リリース」のラインを決める</strong>。これだけで投資のスピードが3倍になる。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 戻り -->
+  <section class="content back-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: var(--accent);">Back</p>
+      <h2>投資の話、ここまで。</h2>
+      <p>
+        投資は <em>「いつから始めても遅くない」</em>。<br>
+        ただ、<strong>「毎日続けた人」だけが、5年後・10年後に振り返って驚く資産</strong>を手にする🌷
+      </p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 24px;">
+        <a href="okemon.html" class="back-btn" style="background: var(--okemon); color: #FFF;">
+          <i class="fa-solid fa-leaf"></i>
+          🌷 おけもん本人の取説へ
+        </a>
+        <a href="team.html" class="back-btn" style="background: var(--accent); color: #FFF;">
+          <i class="fa-solid fa-people-group"></i>
+          Team Gridを見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 — A private map for irodori. Not for public distribution.</p>
+  </footer>
+
+  <script>
+    const animEls = document.querySelectorAll('.fade-in, .stagger');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else obs.observe(el);
+    });
+  </script>
+</body>
+</html>
