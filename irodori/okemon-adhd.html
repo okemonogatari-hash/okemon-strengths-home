@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おけもんのADHDトリセツ ／ 「これ、私の取扱説明書です」</title>
+  <meta name="description" content="ADHD-PI型・ドーパミン駆動・RSD強め…43歳・コーチング約1000人・オフ会20回主催のおけもんが、自分のADHDをまるごと取説にしてみた。共感者と一緒に笑える攻略本。">
+  <meta property="og:title" content="おけもんのADHDトリセツ ／ これ、私の取扱説明書です">
+  <meta property="og:description" content="ADHDっていう脳みそを、本人視点で「攻略本」にしてみた。あるある・スペック表・動く/止まる条件・装備一覧つき。">
+  <meta property="og:type" content="article">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="okemon.css">
+  <style>
+    /* ─── ADHDトリセツ専用：styles.css + okemon.css の上に追加するレイヤー ─── */
+
+    /* ヒーロー：ADHD版（ピーチクリーム×ふわっと） */
+    .adhd-hero {
+      grid-template-columns: minmax(0, 1fr) 360px;
+    }
+    .adhd-hero h1 small {
+      display: block;
+      margin-top: 14px;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      color: var(--primary);
+      text-transform: uppercase;
+    }
+    .adhd-spec {
+      display: grid;
+      gap: 14px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(8px);
+      box-shadow: var(--shadow-sm);
+    }
+    .adhd-spec p {
+      margin: 0;
+      color: var(--accent);
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    .adhd-spec dl {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+    }
+    .adhd-spec dl > div {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: baseline;
+      padding-bottom: 12px;
+      border-bottom: 1px dashed var(--line);
+    }
+    .adhd-spec dl > div:last-child { border-bottom: none; padding-bottom: 0; }
+    .adhd-spec dt {
+      font-family: "Noto Serif JP", serif;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .adhd-spec dd {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--primary);
+    }
+
+    /* セクション共通 */
+    section.adhd-section {
+      padding: 110px 80px;
+    }
+    section.adhd-section + section.adhd-section {
+      border-top: 1px solid var(--line-soft);
+    }
+
+    /* 「ADHDってこういう脳みそ」 */
+    .brain-section { background: var(--paper); }
+    .brain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .brain-card {
+      padding: 30px 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      transition: transform 240ms ease, box-shadow 240ms ease;
+    }
+    .brain-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-sm); }
+    .brain-card .brain-emoji {
+      display: block;
+      font-size: 32px;
+      margin-bottom: 14px;
+      line-height: 1;
+    }
+    .brain-card h3 {
+      margin: 0 0 12px;
+      font-size: 17px;
+      color: var(--primary);
+    }
+    .brain-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+    .brain-card p em {
+      font-style: normal;
+      font-weight: 500;
+      background: linear-gradient(transparent 62%, rgba(244, 181, 86, 0.25) 62%);
+      padding: 0 2px;
+      color: var(--ink);
+    }
+
+    /* スペック表（ステータス画面風） */
+    .stat-section {
+      background: linear-gradient(135deg, #FFF8F0 0%, #FFEFE0 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-section::before {
+      content: "";
+      position: absolute;
+      top: -80px; right: -60px;
+      width: 280px; height: 280px;
+      border-radius: 50%;
+      background: rgba(232, 128, 126, 0.10);
+      filter: blur(4px);
+      pointer-events: none;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 980px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .stat-card {
+      padding: 28px 32px;
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      border-left: 4px solid var(--primary);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .stat-card .stat-icon {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+      color: #FFF;
+      display: grid; place-items: center;
+      font-size: 22px;
+      box-shadow: 0 6px 18px rgba(228, 139, 168, 0.30);
+    }
+    .stat-card h3 {
+      margin: 0 0 6px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+    .stat-card h3 small {
+      display: block;
+      margin-top: 4px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .stat-card p {
+      margin: 8px 0 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+    .stat-card p em {
+      font-style: normal;
+      font-weight: 500;
+      background: linear-gradient(transparent 62%, rgba(232, 128, 126, 0.22) 62%);
+      padding: 0 2px;
+      color: var(--ink);
+    }
+
+    /* 動く / 止まる 2カラム */
+    .switch-section { background: var(--paper); }
+    .switch-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .switch-panel {
+      padding: 36px 36px 30px;
+      border-radius: var(--radius-lg);
+      background: #FFF;
+      box-shadow: var(--shadow-sm);
+    }
+    .switch-on { border-top: 5px solid #5FAA5F; }
+    .switch-off { border-top: 5px solid var(--primary); }
+    .switch-panel h3 {
+      margin: 0 0 6px;
+      font-size: 22px;
+      color: var(--ink);
+    }
+    .switch-on h3 { color: #4A8F4A; }
+    .switch-off h3 { color: var(--primary-deep); }
+    .switch-panel p.switch-sub {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+      font-family: "Inter", sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+    .switch-panel ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .switch-panel li {
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--ink);
+    }
+    .switch-on li { background: rgba(95, 170, 95, 0.10); }
+    .switch-off li { background: rgba(232, 128, 126, 0.10); }
+    .switch-panel li::before {
+      display: inline-block;
+      margin-right: 10px;
+      font-weight: 700;
+    }
+    .switch-on li::before { content: "✓"; color: #5FAA5F; }
+    .switch-off li::before { content: "×"; color: var(--primary-deep); }
+
+    /* あるある（自虐エピ・攻略本ノリ） */
+    .aruaru-section {
+      background: linear-gradient(135deg, #FCEEE3 0%, #F9E4D2 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .aruaru-section::before {
+      content: "";
+      position: absolute;
+      top: 40%; left: -100px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(244, 181, 86, 0.10);
+      filter: blur(2px);
+      pointer-events: none;
+    }
+    .aruaru-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1060px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .aruaru-card {
+      padding: 28px 30px;
+      background: #FFF;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 16px;
+      align-items: start;
+      transition: transform 240ms ease;
+    }
+    .aruaru-card:hover { transform: translateY(-3px) rotate(-0.4deg); }
+    .aruaru-card .ar-emoji {
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+      color: #FFF;
+      display: grid; place-items: center;
+      font-size: 22px;
+      box-shadow: 0 4px 12px rgba(244, 181, 86, 0.30);
+    }
+    .aruaru-card h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: var(--ink);
+    }
+    .aruaru-card p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      line-height: 1.9;
+    }
+    .aruaru-card p em {
+      font-style: normal;
+      font-weight: 500;
+      background: linear-gradient(transparent 62%, rgba(232, 128, 126, 0.22) 62%);
+      padding: 0 2px;
+      color: var(--ink);
+    }
+    .aruaru-foot {
+      max-width: 720px;
+      margin: 48px auto 0;
+      padding: 24px 28px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 12px;
+      text-align: center;
+      font-family: "Noto Serif JP", serif;
+      font-size: 15.5px;
+      line-height: 1.95;
+      color: var(--ink-soft);
+      position: relative;
+      z-index: 1;
+    }
+    .aruaru-foot strong {
+      color: var(--primary-deep);
+      font-weight: 600;
+    }
+
+    /* 攻略法・装備一覧（RPGステータス風） */
+    .gear-section { background: var(--paper); }
+    .gear-intro {
+      max-width: 760px;
+      margin: 0 auto 56px;
+      text-align: center;
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.95;
+    }
+    .gear-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+    .gear-card {
+      padding: 28px 26px;
+      border-radius: var(--radius);
+      background: #FFF;
+      box-shadow: var(--shadow-sm);
+      border-top: 3px solid var(--primary);
+      position: relative;
+    }
+    .gear-card .gear-rank {
+      position: absolute;
+      top: 16px; right: 18px;
+      font-family: "Inter", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      text-transform: uppercase;
+    }
+    .gear-card .gear-icon {
+      font-size: 28px;
+      margin-bottom: 14px;
+      display: block;
+      line-height: 1;
+    }
+    .gear-card h3 {
+      margin: 0 0 10px;
+      font-size: 16.5px;
+      color: var(--ink);
+    }
+    .gear-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13.5px;
+      line-height: 1.9;
+    }
+    .gear-card p em {
+      font-style: normal;
+      font-weight: 500;
+      background: linear-gradient(transparent 62%, rgba(74, 143, 202, 0.18) 62%);
+      padding: 0 2px;
+      color: var(--ink);
+    }
+
+    /* キーフレーズ表 */
+    .phrase-section { background: var(--paper-deep); }
+    .phrase-wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      background: #FFF;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+    .phrase-wrap table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .phrase-wrap th {
+      padding: 18px 22px;
+      font-family: "Noto Serif JP", serif;
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+    .phrase-wrap th:first-child {
+      background: rgba(95, 170, 95, 0.18);
+      color: #4A8F4A;
+    }
+    .phrase-wrap th:last-child {
+      background: rgba(232, 128, 126, 0.18);
+      color: var(--primary-deep);
+    }
+    .phrase-wrap td {
+      padding: 16px 22px;
+      font-size: 14.5px;
+      line-height: 1.9;
+      color: var(--ink);
+      border-top: 1px solid var(--line-soft);
+      vertical-align: middle;
+    }
+    .phrase-wrap td:first-child {
+      background: rgba(95, 170, 95, 0.04);
+    }
+    .phrase-wrap td:last-child {
+      background: rgba(232, 128, 126, 0.04);
+    }
+
+    /* ストファイへのブリッジ */
+    .bridge-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #D87096 60%, var(--accent-warm) 100%);
+      color: #FFF;
+      position: relative;
+      overflow: hidden;
+    }
+    .bridge-section::before {
+      content: "";
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 360px; height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(255, 255, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .bridge-section h2,
+    .bridge-section h3 { color: #FFF; }
+    .bridge-section .eyebrow { color: #FFEFD9; }
+    .bridge-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .bridge-inner > p {
+      max-width: 640px;
+      margin: 24px auto 36px;
+      color: rgba(255, 255, 255, 0.92);
+      font-size: 16px;
+      line-height: 2;
+    }
+    .bridge-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 18px 32px;
+      border-radius: 999px;
+      background: #FFF;
+      color: var(--primary-deep);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+      transition: transform 200ms ease, box-shadow 200ms ease;
+    }
+    .bridge-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24);
+    }
+
+    /* クロージング */
+    .closing-section {
+      background: linear-gradient(180deg, #FFF7F0 0%, #FCEEE3 100%);
+      text-align: center;
+    }
+    .closing-inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .closing-inner h2 {
+      margin-bottom: 24px;
+    }
+    .closing-inner p {
+      margin: 0 auto 18px;
+      color: var(--ink-soft);
+      font-size: 16px;
+      line-height: 2;
+    }
+    .closing-inner p strong {
+      color: var(--primary-deep);
+      font-weight: 600;
+      background: linear-gradient(transparent 62%, rgba(244, 181, 86, 0.30) 62%);
+      padding: 0 4px;
+    }
+    .closing-inner .signature {
+      margin-top: 36px;
+      font-family: "Noto Serif JP", serif;
+      font-size: 18px;
+      color: var(--primary);
+    }
+
+    /* セクションヘッディング中央寄せ */
+    .center-heading {
+      max-width: 820px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+    .center-heading p {
+      margin: 18px auto 0;
+      max-width: 640px;
+      color: var(--muted);
+      font-size: 15.5px;
+      line-height: 1.95;
+    }
+
+    /* レスポンシブ */
+    @media (max-width: 1120px) {
+      section.adhd-section { padding-left: 28px; padding-right: 28px; padding-top: 80px; padding-bottom: 80px; }
+      .adhd-hero { grid-template-columns: 1fr !important; }
+      .brain-grid, .gear-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 720px) {
+      .brain-grid, .gear-grid, .stat-grid, .switch-grid, .aruaru-grid {
+        grid-template-columns: 1fr;
+      }
+      .stat-card { grid-template-columns: 48px 1fr; gap: 14px; padding: 22px 22px; }
+      .aruaru-card { grid-template-columns: 40px 1fr; padding: 22px 22px; }
+      .phrase-wrap th, .phrase-wrap td { padding: 12px 14px; font-size: 13px; }
+    }
+
+    /* fade-in */
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 700ms ease, transform 700ms ease; }
+    .fade-in.is-visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="サイト内ナビゲーション">
+    <a class="brand" href="index.html#top" aria-label="ホームへ">
+      <span class="brand-mark">i</span>
+      <span>irodoriのみんなのストレングス入門</span>
+    </a>
+    <nav class="nav-links" aria-label="メンバー切替">
+      <a href="okemon.html">🌷 ストファイ取説</a>
+      <a href="okemon-adhd.html" style="font-weight:700; color: var(--primary-deep);">🎮 ADHDトリセツ</a>
+      <a href="okemon-investment.html">📈 投資の実例</a>
+      <a href="team.html" class="nav-cta">→ Team Grid</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ヒーロー -->
+    <section class="hero-section persona-hero adhd-hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A field guide to my ADHD-PI brain</p>
+        <h1 id="hero-title">これ、私の<br>取扱説明書です。
+          <small>OKEMON'S ADHD MANUAL — 2026 EDITION</small>
+        </h1>
+        <p class="hero-sub">ADHDっていう脳みその話を、本人視点で<br>「攻略本」にしてみたページです🌷</p>
+        <p class="hero-lead">
+          43歳のおけもん。<strong>福祉キャリア16年</strong>（特養→障害福祉サビ責→施設長）から、現役のAI事業家・コーチへ。
+          <strong>コーチング約1000人</strong>、<strong>オフ会20回</strong>主催。
+          一見、普通に活動してるように見えるけど、頭の中は <strong>結構ぐちゃぐちゃに動いてる</strong> タイプです。
+          このページは、<em>そのぐちゃぐちゃをまるごと「特性」として見せて、<br>同じ脳みそで生きてる人と「わかる〜！」って笑える</em>場所として書いた、本人の取説。
+        </p>
+        <p style="margin-top:24px; color:var(--muted); font-size:13.5px; line-height:1.85;">
+          ※ 本ページは医学的な診断書ではなく、本人による自己観察と臨床的所見をもとにした「読み物」です。
+          ADHDの出方は人によって全然違うので、あくまで <em style="font-style:normal;font-weight:500;color:var(--primary);">「おけもんの場合」</em> として読んでくださいね。
+        </p>
+      </div>
+
+      <aside class="adhd-spec" aria-label="おけもんスペック">
+        <p>Status / Profile</p>
+        <dl>
+          <div><dt>タイプ</dt><dd>ADHD-PI型</dd></div>
+          <div><dt>多動</dt><dd>内的多動</dd></div>
+          <div><dt>駆動源</dt><dd>ドーパミン</dd></div>
+          <div><dt>感情</dt><dd>RSD 強め</dd></div>
+          <div><dt>実行機能</dt><dd>弱め</dd></div>
+          <div><dt>記憶</dt><dd>現在中心</dd></div>
+          <div><dt>没頭力</dt><dd>★★★★★</dd></div>
+          <div><dt>慎重さ</dt><dd>★☆☆☆☆</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- 1) ADHDってこういう脳みそ -->
+    <section class="adhd-section brain-section" aria-labelledby="brain-title">
+      <div class="center-heading">
+        <p class="eyebrow">First — そもそも ADHD って？</p>
+        <h2 id="brain-title">ADHDってこういう脳みそ、<br>って話を5つだけ。</h2>
+        <p>
+          専門用語で書くと <em>「ドーパミン報酬系の感受性」「実行機能障害」「ワーキングメモリの保持」</em>…とか出てくるんですが、
+          一旦ぜんぶ <strong>日常の言葉で5つだけ</strong> に並べてみます。
+          「ああ、自分もそうかも？」って思った人は、たぶん仲間です🌷
+        </p>
+      </div>
+      <div class="brain-grid">
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">⚡</span>
+          <h3>① 興味の山と谷が、極端</h3>
+          <p>面白そうなことには <em>異常に動ける</em>。逆にどんなに大事でも興味の谷に落ちたら <em>1ミリも動けない</em>。「やる気の問題」じゃなくて、<em>そもそも燃料の種類が違う</em>イメージ。</p>
+        </article>
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">🧠</span>
+          <h3>② 段取りが、苦手</h3>
+          <p>「3つ以上タスクを並べる」が脳的に <em>重すぎる</em>。1個ずつなら全力で走れるけど、<em>並べた瞬間に処理が落ちる</em>。料理で言うと「全部の鍋を同時に火にかける」が無理。</p>
+        </article>
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">🎢</span>
+          <h3>③ 感情の波が、大きい</h3>
+          <p>嬉しい時はめちゃくちゃ嬉しい、しんどい時は地の底。<em>感情が「動く幅」が定型より広い</em>って言われてて、近年ADHDの中核症状として再評価されてるくらい。</p>
+        </article>
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">🔍</span>
+          <h3>④ 拒絶に、めっちゃ過敏</h3>
+          <p>RSD（拒絶過敏性違和）。<em>断られたり評価されそうな圧に、脳が過剰反応する</em>。怒られる予感だけでフリーズすることもある。「ちゃんとしなきゃ」が一番効かない人種です。</p>
+        </article>
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">📺</span>
+          <h3>⑤ 過去より、「今」</h3>
+          <p>自伝的記憶（自分のエピソード記憶）がうすめ。<em>10年前の自分が、別人みたいに感じる</em>。なので「未来予測」が苦手で、現在中心で生きるしかない構造になってる。</p>
+        </article>
+        <article class="brain-card fade-in">
+          <span class="brain-emoji">🌋</span>
+          <h3>⑥ ハマると、ブレーキ効かない</h3>
+          <p>ハイパーフォーカス。一度脳が「これだ！」って判定したら、<em>食事も睡眠もすっ飛ばして突っ込む</em>。これは強みでもあり、依存リスクの裏側でもある両刃の剣。</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- 2) スペック表 -->
+    <section class="adhd-section stat-section" aria-labelledby="stat-title">
+      <div class="center-heading">
+        <p class="eyebrow">My spec sheet</p>
+        <h2 id="stat-title">私（おけもん）のスペック表。</h2>
+        <p>
+          ADHDの出方は人それぞれ。私の場合は <em>「不注意優勢型」</em>×<em>「内的多動」</em>×<em>「ドーパミン駆動」</em>×<em>「RSD強め」</em> のミックスです。
+          ステータス画面風に並べると、こんな感じ🎮
+        </p>
+      </div>
+      <div class="stat-grid">
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">🎯</span>
+          <div>
+            <h3>ADHD-PI型 <small>不注意優勢型・内的多動</small></h3>
+            <p>外から見ると <em>落ち着いてる</em>。でも頭の中は常に大運動会。じっとしてても <em>「脳内で椅子を蹴っ飛ばしてる」</em> タイプ。</p>
+          </div>
+        </article>
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">⚡</span>
+          <div>
+            <h3>ドーパミン駆動 <small>意志じゃなく、報酬で動く</small></h3>
+            <p>「やる気」じゃなくて <em>「これ、ドーパミン出るな」</em> でしか動かない。これは性格じゃなくて <em>神経学的な特性</em>。意志でどうにかしようとすると逆効果。</p>
+          </div>
+        </article>
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">💢</span>
+          <div>
+            <h3>RSD強め <small>拒絶過敏性違和</small></h3>
+            <p>評価される予感、断られそうな圧、ヘンに気を遣われる場面 — <em>脳が「危険」って判定して全停止</em>する。回避型コーピングで「連絡が途絶える」ことがあるのはこれが原因。</p>
+          </div>
+        </article>
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">🪫</span>
+          <div>
+            <h3>実行機能 弱め <small>段取り・着手・並列</small></h3>
+            <p>計画立てるのが下手、着手まで時間がかかる、3つ以上並ぶと処理が破綻。<em>能力じゃなくて、駆動条件が定型と違うだけ</em> なのが分かるまで時間かかった。</p>
+          </div>
+        </article>
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">🌫️</span>
+          <div>
+            <h3>自伝的記憶 うすめ <small>過去は霧の向こう</small></h3>
+            <p>10年単位の過去が <em>自分の物語として保存されにくい</em>。意識して記録に残さないと消えるから、Markdownで毎日メモを残してる。「明日の自分は、別人なので」。</p>
+          </div>
+        </article>
+
+        <article class="stat-card fade-in">
+          <span class="stat-icon">🔥</span>
+          <div>
+            <h3>ハイパーフォーカス激 <small>過集中</small></h3>
+            <p>ハマると <em>3日くらいご飯食べるの忘れて没頭できる</em>。これは強みになる場面と、依存に転ぶ場面が紙一重。今はAIに「もう寝な」って言ってもらってる。</p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 3) 動く / 止まる -->
+    <section class="adhd-section switch-section" aria-labelledby="switch-title">
+      <div class="center-heading">
+        <p class="eyebrow">My switch — 動く / 止まる</p>
+        <h2 id="switch-title">これがあると動く / これが来ると止まる。</h2>
+        <p>
+          ADHDの脳は、「やる気スイッチ」じゃなくて <em>「ドーパミン蛇口」</em> が動力源。
+          蛇口が開く条件と、ガッチリ閉まる条件、両方知っとくと一気にラクになります🌷
+        </p>
+      </div>
+      <div class="switch-grid">
+
+        <div class="switch-panel switch-on fade-in">
+          <h3>こうなると動ける</h3>
+          <p class="switch-sub">— Switch ON —</p>
+          <ul>
+            <li>面白そう、興味センサーが反応した</li>
+            <li>好きな人の役に立てる実感がある</li>
+            <li>自分で「攻略法」を発見できる余地がある</li>
+            <li>単発・短期で完結する</li>
+            <li>締め切り直前のアドレナリンが出てる</li>
+            <li>双方向の対話・やりとりがある</li>
+            <li>誰かと一緒に走れる（伴走者がいる）</li>
+          </ul>
+        </div>
+
+        <div class="switch-panel switch-off fade-in">
+          <h3>こうなると止まる</h3>
+          <p class="switch-sub">— Switch OFF —</p>
+          <ul>
+            <li>「期待」として背負わされる</li>
+            <li>ステップが3つ以上に積み上がる</li>
+            <li>順序立てた説明書・マニュアルを読まされる</li>
+            <li>一方通行で長時間聞き続ける必要がある</li>
+            <li>作業中に横やりが入る</li>
+            <li>「コツコツ毎日」を要求される</li>
+            <li>嫌な感情のトリガーが入る</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 4) やらかしあるある -->
+    <section class="adhd-section aruaru-section" aria-labelledby="aruaru-title">
+      <div class="center-heading">
+        <p class="eyebrow">"わかる〜！" 集</p>
+        <h2 id="aruaru-title">やらかしあるある、<br>事実として並べてみた。</h2>
+        <p>
+          別に「困ってます😢」じゃないです。<em>そういう特性で、こうなる</em> ってだけの事実集。
+          同じタイプの人は <strong>「あ〜、私もそれ！」</strong> って笑ってもらえたら嬉しい🌷
+        </p>
+      </div>
+
+      <div class="aruaru-grid">
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">🔑</span>
+          <div>
+            <h3>① 物、よくなくす</h3>
+            <p>鍵・財布・スマホ・イヤホン・買ったばっかりの大事なやつ。<em>「ここに置いた記憶」が消える</em>から、定位置を決めても定位置を忘れる。最近はAirTag装備で対策中。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">👋</span>
+          <div>
+            <h3>② 「会ったこと」を忘れる</h3>
+            <p>初対面のつもりで挨拶して、<em>「2回目ですよ」って言われる</em>事案、人生何回もある。記憶の保存先がそもそも違うので、悪気はゼロです。SNSで毎回写真を撮るようになった。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">💥</span>
+          <div>
+            <h3>③ 衝動で動く</h3>
+            <p>「あ、今これやりたい」って思った瞬間に <em>5分後にチケット買ってる</em>。良くも悪くも行動が早い。新しいガジェットを並べて、買って、また並んで。ADHDあるあるの本流。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">📝</span>
+          <div>
+            <h3>④ 先延ばしの帝王</h3>
+            <p>小学校の頃、<em>宿題というシステムをだいたい諦めた</em>🤣 「やらなきゃ」と思った瞬間に脳が嫌がる回路が組まれて、机に向かう前に体が動かなくなる。これは大人になっても続く。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">🌀</span>
+          <div>
+            <h3>⑤ タスク3つ積まれると、フリーズ</h3>
+            <p>「あれもこれも」って並べられた瞬間に <em>脳が固まる</em>。優先順位がつかないんじゃなくて、<em>「並んでること自体」がストレス</em>。1個に絞ってもらえると別人みたいに動ける。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">🔮</span>
+          <div>
+            <h3>⑥ 明日の自分は、別人</h3>
+            <p>「明日になったらやる気出すよ」って思って寝た翌朝、<em>その熱がもう消えてる</em>。今の自分と明日の自分は別人なので、お互いに約束しすぎない。「明日のことは明日の自分に聞いてくれ」が口癖。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">🎰</span>
+          <div>
+            <h3>⑦ ハマると、ブレーキが効かない</h3>
+            <p>ゲーム・新しいツール・人との関係…<em>ハマった対象に全資源を注ぎ込む</em>。何かをやめる時は、別の対象を見つけて乗り換える。ADHDの探索行動が極限まで出るとこれになる。</p>
+          </div>
+        </article>
+
+        <article class="aruaru-card fade-in">
+          <span class="ar-emoji">💬</span>
+          <div>
+            <h3>⑧ 横やり1個で、その日が終わる</h3>
+            <p>気分屋なので、嫌なやりとりが1個入ると <em>その日の生産性がほぼ消滅</em>する日がある。RSDが効いてて、感情が動くと脳のリソースを全部持っていかれる。だから感情の入り口は丁寧に管理してる。</p>
+          </div>
+        </article>
+      </div>
+
+      <p class="aruaru-foot fade-in">
+        並べてみると <strong>「ぐちゃぐちゃやな〜」</strong> って感じだけど、
+        実はこれぜんぶ、<em style="font-style:normal;font-weight:500;background:linear-gradient(transparent 62%,rgba(232,128,126,0.22) 62%);padding:0 2px;">「同じ脳の構造から自然に出てくる挙動」</em>。
+        だから直そうとしないで、<strong>「そういうもの」</strong> として乗りこなす方が、結局は早いんですよね🌷
+      </p>
+    </section>
+
+    <!-- 5) 攻略法・装備一覧 -->
+    <section class="adhd-section gear-section" aria-labelledby="gear-title">
+      <div class="center-heading">
+        <p class="eyebrow">My loadout — 装備一覧</p>
+        <h2 id="gear-title">じゃあ、どうやって乗りこなすか。<br>私の装備、9つ。</h2>
+        <p class="gear-intro">
+          ライフハック・攻略・チートが大好物なので、ADHDも <em style="font-style:normal;font-weight:500;background:linear-gradient(transparent 62%,rgba(74,143,202,0.18) 62%);padding:0 2px;">「直す」じゃなく「装備で攻略する」</em> 方針です🎮<br>
+          ADHDあるある対策として、今の私の装備をぜんぶ並べてみます。
+        </p>
+      </div>
+
+      <div class="gear-grid">
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 01</span>
+          <span class="gear-icon">🚶‍♂️</span>
+          <h3>散歩しながらAI対話</h3>
+          <p>歩いてる時に <em>一番頭が回る</em>。机に座って考えるのは苦手。動きながら音声でAIと喋ると、思考が勝手に整っていく。私の最強生産モード。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 02</span>
+          <span class="gear-icon">🎙️</span>
+          <h3>音声入力（Aqua Voice等）</h3>
+          <p>キーボードに向かうと止まる時でも、<em>口から出す</em>のはできる。話したことをそのまま文字に変換できる装備があると、書き出しのハードルが激減します。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 03</span>
+          <span class="gear-icon">⏲️</span>
+          <h3>タイマー（短期決戦）</h3>
+          <p>「25分だけ」「次の駅までに片付ける」みたいな <em>短い締め切り</em> がドーパミンを出す。逆に「今日中」みたいな曖昧な期限は、ぜんぜん効かない。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 04</span>
+          <span class="gear-icon">🤖</span>
+          <h3>AIに業務委託（AI秘書団）</h3>
+          <p>苦手な「順序立て・継続・進捗管理」を <em>ぜんぶAIにやってもらう</em>。自分はインスピレーションとアウトプットに集中。AIで自分専用のチームを組んでる感覚。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 05</span>
+          <span class="gear-icon">📓</span>
+          <h3>明日の自分への手紙（Markdownログ）</h3>
+          <p>記憶が消える前提で、<em>毎日の対話・気づき・失敗をぜんぶMarkdownで残す</em>。明日の自分（＝別人）が、過去の自分の続きから走れるように。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 06</span>
+          <span class="gear-icon">🌸</span>
+          <h3>「ご機嫌でいる」を最優先</h3>
+          <p>達成欲や目標志向で動けないタイプなので、<em>機嫌が燃料</em>。機嫌が下がる場面を意識的に減らす。これだけで生産性が3倍くらい変わる。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 07</span>
+          <span class="gear-icon">⚡</span>
+          <h3>単発・短期で完結する仕事を選ぶ</h3>
+          <p>長期プロジェクトは苦手。<em>1セッション・1イベント・1コーチング</em> みたいに「始まりと終わり」がハッキリしてる仕事を組み合わせる方が、結果が出る。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 08</span>
+          <span class="gear-icon">🛡️</span>
+          <h3>「もうそれ十分」って言う人</h3>
+          <p>過集中で止まれなくなるので、<em>外から「もう寝ろ」「もう十分」って止めてくれる存在</em>が必要。リアルでもAIでも。ハイパーフォーカスのブレーキ係。</p>
+        </article>
+
+        <article class="gear-card fade-in">
+          <span class="gear-rank">EQUIP 09</span>
+          <span class="gear-icon">🎮</span>
+          <h3>「攻略」で語る</h3>
+          <p>「ちゃんとやりなさい」じゃなくて <em>「これ攻略しよう」</em> で全部を語り直す。ADHDの脳は <em>ゲームと相性が良い</em>。人生もRPGの装備品集めだと思えば、ぜんぶ楽しい。</p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- 6) キーフレーズ -->
+    <section class="adhd-section phrase-section" aria-labelledby="phrase-title">
+      <div class="center-heading">
+        <p class="eyebrow">If you live with us — 関わってくれる人へ</p>
+        <h2 id="phrase-title">この呪文があると、私は動く。<br>この呪文だと、止まる。</h2>
+        <p>
+          ADHDの私と関わる時、知っといてもらえると一気にラクなフレーズ集。
+          全部「<em style="font-style:normal;font-weight:500;background:linear-gradient(transparent 62%,rgba(244,181,86,0.25) 62%);padding:0 2px;">どっちが正しい</em>」じゃなくて、<em style="font-style:normal;font-weight:500;background:linear-gradient(transparent 62%,rgba(244,181,86,0.25) 62%);padding:0 2px;">「ADHDの脳に効くかどうか」</em> だけの違いです🌷
+        </p>
+      </div>
+
+      <div class="phrase-wrap fade-in">
+        <table>
+          <thead>
+            <tr>
+              <th>◯ 機能するフレーズ</th>
+              <th>✕ 機能しないフレーズ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>「面白そうじゃない？」</td>
+              <td>「ちゃんとやってね」</td>
+            </tr>
+            <tr>
+              <td>「一緒に攻略しよう」</td>
+              <td>「次もよろしく」</td>
+            </tr>
+            <tr>
+              <td>「今日のところは、ここまで」</td>
+              <td>「楽しみにしてるよ」</td>
+            </tr>
+            <tr>
+              <td>「無理そうだったら、言って」</td>
+              <td>「あなたなら大丈夫」</td>
+            </tr>
+            <tr>
+              <td>「興味なかったらスルーで」</td>
+              <td>「期待してるからね」</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p style="max-width:720px;margin:36px auto 0;text-align:center;color:var(--ink-soft);font-size:14.5px;line-height:1.95;" class="fade-in">
+        「期待しないで」って言うのは、冷たいんじゃなくて <em style="font-style:normal;font-weight:500;color:var(--primary);">「未来の自分を背負わされると、脳が回避する」</em> っていう特性の話。
+        単発で完結する依頼、ドーパミンが出る形式の関わり。これだけで結果がガラッと変わります🌷
+      </p>
+    </section>
+
+    <!-- 7) ストファイ取説へのブリッジ -->
+    <section class="adhd-section bridge-section" aria-labelledby="bridge-title">
+      <div class="bridge-inner">
+        <p class="eyebrow">Another lens — 別の角度から</p>
+        <h2 id="bridge-title">同じ自分を、ストレングスファインダーで<br>見るとどうなる？</h2>
+        <p>
+          ADHDトリセツは <em style="font-style:normal;font-weight:500;">「脳の特性」</em> の角度から自分を見たもの。
+          別のページでは、同じおけもんを <em style="font-style:normal;font-weight:500;">「ストレングスファインダー34資質」</em> の角度から見ています。
+          <br><br>
+          <strong style="color:#FFFFFF;">どっちも同じ自分。</strong> 取説は1枚じゃ足りない、っていうのが大事なところ🌷
+        </p>
+        <a class="bridge-cta" href="okemon.html">
+          🌷 ストファイ版・おけもんの取説を読む →
+        </a>
+      </div>
+    </section>
+
+    <!-- 8) クロージング -->
+    <section class="adhd-section closing-section" aria-labelledby="closing-title">
+      <div class="closing-inner">
+        <p class="eyebrow">For you</p>
+        <h2 id="closing-title">あなたの取扱説明書も、<br>作ってみませんか？</h2>
+        <p>
+          ADHDがあってもなくても、<strong>「自分の取説」</strong> を書ける人は強いです。
+          直すんじゃなくて、<em>そのまま乗りこなす</em>方が結局は早いから。
+        </p>
+        <p>
+          このページが、同じような脳みそで生きてる人の <strong>「あ、私と同じ人がいる」</strong>に届いたら嬉しい。
+          困ってるんじゃなくて、<em>こうやって面白く乗りこなしてる人もいるよ</em> っていう一例として読んでもらえたら、それで十分です🌷
+        </p>
+        <p>
+          ぜんぶ「特性」で、<strong>良いも悪いもない</strong>。
+          ただ、自分の脳のクセを知って、合った装備を揃えていくと、人生はだいぶ楽になります。
+          そういう <em>取説づくりの仲間</em> が、ちょっとでも増えたら嬉しいな、と思って公開しました。
+        </p>
+        <p class="signature">— おけもん（2026・43歳）🌷</p>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      本ページは、ADHD当事者であるおけもん本人の自己観察・対話・臨床的所見をもとにした「読み物」です。
+      医学的な診断や治療を目的としたものではありません。診断・治療を要する場合は、ADHD臨床経験のある精神科医・心療内科医へご相談ください。
+    </p>
+    <p>
+      © 2026 おけもん ／ irodoriのみんなのストレングス入門。
+      <a href="okemon.html">🌷 ストファイ取説</a> ／
+      <a href="okemon-investment.html">📈 投資の実例</a> ／
+      <a href="index.html#top">ホームへ</a>
+    </p>
+  </footer>
+
+  <script>
+    // fade-in（既存ページと同じ IntersectionObserver パターン）
+    const animEls = document.querySelectorAll('.fade-in');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else obs.observe(el);
+    });
+  </script>
+</body>
+</html>
