@@ -396,45 +396,75 @@
     </section>
 
     <!-- 双子ケース：おけもん × くう -->
-    <section class="combo-section" aria-labelledby="twincase-title" style="background: linear-gradient(135deg, #F4F9F4 0%, #FFFFFF 70%); border-top: 3px solid #5FAA5F;">
-      <div class="section-heading">
-        <p class="eyebrow" style="color: #5FAA5F;">A real case — same materials, different recipe</p>
+    <style>
+      .twin-case { background: linear-gradient(135deg, #F4F9F4 0%, #FFFFFF 70%); border-top: 3px solid #5FAA5F; padding: 56px 24px; color: #2d2d2d; }
+      .twin-case * { color: inherit; }
+      .twin-case .twin-heading { text-align: center; max-width: 880px; margin: 0 auto; }
+      .twin-case .twin-eyebrow { font-family: "Inter", sans-serif; font-size: .85em; color: #5FAA5F !important; letter-spacing: .14em; text-transform: uppercase; margin: 0 0 8px; }
+      .twin-case h2 { font-family: "Noto Serif JP", serif; font-size: 1.7em; margin: 0 0 14px; color: #2d2d2d !important; line-height: 1.5; }
+      .twin-case .lead { line-height: 1.95; color: #444 !important; margin: 0 auto; max-width: 720px; }
+      .twin-case .twin-table-wrap { max-width: 880px; margin: 32px auto 0; background: #FFFFFF; border-radius: 12px; padding: 28px 32px; box-shadow: 0 6px 20px rgba(0,0,0,.08); }
+      .twin-case .twin-table-wrap h3 { font-family: "Noto Serif JP", serif; margin: 0 0 12px; color: #3E7A3E !important; font-size: 1.2em; }
+      .twin-case table.twin-table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+      .twin-case table.twin-table th { padding: 10px 14px; background: #F4F9F4 !important; color: #3E7A3E !important; font-weight: 700; font-size: .98em; border-bottom: 1px solid #C8DCC8; text-align: left; }
+      .twin-case table.twin-table th.center { text-align: center; }
+      .twin-case table.twin-table td { padding: 10px 14px; color: #2d2d2d !important; font-size: 1em; border-bottom: 1px solid #EEF3EE; background: #FFFFFF !important; }
+      .twin-case table.twin-table td.center { text-align: center; font-weight: 600; }
+      .twin-case table.twin-table td .same { color: #C47C00 !important; font-style: italic; font-size: .88em; margin-left: 4px; }
+      .twin-case .twin-summary { margin: 18px 0 0; color: #444 !important; line-height: 1.8; }
+      .twin-case .twin-cards { max-width: 880px; margin: 24px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+      .twin-case .twin-card { background: #FFFFFF; border-radius: 12px; padding: 22px 26px; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+      .twin-case .twin-card.okemon { border-top: 4px solid #4A8FCA; }
+      .twin-case .twin-card.kuu { border-top: 4px solid #5FAA5F; }
+      .twin-case .twin-card h4 { font-family: "Noto Serif JP", serif; margin: 0 0 10px; font-size: 1.15em; }
+      .twin-case .twin-card.okemon h4 { color: #4A8FCA !important; }
+      .twin-case .twin-card.kuu h4 { color: #3E7A3E !important; }
+      .twin-case .twin-card .traits { font-size: 1em; color: #2d2d2d !important; font-weight: 600; margin: 0 0 10px; line-height: 1.7; }
+      .twin-case .twin-card .desc { font-size: .94em; color: #444 !important; line-height: 1.8; margin: 0; }
+      .twin-case .twin-message { max-width: 720px; margin: 36px auto 0; background: #FDF8EE; border-left: 4px solid #F4B556; padding: 24px 30px; border-radius: 8px; }
+      .twin-case .twin-message h3 { font-family: "Noto Serif JP", serif; margin: 0 0 12px; color: #8A5A1F !important; font-size: 1.2em; }
+      .twin-case .twin-message p { line-height: 2; margin: 0; color: #3a2f1f !important; }
+      @media (max-width: 680px) { .twin-case .twin-cards { grid-template-columns: 1fr; } .twin-case h2 { font-size: 1.4em; } }
+    </style>
+    <section class="twin-case" aria-labelledby="twincase-title">
+      <div class="twin-heading">
+        <p class="twin-eyebrow">A real case — same materials, different recipe</p>
         <h2 id="twincase-title">「同じ資質」でも「やってることは真逆」<br>──おけもん × くう のケース。</h2>
-        <p style="max-width: 720px; margin: 12px auto 0; line-height: 1.85;">irodoriのストファイ取説を作る中で見つかった面白い実例。<br><strong>おけもんとくう（経理担当）は、TOP10の資質が6個も重なってる</strong>。共感性とコミュニケーションは順位まで同じ。<br>でも、<em>毎日やってる仕事はほぼ真逆</em>。──「資質はポテンシャル、どう使うかは選択」を、こんなに綺麗に見せる事例もそうそうない。</p>
+        <p class="lead">irodoriのストファイ取説を作る中で見つかった面白い実例。<br><strong>おけもんとくう（経理担当）は、TOP10の資質が6個も重なってる</strong>。共感性とコミュニケーションは順位まで同じ。<br>でも、<em>毎日やってる仕事はほぼ真逆</em>。──「資質はポテンシャル、どう使うかは選択」を、こんなに綺麗に見せる事例もそうそうない。</p>
       </div>
 
-      <div style="max-width: 880px; margin: 32px auto 0; background: #FFF; border-radius: 12px; padding: 28px 32px; box-shadow: 0 6px 20px rgba(0,0,0,.06);">
-        <h3 style="font-family: 'Noto Serif JP', serif; margin-top: 0; color: #3E7A3E;">🌱 共通TOP10資質 — 6個も重なる</h3>
-        <table style="width: 100%; border-collapse: collapse; margin-top: 12px;">
-          <thead><tr style="background: #F4F9F4;"><th style="padding: 8px 12px; text-align: left; border-bottom: 1px solid #DDE6DD;">資質</th><th style="padding: 8px 12px; text-align: center; border-bottom: 1px solid #DDE6DD;">🍑 おけもん</th><th style="padding: 8px 12px; text-align: center; border-bottom: 1px solid #DDE6DD;">🌿 くう</th></tr></thead>
-          <tbody style="line-height: 1.9;">
-            <tr><td style="padding: 6px 12px;">共感性</td><td style="text-align: center;"><strong>②</strong></td><td style="text-align: center;"><strong>②</strong> ←<em>同順位</em></td></tr>
-            <tr><td style="padding: 6px 12px;">コミュニケーション</td><td style="text-align: center;"><strong>⑦</strong></td><td style="text-align: center;"><strong>⑦</strong> ←<em>同順位</em></td></tr>
-            <tr><td style="padding: 6px 12px;">調和性</td><td style="text-align: center;">①</td><td style="text-align: center;">⑥</td></tr>
-            <tr><td style="padding: 6px 12px;">最上志向</td><td style="text-align: center;">⑤</td><td style="text-align: center;">⑧</td></tr>
-            <tr><td style="padding: 6px 12px;">ポジティブ</td><td style="text-align: center;">⑨</td><td style="text-align: center;">④</td></tr>
-            <tr><td style="padding: 6px 12px;">未来志向</td><td style="text-align: center;">⑩</td><td style="text-align: center;">③</td></tr>
+      <div class="twin-table-wrap">
+        <h3>🌱 共通TOP10資質 — 6個も重なる</h3>
+        <table class="twin-table">
+          <thead><tr><th>資質</th><th class="center">🍑 おけもん</th><th class="center">🌿 くう</th></tr></thead>
+          <tbody>
+            <tr><td>共感性</td><td class="center">②</td><td class="center">② <span class="same">←同順位</span></td></tr>
+            <tr><td>コミュニケーション</td><td class="center">⑦</td><td class="center">⑦ <span class="same">←同順位</span></td></tr>
+            <tr><td>調和性</td><td class="center">①</td><td class="center">⑥</td></tr>
+            <tr><td>最上志向</td><td class="center">⑤</td><td class="center">⑧</td></tr>
+            <tr><td>ポジティブ</td><td class="center">⑨</td><td class="center">④</td></tr>
+            <tr><td>未来志向</td><td class="center">⑩</td><td class="center">③</td></tr>
           </tbody>
         </table>
-        <p style="margin-top: 16px; line-height: 1.85; color: #555;">→ 「<strong>対話・共感・人を引き上げる・未来描く</strong>」温度感の素材が、ほぼまるかぶり🌷</p>
+        <p class="twin-summary">→ 「<strong>対話・共感・人を引き上げる・未来描く</strong>」温度感の素材が、ほぼまるかぶり🌷</p>
       </div>
 
-      <div style="max-width: 880px; margin: 24px auto 0; display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-        <div style="background: #FFF; border-radius: 12px; padding: 22px 26px; box-shadow: 0 4px 14px rgba(0,0,0,.05); border-top: 4px solid #4A8FCA;">
-          <h4 style="margin: 0 0 10px; color: #4A8FCA;">🍑 おけもん独自 TOP10</h4>
-          <p style="line-height: 1.85; font-size: .92em;"><strong>アレンジ③・親密性④・責任感⑥・公平性⑧</strong></p>
-          <p style="font-size: .9em; color: #666; line-height: 1.8;">→ 実行力寄り＋1対1で深く関わる構造。<br>→ <strong>AI活用支援 × コーチング</strong>の方向に進んだ。<br>→ <em>「数字を見ると蕁麻疹が走る」</em>タイプ😅</p>
+      <div class="twin-cards">
+        <div class="twin-card okemon">
+          <h4>🍑 おけもん独自 TOP10</h4>
+          <p class="traits">アレンジ③・親密性④・責任感⑥・公平性⑧</p>
+          <p class="desc">→ 実行力寄り＋1対1で深く関わる構造。<br>→ <strong>AI活用支援 × コーチング</strong>の方向に進んだ。<br>→ <em>「数字を見ると蕁麻疹が走る」</em>タイプ😅</p>
         </div>
-        <div style="background: #FFF; border-radius: 12px; padding: 22px 26px; box-shadow: 0 4px 14px rgba(0,0,0,.05); border-top: 4px solid #5FAA5F;">
-          <h4 style="margin: 0 0 10px; color: #5FAA5F;">🌿 くう独自 TOP10</h4>
-          <p style="line-height: 1.85; font-size: .92em;"><strong>個別化①・学習欲⑤・成長促進⑨・収集心⑩</strong></p>
-          <p style="font-size: .9em; color: #666; line-height: 1.8;">→ 戦略寄り＋情報をガッツリ蓄える構造。<br>→ <strong>経理の仕事で数字を徹底的に追う</strong>方向に進んだ。<br>→ <em>学習欲⑤＋収集心⑩</em> が数字業務に超刺さる。</p>
+        <div class="twin-card kuu">
+          <h4>🌿 くう独自 TOP10</h4>
+          <p class="traits">個別化①・学習欲⑤・成長促進⑨・収集心⑩</p>
+          <p class="desc">→ 戦略寄り＋情報をガッツリ蓄える構造。<br>→ <strong>経理の仕事で数字を徹底的に追う</strong>方向に進んだ。<br>→ <em>学習欲⑤＋収集心⑩</em> が数字業務に超刺さる。</p>
         </div>
       </div>
 
-      <div style="max-width: 720px; margin: 32px auto 0; background: #FDF8EE; border-left: 4px solid #F4B556; padding: 22px 28px; border-radius: 8px;">
-        <h3 style="font-family: 'Noto Serif JP', serif; margin: 0 0 10px; color: #8A5A1F;">🌟 持っているものをどう使うかは、その人次第。</h3>
-        <p style="line-height: 1.95; margin: 0;">同じ素材を持っていても、<strong>「人生で何を選ぶか」「どんな環境に身を置くか」</strong> で、毎日やる仕事は真逆になる。<br>ストファイは「あなたはこういう仕事をしなさい」と決める道具じゃなくて、<strong>「あなたが何かをやる時、こういう動き方が自然ですよ」</strong> を教えてくれる地図。<br><br>だから、<em>同じ資質を持つ人と比べて「私はこっちじゃないのかな」と迷う必要はない</em>。資質が同じでも、調理は無限にある。<br><strong>持っているものを、自分の選んだレーンでどう使うか──それを決めるのは、いつも自分。</strong></p>
+      <div class="twin-message">
+        <h3>🌟 持っているものをどう使うかは、その人次第。</h3>
+        <p>同じ素材を持っていても、<strong>「人生で何を選ぶか」「どんな環境に身を置くか」</strong> で、毎日やる仕事は真逆になる。<br>ストファイは「あなたはこういう仕事をしなさい」と決める道具じゃなくて、<strong>「あなたが何かをやる時、こういう動き方が自然ですよ」</strong> を教えてくれる地図。<br><br>だから、<em>同じ資質を持つ人と比べて「私はこっちじゃないのかな」と迷う必要はない</em>。資質が同じでも、調理は無限にある。<br><strong>持っているものを、自分の選んだレーンでどう使うか──それを決めるのは、いつも自分。</strong></p>
       </div>
     </section>
 
