@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>同じ素材、違う調理。──ストファイ哲学の実例集 | irodoriのみんなのストレングス入門</title>
+  <meta name="description" content="「資質が似てる人」と「やってる仕事」は必ずしも一致しない。irodoriメンバーの実例で見る、ストレングスファインダー哲学の核心。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    /* ── case-study.html 専用スタイル（外部CSSに依存しない自己完結型） ── */
+    :root {
+      --okemon: #4A8FCA;
+      --natsuun: #F4B556;
+      --kuu: #5FAA5F;
+      --rie: #B6A4DE;
+      --accent: #F4B556;
+      --text: #2d2d2d;
+      --text-soft: #555;
+      --text-light: #666;
+      --bg: #FAF8F3;
+      --bg-card: #FFFFFF;
+      --line: #E8E5DA;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: "Noto Sans JP", sans-serif; background: var(--bg); color: var(--text); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* ── ヘッダ ── */
+    .topbar { display: flex; justify-content: space-between; align-items: center; padding: 16px 28px; background: rgba(255,255,255,.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); position: sticky; top: 0; z-index: 100; }
+    .topbar .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text); font-weight: 600; font-size: .95em; }
+    .topbar .brand-mark { background: var(--accent); color: #FFF; width: 28px; height: 28px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; font-family: "Cormorant Garamond", serif; font-style: italic; font-weight: 700; }
+    .topbar nav { display: flex; gap: 14px; flex-wrap: wrap; }
+    .topbar nav a { color: var(--text-soft); text-decoration: none; font-size: .9em; padding: 6px 10px; border-radius: 6px; transition: background .15s; }
+    .topbar nav a:hover { background: #F0EDE3; }
+    .topbar nav a.nav-cta { background: var(--accent); color: #FFF; font-weight: 600; }
+
+    /* ── ヒーロー ── */
+    .hero { padding: 80px 28px 60px; text-align: center; background: linear-gradient(180deg, #FFFFFF 0%, #FAF8F3 100%); }
+    .hero .eyebrow { font-family: "Inter", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--kuu); font-size: .85em; margin: 0 0 14px; font-weight: 600; }
+    .hero h1 { font-family: "Noto Serif JP", serif; font-size: 2.4em; line-height: 1.45; margin: 0 0 18px; color: var(--text); }
+    .hero h1 small { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: .45em; color: var(--text-light); margin-top: 14px; letter-spacing: .03em; }
+    .hero .lead { max-width: 720px; margin: 0 auto; font-size: 1.05em; line-height: 2; color: var(--text-soft); }
+    .hero .lead strong { color: var(--text); }
+
+    /* ── 哲学イントロブロック ── */
+    .philosophy { max-width: 760px; margin: 50px auto 70px; background: #FFF; border-left: 4px solid var(--accent); padding: 30px 36px; border-radius: 10px; box-shadow: 0 6px 22px rgba(0,0,0,.05); }
+    .philosophy h2 { font-family: "Noto Serif JP", serif; font-size: 1.4em; margin: 0 0 14px; color: #8A5A1F; }
+    .philosophy p { line-height: 2; margin: 0 0 12px; color: var(--text); }
+    .philosophy p:last-child { margin-bottom: 0; }
+
+    /* ── ケースセクション ── */
+    .case { padding: 70px 28px; }
+    .case.case-okemon-kuu { background: linear-gradient(135deg, #F4F9F4 0%, #FFFFFF 70%); border-top: 3px solid var(--kuu); }
+    .case.case-okemon-natsuun { background: linear-gradient(135deg, #FDF8EE 0%, #FFFFFF 70%); border-top: 3px solid var(--natsuun); }
+    .case .case-inner { max-width: 920px; margin: 0 auto; }
+    .case .case-eyebrow { font-family: "Inter", sans-serif; letter-spacing: .14em; text-transform: uppercase; font-size: .82em; font-weight: 600; margin: 0 0 12px; text-align: center; }
+    .case.case-okemon-kuu .case-eyebrow { color: var(--kuu); }
+    .case.case-okemon-natsuun .case-eyebrow { color: var(--natsuun); }
+    .case h2 { font-family: "Noto Serif JP", serif; text-align: center; font-size: 1.8em; line-height: 1.5; margin: 0 0 16px; color: var(--text); }
+    .case .case-lead { text-align: center; max-width: 720px; margin: 0 auto 36px; line-height: 1.95; color: var(--text-soft); }
+    .case .case-lead strong { color: var(--text); }
+
+    /* ── テーブル ── */
+    .twin-table-wrap { background: #FFF; border-radius: 12px; padding: 28px 32px; box-shadow: 0 6px 22px rgba(0,0,0,.07); margin-bottom: 24px; }
+    .twin-table-wrap h3 { font-family: "Noto Serif JP", serif; margin: 0 0 14px; font-size: 1.2em; color: #3E7A3E; }
+    .case.case-okemon-natsuun .twin-table-wrap h3 { color: #B5810A; }
+    table.twin-table { width: 100%; border-collapse: collapse; }
+    table.twin-table th { padding: 10px 14px; background: #F4F9F4; color: #3E7A3E; font-weight: 700; font-size: .98em; border-bottom: 1px solid #C8DCC8; text-align: left; }
+    .case.case-okemon-natsuun table.twin-table th { background: #FDF4DD; color: #8A5A1F; border-bottom-color: #ECD7A8; }
+    table.twin-table th.center { text-align: center; }
+    table.twin-table td { padding: 10px 14px; color: var(--text); font-size: 1em; border-bottom: 1px solid #EEF3EE; }
+    table.twin-table td.center { text-align: center; font-weight: 600; }
+    table.twin-table td .same { color: #C47C00; font-style: italic; font-size: .88em; margin-left: 4px; }
+    .twin-summary { margin: 18px 0 0; color: var(--text-soft); line-height: 1.85; }
+
+    /* ── 比較カード ── */
+    .twin-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+    .twin-card { background: #FFF; border-radius: 12px; padding: 24px 28px; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .twin-card h4 { font-family: "Noto Serif JP", serif; margin: 0 0 12px; font-size: 1.18em; display: flex; align-items: center; gap: 8px; }
+    .twin-card.okemon { border-top: 4px solid var(--okemon); }
+    .twin-card.okemon h4 { color: var(--okemon); }
+    .twin-card.kuu { border-top: 4px solid var(--kuu); }
+    .twin-card.kuu h4 { color: #3E7A3E; }
+    .twin-card.natsuun { border-top: 4px solid var(--natsuun); }
+    .twin-card.natsuun h4 { color: #B5810A; }
+    .twin-card .traits { font-size: 1em; color: var(--text); font-weight: 600; margin: 0 0 10px; line-height: 1.75; }
+    .twin-card .desc { font-size: .94em; color: var(--text-soft); line-height: 1.85; margin: 0; }
+    .twin-card .desc em { color: #8A5A1F; font-style: italic; }
+
+    /* ── 深掘りインサイトボックス ── */
+    .insight-box { background: #FFFEF7; border: 1px solid #ECDFB8; border-radius: 12px; padding: 26px 32px; margin: 30px 0; position: relative; }
+    .insight-box::before { content: "💡 INSIGHT"; position: absolute; top: -10px; left: 24px; background: #F4B556; color: #FFF; font-size: .72em; font-weight: 700; letter-spacing: .12em; padding: 4px 12px; border-radius: 12px; }
+    .insight-box h4 { font-family: "Noto Serif JP", serif; margin: 8px 0 12px; color: #8A5A1F; font-size: 1.1em; }
+    .insight-box p { margin: 0 0 10px; line-height: 1.95; color: var(--text); }
+    .insight-box p:last-child { margin: 0; }
+    .insight-box .quote { background: #FFF; border-left: 3px solid var(--accent); padding: 12px 18px; margin: 14px 0; font-style: italic; color: #5A4520; border-radius: 4px; }
+
+    /* ── 結びメッセージ ── */
+    .conclusion { padding: 80px 28px 100px; background: linear-gradient(180deg, #FAF8F3 0%, #F5F0E6 100%); }
+    .conclusion-inner { max-width: 760px; margin: 0 auto; background: #FFF; border-radius: 16px; padding: 50px 50px; box-shadow: 0 10px 30px rgba(0,0,0,.06); text-align: center; }
+    .conclusion .eyebrow { font-family: "Inter", sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); font-size: .85em; margin: 0 0 14px; font-weight: 600; }
+    .conclusion h2 { font-family: "Noto Serif JP", serif; font-size: 1.8em; line-height: 1.55; margin: 0 0 22px; color: var(--text); }
+    .conclusion .body { line-height: 2.05; color: var(--text); font-size: 1.02em; text-align: left; }
+    .conclusion .body p { margin: 0 0 14px; }
+    .conclusion .signature { margin-top: 30px; font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--accent); font-size: 1.1em; }
+
+    /* ── ナビカード ── */
+    .nav-cards { padding: 60px 28px 90px; background: #FAF8F3; }
+    .nav-cards .nav-inner { max-width: 920px; margin: 0 auto; }
+    .nav-cards h2 { text-align: center; font-family: "Noto Serif JP", serif; font-size: 1.4em; color: var(--text); margin: 0 0 32px; }
+    .nav-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 18px; }
+    .nav-card { background: #FFF; border-radius: 12px; padding: 22px 24px; text-decoration: none; color: var(--text); box-shadow: 0 4px 14px rgba(0,0,0,.06); transition: transform .15s, box-shadow .15s; border-top: 4px solid #ddd; }
+    .nav-card:hover { transform: translateY(-3px); box-shadow: 0 8px 22px rgba(0,0,0,.1); }
+    .nav-card.okemon { border-top-color: var(--okemon); }
+    .nav-card.natsuun { border-top-color: var(--natsuun); }
+    .nav-card.kuu { border-top-color: var(--kuu); }
+    .nav-card.rie { border-top-color: var(--rie); }
+    .nav-card .nc-name { font-family: "Noto Serif JP", serif; font-size: 1.15em; font-weight: 600; margin: 0 0 6px; }
+    .nav-card .nc-traits { font-size: .85em; color: var(--text-light); line-height: 1.6; }
+
+    /* ── フッター ── */
+    footer { padding: 30px 28px; text-align: center; color: var(--text-light); font-size: .85em; border-top: 1px solid var(--line); background: #FFF; }
+
+    /* ── レスポンシブ ── */
+    @media (max-width: 720px) {
+      .hero h1 { font-size: 1.7em; }
+      .case h2 { font-size: 1.4em; }
+      .twin-cards { grid-template-columns: 1fr; }
+      .conclusion-inner { padding: 36px 24px; }
+      .conclusion h2 { font-size: 1.4em; }
+      .twin-table-wrap { padding: 20px 22px; }
+      table.twin-table th, table.twin-table td { padding: 8px 10px; font-size: .92em; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">i</span>
+      <span>irodoriのみんなのストレングス入門</span>
+    </a>
+    <nav>
+      <a href="index.html">ホーム</a>
+      <a href="okemon.html">🍑 おけもん</a>
+      <a href="natsuun.html">🌻 なっつん</a>
+      <a href="kuu.html">🌿 くう</a>
+      <a href="rie.html">🌸 りえ</a>
+      <a href="team.html" class="nav-cta">→ Team Grid</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p class="eyebrow">A Case Study — Strengths Philosophy in Action</p>
+    <h1>
+      同じ素材、違う調理。<br>
+      <small>Same materials, different recipe.</small>
+    </h1>
+    <p class="lead">
+      ストレングスファインダーをやると、よく出る素朴な疑問。<br>
+      「資質が似てる人って、似た仕事してるんでしょ？」── <strong>違うんです、これが</strong>。<br>
+      irodoriのメンバーを見ていると、それを <em>見事に証明する2組の実例</em> がありました🌷
+    </p>
+  </section>
+
+  <div class="philosophy">
+    <h2>🌟 ストファイ哲学の核心</h2>
+    <p><strong>資質は「やってきたこと」じゃなくて「自然な動き方」を教えてくれる地図</strong>です。</p>
+    <p>「あなたはこの仕事をすべき」と決める道具じゃない。<br>「あなたが何かをやる時、こういう動き方が自然ですよ」を教えてくれる、<em>方角を指す羅針盤</em>。</p>
+    <p><strong>だから、同じ素材を持つ2人が、まったく違う仕事をしていても、それは何もおかしくない。</strong>持っているものを、自分の選んだレーンでどう使うか──それを決めるのは、いつも自分です。</p>
+  </div>
+
+  <!-- ============== Case 1: おけもん × くう ============== -->
+  <section class="case case-okemon-kuu">
+    <div class="case-inner">
+      <p class="case-eyebrow">Case 01 — 「人と未来」が同じ素材、片や1on1コーチ、片や経理</p>
+      <h2>🍑 おけもん × 🌿 くう<br><span style="font-size:.7em; color:#3E7A3E;">「対話・共感・人を引き上げる」が温度感まで同じ。<br>でも、毎日やってる仕事はほぼ真逆。</span></h2>
+
+      <div class="twin-table-wrap">
+        <h3>🌱 共通TOP10資質 — 6個も重なる</h3>
+        <table class="twin-table">
+          <thead><tr><th>資質</th><th class="center">🍑 おけもん</th><th class="center">🌿 くう</th></tr></thead>
+          <tbody>
+            <tr><td>共感性</td><td class="center">②</td><td class="center">② <span class="same">←同順位</span></td></tr>
+            <tr><td>コミュニケーション</td><td class="center">⑦</td><td class="center">⑦ <span class="same">←同順位</span></td></tr>
+            <tr><td>調和性</td><td class="center">①</td><td class="center">⑥</td></tr>
+            <tr><td>最上志向</td><td class="center">⑤</td><td class="center">⑧</td></tr>
+            <tr><td>ポジティブ</td><td class="center">⑨</td><td class="center">④</td></tr>
+            <tr><td>未来志向</td><td class="center">⑩</td><td class="center">③</td></tr>
+          </tbody>
+        </table>
+        <p class="twin-summary">→ 「<strong>対話・共感・人を引き上げる・未来描く</strong>」温度感の素材が、ほぼまるかぶり🌷</p>
+      </div>
+
+      <div class="twin-cards">
+        <div class="twin-card okemon">
+          <h4>🍑 おけもん独自 TOP10</h4>
+          <p class="traits">アレンジ③・親密性④・責任感⑥・公平性⑧</p>
+          <p class="desc">→ 実行力寄り＋1対1で深く関わる構造。<br>→ <strong>AI活用支援 × コーチング</strong>の方向に進んだ。<br>→ <em>「数字を見ると蕁麻疹が走る」</em>タイプ😅</p>
+        </div>
+        <div class="twin-card kuu">
+          <h4>🌿 くう独自 TOP10</h4>
+          <p class="traits">個別化①・学習欲⑤・成長促進⑨・収集心⑩</p>
+          <p class="desc">→ 戦略寄り＋情報をガッツリ蓄える構造。<br>→ <strong>経理の仕事で数字を徹底的に追う</strong>方向に進んだ。<br>→ <em>学習欲⑤＋収集心⑩</em> が数字業務に超刺さる。</p>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <h4>本質的に「人と会うのが好き」だけど「経理の道」を歩んでいる、ということ。</h4>
+        <p>くうさんは <strong>人間関係構築力にTOP10で5資質</strong> 持ってます。本質的にはきっと、<em>人と会って深く話す</em> 時間がエネルギーになる人。</p>
+        <p>でも、いま毎日やっているのは「経理」── <em>数字とひたすら向き合う仕事</em>。</p>
+        <div class="quote">「人間関係資質が高いから経理ができない」──そんな決めつけは、まったく要らない。</div>
+        <p>くうさんは <strong>学習欲⑤＋収集心⑩＋個別化①</strong> という戦略寄りの資質も持っていて、それが <em>「数字の中に意味を見出す」「クライアントごとの個別事情を読む」</em> 形で経理業務に活きている。</p>
+        <p>同時に、人と会いたい気持ちは、<strong>シェア会・オフ会・チームの雑談</strong> のような場で満たされる構造になっている。<br><em>仕事の形 ≠ 資質の本質</em>。資質は「働き方の地図」であって、「職業選択の答え」じゃない。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== Case 2: おけもん × なっつん ============== -->
+  <section class="case case-okemon-natsuun">
+    <div class="case-inner">
+      <p class="case-eyebrow">Case 02 — 「最上志向 × ポジティブ × 共感性」が核なのに、表現が違う</p>
+      <h2>🍑 おけもん × 🌻 なっつん<br><span style="font-size:.7em; color:#B5810A;">「もっと良くしたい・場を明るく・気持ちを汲む」が核なのに、<br>片や1on1コーチング、片や場づくり×写真。</span></h2>
+
+      <div class="twin-table-wrap">
+        <h3>🌱 共通TOP10資質 — 3個</h3>
+        <table class="twin-table">
+          <thead><tr><th>資質</th><th class="center">🍑 おけもん</th><th class="center">🌻 なっつん</th></tr></thead>
+          <tbody>
+            <tr><td>最上志向</td><td class="center">⑤</td><td class="center">① <span class="same">←なっつんTOP1</span></td></tr>
+            <tr><td>共感性</td><td class="center">②</td><td class="center">④</td></tr>
+            <tr><td>ポジティブ</td><td class="center">⑨</td><td class="center">③</td></tr>
+          </tbody>
+        </table>
+        <p class="twin-summary">→ 「<strong>もっと良くしたい・気持ちを汲む・場を明るくする</strong>」温度感の <em>核</em> が共通。<br>3つでも、おけもん × なっつん の <strong>波長の合い方</strong> はかなりのもの🌷</p>
+      </div>
+
+      <div class="twin-cards">
+        <div class="twin-card okemon">
+          <h4>🍑 おけもん独自 TOP5</h4>
+          <p class="traits">調和性①・アレンジ③・親密性④</p>
+          <p class="desc">→ <strong>1対1で深く関わる</strong>＋<strong>複雑な状況を整理する</strong>構造。<br>→ <strong>個別コーチング × AI活用支援</strong>の方向に進んだ。<br>→ <em>「一人ひとりと深く対話して整える」</em>が自然な動き方。</p>
+        </div>
+        <div class="twin-card natsuun">
+          <h4>🌻 なっつん独自 TOP5</h4>
+          <p class="traits">適応性②・包含⑤</p>
+          <p class="desc">→ <strong>場の流れに乗る</strong>＋<strong>みんなを巻き込む</strong>構造。<br>→ <strong>場づくり × 写真 × コミュニティ運営</strong>の方向に進んだ。<br>→ <em>「みんなで！」「一緒に楽しもう」</em>が自然な動き方。</p>
+        </div>
+      </div>
+
+      <div class="insight-box">
+        <h4>核は同じ、表現が違う。──「深く × 1対1」vs「広く × みんなで」</h4>
+        <p><strong>最上志向×ポジティブ×共感性</strong>──この3つは、<em>「人を見て、もっと良くしたい、明るくしたい」</em> という温度感を生む組み合わせ。<br>おけもんとなっつん、この核は完全に共通。</p>
+        <div class="quote">同じ「人を活かしたい」エンジンが、片や <strong>1対1で深く</strong>、片や <strong>場全体を巻き込んで</strong> 動く。</div>
+        <p>差分の <strong>調和性①＋親密性④</strong>（おけもん）は <em>「狭く深く」</em>に振る。<br>差分の <strong>適応性②＋包含⑤</strong>（なっつん）は <em>「広く・みんなで」</em>に振る。</p>
+        <p>同じガソリンを積んだ車でも、ハンドルの切り方が違えば、行き先はまったく別の景色。<br><strong>「似てる人と比べて、私はこっちじゃないのかな」と迷う必要はない</strong>。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== 結びメッセージ ============== -->
+  <section class="conclusion">
+    <div class="conclusion-inner">
+      <p class="eyebrow">Takeaway</p>
+      <h2>持っているものをどう使うかは、<br>その人次第。</h2>
+      <div class="body">
+        <p>ストファイは <strong>「あなたはこういう仕事をしなさい」</strong> と決める道具じゃありません。</p>
+        <p><strong>「あなたが何かをやる時、こういう動き方が自然ですよ」</strong>──そう教えてくれる、<em>方角を指す羅針盤</em>です。</p>
+        <p>だから、同じ資質を持つ人と比べて<br>「私は本当はこっちじゃないのかな」と<br>迷う必要はありません。</p>
+        <p>資質が同じでも、<strong>調理は無限にある</strong>。<br>くうさんが経理で活きるように。<br>なっつんが場づくりで活きるように。<br>おけもんが1on1コーチングで活きるように。</p>
+        <p><strong>持っているものを、自分の選んだレーンでどう使うか──<br>それを決めるのは、いつも自分。</strong></p>
+      </div>
+      <p class="signature">— irodoriのみんなのストレングス入門 —</p>
+    </div>
+  </section>
+
+  <!-- ============== メンバーナビ ============== -->
+  <section class="nav-cards">
+    <div class="nav-inner">
+      <h2>📖 4人それぞれの取扱説明書を読む</h2>
+      <div class="nav-grid">
+        <a class="nav-card okemon" href="okemon.html">
+          <p class="nc-name">🍑 おけもん</p>
+          <p class="nc-traits">調和性① 共感性② アレンジ③ 親密性④ 最上志向⑤</p>
+        </a>
+        <a class="nav-card natsuun" href="natsuun.html">
+          <p class="nc-name">🌻 なっつん</p>
+          <p class="nc-traits">最上志向① 適応性② ポジティブ③ 共感性④ 包含⑤</p>
+        </a>
+        <a class="nav-card kuu" href="kuu.html">
+          <p class="nc-name">🌿 くう</p>
+          <p class="nc-traits">個別化① 共感性② 未来志向③ ポジティブ④ 学習欲⑤</p>
+        </a>
+        <a class="nav-card rie" href="rie.html">
+          <p class="nc-name">🌸 りえ</p>
+          <p class="nc-traits">回復志向① 分析思考② 慎重さ③ 学習欲④ 規律性⑤</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © 2026 — irodoriのみんなのストレングス入門 / Not for public distribution.
+  </footer>
+
+</body>
+</html>
