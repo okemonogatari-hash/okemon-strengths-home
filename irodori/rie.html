@@ -10,6 +10,47 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="branch.css">
+  <style>
+    /* ── 34網羅拡張パーツ（rie.html / kuu.html 共通） ── */
+    .spotlight-section { background: linear-gradient(135deg, #FDF8EE 0%, #FFFFFF 70%); border-top: 3px solid var(--influence); padding-top: 56px; padding-bottom: 56px; }
+    .ego-card { background: #FFF; border: 1px solid #EFE3CB; border-radius: 14px; padding: 28px 32px; margin-top: 24px; box-shadow: 0 6px 18px rgba(180,140,80,.08); }
+    .ego-card h3 { font-family: "Noto Serif JP", serif; font-size: 1.6em; margin: 0 0 12px; color: #8A5A1F; }
+    .ego-card h3 small { display: block; font-family: "Cormorant Garamond", serif; font-style: italic; font-size: .5em; color: #B7884A; margin-top: 4px; }
+    .ego-card h4 { font-family: "Noto Serif JP", serif; font-size: 1.1em; margin: 22px 0 10px; color: #6A4A24; border-left: 4px solid var(--influence); padding-left: 10px; }
+    .ego-card ul { margin: 6px 0 0; padding-left: 22px; line-height: 1.85; }
+    .ego-card li { margin-bottom: 4px; }
+
+    .mid-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; margin-top: 18px; }
+    .mid-cell { background: #FAFAF7; border: 1px solid #E8E8E0; border-radius: 8px; padding: 10px 14px; font-size: .95em; display: flex; align-items: center; gap: 10px; }
+    .mid-cell .rank { font-family: "Inter", sans-serif; font-weight: 600; color: #888; font-size: .85em; min-width: 24px; }
+    .mid-cell .dom-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; }
+    .dom-exec { background: var(--exec); }
+    .dom-influence { background: var(--influence); }
+    .dom-relation { background: var(--relation); }
+    .dom-thinking { background: var(--thinking); }
+
+    .shadow-section { background: #FDF6F4; border-top: 3px solid #D88B7E; padding-top: 56px; padding-bottom: 56px; }
+    .shadow-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; margin-top: 22px; }
+    .shadow-card { background: #FFF; border: 1px solid #ECD6CF; border-radius: 12px; padding: 18px 20px; box-shadow: 0 4px 12px rgba(180,90,70,.06); }
+    .shadow-card h4 { font-family: "Noto Serif JP", serif; margin: 0 0 6px; color: #B85A4A; font-size: 1.15em; }
+    .shadow-card h4 .rank { font-family: "Cormorant Garamond", serif; font-style: italic; color: #D88B7E; margin-right: 8px; font-size: 1.1em; }
+    .shadow-card p { font-size: .92em; line-height: 1.75; margin: 4px 0; color: #5A4540; }
+    .shadow-card .delegate { background: #FDEEE9; border-left: 3px solid #D88B7E; padding: 6px 10px; margin-top: 8px; border-radius: 4px; font-size: .85em; color: #8A4030; }
+
+    .full34-table { width: 100%; border-collapse: collapse; margin-top: 22px; background: #FFF; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 14px rgba(0,0,0,.05); }
+    .full34-table th, .full34-table td { padding: 8px 14px; text-align: left; font-size: .92em; border-bottom: 1px solid #F0EEE8; }
+    .full34-table th { background: #FAFAF5; font-weight: 600; color: #555; font-size: .85em; letter-spacing: .04em; }
+    .full34-table td.rank-col { font-family: "Inter", sans-serif; font-weight: 600; color: #888; width: 50px; }
+    .full34-table td.dom-col { width: 130px; }
+    .full34-table tr.is-top10 { background: #FAF6EF; }
+    .full34-table tr.is-shadow { background: #FDF6F4; }
+    .full34-table tr.is-ego td { font-weight: 600; color: #8A5A1F; }
+    .dom-pill { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: .78em; color: #FFF; font-weight: 500; }
+    .pill-exec { background: var(--exec); }
+    .pill-influence { background: var(--influence); }
+    .pill-relation { background: var(--relation); }
+    .pill-thinking { background: var(--thinking); }
+  </style>
 </head>
 <body data-character="rie">
 
@@ -67,7 +108,7 @@
       <div class="domain-bar bar-influence fade-in">
         <div class="domain-head"><span class="domain-name">影響力</span><span class="domain-count">1 / TOP10</span></div>
         <div class="domain-track"><div class="domain-fill" style="--w:22%; background: var(--influence);"></div></div>
-        <p class="domain-list">自我⑨</p>
+        <p class="domain-list">自我⑨ ← <em>影響力ドメインで唯一のTOP10、超重要ポイント</em></p>
       </div>
     </div>
   </section>
@@ -132,6 +173,161 @@
     </div>
   </section>
 
+  <!-- ============== 自我⑨ スポットライト ============== -->
+  <section class="content spotlight-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: var(--influence);">Ego in spotlight</p>
+      <h2>影響力ドメインで、たった一人の存在感──<br>「自我⑨」を読み解く。</h2>
+      <p>りえの34資質を眺めると、<strong>影響力ドメイン9資質中、TOP10に入ってるのは「自我」だけ</strong>。<br>他の影響力資質（最上志向14・コミュニケーション19・活発性28・指令性29・自己確信30・競争性31・社交性32）はほぼ全部 <em>中位〜下位</em>。<br><strong>「自分は表に出る人じゃない、けど自我だけはちゃんと強い」</strong>──この特殊構造が、りえの内側で何を動かしているか。</p>
+    </div>
+    <div class="ego-card fade-in">
+      <h3>自我とは<small>I Want To Matter — 重要な存在でありたい・影響を与えたい</small></h3>
+      <p>「あなたがいてくれて良かった」と言われると、最高に嬉しい人。<br>注目されることがエネルギーになり、<em>「自分の存在が誰かにとって意味を持つ」</em> 実感が燃料になる。<br>逆に <strong>陰でコツコツ働くだけだと枯れていく</strong> 資質でもある。</p>
+
+      <h4>りえ × 自我⑨ の動き方</h4>
+      <ul>
+        <li>表立った自己アピールはしない（影響力下位が効いて、声を張らない・前に出ない）</li>
+        <li>でも内側では <strong>「自分の仕事をちゃんと認められたい」</strong> 気持ちが強い</li>
+        <li>「直したこと」「整えたこと」が誰かの目に留まると、しっかり満たされる</li>
+        <li>逆に <em>"いて当たり前"</em> 扱いされると、見えないところで疲弊する</li>
+        <li>派手な称賛より、<strong>「あのトラブル、りえのおかげで助かった」みたいに具体的に名指しで認められる</strong> ことが効く</li>
+      </ul>
+
+      <h4>関わる時のコツ</h4>
+      <ul>
+        <li>✅ 「りえが直してくれたから動いてる」と <strong>具体的に名指しで</strong> 感謝する</li>
+        <li>✅ 成果物を「これ、りえの仕事だよね」と <strong>ちゃんと帰属</strong> させる</li>
+        <li>✅ 1対1で深く話す場で「あなたの仕事って◯◯だよね」と存在を承認する（親密性⑥との相乗）</li>
+        <li>❌ 「みんな頑張ってるから」と全体化して感謝を薄めない</li>
+        <li>❌ 「黙々とやってくれて助かる」だけだと、自我が満たされず長期的に消耗する</li>
+        <li>❌ 派手な表彰・人前のスピーチを強要しない（影響力下位が反応する）</li>
+      </ul>
+
+      <h4>自我⑨ × 回復志向① × 規律性⑤ の三重奏</h4>
+      <p>この3つが同時に動くと、<strong>「壊れたものを、ちゃんと自分の手で、ルールに沿って直し、それを誰かに認めてもらいたい」</strong> という強力なドライブが生まれる。<br>これがりえの <em>仕事への姿勢の核</em>。「黙々と」じゃなくて、<strong>「黙々と、でもちゃんと見ててね」</strong> が本音。</p>
+    </div>
+  </section>
+
+  <!-- ============== 11-29位（自然な強み層） ============== -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Mid layer (11-29)</p>
+      <h2>11位〜29位──意識すれば使える層</h2>
+      <p>TOP10ほど自動では出てこないけど、<em>意識すれば動かせる</em> 資質たち。<br>得意ではないけど、必要なら頑張れるゾーン。</p>
+    </div>
+    <div class="mid-grid fade-in">
+      <div class="mid-cell"><span class="rank">11</span><span class="dom-dot dom-exec"></span>目標志向</div>
+      <div class="mid-cell"><span class="rank">12</span><span class="dom-dot dom-relation"></span>適応性</div>
+      <div class="mid-cell"><span class="rank">13</span><span class="dom-dot dom-exec"></span>達成欲</div>
+      <div class="mid-cell"><span class="rank">14</span><span class="dom-dot dom-influence"></span>最上志向</div>
+      <div class="mid-cell"><span class="rank">15</span><span class="dom-dot dom-thinking"></span>収集心</div>
+      <div class="mid-cell"><span class="rank">16</span><span class="dom-dot dom-thinking"></span>未来志向</div>
+      <div class="mid-cell"><span class="rank">17</span><span class="dom-dot dom-relation"></span>運命思考</div>
+      <div class="mid-cell"><span class="rank">18</span><span class="dom-dot dom-exec"></span>責任感</div>
+      <div class="mid-cell"><span class="rank">19</span><span class="dom-dot dom-influence"></span>コミュニケーション</div>
+      <div class="mid-cell"><span class="rank">20</span><span class="dom-dot dom-relation"></span>共感性</div>
+      <div class="mid-cell"><span class="rank">21</span><span class="dom-dot dom-relation"></span>個別化</div>
+      <div class="mid-cell"><span class="rank">22</span><span class="dom-dot dom-exec"></span>アレンジ</div>
+      <div class="mid-cell"><span class="rank">23</span><span class="dom-dot dom-thinking"></span>着想</div>
+      <div class="mid-cell"><span class="rank">24</span><span class="dom-dot dom-thinking"></span>原点思考</div>
+      <div class="mid-cell"><span class="rank">25</span><span class="dom-dot dom-exec"></span>信念</div>
+      <div class="mid-cell"><span class="rank">26</span><span class="dom-dot dom-relation"></span>ポジティブ</div>
+      <div class="mid-cell"><span class="rank">27</span><span class="dom-dot dom-relation"></span>包含</div>
+      <div class="mid-cell"><span class="rank">28</span><span class="dom-dot dom-influence"></span>活発性</div>
+      <div class="mid-cell"><span class="rank">29</span><span class="dom-dot dom-influence"></span>指令性</div>
+    </div>
+  </section>
+
+  <!-- ============== 下位5（30-34）注意ポイント ============== -->
+  <section class="content shadow-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: #C25555;">Bottom 5 — Shadow zone</p>
+      <h2>30位〜34位──無理させない、頼らない領域。</h2>
+      <p><strong>「頑張ってもエネルギーが出ない」場所</strong>。<br>これをやらせ続けると、りえは見えないところで消耗する。<br><strong>他のメンバーに渡す</strong> or <strong>仕組み・チェックリストで補う</strong> のが正解。</p>
+    </div>
+    <div class="shadow-grid stagger">
+
+      <div class="shadow-card">
+        <h4><span class="rank">30</span>自己確信 <small style="color:#999; font-size:.7em;">（影響力）</small></h4>
+        <p>「自分の判断は正しい」という根拠なき自信が <em>持ちにくい</em>。慎重さ③・分析思考②が効いて「もっとデータが欲しい」と止まる。</p>
+        <p class="delegate">💡 即決が必要な場で「どう思う？」を直球で問うと固まる。<br>→ <strong>選択肢を3つ並べてもらう</strong>か、<strong>くう・なっつんの直感で先に方向出してもらう</strong>とスムーズ。</p>
+      </div>
+
+      <div class="shadow-card">
+        <h4><span class="rank">31</span>競争性 <small style="color:#999; font-size:.7em;">（影響力）</small></h4>
+        <p>「誰かに勝ちたい」「ランキング上位を狙う」がモチベーションになりにくい。<em>個人プレーで競う場が苦手</em>。</p>
+        <p class="delegate">💡 「◯◯さんより数字出そう」系の煽りは効かない。<br>→ <strong>「壊れてる仕組みを直す」「みんなが快適に動ける」</strong>系の動機なら全力出る。</p>
+      </div>
+
+      <div class="shadow-card">
+        <h4><span class="rank">32</span>社交性 <small style="color:#999; font-size:.7em;">（影響力）</small></h4>
+        <p>初対面・大人数の場で「知らない人にどんどん声かける」が <em>消耗源</em>。親密性⑥が効くから、<strong>狭く深く</strong>が正解。</p>
+        <p class="delegate">💡 オフ会・交流会で「みんなと話してきて」は地雷。<br>→ <strong>「1〜2人と深く話してきて」</strong>とお題を絞るとパフォーマンス出る。</p>
+      </div>
+
+      <div class="shadow-card">
+        <h4><span class="rank">33</span>戦略性 <small style="color:#999; font-size:.7em;">（戦略的思考力）</small></h4>
+        <p>「複数の道を瞬時に思いつく」「ベストルートを直感で選ぶ」が苦手。分析思考②でじっくり論理を追うのは得意だが、<em>選択肢を一気に出す</em> のはエネルギー使う。<br><strong>※くうも戦略性34＝チームに戦略性持ちがいない構造</strong>。</p>
+        <p class="delegate">💡 「方針案を5つ出して」は重い。<br>→ <strong>「この案、リスクと改善点を分析して」</strong>に変換するとガチでハマる。<br>→ 案出しは <strong>くう（未来志向③）・なっつん</strong> に任せて、りえが <strong>磨き役</strong>。</p>
+      </div>
+
+      <div class="shadow-card">
+        <h4><span class="rank">34</span>成長促進 <small style="color:#999; font-size:.7em;">（人間関係構築力）</small></h4>
+        <p>「相手の伸びしろを見つけて引き出す」役割が <em>最下位</em>。後輩・部下に対して「ここを伸ばそう！」と熱く語るのは消耗。<strong>※irodori最下位資質</strong>。</p>
+        <p class="delegate">💡 メンバー育成・コーチング業務は不向き。<br>→ <strong>仕組み・マニュアル・チェックリストで自走できる仕掛け</strong>を作る側に回るのが◎。<br>→ 人を伸ばす役は <strong>くう（個別化①＋成長促進⑨）</strong> に任せて、りえは <strong>仕組みで支える</strong>。</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============== 全34資質一覧 ============== -->
+  <section class="content">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">All 34 strengths</p>
+      <h2>りえの34資質、全景。</h2>
+      <p>金枠＝TOP10／薄ピンク＝下位5（Shadow zone）／オレンジ太字＝自我⑨スポットライト。</p>
+    </div>
+    <table class="full34-table fade-in">
+      <thead><tr><th>Rank</th><th>資質</th><th>ドメイン</th></tr></thead>
+      <tbody>
+        <tr class="is-top10"><td class="rank-col">1</td><td>回復志向</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">2</td><td>分析思考</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">3</td><td>慎重さ</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">4</td><td>学習欲</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">5</td><td>規律性</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">6</td><td>親密性</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">7</td><td>調和性</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">8</td><td>内省</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr class="is-top10 is-ego"><td class="rank-col">9</td><td>自我 ⭐</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr class="is-top10"><td class="rank-col">10</td><td>公平性</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">11</td><td>目標志向</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">12</td><td>適応性</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">13</td><td>達成欲</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">14</td><td>最上志向</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr><td class="rank-col">15</td><td>収集心</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr><td class="rank-col">16</td><td>未来志向</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr><td class="rank-col">17</td><td>運命思考</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">18</td><td>責任感</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">19</td><td>コミュニケーション</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr><td class="rank-col">20</td><td>共感性</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">21</td><td>個別化</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">22</td><td>アレンジ</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">23</td><td>着想</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr><td class="rank-col">24</td><td>原点思考</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr><td class="rank-col">25</td><td>信念</td><td class="dom-col"><span class="dom-pill pill-exec">実行力</span></td></tr>
+        <tr><td class="rank-col">26</td><td>ポジティブ</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">27</td><td>包含</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+        <tr><td class="rank-col">28</td><td>活発性</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr><td class="rank-col">29</td><td>指令性</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr class="is-shadow"><td class="rank-col">30</td><td>自己確信</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr class="is-shadow"><td class="rank-col">31</td><td>競争性</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr class="is-shadow"><td class="rank-col">32</td><td>社交性</td><td class="dom-col"><span class="dom-pill pill-influence">影響力</span></td></tr>
+        <tr class="is-shadow"><td class="rank-col">33</td><td>戦略性</td><td class="dom-col"><span class="dom-pill pill-thinking">戦略的思考</span></td></tr>
+        <tr class="is-shadow"><td class="rank-col">34</td><td>成長促進</td><td class="dom-col"><span class="dom-pill pill-relation">人間関係</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
   <section class="content env-section">
     <div class="section-head fade-in">
       <p class="eyebrow-en">OK / NG environment</p>
@@ -141,12 +337,13 @@
       <div class="env-panel ok fade-in">
         <h3>動く条件</h3>
         <ul>
-          <li>壊れている／改善すべき仕組みがある（回復志向）</li>
-          <li>「なぜ？」を分析できる時間（分析思考）</li>
-          <li>リスクを先に把握する余白（慎重さ）</li>
-          <li>新しい学びが続く環境（学習欲）</li>
-          <li>規律・秩序・ルールが守られる場（規律性）</li>
+          <li>壊れている／改善すべき仕組みがある（回復志向①）</li>
+          <li>「なぜ？」を分析できる時間（分析思考②）</li>
+          <li>リスクを先に把握する余白（慎重さ③）</li>
+          <li>新しい学びが続く環境（学習欲④）</li>
+          <li>規律・秩序・ルールが守られる場（規律性⑤）</li>
           <li>1対1で深く関われる関係（親密性⑥）</li>
+          <li><strong>仕事を具体的に名指しで認めてもらえる場（自我⑨）</strong></li>
         </ul>
       </div>
       <div class="env-panel ng fade-in">
@@ -154,9 +351,11 @@
         <ul>
           <li>「とりあえずやってみよう」だけで根拠なく動く場（分析思考と相反）</li>
           <li>ルールがころころ変わる場（規律性と相反）</li>
-          <li>急に振られて即答を迫られる（慎重さが活きない）</li>
+          <li>急に振られて即答を迫られる（慎重さ③・自己確信30↓）</li>
           <li>感情論だけで物事が決まる場</li>
-          <li>大人数の場で目立つ役割を強要される</li>
+          <li>大人数の場で目立つ役割を強要される（社交性32↓）</li>
+          <li>「ランキング・競う」系で煽られる（競争性31↓）</li>
+          <li>"いて当たり前" 扱いされて感謝が届かない（自我⑨が枯れる）</li>
         </ul>
       </div>
     </div>
@@ -173,9 +372,12 @@
         <tr><td>「ここ、壊れてるんだけど直せる？」</td><td>「とりあえず動いて」</td></tr>
         <tr><td>「なぜそうなった？分析して」</td><td>「気持ちで判断して」</td></tr>
         <tr><td>「リスク、何が考えられる？」</td><td>「考えすぎないで、勢いで」</td></tr>
-        <tr><td>「ルール先に決めようか」</td><td>「臨機応変にお願い」（適応性は下位）</td></tr>
+        <tr><td>「ルール先に決めようか」</td><td>「臨機応変にお願い」（適応性12）</td></tr>
         <tr><td>「これ一緒に学ぼう」</td><td>「同じ作業を繰り返してて」</td></tr>
         <tr><td>「ゆっくり考えてOK」</td><td>「今すぐ即決して」</td></tr>
+        <tr><td><strong>「これ、りえのおかげで助かった」</strong>（自我⑨）</td><td>「みんな頑張ってくれてありがとう」（全体化）</td></tr>
+        <tr><td>「1〜2人と深く話してきて」</td><td>「みんなと交流してきて」（社交性32↓）</td></tr>
+        <tr><td>「この案、リスクと改善点を分析して」</td><td>「方針案を5つ出して」（戦略性33↓）</td></tr>
       </tbody>
     </table>
   </section>
@@ -207,7 +409,7 @@
           <div class="partner-avatar" style="background: var(--kuu);">空</div>
           <div class="partner-name">くう<small>— 個性を見抜き、未来を描く人</small></div>
         </div>
-        <p>くうは <strong>実行力TOP10にゼロ</strong>。わたしの <strong>実行力4資質</strong> でガッツリ補完。<br>くうが「3年後こうしたい」って <strong>未来志向③</strong> で描く絵を、わたしが <strong>規律性⑤＋分析思考②</strong> で <em>「今日からどう積み上げる？」</em> に落とす。<br>2人とも <strong>学習欲がTOP5</strong>（くう⑤・りえ④）→ <em>学び合えるペア</em>。</p>
+        <p>くうは <strong>実行力TOP10にゼロ</strong>。わたしの <strong>実行力4資質</strong> でガッツリ補完。<br>くうが「3年後こうしたい」って <strong>未来志向③</strong> で描く絵を、わたしが <strong>規律性⑤＋分析思考②</strong> で <em>「今日からどう積み上げる？」</em> に落とす。<br>2人とも <strong>学習欲がTOP5</strong>（くう⑤・りえ④）→ <em>学び合えるペア</em>。<br>※成長促進はくう⑨・りえ34＝<strong>育成役は完全にくう側に振る</strong>のが正解。</p>
         <a href="kuu.html" class="partner-link" style="border-color: var(--kuu); color: var(--kuu);">→ くうの取説</a>
       </article>
     </div>
