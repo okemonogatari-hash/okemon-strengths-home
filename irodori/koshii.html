@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>こっしーの取扱説明書 | irodoriのみんなのストレングス入門</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="branch.css">
+  <style>
+    /* ===== koshii専用 拡張パーツ ===== */
+    body[data-character="koshii"] { --char: var(--koshii); }
+
+    /* 6-10位（拡張TOP10）カードグリッド */
+    .ext-section { background: linear-gradient(135deg, #FDF5F7 0%, #FFFFFF 70%); border-top: 3px solid var(--koshii); padding-top: 56px; padding-bottom: 56px; }
+    .ext-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+    .ext-card { background: #FFF; border: 1px solid #F2DCE4; border-radius: 14px; padding: 22px 24px; box-shadow: 0 6px 18px rgba(232, 155, 174, 0.10); }
+    .ext-card h4 { font-family: "Noto Serif JP", serif; margin: 0 0 6px; color: #A8425E; font-size: 1.18em; display: flex; align-items: center; gap: 10px; }
+    .ext-card h4 .rank { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--koshii); font-size: 1.1em; min-width: 32px; }
+    .ext-card h4 small { font-family: "Inter", sans-serif; font-style: normal; color: #B68595; font-size: .55em; font-weight: 500; margin-left: 4px; }
+    .ext-card p { margin: 8px 0 0; color: #5A4248; font-size: .93em; line-height: 1.75; }
+    .ext-card .dom-tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: .72em; color: #FFF; font-weight: 600; margin-left: auto; }
+    .ext-card .tag-exec { background: var(--exec); }
+    .ext-card .tag-influence { background: var(--influence); }
+    .ext-card .tag-relation { background: var(--relation); }
+    .ext-card .tag-thinking { background: var(--thinking); }
+
+    /* ドメイン分布ハイライト */
+    .balance-card { background: linear-gradient(135deg, var(--koshii) 0%, #D88B7E 100%); color: #FFF; border-radius: 22px; padding: 28px 30px; margin-top: 28px; box-shadow: 0 16px 38px rgba(216, 139, 126, 0.22); }
+    .balance-card h3 { margin: 0 0 12px; font-size: 1.4em; font-family: "Noto Serif JP", serif; }
+    .balance-card p { margin: 0; line-height: 1.75; font-size: 1.02em; }
+    .balance-card .domain-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .balance-card .domain-pills span { background: rgba(255,255,255,.18); padding: 6px 14px; border-radius: 999px; font-size: .9em; font-weight: 600; backdrop-filter: blur(4px); }
+
+    /* なっつん発言ボックス（トランスクリプト引用） */
+    .natsuun-quote { background: linear-gradient(90deg, rgba(244, 181, 86, 0.10), rgba(255,255,255,0.85)); border-left: 5px solid var(--natsuun); padding: 22px 26px; border-radius: 0 14px 14px 0; margin: 28px 0; }
+    .natsuun-quote .quote-label { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--natsuun); font-size: 1.0em; margin: 0 0 8px; font-weight: 600; letter-spacing: 0.04em; }
+    .natsuun-quote p { margin: 4px 0; color: #4A3B26; font-size: 1.0em; line-height: 1.78; }
+    .natsuun-quote p strong { color: #8A5A1F; }
+
+    /* オールラウンダーバッジ */
+    .allrounder-badge { display: inline-block; background: var(--koshii); color: #FFF; padding: 5px 14px; border-radius: 999px; font-size: .75em; font-weight: 700; letter-spacing: 0.08em; margin-left: 8px; vertical-align: middle; }
+
+    /* 共有資質マップ（カードグリッド） */
+    .shared-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; margin-top: 24px; }
+    .shared-card { background: #FFF; border: 1px solid #F2DCE4; border-left: 5px solid var(--koshii); border-radius: 12px; padding: 18px 22px; box-shadow: 0 4px 14px rgba(232, 155, 174, 0.10); display: grid; grid-template-rows: auto auto 1fr; gap: 10px; }
+    .shared-card .shared-rank { font-family: "Noto Serif JP", serif; color: #A8425E; font-size: 1.18em; font-weight: 700; }
+    .shared-card .shared-rank small { font-family: "Inter", sans-serif; color: #B68595; font-size: .65em; font-weight: 500; margin-left: 8px; letter-spacing: 0.04em; }
+    .shared-card .shared-partners { font-size: .92em; color: #6A5560; font-weight: 600; padding: 6px 12px; background: #FDF1F4; border-radius: 8px; display: inline-block; }
+    .shared-card .shared-partners.solo { background: #F5F0F2; color: #999; font-weight: 500; }
+    .shared-card .shared-body { font-size: .92em; color: #5A4248; line-height: 1.72; }
+  </style>
+</head>
+<body data-character="koshii">
+
+  <header class="topbar">
+    <a class="brand" href="index.html"><i class="fa-solid fa-arrow-left"></i> 入門ホームへ</a>
+    <nav class="nav-links">
+      <a href="okemon.html">おけもん</a>
+      <a href="natsuun.html">なっつん</a>
+      <a href="kuu.html">くう</a>
+      <a href="rie.html">りえ</a>
+      <a href="koshii.html" class="is-active">こっしー</a>
+      <a href="case-study.html">📖 ケーススタディ</a>
+      <a href="team.html" class="nav-cta">→ Team Grid</a>
+    </nav>
+  </header>
+
+  <section class="branch-hero" style="background: linear-gradient(135deg, #FDF1F4 0%, #FFFFFF 60%, #FDF5F7 100%);">
+    <div class="hero-content">
+      <p class="hero-label" style="color: #A8425E;">— The Steady Mentor / じっくり育てる人 —</p>
+      <h1 class="hero-title">
+        こっしー
+        <small>KOSHII</small>
+      </h1>
+      <p class="hero-tagline">強く言わなくても、ちゃんと届く。<br>じっくり積み上げて、人を育てる人。</p>
+      <div class="hero-top5">
+        <span><b>1</b>調和性</span>
+        <span><b>2</b>慎重さ</span>
+        <span><b>3</b>回復志向</span>
+        <span><b>4</b>最上志向</span>
+        <span><b>5</b>成長促進</span>
+      </div>
+      <p style="margin-top: 18px; font-size: .85em; color: #B68595; letter-spacing: 0.06em;">＋ 6 共感性 / 7 収集心 / 8 信念 / 9 公平性 / 10 学習欲</p>
+    </div>
+  </section>
+
+  <!-- ============== ドメイン分布 + オールラウンダー特性 ============== -->
+  <section class="content domain-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">4 domains</p>
+      <h2>4ドメイン全部に足を置く、<br>irodori唯一の「オールラウンダー型」<span class="allrounder-badge">ALL-ROUND</span></h2>
+      <p>こっしーのTOP10は、<strong>4ドメイン全てにバランスよく分布</strong>している。<br>「人間関係3／実行力3／影響力2／戦略思考2」── これは他のirodoriメンバーにはない構造。<br><em>どの場でも"足場"を持てる、橋渡し役</em>。</p>
+    </div>
+    <div class="domain-meter">
+      <div class="domain-bar bar-relation fade-in">
+        <div class="domain-head"><span class="domain-name">人間関係構築力</span><span class="domain-count">3 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:78%; background: var(--relation);"></div></div>
+        <p class="domain-list">調和性① ・ 成長促進⑤ ・ 共感性⑥</p>
+      </div>
+      <div class="domain-bar bar-exec fade-in">
+        <div class="domain-head"><span class="domain-name">実行力</span><span class="domain-count">3 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:72%; background: var(--exec);"></div></div>
+        <p class="domain-list">慎重さ② ・ 回復志向③ ・ 公平性⑨</p>
+      </div>
+      <div class="domain-bar bar-influence fade-in">
+        <div class="domain-head"><span class="domain-name">影響力</span><span class="domain-count">2 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:55%; background: var(--influence);"></div></div>
+        <p class="domain-list">最上志向④ ・ 信念⑧</p>
+      </div>
+      <div class="domain-bar bar-thinking fade-in">
+        <div class="domain-head"><span class="domain-name">戦略的思考力</span><span class="domain-count">2 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:50%; background: var(--thinking);"></div></div>
+        <p class="domain-list">収集心⑦ ・ 学習欲⑩</p>
+      </div>
+    </div>
+
+    <div class="balance-card fade-in">
+      <h3>🌸 なぜこの分布がこっしーの個性になるか</h3>
+      <p>
+        他メンバーは特定ドメインに「強く偏る」ことで武器を作っている──<br>
+        なっつんは <strong>人間関係＋影響力</strong>、りえは <strong>実行力＋戦略思考</strong>、くうは <strong>個別化を軸に未来を描く</strong>、おけもんは <strong>人間関係を軸に1対1で繋ぐ</strong>。<br><br>
+        こっしーは <strong>どこにも極端に寄らず、全ドメインに足を置く</strong>。これは「強みがない」のではなく、<em>「どの会話・どの場面でも、相手の土俵に降りていける」</em>という稀有な性質。<br>
+        irodoriで <strong>「分断を繋ぐ役」</strong>になれる構造。
+      </p>
+      <div class="domain-pills">
+        <span>🤝 人間関係 3</span>
+        <span>⚡ 実行力 3</span>
+        <span>📣 影響力 2</span>
+        <span>🧠 戦略思考 2</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TOP5詳細 ============== -->
+  <section class="content top5-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Top 5 in detail</p>
+      <h2>TOP5を、irodoriの現場で読み解くと。</h2>
+      <p>本人が「自分らしい」と感じてる言葉と、なっつんとの深掘りで出てきた言葉を、そのまま添えています。</p>
+    </div>
+    <div class="top5-grid stagger">
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.1</span>
+          <span class="top5-domain-tag tag-relation">人間関係構築力</span>
+        </div>
+        <h3>調和性<small>Harmony</small></h3>
+        <p class="top5-catch">「波風立てるより、共通点を探そう」</p>
+        <p class="top5-body">対立や衝突より <em>「みんなが合意できる接点」</em> を探す。場の空気を整え、揉め事の温度を下げる人。<br><br><strong>強み</strong>：チーム内の人間関係の潤滑油・新メンバーが居心地よく入れる空気作り。<strong>気をつけポイント</strong>：「強く言えない」を自覚済。本人語：<em>「もっと強くいったほうがいいのかなって思いつつも、あまり強くいけない」</em>──これは <strong>調和性の自然な働き</strong>。直す対象じゃなく、別の人が強く言う役を担うチーム設計でカバー。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.2</span>
+          <span class="top5-domain-tag tag-exec">実行力</span>
+        </div>
+        <h3>慎重さ<small>Deliberative</small></h3>
+        <p class="top5-catch">「ちゃんと考えてから、ちゃんと動きたい」</p>
+        <p class="top5-body">即興じゃなく、<em>リスクを先回りで考えて足元を固める</em>。本人語：<em>「話しながらすぐ自分の言葉にして伝えるのが苦手」</em>──これは慎重さ②と最上志向④が同居してる人の典型反応。<br><br><strong>強み</strong>：急ぎの判断ではなく、<strong>「考え抜いた一手」</strong>を出す場面で力を発揮。<strong>なっつんからのフォロー（トランスクリプトより）</strong>：<em>「クライアントは即座に完璧な回答を求めてない。"そうですね、どういう背景なんですか？"って聞いて、次回しっかり返せばいい」</em>──これがこっしーが安心して動けるリズム。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.3</span>
+          <span class="top5-domain-tag tag-exec">実行力</span>
+        </div>
+        <h3>回復志向<small>Restorative</small></h3>
+        <p class="top5-catch">「壊れたもの・滞ったもの」を直したくなる人。</p>
+        <p class="top5-body">問題を見つけて <em>原因を突き止め、解決する</em>のがエネルギー源。<strong>※りえも回復志向①</strong>──irodoriに <strong>「直す系」が2人いる</strong>構造。<br><br><strong>強み</strong>：仕組み・関係性・運用フローのほころびを見つけて整える。<strong>すみ分けポイント</strong>：りえは「仕組みの直し屋」、こっしーは <strong>「人と人の間にできたほころびを直す」</strong>方向で動くのが自然（調和性①＋共感性⑥との重なり）。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.4</span>
+          <span class="top5-domain-tag tag-influence">影響力</span>
+        </div>
+        <h3>最上志向<small>Maximizer</small></h3>
+        <p class="top5-catch">「いいレベルじゃなく、最高に持っていきたい」</p>
+        <p class="top5-body">"良い"で満足せず、<em>「もっと良くできるはず」</em>を追いかける力。<strong>※なっつんも最上志向①</strong>──<strong>irodoriにダブル最上志向ペアが誕生</strong>。<br><br><strong>強み</strong>：自分の担当領域を「最高に仕上げたい」とこだわれる。本人語にあった <em>「爪の作業が好き、でもそれだけだと飽きる」</em> も、最上志向④×慎重さ②×成長促進⑤の混合反応（細かさを極める＋でも閉じこもらず広げたい）。<strong>気をつけポイント</strong>：「強く言えない調和性①」と「最高を目指す最上志向④」が内側でぶつかる場面あり。なっつんの『山の登り方はいろいろある』は、この葛藤の処方箋。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.5</span>
+          <span class="top5-domain-tag tag-relation">人間関係構築力</span>
+        </div>
+        <h3>成長促進<small>Developer</small></h3>
+        <p class="top5-catch">「人が伸びていく姿を見るのが、嬉しい」</p>
+        <p class="top5-body">本人語（トランスクリプトより）：<em>「学生のときからバイトで教えるのが好きで、できるようになっていく姿を見るのが嬉しい。スキル的な部分だけじゃなく、その人の気持ち的なところまでまとめて育成したい」</em>──これがこっしーの <strong>燃料の核</strong>。<br><br><strong>強み</strong>：新メンバーのオンボード／後輩のフォロー／マネジメント役。<strong>気をつけポイント</strong>：自覚済の <em>「強く言えない（調和性①）」</em> と組み合わさると、相手のためを思っても踏み込みきれない瞬間がある。<strong>処方箋</strong>：踏み込みは <strong>なっつん（適応性②）</strong> or <strong>りえ（自我⑨で名指しで認める）</strong> に頼って、こっしーは <em>「気持ちの寄り添い」と「コツコツの伴走」</em>に専念。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== 6-10位（拡張TOP10） ============== -->
+  <section class="content ext-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Rank 6-10 / Extended TOP10</p>
+      <h2>6位〜10位──TOP5を支える、5本の補助線。</h2>
+      <p>TOP5ほど自動では出てこないけど、<em>場面が来ればしっかり動く</em> 資質たち。<br>5本ぜんぶ並べると、こっしーの「全ドメイン橋渡し」性格がもっと立体的に見える。</p>
+    </div>
+    <div class="ext-grid stagger">
+
+      <article class="ext-card">
+        <h4><span class="rank">6</span>共感性 <small>Empathy</small><span class="dom-tag tag-relation">人間関係</span></h4>
+        <p>相手の感情を <em>言葉になる前に拾う</em> 力。調和性①＋成長促進⑤と組み合わさると、<strong>「気持ちを察して、励まして、伸ばす」</strong>という現場ケアの黄金トリオになる。<br><strong>※なっつんも共感性④・くうも共感性②</strong>──irodoriは共感性リッチなチーム。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">7</span>収集心 <small>Input</small><span class="dom-tag tag-thinking">戦略思考</span></h4>
+        <p>知識・情報・素材を <em>集めて備えておく</em>。慎重さ②と組むと「リスク管理に必要な材料を、聞かれる前に揃えておく」動きに。<br><strong>使い所</strong>：クライアント対応の事前準備／なっつんの「ゲーム感覚で挑戦！」に対して、こっしーが <strong>"こういう事例ある"</strong> と引き出しを出す役。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">8</span>信念 <small>Belief</small><span class="dom-tag tag-influence">影響力</span></h4>
+        <p>「自分はこういう価値観でやる」という <em>揺るがない軸</em> を持つ。調和性①の柔らかさの奥に、<strong>譲れない芯</strong>がある構造。<br><strong>注意</strong>：信念が触られた時だけは静かにブレない。これを「頑固」と誤読せず、<em>「ここは大事なところなんだな」</em>と尊重するのが関わり方のコツ。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">9</span>公平性 <small>Consistency</small><span class="dom-tag tag-exec">実行力</span></h4>
+        <p>ルール・基準・扱いの <em>一貫性</em> を大事にする。<strong>※なっつんの適応性②（一貫性が崩れる傾向）の最強カウンターパート</strong>。<br>なっつんが <em>「みんな頑張ってるから忖度したい」</em> と動いた時、こっしーの公平性⑨が <em>「報酬体系・ルールの一貫性は守ろう」</em> と静かにブレーキを踏める。<strong>※りえも公平性⑩</strong>──"一貫性を守る役"がirodoriに2人いる構造。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">10</span>学習欲 <small>Learner</small><span class="dom-tag tag-thinking">戦略思考</span></h4>
+        <p>新しい知識・スキルへの <em>好奇心が継続的に動く</em>。<strong>※りえも学習欲④・くうも学習欲⑤</strong>──<strong>学習欲トリオ</strong>でirodoriのナレッジ吸収力が爆上がりする。<br><strong>使い所</strong>：新ツール・新業務の習熟役。慎重さ②と組むと「焦らずじっくり身につける」スタイル。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== なっつん深掘りトランスクリプト ============== -->
+  <section class="content" style="background: linear-gradient(180deg, #FFF8F4 0%, #FFFFFF 100%);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">From the transcript</p>
+      <h2>なっつんが深掘りしてくれた、こっしーの「核」。</h2>
+      <p>2026-06-06「事業アイデア共有・ブレスト雑談会」より。<br>なっつんがTOP10とこっしー本人の言葉から引き出した、<strong>"こっしーらしさ"</strong> の要点。</p>
+    </div>
+
+    <div class="natsuun-quote fade-in">
+      <p class="quote-label">🌻 なっつん from 2026-06-06</p>
+      <p>「<strong>クライアントは即座に完璧な回答を求めてないのよ</strong>。"そうですね、どういう背景なんですか？"って聞いて、まずはしっかり聞いて、次回しっかり手に入ってくるようにすればいい。<em>こっしーの慎重さって、それを丁寧にできるってことだから</em>」</p>
+    </div>
+
+    <div class="natsuun-quote fade-in">
+      <p class="quote-label">🌻 なっつん from 2026-06-06</p>
+      <p>「<strong>自信があるからできるんじゃなくて、やるって100%決意するからできるらしい</strong>」<br>「<strong>山の登り方はいろいろあるから、"ここじゃないと"にとらわれなくていい</strong>。なっつんみたいにやることが求められてるわけじゃなくて、こっしーはこっしーのスタイルでいい」</p>
+    </div>
+
+    <div class="natsuun-quote fade-in">
+      <p class="quote-label">🌷 こっしー本人語 from 2026-06-06</p>
+      <p>「<strong>職人っぽいけど、それだけだと飽きてしまう</strong>。爪の作業も好きだけど、思考も嫌いじゃない」<br>「<strong>責任ある"立場"そのものは好きじゃない</strong>。でも、ある程度の責務があってそこで立ち回ること、それを"やり終える"のは充実感に繋がる」<br>「<strong>学生のころから人に教えるのが好き</strong>。できるようになっていく姿を見るのが嬉しい。スキルだけじゃなく、気持ち面まで育てたい」</p>
+    </div>
+
+    <div class="natsuun-quote fade-in">
+      <p class="quote-label">🌻 なっつんの読み解き</p>
+      <p>「これって <strong>うちの教育系の事業</strong>とドンピシャに重なるんだよね。後付けかもだけど、だからこっしー、できるんじゃないかなって感じ。"美容師さん × ストレングス" みたいな、人を育てる系の話、めっちゃ向いてる」</p>
+    </div>
+  </section>
+
+  <!-- ============== 動く条件 / 止まる条件 ============== -->
+  <section class="content env-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">OK / NG environment</p>
+      <h2>動く条件 / 止まる条件</h2>
+    </div>
+    <div class="env-grid">
+      <div class="env-panel ok fade-in">
+        <h3>動く条件</h3>
+        <p class="note">これが揃ってる時、最大出力が出る</p>
+        <ul>
+          <li>対立より共通点を探す場（調和性①）</li>
+          <li>即興じゃなく、考える余白がある（慎重さ②）</li>
+          <li>仕組み・関係性のほころびを直せる場面（回復志向③）</li>
+          <li>「いいもの → 最高」に磨き上げる時間（最上志向④）</li>
+          <li><strong>人が伸びていく姿を見られる場（成長促進⑤）← 燃料の核</strong></li>
+          <li>相手の気持ちを丁寧に拾える対話（共感性⑥）</li>
+          <li>情報・知識を集めて備えておける（収集心⑦）</li>
+          <li>自分の価値観を尊重してもらえる場（信念⑧）</li>
+          <li>ルール・基準の一貫性がある（公平性⑨）</li>
+          <li>学び続けられる環境（学習欲⑩）</li>
+        </ul>
+      </div>
+      <div class="env-panel ng fade-in">
+        <h3>止まる条件</h3>
+        <p class="note">これが揃うと、力が出にくくなる</p>
+        <ul>
+          <li>「強く言って」「対立して」と求められる（調和性①と相反）</li>
+          <li>即興で完璧な答えを要求される（慎重さ②と相反）</li>
+          <li>"準備なし"で大舞台に立たされる</li>
+          <li>「とにかく数字！」「勢いで！」だけで動く場（慎重さ・最上志向と齟齬）</li>
+          <li>人を <em>「切る・落とす」</em> 判断を任される（共感性⑥・調和性①と相反）</li>
+          <li>ルールが頻繁に変わる・特例だらけ（公平性⑨と相反）</li>
+          <li>育成のフィードバックが「成果数字」だけで返ってくる（成長促進⑤の燃料が枯れる）</li>
+          <li>"いつでも即決"を強要される場（慎重さ②が消耗）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== フレーズ集 ============== -->
+  <section class="content phrase-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Magic phrases</p>
+      <h2>関わる時のフレーズ集</h2>
+    </div>
+    <table class="phrase-table fade-in">
+      <thead><tr><th>◯ 機能する</th><th>✕ 機能しない</th></tr></thead>
+      <tbody>
+        <tr><td>「考える時間、取っていいよ」</td><td>「今すぐ即答して」</td></tr>
+        <tr><td>「次回までに整理して持ってきて」</td><td>「この場で完璧な答え出して」</td></tr>
+        <tr><td>「一緒に考えよう」</td><td>「ひとりで決めて」</td></tr>
+        <tr><td>「育てる側に回ってほしい」</td><td>「強く言って人を動かして」</td></tr>
+        <tr><td><strong>「伸びてる姿、見守って」</strong>（成長促進⑤）</td><td>「結果数字だけ見て」</td></tr>
+        <tr><td>「リスク、何が考えられる？」</td><td>「ノリで行こう」</td></tr>
+        <tr><td>「気持ち、どう感じた？」（共感性⑥）</td><td>「感情は抜きで」</td></tr>
+        <tr><td>「ここの仕組み、整えてくれる？」（回復志向③）</td><td>「ゼロから新規で立ち上げて」（最上志向④は活きるが、慎重さ②と相反）</td></tr>
+        <tr><td>「もう一段、最高を目指せる？」（最上志向④）</td><td>「とりあえずでいいから」</td></tr>
+        <tr><td>「学ぶ時間、確保しよう」（学習欲⑩）</td><td>「学びは後回しで実践だけ」</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============== チームシナジー（4人分） ============== -->
+  <section class="content synergy-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Synergy with the team</p>
+      <h2>4人と組む時、わたしの役割。</h2>
+      <p>こっしーは <strong>4ドメイン全部に足を置く</strong> から、誰と組んでも"接点"が作れる。<br>下は、それぞれと組んだ時に <em>こっしーがどう機能するか</em>。</p>
+    </div>
+    <div class="synergy-cards stagger">
+
+      <article class="synergy-card partner-okemon" style="--partner-color: var(--okemon);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--okemon);">桶</div>
+          <div class="partner-name">おけもん<small>— 1対1で深く繋ぐ人</small></div>
+        </div>
+        <p>おけもんも <strong>調和性①</strong>──<strong>調和性ダブル</strong>のペア。場の和を作る筋力が2倍。<br>ただし2人とも <em>「強く言えない」</em> 構造なので、揉め事の決着役は <strong>なっつん（適応性②）or りえ（規律性⑤）</strong> に振るのが正解。<br>こっしーの <strong>成長促進⑤＋共感性⑥</strong> × おけもんの <strong>共感性②＋アレンジ③</strong> で、<em>クライアント1人1人を丁寧に育てる</em> ペア提供が可能。</p>
+        <a href="okemon.html" class="partner-link" style="border-color: var(--okemon); color: var(--okemon);">→ おけもんの取説</a>
+      </article>
+
+      <article class="synergy-card partner-natsuun" style="--partner-color: var(--natsuun);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--natsuun);">夏</div>
+          <div class="partner-name">なっつん<small>— 旗を振る人</small></div>
+        </div>
+        <p><strong>このペアがいちばん大事</strong>。2人とも <strong>最上志向</strong>持ち（なっつん①・こっしー④）── <strong>"もっと最高に"</strong> の共鳴が起きる。<br>なっつんが <strong>適応性②（流れに乗る・一貫性が崩れる傾向）</strong> で勢いよく走る時、こっしーの <strong>慎重さ②＋公平性⑨</strong> が <em>「ちょっと待って、ここはリスクある／ルールの一貫性は保とう」</em> と整える。<br>なっつんが構想してる <strong>教育・育成・ADHD研修系の事業</strong> は、こっしーの <strong>成長促進⑤＋共感性⑥＋共感性</strong> がど真ん中で活きる領域。<br>なっつんの「ゲーム感覚で挑戦！」 × こっしーの「じっくり育てる」 = <em>挑戦の熱量を保ったまま、人がついてくる育成構造</em> ができる。</p>
+        <a href="natsuun.html" class="partner-link" style="border-color: var(--natsuun); color: var(--natsuun);">→ なっつんの取説</a>
+      </article>
+
+      <article class="synergy-card partner-kuu" style="--partner-color: var(--kuu);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--kuu);">空</div>
+          <div class="partner-name">くう<small>— 個性を見抜き、未来を描く人</small></div>
+        </div>
+        <p>くうの <strong>個別化①</strong> で「この人はこういうタイプ」と見抜き、こっしーの <strong>成長促進⑤＋共感性⑥</strong> で <em>「その人に合わせて伸ばす」</em>。<br><strong>育成ダブルエンジン</strong>──くうが <strong>成長促進⑨</strong>、こっしーが <strong>成長促進⑤</strong>。irodoriのメンバー育成は、この2人の連携が中核になる。<br>2人とも <strong>学習欲</strong>持ち（くう⑤・こっしー⑩）── <em>「学び合って高めるペア」</em>。</p>
+        <a href="kuu.html" class="partner-link" style="border-color: var(--kuu); color: var(--kuu);">→ くうの取説</a>
+      </article>
+
+      <article class="synergy-card partner-rie" style="--partner-color: var(--rie);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--rie);">理</div>
+          <div class="partner-name">りえ<small>— 整えて、立て直す人</small></div>
+        </div>
+        <p>2人とも <strong>回復志向</strong> 持ち（りえ①・こっしー③）── "直す系" ダブル兄弟。<br><strong>すみ分け</strong>：りえは <em>仕組み・データ・ルール</em> を直す、こっしーは <em>人と人の間にできたほころび</em> を直す。<br>2人とも <strong>慎重さ</strong>持ち（りえ③・こっしー②）── <strong>慎重さダブル</strong>でリスク管理は鉄壁。なっつんの暴走をブレーキする <em>「ブレーキ2人体制」</em>。<br>2人とも <strong>公平性</strong>持ち（りえ⑩・こっしー⑨）── <em>"一貫性を守る"ガード</em>もダブル。<br>2人とも <strong>学習欲</strong>持ち（りえ④・こっしー⑩）── 知識共有の流れも自然に作れる。<br><strong>差分</strong>：りえは <em>「黙々と直して、名指しで認められたい（自我⑨）」</em>、こっしーは <em>「人が伸びる姿を見たい（成長促進⑤）」</em>──ベクトルが違うから補完が効く。</p>
+        <a href="rie.html" class="partner-link" style="border-color: var(--rie); color: var(--rie);">→ りえの取説</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== 共有資質マップ（チーム重なり） ============== -->
+  <section class="content" style="background: linear-gradient(180deg, #FFFFFF 0%, #FFF0F4 100%);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Shared talents map</p>
+      <h2>こっしー × irodori 共有資質マップ</h2>
+      <p>こっしーが持ってる10資質のうち、<strong>他メンバーと重なる資質</strong>を一覧で。<br>同じ資質を持つ仲間がいる＝<em>"分かり合える"</em> 接点が、こんなにたくさんある。</p>
+    </div>
+
+    <div class="shared-grid stagger">
+
+      <article class="shared-card">
+        <div class="shared-rank">①調和性 <small>HARMONY</small></div>
+        <div class="shared-partners">🌷 おけもん①</div>
+        <p class="shared-body">場の和ダブル。揉め事の温度を下げるツートップ（ただし強く言う役は別の人に）。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">②慎重さ <small>DELIBERATIVE</small></div>
+        <div class="shared-partners">🌸 りえ③</div>
+        <p class="shared-body">リスク管理の鉄壁ペア。なっつんの暴走を2人で止められる。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">③回復志向 <small>RESTORATIVE</small></div>
+        <div class="shared-partners">🌸 りえ①</div>
+        <p class="shared-body">"直す系"兄弟。りえは仕組み、こっしーは人と人の間。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">④最上志向 <small>MAXIMIZER</small></div>
+        <div class="shared-partners">🌻 なっつん①</div>
+        <p class="shared-body"><strong>ダブル最上志向</strong>。「もっと最高に」の共鳴ペア。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑤成長促進 <small>DEVELOPER</small></div>
+        <div class="shared-partners">🌿 くう⑨</div>
+        <p class="shared-body"><strong>育成ダブルエンジン</strong>。くうが見抜き、こっしーが育む。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑥共感性 <small>EMPATHY</small></div>
+        <div class="shared-partners">🌷 おけもん② / 🌿 くう② / 🌻 なっつん④</div>
+        <p class="shared-body">irodoriは <strong>共感性カルテット</strong>。クライアント感情のケア力が天井。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑦収集心 <small>INPUT</small></div>
+        <div class="shared-partners solo">こっしー固有</div>
+        <p class="shared-body">情報・素材集めの担当役。チームの引き出しを増やす。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑧信念 <small>BELIEF</small></div>
+        <div class="shared-partners solo">こっしー固有</div>
+        <p class="shared-body">"譲れない軸"の担当。価値観の話で芯になれる。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑨公平性 <small>CONSISTENCY</small></div>
+        <div class="shared-partners">🌸 りえ⑩</div>
+        <p class="shared-body">"一貫性を守る"ガードのダブル。報酬体系・ルール設計で2人で押さえる。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑩学習欲 <small>LEARNER</small></div>
+        <div class="shared-partners">🌸 りえ④ / 🌿 くう⑤</div>
+        <p class="shared-body"><strong>学習欲トリオ</strong>。ナレッジ吸収力が3倍速。</p>
+      </article>
+
+    </div>
+
+    <div class="balance-card fade-in" style="margin-top: 28px;">
+      <h3>🌟 読み解き：こっしーは、irodoriの"重ね合わせ役"</h3>
+      <p>
+        10資質のうち <strong>7資質が誰かと重なってる</strong>。これは <em>「孤立しない」</em> 構造。<br>
+        同時に <strong>収集心⑦・信念⑧</strong> という2つの固有資質も持ってる── <em>「情報を集める引き出し」</em> と <em>「価値観の軸」</em>。<br><br>
+        だからこっしーは、irodoriの中で <strong>「みんなと繋がりながら、自分の芯も持つ人」</strong> として動ける。<br>
+        オールラウンダー × 重なり × 固有 ── この3つが揃ったメンバーは、チームに1人いると <em>分断が起きにくい</em>。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== なっつん事業構想とのシナジー ============== -->
+  <section class="content" style="background: linear-gradient(135deg, #FFF8E8 0%, #FFFFFF 50%, #FDF1F4 100%); border-top: 3px solid var(--natsuun); border-bottom: 3px solid var(--koshii);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Synergy with Natsuun's vision</p>
+      <h2>なっつんが描いてる事業構想と、こっしーの噛み合いポイント。</h2>
+      <p>2026-06-06 ブレスト雑談会で、なっつんが <strong>「理想の自分から逆算する」</strong> アプローチで描いていた構想群。<br>そこに <em>こっしーがどう噛み合うか</em> を3つの軸で整理。</p>
+    </div>
+
+    <div class="intro-grid stagger" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px;">
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">01</span>
+        <h3 style="color: #A8425E;">ADHD・発達特性向け B2E研修</h3>
+        <p>なっつん：<em>「ADHDの人が自分の特性を発揮できる研修。リスキリングを使って、B2EかB2C」</em></p>
+        <p style="margin-top: 12px;"><strong>こっしーの噛み合い</strong>：<br>共感性⑥＋成長促進⑤＋調和性① で <strong>受講者の感情ケア＋伸びしろ伴走</strong>がど真ん中。<br>慎重さ②で <em>「研修プログラムのリスク・抜け穴」</em>を先回り点検できる役。</p>
+      </article>
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">02</span>
+        <h3 style="color: #A8425E;">教育・育成系の事業（社内向け人材育成）</h3>
+        <p>なっつん：<em>「うちって最終的に教育システムじゃない？」</em></p>
+        <p style="margin-top: 12px;"><strong>こっしーの噛み合い</strong>：<br>本人語 <em>「学生のときから教えるのが好き。スキルだけじゃなく気持ち面まで育てたい」</em>──<strong>このポジションが燃料の核に直結</strong>。<br>くう（個別化①＋成長促進⑨）と組めば、irodoriの育成チームの中核2人が完成する。</p>
+      </article>
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">03</span>
+        <h3 style="color: #A8425E;">クライアント"職人系"の磨き上げ</h3>
+        <p>なっつん：<em>「クライアントにとっての最良を突き詰めて、常にチャレンジを繰り返す」（最上志向①）</em></p>
+        <p style="margin-top: 12px;"><strong>こっしーの噛み合い</strong>：<br>最上志向④＋慎重さ②＋収集心⑦で <strong>"細部を磨き上げる職人ペア"</strong>。<br>本人語 <em>「爪の作業が好き、でもそれだけだと飽きる」</em>──だから <em>「磨き上げ＋人を育てる」</em> の組み合わせが、こっしーが飽きない最強配置。</p>
+      </article>
+
+    </div>
+
+    <div class="natsuun-quote fade-in" style="margin-top: 36px;">
+      <p class="quote-label">🌻 なっつんの一言 from 2026-06-06</p>
+      <p>「<strong>うちの教育系って、こっしー、めっちゃ向いてると思うんだよね</strong>。後付けかもだけど、だからこっしー、できるんじゃないかなって感じ」</p>
+    </div>
+  </section>
+
+  <!-- ============== Back ============== -->
+  <section class="content back-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: var(--koshii);">Back</p>
+      <h2>みんなの取説に戻る</h2>
+      <p>5人それぞれの取説 × Team Grid で、<br>チーム全体が立体的に見える。</p>
+      <a href="team.html" class="back-btn" style="background: var(--koshii); color: #FFF;">
+        <i class="fa-solid fa-people-group"></i>
+        Team Gridを見る
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 — A private map for irodori. Not for public distribution.</p>
+    <p style="font-size: .82em; color: #999; margin-top: 8px;">本ページはこっしー本人の許諾を前提に、おけもん（外部協働）が作成した自己理解資料です。<br>本人の許諾なく第三者に共有しないでください。</p>
+  </footer>
+
+  <script>
+    const animEls = document.querySelectorAll('.fade-in, .stagger');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else obs.observe(el);
+    });
+  </script>
+</body>
+</html>
