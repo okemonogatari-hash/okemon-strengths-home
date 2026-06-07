@@ -85,6 +85,7 @@
     .col-kuu { --col-color: var(--kuu); }
     .col-rie { --col-color: var(--rie); }
     .col-koshii { --col-color: var(--koshii); }
+    .col-dora { --col-color: var(--dora); }
 
     .insight-grid {
       display: grid;
@@ -157,6 +158,7 @@
       <a href="kuu.html">くう</a>
       <a href="rie.html">りえ</a>
       <a href="koshii.html">こっしー</a>
+      <a href="dora.html">どら</a>
       <a href="case-study.html">📖 ケーススタディ</a>
       <a href="team.html" class="is-active">Team Grid</a>
     </nav>
@@ -164,12 +166,12 @@
 
   <section class="branch-hero">
     <div class="hero-content">
-      <p class="hero-label">— Team Grid / 5人の補完マップ —</p>
+      <p class="hero-label">— Team Grid / 6人の補完マップ —</p>
       <h1 class="hero-title">
         Team Grid
-        <small>OKEMON × NATSUUN × KUU × RIE × KOSHII</small>
+        <small>OKEMON × NATSUUN × KUU × RIE × KOSHII × DORA</small>
       </h1>
-      <p class="hero-tagline">5人のTOP10資質を、4領域に重ねて並べると、<br>「どこが強くて、どこは助け合いが必要か」がパッと見える。</p>
+      <p class="hero-tagline">6人のTOP10資質を、4領域に重ねて並べると、<br>「どこが強くて、どこは助け合いが必要か」がパッと見える。</p>
     </div>
   </section>
 
@@ -244,7 +246,7 @@
         <ul style="margin: 0; padding-left: 0; list-style: none;">
           <li style="position: relative; padding: 10px 0 10px 26px; font-size: 14px; line-height: 1.85; color: var(--ink-soft); border-bottom: 1px solid var(--line-soft);">
             <span style="position: absolute; left: 0; color: #5FAA5F;">✓</span>
-            <strong>今いる5人の強み</strong>を、どう活かし合えるかを考える
+            <strong>今いる6人の強み</strong>を、どう活かし合えるかを考える
           </li>
           <li style="position: relative; padding: 10px 0 10px 26px; font-size: 14px; line-height: 1.85; color: var(--ink-soft); border-bottom: 1px solid var(--line-soft);">
             <span style="position: absolute; left: 0; color: #5FAA5F;">✓</span>
@@ -332,8 +334,8 @@
   <!-- 4×4 Grid -->
   <section class="content">
     <div class="section-head fade-in">
-      <p class="eyebrow-en">The Grid — 5 members × 4 domains</p>
-      <h2>5人 × 4領域のマトリクス。</h2>
+      <p class="eyebrow-en">The Grid — 6 members × 4 domains</p>
+      <h2>6人 × 4領域のマトリクス。</h2>
       <p>各セルに <strong>その人のその領域の TOP10入り資質</strong> を表示。
       <em>埋まってるところ＝チームの強み。空いてるところ＝助け合いが必要な場所。</em></p>
     </div>
@@ -348,6 +350,7 @@
           <th class="col-kuu">🌿 くう</th>
           <th class="col-rie">🌸 りえ</th>
           <th class="col-koshii">🌹 こっしー</th>
+          <th class="col-dora">🪄 どら</th>
         </tr>
       </thead>
       <tbody>
@@ -382,6 +385,10 @@
             <span class="qual-chip top" style="--chip-bg: var(--relation); --chip-fg: #FFF; --chip-bd: var(--relation);"><span class="num">5</span>成長促進</span>
             <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">6</span>共感性</span>
           </td>
+          <td class="cell">
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">6</span>個別化</span>
+            <span class="qual-chip" style="--chip-bg: rgba(143,190,223,0.18); --chip-fg: var(--relation); --chip-bd: var(--relation);"><span class="num">9</span>共感性</span>
+          </td>
         </tr>
 
         <tr class="row-exec">
@@ -403,6 +410,13 @@
             <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">2</span>慎重さ</span>
             <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">3</span>回復志向</span>
             <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">9</span>公平性</span>
+          </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">1</span>目標志向</span>
+            <span class="qual-chip top" style="--chip-bg: var(--exec); --chip-fg: #FFF; --chip-bd: var(--exec);"><span class="num">5</span>回復志向</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">7</span>規律性</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">8</span>信念</span>
+            <span class="qual-chip" style="--chip-bg: rgba(182,164,222,0.18); --chip-fg: var(--exec); --chip-bd: var(--exec);"><span class="num">10</span>慎重さ</span>
           </td>
         </tr>
 
@@ -426,6 +440,7 @@
             <span class="qual-chip top" style="--chip-bg: var(--influence); --chip-fg: #FFF; --chip-bd: var(--influence);"><span class="num">4</span>最上志向</span>
             <span class="qual-chip" style="--chip-bg: rgba(244,181,86,0.18); --chip-fg: var(--sun-rose); --chip-bd: var(--influence);"><span class="num">8</span>信念</span>
           </td>
+          <td class="cell empty">TOP10になし<br>（影響力0＝専門特化型）</td>
         </tr>
 
         <tr class="row-thinking">
@@ -448,6 +463,11 @@
             <span class="qual-chip" style="--chip-bg: rgba(155,211,176,0.18); --chip-fg: #5FAA5F; --chip-bd: var(--thinking);"><span class="num">7</span>収集心</span>
             <span class="qual-chip" style="--chip-bg: rgba(155,211,176,0.18); --chip-fg: #5FAA5F; --chip-bd: var(--thinking);"><span class="num">10</span>学習欲</span>
           </td>
+          <td class="cell">
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">2</span>学習欲</span>
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">3</span>分析思考</span>
+            <span class="qual-chip top" style="--chip-bg: var(--thinking); --chip-fg: #FFF; --chip-bd: var(--thinking);"><span class="num">4</span>着想</span>
+          </td>
         </tr>
 
       </tbody>
@@ -464,51 +484,67 @@
   <!-- Common Fuels -->
   <section class="content" style="background: var(--sand-deep);">
     <div class="section-head fade-in">
-      <p class="eyebrow-en">Common fuels — 5人で響き合う軸</p>
-      <h2>5人が揃ったとき、必ず効く「共通燃料」。</h2>
-      <p>同じ資質が複数人のTOP10入りしてる＝<strong>その軸でチームが自然に共鳴できる</strong>。<br><em>※ こっしー追加で「共感性カルテット」「最上志向カルテット」「調和性カルテット」が成立。さらに新規ペアが3つ誕生。</em></p>
+      <p class="eyebrow-en">Common fuels — 6人で響き合う軸</p>
+      <h2>6人が揃ったとき、必ず効く「共通燃料」。</h2>
+      <p>同じ資質が複数人のTOP10入りしてる＝<strong>その軸でチームが自然に共鳴できる</strong>。<br><em>※ どら追加で「共感性クインテット」「学習欲カルテット」が成立。さらに「慎重さ」「回復志向」がトリオに昇格。新規ペアが4つ誕生（個別化／分析思考／規律性／信念）。</em></p>
     </div>
 
     <div class="common-fuels stagger">
       <div class="fuel-row" style="border-top-color: var(--relation);">
-        <span class="fuel-name" style="color: var(--relation);">共感性 ★4人</span>
-        <span class="fuel-members">🌷おけもん②・🌻なっつん④・🌿くう②・🌹こっしー⑥（<strong>5人中4人が保有＝カルテット</strong>）<br>→ <strong>「気持ちを汲む」が共通言語。</strong>感情を切り捨てない文化が自然に走る。クライアント感情のケア力は天井。</span>
+        <span class="fuel-name" style="color: var(--relation);">共感性 ★5人</span>
+        <span class="fuel-members">🌷おけもん②・🌻なっつん④・🌿くう②・🌹こっしー⑥・🪄どら⑨（<strong>6人中5人＝クインテット</strong>・りえはTOP10外20位）<br>→ <strong>「気持ちを汲む」がチーム全体のDNA</strong>。感情を切り捨てない文化が自然に走る。<em>どら追加で5人に。役割分担：感情判断はこのクインテット、データ判断はりえ（分析思考②）</em>。</span>
       </div>
       <div class="fuel-row" style="border-top-color: var(--influence);">
         <span class="fuel-name" style="color: var(--influence);">最上志向 ★4人</span>
-        <span class="fuel-members">🌷おけもん⑤・🌻なっつん①・🌿くう⑧・🌹こっしー④（<strong>5人中4人＝カルテット</strong>）<br>→ <strong>「もっと良くしたい」品質ベクトル</strong>が4人で揃う。妥協で止まれないチーム。<em>こっしー追加で、なっつん独走じゃなくダブル最上志向ペアの構造が誕生</em>。</span>
+        <span class="fuel-members">🌷おけもん⑤・🌻なっつん①・🌿くう⑧・🌹こっしー④（<strong>6人中4人＝カルテット</strong>）<br>→ <strong>「もっと良くしたい」品質ベクトル</strong>が4人で揃う。妥協で止まれないチーム。なっつん①×こっしー④の <em>主軸ペア</em> を おけもん⑤・くう⑧ が支える二重構造。</span>
       </div>
       <div class="fuel-row" style="border-top-color: var(--relation);">
         <span class="fuel-name" style="color: var(--relation);">調和性 ★4人</span>
-        <span class="fuel-members">🌷おけもん①・🌿くう⑥・🌸りえ⑦・🌹こっしー①（<strong>5人中4人＝カルテット</strong>）<br>→ <strong>「対立より共通項を探す」</strong>が4人ベース。場が荒れにくい構造。<em>ただし おけもん①＋こっしー① の "TOP1 ダブル" 構成は「強く言える人がいない」リスクも内包</em>。決着役は なっつん（適応性②）or りえ（規律性⑤）に振る。</span>
+        <span class="fuel-members">🌷おけもん①・🌿くう⑥・🌸りえ⑦・🌹こっしー①（<strong>6人中4人＝カルテット</strong>）<br>→ <strong>「対立より共通項を探す」</strong>が4人ベース。場が荒れにくい構造。<em>ただし おけもん①＋こっしー① の "TOP1 ダブル" 構成は「強く言える人がいない」リスクも内包</em>。決着役は なっつん（適応性②）or りえ（規律性⑤）or どら（目標志向①）に振る。</span>
+      </div>
+      <div class="fuel-row" style="border-top-color: var(--thinking);">
+        <span class="fuel-name" style="color: var(--thinking);">学習欲 ★4人 ⬆昇格</span>
+        <span class="fuel-members">🌿くう⑤・🌸りえ④・🌹こっしー⑩・🪄どら②（<strong>6人中4人＝カルテット</strong>・どら追加でトリオ→カルテットに昇格）<br>→ <strong>新しいものを一緒に学ぶカルテット</strong>。Notion・新ツール・新クライアント業種の習得はこの4人が起点。<em>ナレッジ吸収力が4倍速</em>。</span>
       </div>
       <div class="fuel-row">
         <span class="fuel-name">ポジティブ ★3人</span>
         <span class="fuel-members">🌷おけもん⑨・🌻なっつん③・🌿くう④（3人）<br>→ <strong>明るく挑戦的な空気</strong>が3人で増幅。場の温度を作る燃料。</span>
       </div>
-      <div class="fuel-row" style="border-top-color: var(--thinking);">
-        <span class="fuel-name" style="color: var(--thinking);">学習欲 ★3人</span>
-        <span class="fuel-members">🌿くう⑤・🌸りえ④・🌹こっしー⑩（<strong>3人がTOP10入り</strong>）<br>→ <strong>新しいものを一緒に学ぶトリオ</strong>。仕組み・ツール導入はこの3人が起点。<em>こっしー追加でナレッジ吸収力が3倍速</em>。</span>
-      </div>
       <div class="fuel-row" style="border-top-color: var(--exec);">
         <span class="fuel-name" style="color: var(--exec);">公平性 ★3人</span>
-        <span class="fuel-members">🌷おけもん⑧・🌸りえ⑩・🌹こっしー⑨（3人）<br>→ <strong>「ルール・基準の一貫性を守る」</strong>3人体制。<em>なっつんの適応性②（一貫性が崩れる傾向）に対して、ガード3人で支える構造</em>。報酬体系・評価基準の設計はこの3人で押さえる。</span>
+        <span class="fuel-members">🌷おけもん⑧・🌸りえ⑩・🌹こっしー⑨（3人）<br>→ <strong>「ルール・基準の一貫性を守る」</strong>3人体制。なっつんの適応性②（一貫性が崩れる傾向）に対するガード。報酬体系・評価基準の設計はこの3人で押さえる。</span>
       </div>
       <div class="fuel-row" style="border-top-color: var(--exec);">
-        <span class="fuel-name" style="color: var(--exec);">慎重さ ★2人 NEW</span>
-        <span class="fuel-members">🌸りえ③・🌹こっしー②（<strong>2人がTOP5</strong>）<br>→ <strong>リスク管理の鉄壁ダブル</strong>。なっつんの「ノリで行こう」を2人で受け止めて先回り点検。<em>こっしー追加で初めて成立したペア</em>。</span>
+        <span class="fuel-name" style="color: var(--exec);">慎重さ ★3人 ⬆昇格</span>
+        <span class="fuel-members">🌸りえ③・🌹こっしー②・🪄どら⑩（<strong>6人中3人＝トリオ</strong>・どら追加でペア→トリオに昇格）<br>→ <strong>リスク管理の鉄壁トリオ</strong>。なっつんの「ノリで行こう！」を3人体制で受け止める。Notion設計の "使う人がつまずく場所" の先回り点検は特にどらが担う。</span>
       </div>
       <div class="fuel-row" style="border-top-color: var(--exec);">
-        <span class="fuel-name" style="color: var(--exec);">回復志向 ★2人 NEW</span>
-        <span class="fuel-members">🌸りえ①・🌹こっしー③（<strong>2人がTOP5</strong>）<br>→ <strong>"直す系" 兄弟</strong>。<em>すみ分け</em>：りえは <strong>仕組み・データ・ルール</strong>、こっしーは <strong>人と人の間にできたほころび</strong>。トラブル対応の網が広がる。</span>
+        <span class="fuel-name" style="color: var(--exec);">回復志向 ★3人 ⬆昇格</span>
+        <span class="fuel-members">🌸りえ①・🌹こっしー③・🪄どら⑤（<strong>6人中3人＝トリオ</strong>・どら追加でペア→トリオに昇格）<br>→ <strong>"直す系" トリオ</strong>。<em>すみ分け</em>：りえは仕組み・データ、こっしーは人と人の間、どらは業務フローの詰まり。トラブル対応の網が3層に。</span>
       </div>
       <div class="fuel-row" style="border-top-color: var(--relation);">
-        <span class="fuel-name" style="color: var(--relation);">成長促進 ★2人 NEW</span>
-        <span class="fuel-members">🌿くう⑨・🌹こっしー⑤（2人）<br>→ <strong>育成ダブルエンジン</strong>。<em>くうが個性を見抜き（個別化①）、こっしーが伸びしろを育む（成長促進⑤＋共感性⑥）</em>。irodoriのメンバー育成の中核2人が完成。<strong>※ なっつんが構想中の「教育系事業」「ADHD向け研修」の現場担当ど真ん中</strong>。</span>
+        <span class="fuel-name" style="color: var(--relation);">成長促進 ★2人</span>
+        <span class="fuel-members">🌿くう⑨・🌹こっしー⑤（2人）<br>→ <strong>育成ダブルエンジン</strong>。<em>くうが個性を見抜き（個別化①）、こっしーが伸びしろを育む（成長促進⑤＋共感性⑥）</em>。なっつんが構想中の「教育系事業」「ADHD向け研修」の現場担当の中核。</span>
       </div>
       <div class="fuel-row">
         <span class="fuel-name">未来志向 ★2人</span>
         <span class="fuel-members">🌿くう③・🌷おけもん⑩（2人）<br>→ <strong>未来の絵を一緒に描けるペア</strong>。長期方針を語る時はこの2人軸。</span>
+      </div>
+      <div class="fuel-row" style="border-top-color: var(--relation);">
+        <span class="fuel-name" style="color: var(--relation);">個別化 ★2人 NEW</span>
+        <span class="fuel-members">🌿くう①・🪄どら⑥（<strong>どら追加で初成立</strong>）<br>→ <strong>個別化2段ロケット</strong>。くうが「この人はこういう個性」と見抜き、どらが「じゃあこの人専用の仕組み」を作る。クライアント1人1人の最適化はこの2段で完成。</span>
+      </div>
+      <div class="fuel-row" style="border-top-color: var(--thinking);">
+        <span class="fuel-name" style="color: var(--thinking);">分析思考 ★2人 NEW</span>
+        <span class="fuel-members">🌸りえ②・🪄どら③（<strong>どら追加で初成立</strong>）<br>→ <strong>"考え抜く脳" 分析思考ペア</strong>。りえはデータ分析、どらは業務フロー分析。クライアントの "詰まり" を論理で分解する中核。</span>
+      </div>
+      <div class="fuel-row" style="border-top-color: var(--exec);">
+        <span class="fuel-name" style="color: var(--exec);">規律性 ★2人 NEW</span>
+        <span class="fuel-members">🌸りえ⑤・🪄どら⑦（<strong>どら追加で初成立</strong>）<br>→ <strong>「作ったものが運用に乗る」担保ペア</strong>。りえはルール・締切、どらはNotion運用フローでガード。なっつんの適応性②（一貫性が崩れる）に対する大事な錨。</span>
+      </div>
+      <div class="fuel-row" style="border-top-color: var(--exec);">
+        <span class="fuel-name" style="color: var(--exec);">信念 ★2人</span>
+        <span class="fuel-members">🌹こっしー⑧・🪄どら⑧（同順位ペア）<br>→ <strong>"譲れない軸"ペア</strong>。こっしーの軸は <em>「人を育てる」</em>、どらの軸は <em>「人の時間と想いを大切に」</em>。違う軸だけど両方とも <strong>"人を中心に置く"</strong> 共通点で響き合う。</span>
       </div>
     </div>
   </section>
@@ -516,42 +552,48 @@
   <!-- Insights / 注意点 -->
   <section class="content">
     <div class="section-head fade-in">
-      <p class="eyebrow-en">Insights — 5つの発見</p>
-      <h2>このグリッドから見えてくる5つのこと。</h2>
-      <p>※ こっしー追加で <strong>「実行力 りえ独走 → 2人体制」「影響力 なっつん独走 → 最上志向ダブル」</strong> という大きな構造変化が起きてる。</p>
+      <p class="eyebrow-en">Insights — 6つの発見</p>
+      <h2>このグリッドから見えてくる6つのこと。</h2>
+      <p>※ どら追加で <strong>「実行力 2人体制 → 3人体制」「戦略思考 3人 → 4人カバー」「共感性 カルテット → クインテット」</strong> という大きな構造変化が起きてる。</p>
     </div>
 
     <div class="insight-grid stagger">
 
       <article class="insight-card shine">
         <h3><i class="fa-solid fa-heart"></i> 強み① 人間関係構築力が異次元に厚い</h3>
-        <p>🌷おけもん4資質・🌻なっつん4資質・🌿くう5資質・🌹こっしー3資質。<strong>5人の合計で16資質が人間関係TOP10入り</strong>（前4人時:13資質→16資質）。</p>
-        <p>→ チーム内の <strong>結束・対人ケア・空気感の柔らかさ</strong>は他にない強み。共感性は4人共通TOP10（カルテット）、調和性も4人共通TOP10。<em>「誰かが落ちそうな時、必ず誰かが気づく」</em>網がさらに密に。</p>
+        <p>🌷おけもん4資質・🌻なっつん4資質・🌿くう5資質・🌹こっしー3資質・🪄どら2資質。<strong>6人の合計で18資質が人間関係TOP10入り</strong>（5人時:16資質→18資質）。</p>
+        <p>→ <strong>共感性はクインテット昇格</strong>（おけ②・なっ④・くう②・こっ⑥・どら⑨＝6人中5人）。チーム内の <strong>結束・対人ケア・空気感の柔らかさ</strong>は他にない強み。<em>「誰かが落ちそうな時、必ず誰かが気づく」</em>網が5人体制で完成。</p>
       </article>
 
       <article class="insight-card strong">
-        <h3><i class="fa-solid fa-shield-halved"></i> 強み② 実行力が「1人体制 → 2人体制」に進化</h3>
-        <p><strong>これがこっしー追加の最大の構造変化。</strong></p>
-        <p>🌸りえ（回復志向①・慎重さ③・規律性⑤・公平性⑩）に加えて、🌹こっしー（慎重さ②・回復志向③・公平性⑨）の3資質が実行力TOP10入り。</p>
-        <p>→ <strong>りえ単独依存だった実行力が、ダブル体制に</strong>。回復志向ペア（仕組み×人間関係のすみ分け）／慎重さペア（リスク管理鉄壁）／公平性ペア（一貫性ガード）が3本同時に成立。<em>りえが疲弊する前に、こっしーが受け止められる</em>構造。</p>
+        <h3><i class="fa-solid fa-shield-halved"></i> 強み② 実行力が「2人体制 → 3人体制」に進化</h3>
+        <p><strong>これがどら追加の最大の構造変化。</strong></p>
+        <p>🌸りえ（回復志向①・慎重さ③・規律性⑤・公平性⑩）＋🌹こっしー（慎重さ②・回復志向③・公平性⑨）に加えて、<strong>🪄どら（目標志向①・回復志向⑤・規律性⑦・信念⑧・慎重さ⑩）の5資質</strong>が実行力TOP10入り。</p>
+        <p>→ <strong>りえ→2人体制→3人体制と段階的に分厚く</strong>。慎重さトリオ（リスク管理鉄壁）／回復志向トリオ（修復網3層）／規律性ペア（運用ガード）が同時成立。<em>"実行力" がirodoriの圧倒的な構造的強み</em>に。</p>
       </article>
 
       <article class="insight-card strong">
-        <h3><i class="fa-solid fa-compass"></i> 強み③ 戦略思考も3人がカバー</h3>
-        <p>🌿くう3資質（未来志向③・学習欲⑤・収集心⑩）、🌸りえ3資質（分析思考②・学習欲④・内省⑧）、🌹こっしー2資質（収集心⑦・学習欲⑩）。</p>
-        <p>→ <strong>くうが「未来を描く」、りえが「分析して整える」、こっしーが「情報を集めて備える」</strong>の三役。学習欲は3人共通TOP10＝<em>「新しい仕組みを一緒に学ぶトリオ」</em>。</p>
+        <h3><i class="fa-solid fa-compass"></i> 強み③ 戦略思考が「3人 → 4人カバー」</h3>
+        <p>🌿くう3資質（未来志向③・学習欲⑤・収集心⑩）、🌸りえ3資質（分析思考②・学習欲④・内省⑧）、🌹こっしー2資質（収集心⑦・学習欲⑩）、<strong>🪄どら3資質（学習欲②・分析思考③・着想④）</strong>。</p>
+        <p>→ <strong>「未来を描く」（くう）・「分析して整える」（りえ）・「情報集めて備える」（こっしー）・「組み合わせて発想する」（どら）</strong>の四役。<strong>学習欲カルテット成立</strong>（くう⑤・りえ④・こっ⑩・どら②＝4人共通）。ナレッジ吸収力が4倍速。</p>
       </article>
 
       <article class="insight-card tip">
-        <h3><i class="fa-solid fa-fire"></i> 強み④ 影響力「ペア依存 → 最上志向ダブル」</h3>
-        <p>影響力TOP5は <strong>🌻なっつん最上志向①＋🌹こっしー最上志向④</strong> のダブル体制に変化（こっしー追加前は なっつん独走）。<br>さらに 🌹こっしー信念⑧ で <em>"譲れない軸"</em> が加わる。</p>
-        <p>→ <strong>対外発信や品質ベクトル</strong>を なっつん独走じゃなく <em>共鳴ペアで支える</em> 構造に。なっつんが疲弊しない仕組みが内部化された。<em>「もっと最高に」の方向を2人で共有できるのは大きい</em>。</p>
+        <h3><i class="fa-solid fa-fire"></i> 強み④ 影響力は「最上志向ダブル＋発信側分離」</h3>
+        <p>影響力TOP5は <strong>🌻なっつん最上志向①＋🌹こっしー最上志向④</strong> のダブル体制（変わらず）。<strong>どらは影響力TOP10ゼロ</strong>──表に立たない構造特化型。</p>
+        <p>→ <strong>「発信担当（なっつん中心）」と「実装担当（どら中心）」の明確な役割分離</strong>が成立。なっつんが疲弊せず発信に集中できる。どらが裏で仕組みを動かす。<em>"前と裏" が完全に補完する構造</em>。</p>
       </article>
 
       <article class="insight-card shine" style="--insight-color: var(--koshii);">
         <h3 style="color: #A8425E;"><i class="fa-solid fa-link"></i> 発見⑤ こっしーは「分断を繋ぐ橋」</h3>
-        <p>こっしーは <strong>4ドメイン全部にTOP10内資質を持つオールラウンダー型</strong>（人間関係3・実行力3・影響力2・戦略思考2）。他4人はどこかに偏ってる中で、唯一の <em>"全方位足場持ち"</em>。</p>
-        <p>→ <strong>どのメンバーとも資質の重なりがある</strong>（10資質中7つが他メンバーと共有）。なっつん（最上志向）・りえ（回復志向・慎重さ・公平性・学習欲）・くう（成長促進・共感性・学習欲）・おけもん（調和性・共感性）。<em>こっしーがいると、メンバー間の "資質的な分断" が起きにくい</em>。</p>
+        <p>こっしーは <strong>4ドメイン全部にTOP10内資質を持つオールラウンダー型</strong>（人間関係3・実行力3・影響力2・戦略思考2）。他メンバーはどこかに偏ってる中で、唯一の <em>"全方位足場持ち"</em>。</p>
+        <p>→ <strong>どのメンバーとも資質の重なりがある</strong>。なっつん（最上志向）・りえ（回復志向・慎重さ・公平性・学習欲）・くう（成長促進・共感性・学習欲）・おけもん（調和性・共感性）・どら（慎重さ・回復志向・信念・共感性・学習欲）。<em>こっしーがいると、メンバー間の "資質的な分断" が起きにくい</em>。</p>
+      </article>
+
+      <article class="insight-card shine" style="--insight-color: var(--dora);">
+        <h3 style="color: #7A5934;"><i class="fa-solid fa-wand-magic-sparkles"></i> 発見⑥ どらは「なっつんの夢を仕組みに翻訳する人」</h3>
+        <p>どらは <strong>実行力5＋戦略思考3＝計8資質が "考えて仕上げる" 系</strong>＋影響力0という超特化型。これは <em>"表に立たず、裏で仕組みを動かす"</em> 設計者の構造。本人語<em>「人の時間と想いを大切にしたい」「やりたいことがあるのに仕組みが追いつかない人にシステムで後押し」</em>がぴったり符合。</p>
+        <p>→ <strong>りえとTOP10で5資質重複＝双子構造</strong>（学習欲・分析思考・慎重さ・規律性・回復志向）。りえと組めばirodoriのオペレーション中核を担える。<em>固有資質は目標志向①と着想④──"ゴール逆算" と "組み合わせ発想"</em> で、なっつんの「もっと最高に」の構想を <strong>具体的なNotion実装に翻訳する独占領域</strong>。</p>
       </article>
 
     </div>
@@ -560,30 +602,30 @@
   <!-- Synergy Patterns -->
   <section class="content" style="background: var(--sand-deep);">
     <div class="section-head fade-in">
-      <p class="eyebrow-en">Synergy patterns — 5人で動く時のフォーメーション</p>
-      <h2>場面ごとの、5人フォーメーション例。</h2>
+      <p class="eyebrow-en">Synergy patterns — 6人で動く時のフォーメーション</p>
+      <h2>場面ごとの、6人フォーメーション例。</h2>
     </div>
 
     <div class="insight-grid stagger">
       <article class="insight-card shine">
         <h3><i class="fa-solid fa-bullhorn"></i> 新メンバーをirodoriに迎える時</h3>
-        <p><strong>🌻なっつん（包含⑤）</strong>＝歓迎の声かけ／<strong>🌿くう（個別化①）</strong>＝個性を見抜く／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で深く話を聴く／<strong>🌸りえ（規律性⑤）</strong>＝オリエン手順を整える／<strong>🌹こっしー（成長促進⑤＋調和性①＋共感性⑥）</strong>＝<em>じっくり馴染ませる伴走役</em>。</p>
-        <p>→ <strong>「全員を巻き込み・個性を見て・深く話を聴き・運用に乗せて・じっくり馴染ませる」</strong>の5段オンボード完成形。</p>
+        <p><strong>🌻なっつん（包含⑤）</strong>＝歓迎の声かけ／<strong>🌿くう（個別化①）</strong>＝個性を見抜く／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で深く話を聴く／<strong>🌸りえ（規律性⑤）</strong>＝オリエン手順を整える／<strong>🌹こっしー（成長促進⑤＋調和性①＋共感性⑥）</strong>＝じっくり馴染ませる伴走役／<strong>🪄どら（規律性⑦＋個別化⑥＋着想④）</strong>＝<em>Notionでオンボード基盤を仕組み化</em>。</p>
+        <p>→ <strong>「巻き込み・個性把握・深聴・手順整備・伴走・仕組み化」</strong>の6段オンボード完成形。<em>どら追加で "属人化しない再現性ある仕組み" が走る</em>。</p>
       </article>
       <article class="insight-card shine">
         <h3><i class="fa-solid fa-chart-line"></i> 大事な意思決定の時</h3>
-        <p><strong>🌿くう（未来志向③）</strong>＝3年後の絵を描く／<strong>🌸りえ（分析思考②＋慎重さ③）</strong>＝リスクとデータで検証／<strong>🌷おけもん（調和性①）</strong>＝合意点を探す／<strong>🌻なっつん（適応性②＋最上志向①）</strong>＝「これで行こう！」と旗を振る／<strong>🌹こっしー（信念⑧＋慎重さ②＋公平性⑨）</strong>＝<em>"譲れない軸"と一貫性を保つ</em>。</p>
-        <p>→ <strong>「描く → 検証 → 合意 → 決断 → 軸ガード」</strong>の5段フローが組める。<em>なっつんの勢いを、こっしー＋りえのダブル慎重さで受け止める構造</em>。</p>
+        <p><strong>🌿くう（未来志向③）</strong>＝3年後の絵を描く／<strong>🌸りえ（分析思考②＋慎重さ③）</strong>＝リスクとデータで検証／<strong>🌷おけもん（調和性①）</strong>＝合意点を探す／<strong>🌻なっつん（適応性②＋最上志向①）</strong>＝「これで行こう！」と旗を振る／<strong>🌹こっしー（信念⑧＋慎重さ②＋公平性⑨）</strong>＝"譲れない軸"と一貫性を保つ／<strong>🪄どら（目標志向①＋分析思考③＋着想④）</strong>＝<em>「じゃあ実装どうする？」を即翻訳</em>。</p>
+        <p>→ <strong>「描く → 検証 → 合意 → 決断 → 軸ガード → 実装翻訳」</strong>の6段フローが組める。<em>なっつんの構想がその場でどらの仕組みに落ちる速度</em>。</p>
       </article>
       <article class="insight-card shine">
         <h3><i class="fa-solid fa-fire-extinguisher"></i> トラブル発生時</h3>
-        <p><strong>🌸りえ（回復志向①）</strong>＝仕組みの原因究明・修復／<strong>🌷おけもん（共感性②）</strong>＝関係者の感情ケア／<strong>🌻なっつん（適応性②）</strong>＝即座に方針転換／<strong>🌿くう（共感性②＋ポジティブ④）</strong>＝場の温度を保つ／<strong>🌹こっしー（回復志向③＋調和性①）</strong>＝<em>人と人の間にできたほころびを直す</em>。</p>
-        <p>→ <strong>「直す × ケアする × 動かす × 明るく保つ × 人間関係修復」</strong>の5方向同時対応。<em>りえが「仕組み」を、こっしーが「関係性」を直すペアで、修復網が二重化</em>。</p>
+        <p><strong>🌸りえ（回復志向①）</strong>＝仕組みの原因究明・修復／<strong>🌷おけもん（共感性②）</strong>＝関係者の感情ケア／<strong>🌻なっつん（適応性②）</strong>＝即座に方針転換／<strong>🌿くう（共感性②＋ポジティブ④）</strong>＝場の温度を保つ／<strong>🌹こっしー（回復志向③＋調和性①）</strong>＝人と人の間のほころびを直す／<strong>🪄どら（回復志向⑤＋分析思考③＋慎重さ⑩）</strong>＝<em>業務フローの詰まりを構造分析→修復</em>。</p>
+        <p>→ <strong>「直す × ケアする × 動かす × 明るく保つ × 関係修復 × フロー修復」</strong>の6方向同時対応。<em>"直す系" がりえ・こっしー・どらの3層体制──修復網が異次元に密に</em>。</p>
       </article>
       <article class="insight-card shine">
-        <h3><i class="fa-solid fa-seedling"></i> メンバーを育てる時 ★こっしーがど真ん中</h3>
-        <p><strong>🌿くう（成長促進⑨＋個別化①）</strong>＝伸びしろを見抜く／<strong>🌹こっしー（成長促進⑤＋共感性⑥＋調和性①）</strong>＝<em>気持ちに寄り添ってじっくり育てる主担当</em>／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で寄り添う／<strong>🌻なっつん（ポジティブ③）</strong>＝明るくチャレンジを促す／<strong>🌸りえ（規律性⑤）</strong>＝育成の枠組みを整える。</p>
-        <p>→ <strong>「育成」はこっしー × くうのダブルエンジンが中核</strong>に。<em>なっつんが構想中の「教育系事業」「ADHD向け研修」の現場担当としてこっしーがど真ん中で活きる</em>。本人語「学生のときから教えるのが好き」とドンピシャ。</p>
+        <h3><i class="fa-solid fa-seedling"></i> メンバーを育てる時</h3>
+        <p><strong>🌿くう（成長促進⑨＋個別化①）</strong>＝伸びしろを見抜く／<strong>🌹こっしー（成長促進⑤＋共感性⑥＋調和性①）</strong>＝気持ちに寄り添って育てる主担当／<strong>🌷おけもん（共感性②＋親密性④）</strong>＝1対1で寄り添う／<strong>🌻なっつん（ポジティブ③）</strong>＝明るくチャレンジを促す／<strong>🌸りえ（規律性⑤）</strong>＝育成の枠組みを整える／<strong>🪄どら（着想④＋規律性⑦＋個別化⑥）</strong>＝<em>育成プログラムをNotion化＋進捗管理基盤を構築</em>。</p>
+        <p>→ <strong>「現場ケア（こっしー×くう）×　仕組み化（どら）」の両輪</strong>に。<em>なっつんが構想中の「教育系事業」「ADHD向け研修」は、こっしーが現場で寄り添い、どらが運用基盤を仕組みで支える</em>のが理想構造。</p>
       </article>
     </div>
   </section>
@@ -654,7 +696,7 @@
       </div>
     </div>
 
-    <!-- 5人カード（おけもん以外） -->
+    <!-- 6人カード（おけもん以外） -->
     <div class="insight-grid stagger" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 1300px; margin: 0 auto;">
 
       <article class="insight-card warning" style="background: #FFF; border-left-color: var(--natsuun);">
@@ -679,6 +721,15 @@
         <p style="margin-top: 14px;"><strong>⚠️ 分析思考②</strong>：<em>分析しすぎて行動が遅れる</em>／根拠を求めすぎて他人を疲れさせる／<em>「なぜ？」を繰り返しすぎる</em>。<br>→ <em>「分析する時間」を時間で区切る</em>。なっつんの活発性スイッチを借りる。</p>
         <p style="margin-top: 14px;"><strong>⚠️ 慎重さ③</strong>：<em>考えすぎて挑戦に踏み出せない</em>／リスクを過大評価／<em>「念のため」</em>が増えすぎる。<br>→ <em>「踏み出すかどうかは別軸で決める」</em>。リスクを出す＝中止じゃない。</p>
         <p style="margin-top: 14px;"><strong>⚠️ 規律性⑤</strong>：ルール厳守で <em>柔軟性に欠ける</em>／変化を嫌う／なっつんの適応性②と <em>正面衝突</em>。<br>→ <em>「絶対守る軸」と「柔軟ゾーン」を最初に区別する</em>。</p>
+      </article>
+
+      <article class="insight-card warning" style="background: #FFF; border-left-color: var(--dora);">
+        <h3 style="color: #7A5934;"><i class="fa-solid fa-wand-magic-sparkles"></i> 🪄 どら</h3>
+        <p style="margin-top: 14px;"><strong>⚠️ 目標志向① の罠</strong>：ゴールに集中しすぎて <em>周囲の声・優先順位の変更が見えなくなる</em>（PDFに本人盲点として明記）。<em>「他の人の "まわり道" にも発見がある」</em>を意識的に。<br>→ 会議終わりに <strong>「決定事項の概観＋次集まる日時を決める」</strong> 役を引き受けるのが処方箋（PDF推奨）。</p>
+        <p style="margin-top: 14px;"><strong>⚠️ 学習欲② × 着想④ の罠</strong>：学んだ知識・思いついたアイデアが <em>次々増えて手が散る</em>／実装が追いつかない。<br>→ 目標志向①＋規律性⑦が自分でブレーキ踏める構造なので、<em>「1案件1機能ずつリリース」</em>の縛りで対応。</p>
+        <p style="margin-top: 14px;"><strong>⚠️ 分析思考③ の罠</strong>：<em>分析しすぎて行動が遅れる</em>／根拠を求めすぎて他人を疲れさせる。<br>→ なっつんの活発性スイッチを借りる。<em>「分析する時間を時間で区切る」</em>。</p>
+        <p style="margin-top: 14px;"><strong>⚠️ 信念⑧ の罠</strong>：「人の時間と想いを大切に」が強すぎて <em>"全部のクライアント案件を背負う"</em> に陥る／妥協できない。<br>→ <em>「優先順位を分析思考③で言語化」</em>＋慎重さ⑩で「請けない判断」も含めて選ぶ。</p>
+        <p style="margin-top: 14px;"><strong>⚠️ 影響力ゼロ の罠</strong>：表に立つことを完全に他人任せにして <em>"自分の貢献が見えにくくなる"</em>。<br>→ 信念⑧と着想④を使って <em>"裏で動いた仕組みの成果を1行で言語化して共有"</em> する習慣を。<strong>"見えない仕事を、見える成果に翻訳する"</strong>のが大事。</p>
       </article>
 
       <article class="insight-card warning" style="background: #FFF; border-left-color: var(--koshii);">
@@ -809,7 +860,7 @@
         <strong style="color: var(--accent);">大事なこと：</strong>
         どの動きも、その人にとって <em>「自然な、正しい行動」</em>。<br>
         ぶつかった時に <strong>「相手が悪い」と思わず、「これは資質の違いだ」と気付ける</strong> こと——それだけで、衝突の8割は <em>「補完の入口」</em> に変わります🌸<br><br>
-        5人で組む価値は、<strong>こういう違いがあるからこそ補完できる</strong> こと。<em>同じ動きをする人ばかりだと、チームは前へ進まない。</em>
+        6人で組む価値は、<strong>こういう違いがあるからこそ補完できる</strong> こと。<em>同じ動きをする人ばかりだと、チームは前へ進まない。</em>
       </p>
     </div>
   </section>
@@ -904,6 +955,26 @@
         <p style="font-size: 13.5px; margin-top: 14px;">→ <em>※ Chatwork発言データはまだ集約途中のため、2026-06-06 ブレスト雑談会トランスクリプトより本人発言を抜粋。</em></p>
       </article>
 
+      <article class="insight-card" style="--insight-color: var(--dora); border-left-color: var(--dora);">
+        <h3 style="color: #7A5934;"><i class="fa-solid fa-wand-magic-sparkles"></i> 🪄 どら</h3>
+        <p style="background: rgba(181, 137, 94, 0.10); padding: 14px 18px; border-radius: 10px; font-family: 'Noto Serif JP', serif; line-height: 1.85; margin-bottom: 12px; font-size: 14px;">
+          「<em style="font-style:normal;font-weight:600;">人の時間と想いを大切にしたい！</em>」<br>「お客様の〝夢〟をシステムで叶えるために、どんな仕組みを作るときも中心にあるのは、<em style="font-style:normal;font-weight:600;">その人の『時間』と『想い』を大切にすることです</em>✨」
+        </p>
+        <p style="font-size: 13.5px;">→ <strong style="color: #7A5934;">信念⑧＋共感性⑨</strong> がそのまま言葉に。<em>「人の時間を大切にしたい」が技術選択の中心軸</em>であることを宣言してる瞬間。Notion技術はあくまで手段、目的は人の時間を取り戻すこと。</p>
+
+        <p style="background: rgba(181, 137, 94, 0.10); padding: 14px 18px; border-radius: 10px; font-family: 'Noto Serif JP', serif; line-height: 1.85; margin: 14px 0 12px; font-size: 14px;">
+          「<em style="font-style:normal;font-weight:600;">それ、全部しなくて大丈夫ですよ</em>」<br>「ここは自動化で時短できますよ〜」<br>「<em style="font-style:normal;font-weight:600;">日々の使い方・動線レベルまで考えながら設計しています</em>」
+        </p>
+        <p style="font-size: 13.5px;">→ <strong style="color: #7A5934;">個別化⑥＋規律性⑦＋慎重さ⑩</strong> の三重奏。<em>「使う側がつまずく場所を先回りで潰す」</em>動きが言葉のニュアンスまで染み出てる。</p>
+
+        <p style="background: rgba(181, 137, 94, 0.10); padding: 14px 18px; border-radius: 10px; font-family: 'Noto Serif JP', serif; line-height: 1.85; margin: 14px 0 12px; font-size: 14px;">
+          「<em style="font-style:normal;font-weight:600;">夢を叶えるカタチをつくる</em>」<br>「やりたいことがあるのに、<em style="font-style:normal;font-weight:600;">仕組みが追いついていない</em>──そこに寄り添って、システムで後押し」
+        </p>
+        <p style="font-size: 13.5px;">→ <strong style="color: #7A5934;">目標志向①＋分析思考③＋着想④＋共感性⑨</strong> の最強カルテット。<em>「夢（ゴール）→ 詰まり（分析）→ カタチ（着想）」</em>という思考プロセスがコピー1本に圧縮されてる。<strong>これがどらが "なっつんの夢を仕組みに翻訳する人" である構造的証拠</strong>。</p>
+
+        <p style="font-size: 13.5px; margin-top: 14px;">→ <em>※ 出典：リベシティプロフィール「NotionどらDX🪄💫」自己紹介文より本人語を抜粋。</em></p>
+      </article>
+
     </div>
 
     <p style="margin: 32px auto 0; max-width: 720px; text-align: center; color: var(--muted); font-size: 13px;">
@@ -915,7 +986,7 @@
   <section class="content back-section">
     <div class="section-head fade-in">
       <p class="eyebrow-en" style="color: var(--accent);">For the team</p>
-      <h2>5人それぞれの取説を見る</h2>
+      <h2>6人それぞれの取説を見る</h2>
       <p>このグリッドを踏まえて、もう一度それぞれの取説を読むと、<br>「あ、この人のこの資質が、ここで効くんだ」が立体的に見える。</p>
       <div style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
         <a href="okemon.html" class="back-btn" style="background: var(--okemon); color: #FFF;">🌷 おけもん</a>
@@ -923,6 +994,7 @@
         <a href="kuu.html" class="back-btn" style="background: var(--kuu); color: #FFF;">🌿 くう</a>
         <a href="rie.html" class="back-btn" style="background: var(--rie); color: #FFF;">🌸 りえ</a>
         <a href="koshii.html" class="back-btn" style="background: var(--koshii); color: #FFF;">🌹 こっしー</a>
+        <a href="dora.html" class="back-btn" style="background: var(--dora); color: #FFF;">🪄 どら</a>
       </div>
     </div>
   </section>

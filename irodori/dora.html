@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>どらの取扱説明書 | irodoriのみんなのストレングス入門</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="branch.css">
+  <style>
+    /* ===== dora専用 拡張パーツ ===== */
+    body[data-character="dora"] { --char: var(--dora); }
+
+    /* 6-10位カードグリッド */
+    .ext-section { background: linear-gradient(135deg, #FBF6EE 0%, #FFFFFF 70%); border-top: 3px solid var(--dora); padding-top: 56px; padding-bottom: 56px; }
+    .ext-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 24px; }
+    .ext-card { background: #FFF; border: 1px solid #E8DCC4; border-radius: 14px; padding: 22px 24px; box-shadow: 0 6px 18px rgba(181, 137, 94, 0.10); }
+    .ext-card h4 { font-family: "Noto Serif JP", serif; margin: 0 0 6px; color: #7A5934; font-size: 1.18em; display: flex; align-items: center; gap: 10px; }
+    .ext-card h4 .rank { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--dora); font-size: 1.1em; min-width: 32px; }
+    .ext-card h4 small { font-family: "Inter", sans-serif; font-style: normal; color: #A78A60; font-size: .55em; font-weight: 500; margin-left: 4px; }
+    .ext-card p { margin: 8px 0 0; color: #5A4C38; font-size: .93em; line-height: 1.75; }
+    .ext-card .dom-tag { display: inline-block; padding: 2px 10px; border-radius: 12px; font-size: .72em; color: #FFF; font-weight: 600; margin-left: auto; }
+    .ext-card .tag-exec { background: var(--exec); }
+    .ext-card .tag-influence { background: var(--influence); }
+    .ext-card .tag-relation { background: var(--relation); }
+    .ext-card .tag-thinking { background: var(--thinking); }
+
+    /* ドメイン分布ハイライト */
+    .balance-card { background: linear-gradient(135deg, var(--dora) 0%, #8E6433 100%); color: #FFF; border-radius: 22px; padding: 28px 30px; margin-top: 28px; box-shadow: 0 16px 38px rgba(142, 100, 51, 0.22); }
+    .balance-card h3 { margin: 0 0 12px; font-size: 1.4em; font-family: "Noto Serif JP", serif; }
+    .balance-card p { margin: 0; line-height: 1.75; font-size: 1.02em; }
+    .balance-card .domain-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .balance-card .domain-pills span { background: rgba(255,255,255,.18); padding: 6px 14px; border-radius: 999px; font-size: .9em; font-weight: 600; backdrop-filter: blur(4px); }
+
+    /* 本人語ボックス（リベシティプロフィールより） */
+    .dora-quote { background: linear-gradient(90deg, rgba(181, 137, 94, 0.10), rgba(255,255,255,0.85)); border-left: 5px solid var(--dora); padding: 22px 26px; border-radius: 0 14px 14px 0; margin: 28px 0; }
+    .dora-quote .quote-label { font-family: "Cormorant Garamond", serif; font-style: italic; color: var(--dora); font-size: 1.0em; margin: 0 0 8px; font-weight: 600; letter-spacing: 0.04em; }
+    .dora-quote p { margin: 4px 0; color: #4A3E2A; font-size: 1.0em; line-height: 1.78; }
+    .dora-quote p strong { color: #7A5934; }
+
+    /* 専門特化バッジ */
+    .specialist-badge { display: inline-block; background: var(--dora); color: #FFF; padding: 5px 14px; border-radius: 999px; font-size: .75em; font-weight: 700; letter-spacing: 0.08em; margin-left: 8px; vertical-align: middle; }
+
+    /* 共有資質マップ（カードグリッド） */
+    .shared-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; margin-top: 24px; }
+    .shared-card { background: #FFF; border: 1px solid #E8DCC4; border-left: 5px solid var(--dora); border-radius: 12px; padding: 18px 22px; box-shadow: 0 4px 14px rgba(181, 137, 94, 0.10); display: grid; grid-template-rows: auto auto 1fr; gap: 10px; }
+    .shared-card .shared-rank { font-family: "Noto Serif JP", serif; color: #7A5934; font-size: 1.18em; font-weight: 700; }
+    .shared-card .shared-rank small { font-family: "Inter", sans-serif; color: #A78A60; font-size: .65em; font-weight: 500; margin-left: 8px; letter-spacing: 0.04em; }
+    .shared-card .shared-partners { font-size: .92em; color: #6A5840; font-weight: 600; padding: 6px 12px; background: #FBF5EA; border-radius: 8px; display: inline-block; }
+    .shared-card .shared-partners.solo { background: #F5F0E8; color: #999; font-weight: 500; }
+    .shared-card .shared-body { font-size: .92em; color: #5A4C38; line-height: 1.72; }
+
+    /* Notion事例ボックス */
+    .notion-cases { background: linear-gradient(180deg, #FFFFFF 0%, #FBF6EE 100%); border: 1px solid #E8DCC4; border-radius: 18px; padding: 28px 32px; margin-top: 28px; }
+    .notion-cases h4 { margin: 0 0 16px; color: #7A5934; font-family: "Noto Serif JP", serif; font-size: 1.2em; }
+    .notion-cases ul { margin: 0; padding-left: 0; list-style: none; }
+    .notion-cases li { padding: 10px 0 10px 28px; border-bottom: 1px dashed #E8DCC4; font-size: .98em; color: #4A3E2A; line-height: 1.65; position: relative; }
+    .notion-cases li:last-child { border-bottom: none; }
+    .notion-cases li::before { content: "▶"; position: absolute; left: 4px; color: var(--dora); font-size: .8em; top: 14px; }
+    .notion-cases li strong { color: #7A5934; }
+  </style>
+</head>
+<body data-character="dora">
+
+  <header class="topbar">
+    <a class="brand" href="index.html"><i class="fa-solid fa-arrow-left"></i> 入門ホームへ</a>
+    <nav class="nav-links">
+      <a href="okemon.html">おけもん</a>
+      <a href="natsuun.html">なっつん</a>
+      <a href="kuu.html">くう</a>
+      <a href="rie.html">りえ</a>
+      <a href="koshii.html">こっしー</a>
+      <a href="dora.html" class="is-active">どら</a>
+      <a href="case-study.html">📖 ケーススタディ</a>
+      <a href="team.html" class="nav-cta">→ Team Grid</a>
+    </nav>
+  </header>
+
+  <section class="branch-hero" style="background: linear-gradient(135deg, #FBF5EA 0%, #FFFFFF 60%, #FBF6EE 100%);">
+    <div class="hero-content">
+      <p class="hero-label" style="color: #7A5934;">— The System Translator / 夢を仕組みに翻訳する人 —</p>
+      <h1 class="hero-title">
+        どら
+        <small>DORA — NotionどらDX🪄💫</small>
+      </h1>
+      <p class="hero-tagline">「やりたい」があるのに仕組みが追いつかない人に、<br>システムでカタチをつくる人。</p>
+      <div class="hero-top5">
+        <span><b>1</b>目標志向</span>
+        <span><b>2</b>学習欲</span>
+        <span><b>3</b>分析思考</span>
+        <span><b>4</b>着想</span>
+        <span><b>5</b>回復志向</span>
+      </div>
+      <p style="margin-top: 18px; font-size: .85em; color: #A78A60; letter-spacing: 0.06em;">＋ 6 個別化 / 7 規律性 / 8 信念 / 9 共感性 / 10 慎重さ</p>
+      <p style="margin-top: 14px; font-size: .8em; color: #B8956B; font-style: italic;">SE歴16年・北海道在住・「IT界のドラえもん"どら"」</p>
+    </div>
+  </section>
+
+  <!-- ============== ドメイン分布 + 専門特化型 ============== -->
+  <section class="content domain-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">4 domains</p>
+      <h2>実行力＋戦略思考に超特化した<br>「専門特化型」<span class="specialist-badge">SPECIALIST</span></h2>
+      <p>どらのTOP10は <strong>実行力5資質＋戦略思考3資質＝計8資質が "考えて仕上げる" 系</strong>。<br>影響力は <strong>TOP10にゼロ</strong>──表に立つより、<em>裏で仕組みを動かす設計者</em> の構造。<br>SE歴16年・Notionで仕組みづくり、というキャリアに完璧に符合する才能配置。</p>
+    </div>
+    <div class="domain-meter">
+      <div class="domain-bar bar-exec fade-in">
+        <div class="domain-head"><span class="domain-name">実行力</span><span class="domain-count">5 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:95%; background: var(--exec);"></div></div>
+        <p class="domain-list">目標志向① ・ 回復志向⑤ ・ 規律性⑦ ・ 信念⑧ ・ 慎重さ⑩</p>
+      </div>
+      <div class="domain-bar bar-thinking fade-in">
+        <div class="domain-head"><span class="domain-name">戦略的思考力</span><span class="domain-count">3 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:75%; background: var(--thinking);"></div></div>
+        <p class="domain-list">学習欲② ・ 分析思考③ ・ 着想④</p>
+      </div>
+      <div class="domain-bar bar-relation fade-in">
+        <div class="domain-head"><span class="domain-name">人間関係構築力</span><span class="domain-count">2 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:48%; background: var(--relation);"></div></div>
+        <p class="domain-list">個別化⑥ ・ 共感性⑨</p>
+      </div>
+      <div class="domain-bar bar-influence fade-in">
+        <div class="domain-head"><span class="domain-name">影響力</span><span class="domain-count">0 / TOP10</span></div>
+        <div class="domain-track"><div class="domain-fill" style="--w:0%; background: var(--influence);"></div></div>
+        <p class="domain-list">— TOP10になし（表に立つ役・対外発信は他メンバーと補完）</p>
+      </div>
+    </div>
+
+    <div class="balance-card fade-in">
+      <h3>🪄 「影響力0」は弱点じゃない、専門特化の証</h3>
+      <p>
+        irodoriで <strong>影響力TOP10ゼロ</strong>を持つのはどらだけ。<br>
+        他メンバーは1〜2資質持ってる中で、どらは <em>"前に立たない"</em> ことが構造的に決まってる。<br><br>
+        その代わり <strong>実行力5資質＋戦略思考3資質＝計8資質を "仕組みづくり" に集中投下</strong> できる。<br>
+        本人語<em>「人の時間と想いを大切にしたい」「それ、全部しなくて大丈夫ですよ」「ここは自動化で時短できますよ〜」</em>──表で旗を振らず、<strong>裏でその人の時間を取り戻す側</strong>に回る才能配置。<br>
+        irodoriで <em>「なっつんが描いた絵を仕組みに翻訳する役」</em> として、なくてはならない構造。
+      </p>
+      <div class="domain-pills">
+        <span>⚡ 実行力 5</span>
+        <span>🧠 戦略思考 3</span>
+        <span>🤝 人間関係 2</span>
+        <span>📣 影響力 0</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== TOP5詳細 ============== -->
+  <section class="content top5-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Top 5 in detail</p>
+      <h2>TOP5を、irodoriの現場で読み解くと。</h2>
+      <p>どらの本人語（リベシティプロフィール）と組み合わせて、TOP5を読み解く。</p>
+    </div>
+    <div class="top5-grid stagger">
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.1</span>
+          <span class="top5-domain-tag tag-exec">実行力</span>
+        </div>
+        <h3>目標志向<small>Focus</small></h3>
+        <p class="top5-catch">「方向を決めて、そこに向かって最短距離で進む」</p>
+        <p class="top5-body">方向を定めたら <em>逸れずに走り抜ける</em>。優先順位をつけて、無駄を切り捨てて、目標に向かう力。<br><br><strong>強み</strong>：Notion事例 <em>「コンサル：情報統合で月20時間削減」「物販：3つのシート統合で外注管理が劇的に楽に」</em> のような <strong>"ゴールが明確な仕組みづくり"</strong>で本領発揮。<strong>気をつけポイント</strong>：目標に集中しすぎて、優先順位の変更や周囲の声を見落とす危険（PDF：盲点で本人も自覚済）。<em>「会議終わりに決定事項を概観する」</em>役を意識的に。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.2</span>
+          <span class="top5-domain-tag tag-thinking">戦略的思考力</span>
+        </div>
+        <h3>学習欲<small>Learner</small></h3>
+        <p class="top5-catch">「学ぶこと自体がエネルギー源」</p>
+        <p class="top5-body">SE歴16年＋Notionと仕組みづくりに夢中──<em>「習得し続けること」がご褒美</em>のタイプ。<strong>※くう⑤・りえ④・こっしー⑩も学習欲持ち</strong>──<strong>学習欲カルテット</strong>でirodoriのナレッジ吸収力が爆速。<br><br><strong>強み</strong>：Notionの新機能・新ツールを最速で習得＆チームに展開できる役。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.3</span>
+          <span class="top5-domain-tag tag-thinking">戦略的思考力</span>
+        </div>
+        <h3>分析思考<small>Analytical</small></h3>
+        <p class="top5-catch">「なぜそうなる？」を論理で追う人。</p>
+        <p class="top5-body">物事の <em>原因と結果を論理で追う</em>力。感情論じゃなく、データと事実で判断できる。<strong>※りえ②も分析思考</strong>──<strong>分析思考ペア</strong>がirodoriの "考え抜く脳" を担う。<br><br><strong>強み</strong>：クライアントの "やりたい" を分解→なぜそれが今できないか→どこにテコを入れるか、という <em>「仕組み化の起点」</em>の構造分析。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.4</span>
+          <span class="top5-domain-tag tag-thinking">戦略的思考力</span>
+        </div>
+        <h3>着想<small>Ideation</small></h3>
+        <p class="top5-catch">「点と点を繋いで、新しいカタチを思いつく」</p>
+        <p class="top5-body">既存の要素を <em>意外な組み合わせ</em>で繋ぐ力。Notion事例 <em>「3つのシート統合」「業務フロー整理」「情報統合」</em> という言葉が出てくる背景にこの資質がある。<br><br><strong>強み</strong>：Notion設計でクライアントごとの "オリジナルな仕組み" を発想できる。<strong>気をつけポイント</strong>：着想が止まらず手が増えるリスク──目標志向①＋規律性⑦が同居してるから自分でブレーキ踏める構造。</p>
+      </article>
+
+      <article class="top5-card">
+        <div class="top5-head">
+          <span class="top5-rank">No.5</span>
+          <span class="top5-domain-tag tag-exec">実行力</span>
+        </div>
+        <h3>回復志向<small>Restorative</small></h3>
+        <p class="top5-catch">「壊れたもの・滞ったもの」を直したくなる人。</p>
+        <p class="top5-body">問題を見つけて <em>原因を突き止め、解決する</em>のがエネルギー源。<strong>※りえ①・こっしー③も回復志向持ち</strong>──<strong>回復志向トリオ</strong>でirodoriの "直し屋" が3人体制。<br><br><strong>すみ分けポイント</strong>：りえは <em>仕組み・データ</em>、こっしーは <em>人と人の間</em>、どらは <strong>"クライアントの業務フローの詰まり"</strong> を直す方向で動くのが自然（個別化⑥＋規律性⑦との重なり）。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== 6-10位（拡張TOP10） ============== -->
+  <section class="content ext-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Rank 6-10 / Extended TOP10</p>
+      <h2>6位〜10位──TOP5を支える、5本の補助線。</h2>
+      <p>6-10位を並べると、「考え抜いて仕組みを作る」軸がより立体的に見える。<br>特に <strong>規律性⑦＋信念⑧＋慎重さ⑩</strong> が同居してることで、<em>"作ったシステムが安定して動き続ける"</em> 構造の理由が分かる。</p>
+    </div>
+    <div class="ext-grid stagger">
+
+      <article class="ext-card">
+        <h4><span class="rank">6</span>個別化 <small>Individualization</small><span class="dom-tag tag-relation">人間関係</span></h4>
+        <p>クライアントごとの "違い" を見抜いて、<em>その人専用のカタチ</em>を設計する力。<strong>※くう①も個別化</strong>──<strong>個別化ペア</strong>。本人語<em>「日々の使い方・動線レベルまで考えながら設計しています」</em>に直結。Notion事例が業種ごとに全部違うのも、この資質の表れ。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">7</span>規律性 <small>Discipline</small><span class="dom-tag tag-exec">実行力</span></h4>
+        <p>秩序・ルーチン・チェックリストを <em>味方にする</em>。<strong>※りえ⑤も規律性</strong>──<strong>規律性ペア</strong>。<em>「作ったシステムが運用に乗る」</em>のはこの資質のおかげ。Notion設計で「使う側の運用を考えて作る」のは規律性⑦の発露。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">8</span>信念 <small>Belief</small><span class="dom-tag tag-exec">実行力</span></h4>
+        <p>本人語<em>「人の時間と想いを大切にしたい！」</em>──これがどらの <em>譲れない軸</em>。<strong>※こっしー⑧も信念</strong>──<strong>信念ペア</strong>。Notion技術はあくまで手段、目的は <strong>"その人の時間を取り戻す"</strong> こと、という芯がある。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">9</span>共感性 <small>Empathy</small><span class="dom-tag tag-relation">人間関係</span></h4>
+        <p>クライアントの <em>感情・想い</em>を言葉になる前に拾う力。<strong>※おけもん②・なっつん④・くう②・こっしー⑥も共感性持ち＝6人中5人保有（クインテット・りえはTOP10外20位）</strong>。<br>本人語<em>「やりたいことがあるのに、仕組みが追いついていない」</em>を見抜けるのは、技術視点だけでなく <strong>"その人の気持ち"</strong> を読めてるから。</p>
+      </article>
+
+      <article class="ext-card">
+        <h4><span class="rank">10</span>慎重さ <small>Deliberative</small><span class="dom-tag tag-exec">実行力</span></h4>
+        <p>リスクを <em>先回りで考えて足元を固める</em>。<strong>※りえ③・こっしー②も慎重さ</strong>──<strong>慎重さトリオ</strong>。なっつんの「ノリで行こう！」を3人体制で受け止める鉄壁。Notion設計で <em>"使う人がつまずく場所"</em> を先回りで潰せるのもこの資質。</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== どら本人語スポットライト ============== -->
+  <section class="content" style="background: linear-gradient(180deg, #FBF6EE 0%, #FFFFFF 100%);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">From dora's profile</p>
+      <h2>どらの本人語が、TOP10を裏付けてる。</h2>
+      <p>リベシティプロフィール「NotionどらDX🪄💫」から、本人の言葉そのまま抜粋。<br>34資質ストファイの順位と、本人が普段から発している言葉が、ぴったり重なる瞬間。</p>
+    </div>
+
+    <div class="dora-quote fade-in">
+      <p class="quote-label">🪄 どら 本人語：信念⑧ × 共感性⑨</p>
+      <p>「<strong>人の時間と想いを大切にしたい！</strong>」<br>「お客様の〝夢〟をシステムで叶えるために、どんな仕組みを作るときも中心にあるのは、<strong>その人の『時間』と『想い』を大切にすること</strong>です✨」</p>
+    </div>
+
+    <div class="dora-quote fade-in">
+      <p class="quote-label">🪄 どら 本人語：個別化⑥ × 規律性⑦</p>
+      <p>「<strong>それ、全部しなくて大丈夫ですよ</strong>」<br>「ここは自動化で時短できますよ〜」<br>「そんなふうに、<strong>その人が無理なく続けられるカタチ</strong>を、日々の使い方・動線レベルまで考えながら設計しています」</p>
+    </div>
+
+    <div class="dora-quote fade-in">
+      <p class="quote-label">🪄 どら 本人語：目標志向① × 着想④</p>
+      <p>「DX（Digital Transformation）とは、どら流解釈では <strong>①デジタル化（IT化）で →②作業時間が減って →③どんどん次のビジネスに進める♪</strong> という、自動化・効率化の仕組みをつくることです」<br>「結果として、<strong>売上向上や新サービス創造に</strong>✨」</p>
+    </div>
+
+    <div class="dora-quote fade-in">
+      <p class="quote-label">🪄 どら 本人語：分析思考③ × 共感性⑨</p>
+      <p>どら設計の <strong>共通テーマ</strong>：<br>「やりたいことがあるのに、<strong>仕組みが追いついていない</strong>」<br>「そこに寄り添って、システムで後押ししてきました」</p>
+    </div>
+
+    <div class="notion-cases fade-in">
+      <h4>📋 どらのNotion事例 — 全業種を実行力5＋戦略思考3で支えた実績</h4>
+      <ul>
+        <li><strong>農業（1年で50品目）</strong> → Notion化で記録の自動化</li>
+        <li><strong>建築／インテリア</strong> → 業務フロー整理で確認漏れゼロへ</li>
+        <li><strong>コンサル</strong> → 情報統合で月20時間ほど削減</li>
+        <li><strong>カメラマン</strong> → 作品別利益を自動集計で撮影計画へ</li>
+        <li><strong>ライター</strong> → 参考資料・案件の散らばりを統合</li>
+        <li><strong>物販</strong> → 3つのシート統合で外注管理が劇的に楽に</li>
+        <li><strong>Web制作者</strong> → 納期／売上／案件を一括管理</li>
+      </ul>
+      <p style="margin: 16px 0 0; font-size: .92em; color: #7A5934; font-style: italic;">→ <strong>業種を選ばず "詰まり" を解いて流す</strong>のがどらの真骨頂。これは目標志向①＋分析思考③＋規律性⑦＋個別化⑥ の組み合わせでしか出せない出力。</p>
+    </div>
+  </section>
+
+  <!-- ============== 動く条件 / 止まる条件 ============== -->
+  <section class="content env-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">OK / NG environment</p>
+      <h2>動く条件 / 止まる条件</h2>
+    </div>
+    <div class="env-grid">
+      <div class="env-panel ok fade-in">
+        <h3>動く条件</h3>
+        <p class="note">これが揃ってる時、最大出力が出る</p>
+        <ul>
+          <li>ゴールが明確で、そこに向かって走れる（目標志向①）</li>
+          <li>新しい知識・ツールを学べる環境（学習欲②）</li>
+          <li>「なぜ？」をデータと論理で分析できる時間（分析思考③）</li>
+          <li>既存の要素を組み合わせて新しいカタチを発想する自由（着想④）</li>
+          <li>"詰まってる仕組み" を直せる場面（回復志向⑤）</li>
+          <li>クライアントごとに個別に最適化できる裁量（個別化⑥）</li>
+          <li>ルール・手順・チェックリストが整ってる（規律性⑦）</li>
+          <li><strong>「人の時間と想いを大切にする」軸を尊重される場（信念⑧）← 燃料の核</strong></li>
+          <li>感情・想いを丁寧に拾える対話（共感性⑨）</li>
+          <li>リスクを先回りで考える余白（慎重さ⑩）</li>
+        </ul>
+      </div>
+      <div class="env-panel ng fade-in">
+        <h3>止まる条件</h3>
+        <p class="note">これが揃うと、力が出にくくなる</p>
+        <ul>
+          <li>「とにかく前で旗振って！」と表に立つことを要求される（影響力0）</li>
+          <li>ゴール不明・方針がコロコロ変わる（目標志向①と相反）</li>
+          <li>「考えるな、勢いで動け」と分析を許されない（分析思考③と相反）</li>
+          <li>ルール・手順が定まらず即興だらけ（規律性⑦と相反）</li>
+          <li>「人の時間を雑に扱う」職場文化（信念⑧と相反）</li>
+          <li>即決を強要される／リスク検討の余白がない（慎重さ⑩消耗）</li>
+          <li>「全クライアント同じテンプレで」と画一化を求められる（個別化⑥消耗）</li>
+          <li>感情を切り捨てる業務命令（共感性⑨と相反）</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== フレーズ集 ============== -->
+  <section class="content phrase-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Magic phrases</p>
+      <h2>関わる時のフレーズ集</h2>
+    </div>
+    <table class="phrase-table fade-in">
+      <thead><tr><th>◯ 機能する</th><th>✕ 機能しない</th></tr></thead>
+      <tbody>
+        <tr><td>「ゴールを先に決めて、そこから逆算しよう」（目標志向①）</td><td>「方針はその場で変えていこう」</td></tr>
+        <tr><td>「この仕組み、なぜ詰まってる？分析して」（分析思考③）</td><td>「気持ちで判断して」</td></tr>
+        <tr><td>「既存の3つを組み合わせて新しいの作れる？」（着想④）</td><td>「ゼロから完全新規で」</td></tr>
+        <tr><td>「ここ壊れてるんだけど直せる？」（回復志向⑤）</td><td>「とりあえず動いて」</td></tr>
+        <tr><td>「クライアントごとに最適化していい」（個別化⑥）</td><td>「全クライアント同じテンプレで」</td></tr>
+        <tr><td>「ルール先に決めようか」（規律性⑦）</td><td>「臨機応変にお願い」</td></tr>
+        <tr><td><strong>「人の時間を大切にする設計を頼みたい」</strong>（信念⑧）</td><td>「とにかく早く・安く」</td></tr>
+        <tr><td>「リスク、何が考えられる？」（慎重さ⑩）</td><td>「考えすぎないで勢いで」</td></tr>
+        <tr><td>「学ぶ時間、確保しよう」（学習欲②）</td><td>「学びは後回しで実践だけ」</td></tr>
+        <tr><td>「裏で仕組み回す役、任せた」（影響力0との補完）</td><td>「みんなの前で旗振って！」</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============== チームシナジー（5人分） ============== -->
+  <section class="content synergy-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Synergy with the team</p>
+      <h2>他5人と組む時、わたしの役割。</h2>
+      <p>どらは <strong>実行力＋戦略思考に超特化</strong>してる分、<em>誰と組んでも「仕組みに翻訳する側」</em> を担える。<br>下は、それぞれと組んだ時に <em>どらがどう機能するか</em>。</p>
+    </div>
+    <div class="synergy-cards stagger">
+
+      <article class="synergy-card partner-rie" style="--partner-color: var(--rie);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--rie);">理</div>
+          <div class="partner-name">りえ<small>— 整えて、立て直す人</small></div>
+        </div>
+        <p><strong>このペアが最強</strong>。<em>TOP10に5資質も重なる "双子構造"</em>。<br>
+        ・回復志向：りえ①・どら⑤<br>
+        ・慎重さ：りえ③・どら⑩<br>
+        ・規律性：りえ⑤・どら⑦<br>
+        ・分析思考：りえ②・どら③<br>
+        ・学習欲：りえ④・どら②<br>
+        → <strong>「考え抜いて整える」軸が完全シンクロ</strong>。irodoriの仕組み構築・運用ガバナンスは、この2人が中核。<em>りえが "ルール" を、どらが "Notion実装" を担えば、ほぼ全業務が回る</em>。<br>
+        <strong>差分</strong>：りえは <em>自我⑨</em> で「名指しで認められたい」、どらは <em>信念⑧</em> で「人の時間を大切に」──燃料源が違うから補完が効く。</p>
+        <a href="rie.html" class="partner-link" style="border-color: var(--rie); color: var(--rie);">→ りえの取説</a>
+      </article>
+
+      <article class="synergy-card partner-natsuun" style="--partner-color: var(--natsuun);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--natsuun);">夏</div>
+          <div class="partner-name">なっつん<small>— 旗を振る人</small></div>
+        </div>
+        <p><strong>"夢を仕組みに翻訳" の最重要ペア</strong>。<br>なっつん（最上志向①・適応性②・ポジティブ③）が <strong>「もっと最高に・楽しくゲーム感覚で！」</strong> と描く絵に対して、どらが <strong>実行力5資質＋戦略思考3資質</strong> で <em>「じゃあこの仕組みでいきましょう」</em> と即翻訳する。<br>
+        なっつんの <strong>影響力代表（最上志向①）</strong> × どらの <strong>影響力0＋実行力5</strong> ── <em>"前で旗振る人 × 裏で仕組み動かす人"</em> の補完が完璧。<br>
+        本人語の核 <em>「人の時間と想いを大切にしたい」</em> は、なっつんの教育系・ADHD研修事業の現場で <strong>クライアントケアの軸</strong>になる。</p>
+        <a href="natsuun.html" class="partner-link" style="border-color: var(--natsuun); color: var(--natsuun);">→ なっつんの取説</a>
+      </article>
+
+      <article class="synergy-card partner-koshii" style="--partner-color: var(--koshii);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--koshii);">桜</div>
+          <div class="partner-name">こっしー<small>— じっくり育てる人</small></div>
+        </div>
+        <p>共通資質が <strong>5つ</strong> あるペア：<br>
+        ・慎重さ（こ②・ど⑩）／回復志向（こ③・ど⑤）／信念（こ⑧・ど⑧）／共感性（こ⑥・ど⑨）／学習欲（こ⑩・ど②）<br>
+        → <em>"考え抜いて、丁寧に、人を大事に" の方向性が同じ</em>。<br>
+        <strong>すみ分け</strong>：こっしーは <em>調和性①＋成長促進⑤</em> で <strong>"人を育てる側"</strong>、どらは <em>目標志向①＋着想④＋分析思考③</em> で <strong>"仕組みを作る側"</strong>。<em>人と仕組みの両輪</em> で、メンバー育成PJを支えられる。</p>
+        <a href="koshii.html" class="partner-link" style="border-color: var(--koshii); color: var(--koshii);">→ こっしーの取説</a>
+      </article>
+
+      <article class="synergy-card partner-kuu" style="--partner-color: var(--kuu);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--kuu);">空</div>
+          <div class="partner-name">くう<small>— 個性を見抜き、未来を描く人</small></div>
+        </div>
+        <p>共通資質3つ：<strong>個別化（く①・ど⑥）・学習欲（く⑤・ど②）・共感性（く②・ど⑨）</strong>。<br>
+        → くうが <strong>「この人はこういうタイプ」</strong> と個別化①で見抜き、どらが <strong>「じゃあこの人にはこの仕組みが合う」</strong> と個別化⑥で実装する。<br>
+        <strong>"個別化2段ロケット"</strong> がクライアント1人1人の最適化を担う。<br>
+        2人とも <strong>学習欲</strong>でナレッジ吸収力高い → <em>新しいNotion機能・新ツールを共に習得する学び合いペア</em>。</p>
+        <a href="kuu.html" class="partner-link" style="border-color: var(--kuu); color: var(--kuu);">→ くうの取説</a>
+      </article>
+
+      <article class="synergy-card partner-okemon" style="--partner-color: var(--okemon);">
+        <div class="partner-head">
+          <div class="partner-avatar" style="background: var(--okemon);">桶</div>
+          <div class="partner-name">おけもん<small>— 1対1で深く繋ぐ人</small></div>
+        </div>
+        <p>共通資質は <strong>共感性</strong>のみ（お②・ど⑨）── でも、補完関係としては重要。<br>
+        おけもんの <strong>調和性①＋アレンジ③＋未来志向⑩</strong> × どらの <strong>目標志向①＋規律性⑦＋慎重さ⑩</strong> ── <em>"ノリで動くおけもん × ガッチリ仕組みで支えるどら"</em> の補完。<br>
+        おけもんが <em>「とりあえずやってみよう！」</em> と動いた後、どらが <em>「これを再現できる仕組みに落とそう」</em> と継続化する役。<br>
+        おけもんが <strong>慎重さ34（最下位）</strong>なので、どらの慎重さ⑩が直接的な補完になる。</p>
+        <a href="okemon.html" class="partner-link" style="border-color: var(--okemon); color: var(--okemon);">→ おけもんの取説</a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ============== 共有資質マップ（チーム重なり） ============== -->
+  <section class="content" style="background: linear-gradient(180deg, #FFFFFF 0%, #FBF6EE 100%);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Shared talents map</p>
+      <h2>どら × irodori 共有資質マップ</h2>
+      <p>どらの10資質と、他5人のTOP10との重なり一覧。<br>"どこで誰と響き合えるか" が一枚で見える。</p>
+    </div>
+
+    <div class="shared-grid stagger">
+
+      <article class="shared-card">
+        <div class="shared-rank">①目標志向 <small>FOCUS</small></div>
+        <div class="shared-partners solo">どら固有</div>
+        <p class="shared-body">irodoriで <strong>目標志向TOP10持ちはどらだけ</strong>。<em>"ゴールから逆算して走る役"</em> を一人で背負える。なっつんの最上志向①が「もっと最高に」と方向を示す → どらの目標志向①が「じゃあそこに向かって走る」と即実行。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">②学習欲 <small>LEARNER</small></div>
+        <div class="shared-partners">🌿 くう⑤ / 🌸 りえ④ / 🌹 こっしー⑩（<strong>5人中4人＝カルテット</strong>）</div>
+        <p class="shared-body">irodoriの<strong>学習欲カルテット</strong>。ナレッジ吸収力が4倍速。新Notion機能・新ツール・新クライアント業種の学び合いはこの4人が起点。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">③分析思考 <small>ANALYTICAL</small></div>
+        <div class="shared-partners">🌸 りえ②</div>
+        <p class="shared-body">"考え抜く脳" の<strong>分析思考ペア</strong>。クライアントの "詰まり" を論理で分解するときの中核2人。りえはデータ分析、どらは業務フロー分析、と得意領域が違うから補完が効く。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">④着想 <small>IDEATION</small></div>
+        <div class="shared-partners solo">どら固有</div>
+        <p class="shared-body">irodoriで <strong>着想TOP10持ちはどらだけ</strong>。"既存の要素を組み合わせて新しいカタチを発想する" 役。Notion設計で <em>3つのシート統合・業務フロー整理・情報統合</em> という発想が出るのはこの資質。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑤回復志向 <small>RESTORATIVE</small></div>
+        <div class="shared-partners">🌸 りえ① / 🌹 こっしー③（<strong>6人中3人＝トリオ</strong>）</div>
+        <p class="shared-body">"直す系" <strong>回復志向トリオ</strong>。すみ分け：りえは仕組み、こっしーは人と人の間、どらは業務フローの詰まり。トラブル対応の網が3層に。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑥個別化 <small>INDIVIDUALIZATION</small></div>
+        <div class="shared-partners">🌿 くう①</div>
+        <p class="shared-body"><strong>個別化ペア</strong>。くうが "この人はこういう個性" と見抜き、どらが "じゃあこの人専用の仕組み" を作る。クライアント1人1人の最適化はこの2段で完成。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑦規律性 <small>DISCIPLINE</small></div>
+        <div class="shared-partners">🌸 りえ⑤</div>
+        <p class="shared-body"><strong>規律性ペア</strong>。"作ったものが運用に乗る" 担保。りえはルール・締切、どらはNotion運用フローでガード。なっつんの適応性②（一貫性が崩れる傾向）に対する大事な錨。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑧信念 <small>BELIEF</small></div>
+        <div class="shared-partners">🌹 こっしー⑧</div>
+        <p class="shared-body"><strong>信念ペア</strong>。どらの軸は <em>「人の時間と想いを大切に」</em>、こっしーの軸は <em>「人を育てる」</em>。違う軸だけど、両方とも <strong>"人を中心に置く"</strong> 共通点で響き合う。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑨共感性 <small>EMPATHY</small></div>
+        <div class="shared-partners">🌷 おけもん② / 🌻 なっつん④ / 🌿 くう② / 🌹 こっしー⑥（<strong>6人中5人＝クインテット</strong>）</div>
+        <p class="shared-body">irodoriで <strong>共感性は6人中5人がTOP10入り</strong>（※りえは20位＝TOP10外）。これがirodoriが <em>「クライアントの感情を切り捨てない文化」</em>を持てる構造的理由。チーム全体のDNAレベルでほぼ共有された資質。<em>※りえは共感性が中位なので、感情判断はこのクインテットに任せて、りえは分析思考②でデータ判断に専念する役割分担</em>。</p>
+      </article>
+
+      <article class="shared-card">
+        <div class="shared-rank">⑩慎重さ <small>DELIBERATIVE</small></div>
+        <div class="shared-partners">🌸 りえ③ / 🌹 こっしー②（<strong>6人中3人＝トリオ</strong>）</div>
+        <p class="shared-body">リスク管理の<strong>慎重さトリオ</strong>。なっつんの「ノリで行こう！」を3人体制で受け止める鉄壁。Notion設計の "使う人がつまずく場所" を先回り点検する役は、特にどらが担う。</p>
+      </article>
+
+    </div>
+
+    <div class="balance-card fade-in" style="margin-top: 28px;">
+      <h3>🪄 読み解き：どらは "りえの双子＋なっつんの実行翻訳機"</h3>
+      <p>
+        どらの10資質のうち <strong>8資質が他メンバーと重なってる</strong>──irodoriで <em>「孤立しないコア人材」</em>。<br>
+        特に <strong>りえと5資質重複（学習欲・分析思考・慎重さ・規律性・回復志向）＝双子構造</strong>。これがirodoriの "考え抜いて整える" 中核を作る。<br><br>
+        同時に <strong>目標志向①・着想④の2資質が "どら固有"</strong>──ここがどらの独自の貢献領域。<br>
+        <em>「ゴールから逆算する目標志向」と「既存要素を組み合わせる着想」</em>──この2つは、なっつんが描いた絵を <strong>"具体的なNotionの仕組み"</strong> に翻訳する才能。<br>
+        irodoriの「やりたい→形になる」の橋渡しは、どらの独占領域。
+      </p>
+    </div>
+  </section>
+
+  <!-- ============== なっつん事業構想とのシナジー ============== -->
+  <section class="content" style="background: linear-gradient(135deg, #FFF8E8 0%, #FFFFFF 50%, #FBF6EE 100%); border-top: 3px solid var(--natsuun); border-bottom: 3px solid var(--dora);">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en">Synergy with Natsuun's vision</p>
+      <h2>なっつんが描いてる事業構想と、どらの噛み合いポイント。</h2>
+      <p>なっつんが <strong>「理想の自分から逆算する」</strong> アプローチで描いてる構想群に、<em>どらがどう仕組みで翻訳するか</em>。</p>
+    </div>
+
+    <div class="intro-grid stagger" style="grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 18px;">
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">01</span>
+        <h3 style="color: #7A5934;">ADHD・発達特性向け B2E研修</h3>
+        <p>なっつん：<em>「ADHDの人が自分の特性を発揮できる研修」</em></p>
+        <p style="margin-top: 12px;"><strong>どらの噛み合い</strong>：<br>個別化⑥＋共感性⑨で <strong>受講者一人一人の特性に合った仕組み</strong>を設計。さらに目標志向①＋分析思考③で <em>「研修プログラムをNotion化＋自動化」</em>。受講者のつまずきポイントを先回りで潰せる（慎重さ⑩）。<br><em>こっしー（成長促進⑤）×どら（仕組み設計）</em>の組み合わせで「現場ケア＋仕組み」の両輪が回る。</p>
+      </article>
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">02</span>
+        <h3 style="color: #7A5934;">教育・育成系の事業 / メンバー育成基盤</h3>
+        <p>なっつん：<em>「うちって最終的に教育システムじゃない？」</em></p>
+        <p style="margin-top: 12px;"><strong>どらの噛み合い</strong>：<br>これが <strong>どらの真骨頂が出る場</strong>。Notion設計で「育成プログラムの可視化＋進捗管理＋ナレッジDB」を一気に構築できる。<br>Notion事例の <em>「コンサル：情報統合で月20時間削減」</em> がそのまま教育事業のオペレーションに転用可能。</p>
+      </article>
+
+      <article class="info-card" style="border-top: 4px solid var(--natsuun);">
+        <span class="card-index">03</span>
+        <h3 style="color: #7A5934;">irodori 全業務のNotion化・DX</h3>
+        <p>なっつん：<em>「クライアントにとっての最良を突き詰めて、常にチャレンジを繰り返す」（最上志向①）</em></p>
+        <p style="margin-top: 12px;"><strong>どらの噛み合い</strong>：<br>本人語<em>「DXとは、どら流解釈では ①IT化 → ②作業時間が減る → ③次のビジネスに進む」</em>──これがirodori内部の業務効率化PJのど真ん中。<br><em>「自動化で時短できる場所」</em>をどらが先回りで設計→チームの稼働余力を生み出す → なっつんの新規事業着手余力ができる。<strong>"ループ"</strong>が起きる。</p>
+      </article>
+
+    </div>
+
+    <div class="dora-quote fade-in" style="margin-top: 36px;">
+      <p class="quote-label">🪄 どらの本人語 from リベシティプロフィール</p>
+      <p>「<strong>夢を叶えるカタチをつくる</strong>」<br>「やりたいことがあるのに、仕組みが追いついていない、というクライアントに <strong>寄り添って、システムで後押し</strong>してきました」<br>──なっつんの「もっと最高に」「ゲーム感覚で挑戦」を、どらが <strong>「動き続ける仕組み」</strong> に翻訳する。これがirodoriの "発信×実装" の両輪。</p>
+    </div>
+  </section>
+
+  <!-- ============== Back ============== -->
+  <section class="content back-section">
+    <div class="section-head fade-in">
+      <p class="eyebrow-en" style="color: var(--dora);">Back</p>
+      <h2>みんなの取説に戻る</h2>
+      <p>6人それぞれの取説 × Team Grid で、<br>チーム全体が立体的に見える。</p>
+      <a href="team.html" class="back-btn" style="background: var(--dora); color: #FFF;">
+        <i class="fa-solid fa-people-group"></i>
+        Team Gridを見る
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 — A private map for irodori. Not for public distribution.</p>
+    <p style="font-size: .82em; color: #999; margin-top: 8px;">本ページはどら本人の許諾を前提に、おけもん（外部協働）が作成した自己理解資料です。<br>本人の許諾なく第三者に共有しないでください。</p>
+  </footer>
+
+  <script>
+    const animEls = document.querySelectorAll('.fade-in, .stagger');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    animEls.forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add('is-visible');
+      else obs.observe(el);
+    });
+  </script>
+</body>
+</html>
