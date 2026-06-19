@@ -1596,6 +1596,220 @@ p {
   }
 }
 
+/* ==========================================================================
+   目次セクション (TOC)
+   ========================================================================== */
+.toc-section {
+  padding: 32px 80px;
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.toc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.toc-heading {
+  font-family: "Noto Serif JP", serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  white-space: nowrap;
+  margin: 0;
+  padding-right: 24px;
+  border-right: 2px solid var(--accent);
+  letter-spacing: 0.1em;
+}
+
+.toc-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+}
+
+.toc-list li {
+  margin: 0;
+}
+
+.toc-list a {
+  text-decoration: none;
+  color: var(--ink-soft);
+  font-weight: 500;
+  transition: color 200ms ease;
+  display: inline-block;
+}
+
+.toc-list a:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   受験方法セクション (Take Assessment)
+   ========================================================================== */
+.take-assessment-section {
+  background: var(--paper-deep);
+  border-bottom: 1px solid var(--line-soft);
+  padding: 120px 80px;
+}
+
+.take-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: 56px;
+}
+
+.take-steps-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.take-step-card {
+  background: var(--paper);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  box-shadow: var(--shadow-sm);
+  transition: transform 200ms ease;
+}
+
+.take-step-card:hover {
+  transform: translateY(-2px);
+}
+
+.take-step-card .step-num {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--accent);
+  opacity: 0.5;
+  display: block;
+  margin-bottom: 16px;
+  line-height: 1;
+}
+
+.take-step-card h3 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--primary);
+}
+
+.take-step-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* 割引案内ボックス */
+.discount-box {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  background: var(--paper);
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.discount-content {
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.discount-content .badge {
+  display: inline-block;
+  align-self: flex-start;
+  background: var(--accent);
+  color: var(--paper);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 30px;
+  margin-bottom: 18px;
+  letter-spacing: 0.08em;
+}
+
+.discount-content h3 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 22px;
+  line-height: 1.45;
+  margin: 0 0 16px;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.discount-lead {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+
+.discount-desc {
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin: 0 0 24px;
+}
+
+.discount-actions {
+  display: flex;
+  gap: 16px;
+}
+
+.take-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--paper);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 24px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 200ms ease;
+  box-shadow: 0 4px 12px rgba(44, 95, 75, 0.15);
+}
+
+.take-btn-primary:hover {
+  background: #204738;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(44, 95, 75, 0.25);
+}
+
+.discount-image-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  padding: 32px;
+  border-left: 1px solid var(--line-soft);
+}
+
+.discount-img {
+  max-width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
 @media (max-width: 720px) {
   .topbar {
     padding: 14px 20px;
@@ -1675,6 +1889,61 @@ p {
 
   .site-footer {
     padding: 28px 20px;
+  }
+
+  /* モバイル対応の調整 */
+  .toc-section {
+    padding: 24px 20px;
+  }
+
+  .toc-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .toc-heading {
+    border-right: none;
+    border-bottom: 2px solid var(--accent);
+    padding-right: 0;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .toc-list {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .take-assessment-section {
+    padding: 64px 20px;
+  }
+
+  .take-steps-wrapper {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .take-step-card {
+    padding: 24px;
+  }
+
+  .discount-box {
+    grid-template-columns: 1fr;
+  }
+
+  .discount-content {
+    padding: 32px 20px;
+  }
+
+  .discount-image-area {
+    border-left: none;
+    border-top: 1px solid var(--line-soft);
+    padding: 24px 20px;
+  }
+
+  .discount-img {
+    max-height: 200px;
   }
 }
 
