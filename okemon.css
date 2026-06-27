@@ -830,6 +830,17 @@
   transform: translateY(-3px);
 }
 
+.combo-note {
+  margin: 18px 0 0;
+  padding: 16px 20px;
+  border-left: 3px solid var(--accent);
+  background: rgba(251, 248, 243, 0.05);
+  border-radius: 0 8px 8px 0;
+  font-size: 14px;
+  line-height: 1.85;
+  opacity: 0.9;
+}
+
 .combo-formula {
   margin: 0 0 16px;
   color: var(--accent);
