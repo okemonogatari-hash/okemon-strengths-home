@@ -868,6 +868,51 @@
   background: linear-gradient(transparent 62%, rgba(196, 145, 94, 0.40) 62%);
 }
 
+/* swamp（沼にハマる時）*/
+.swamp-group-title {
+  margin: 8px 0 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--paper);
+  letter-spacing: 0.02em;
+}
+.swamp-section .combo-grid {
+  margin-bottom: 40px;
+}
+.swamp-card {
+  border-color: rgba(214, 132, 110, 0.32);
+}
+.swamp-tag {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: "Noto Serif JP", serif;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.swamp-tag.tag-basement {
+  color: #f2c4b3;
+  background: rgba(214, 132, 110, 0.18);
+  border: 1px solid rgba(214, 132, 110, 0.45);
+}
+.swamp-tag.tag-misuse {
+  color: #cdd6e0;
+  background: rgba(120, 145, 175, 0.16);
+  border: 1px solid rgba(120, 145, 175, 0.42);
+}
+.swamp-exit {
+  margin: 8px 0 0;
+  padding: 22px 26px;
+  border-radius: 12px;
+  background: rgba(251, 248, 243, 0.06);
+  border: 1px solid rgba(196, 145, 94, 0.40);
+  color: rgba(251, 248, 243, 0.9);
+  font-size: 15px;
+  line-height: 1.95;
+}
+
 /* reflection */
 .reflection-section {
   padding: 120px 80px;
