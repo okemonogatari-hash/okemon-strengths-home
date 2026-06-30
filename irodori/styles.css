@@ -1797,15 +1797,35 @@ p {
 @media (max-width: 720px) {
   .topbar {
     padding: 14px 20px;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
+    flex-wrap: nowrap;
+  }
+
+  .brand {
+    font-size: 14px;
+  }
+
+  .brand > span:last-child {
+    display: none;
+  }
+
+  .brand-mark {
+    width: 32px;
+    height: 32px;
+    font-size: 11px;
   }
 
   .nav-links {
-    width: 100%;
-    overflow-x: auto;
-    gap: 16px;
+    flex: 1 1 auto;
+    min-width: 0;
+    gap: 14px;
+    font-size: 12px;
     padding-bottom: 4px;
+  }
+
+  .nav-links a.nav-cta {
+    padding: 6px 12px;
+    font-size: 11.5px;
   }
 
   h1 { font-size: 36px; line-height: 1.45; }
