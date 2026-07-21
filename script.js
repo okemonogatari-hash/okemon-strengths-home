@@ -449,9 +449,19 @@ if ("IntersectionObserver" in window) {
         revealObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.16 });
+  // Mobile sections can be several screens tall. A 16% threshold may never be
+  // reached, leaving the section permanently transparent, so reveal as soon as
+  // its leading edge enters the viewport.
+  }, { threshold: 0.01 });
 
   document.querySelectorAll(".reveal-ready").forEach((section) => revealObserver.observe(section));
 } else {
   document.querySelectorAll(".reveal-ready").forEach((section) => section.classList.add("is-visible"));
 }
+
+// The animation is decorative; it must never keep real content hidden.
+// This also covers mobile browsers that miss an IntersectionObserver callback
+// during fast scrolling or anchor jumps.
+window.setTimeout(() => {
+  document.querySelectorAll(".reveal-ready").forEach((section) => section.classList.add("is-visible"));
+}, 1200);

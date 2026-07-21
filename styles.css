@@ -1551,6 +1551,21 @@ p {
     padding-right: 28px;
   }
 
+  .brand {
+    flex: 0 0 auto;
+  }
+
+  .nav-links {
+    flex: 1 1 auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
   .hero-section,
   .foundation-section,
   .why-section,
