@@ -1671,6 +1671,64 @@ p {
 }
 
 /* ==========================================================================
+   迷ったら相談所バナー (Guide Banner)
+   ========================================================================== */
+.guide-banner {
+  padding: 20px 80px;
+  background: var(--primary-light);
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.guide-banner-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.guide-banner-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  text-decoration: none;
+  color: var(--ink-soft);
+}
+
+.guide-banner-link strong {
+  font-family: "Noto Serif JP", serif;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.guide-banner-link span {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.guide-banner-link .guide-banner-go {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.guide-banner-link:hover strong {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .guide-banner {
+    padding: 16px 20px;
+  }
+  .guide-banner-link {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+}
+
+/* ==========================================================================
    受験方法セクション (Take Assessment)
    ========================================================================== */
 .take-assessment-section {
