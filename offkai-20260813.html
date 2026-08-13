@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>強みのおしゃべり会 ワークシート | おけもん式ストレングス入門</title>
+  <meta name="description" content="2026年8月13日、大阪梅田で開いたストレングスファインダーゆるっと雑談会の、その場で使うワークシートです。">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* このページ専用の追加分。色・角丸・余白はすべて styles.css のトークンを使う。
+       padding は .plain-section 側（120px 80px / 1120px以下は 88px 28px）に任せ、ここでは触らない */
+    .sheet-section > .section-heading { margin-bottom: 32px; }
+
+    /* .topbar は position:sticky / top:0 で、高さが幅によって 66〜96px と変わる（ナビの折り返し）。
+       実測値を --bar-top にJSから入れて追従させる。JSが動かない場合でも重ならないよう、
+       フォールバックは実測最大(96.19px)より大きい 98px にしてある */
+    .tsui-bar {
+      position: sticky; top: var(--bar-top, 98px); z-index: 20;
+      display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+      padding: 16px 20px; margin-bottom: 20px;
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);
+    }
+    .tsui-num {
+      font-family: "Inter", sans-serif; font-size: 30px; font-weight: 700;
+      color: var(--primary); font-variant-numeric: tabular-nums; line-height: 1;
+    }
+    .tsui-num small { font-size: 13px; color: var(--muted); font-weight: 500; }
+    .tsui-msg { flex: 1; min-width: 180px; font-size: 14px; color: var(--ink-soft); }
+    .tsui-clear {
+      font-family: "Noto Sans JP", sans-serif; font-size: 13px; font-weight: 600;
+      padding: 8px 16px; border-radius: var(--radius); cursor: pointer;
+      background: transparent; color: var(--muted); border: 1px solid var(--line);
+    }
+    .tsui-clear:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+    .tsui-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+    @media (min-width: 760px) { .tsui-list { grid-template-columns: 1fr 1fr; gap: 4px 20px; } }
+    .tsui-list label {
+      display: grid; grid-template-columns: 22px 1fr; gap: 12px; align-items: start;
+      padding: 11px 14px; border-radius: var(--radius); cursor: pointer;
+      font-size: 15px; line-height: 1.7; border: 1px solid transparent;
+    }
+    .tsui-list label:hover { background: var(--paper-deep); }
+    .tsui-list label:has(input:checked) { background: var(--primary-light); border-color: rgba(44,95,75,.2); }
+    .tsui-list input {
+      appearance: none; width: 20px; height: 20px; margin: 3px 0 0; flex: none;
+      border: 1.5px solid rgba(31,27,22,.25); border-radius: 4px;
+      background: var(--paper); cursor: pointer;
+    }
+    .tsui-list input:checked { background: var(--primary); border-color: var(--primary); }
+    .tsui-list input:checked::after {
+      content: "✓"; display: block; color: var(--paper);
+      font-size: 12px; line-height: 17px; text-align: center; font-weight: 700;
+    }
+    .tsui-list .txt { color: var(--ink-soft); }
+    .tsui-list input:checked ~ .txt { color: var(--ink); font-weight: 500; }
+
+    .clue-list { display: grid; gap: 14px; }
+    @media (min-width: 860px) { .clue-list { grid-template-columns: 1fr 1fr; } }
+    .clue-card {
+      padding: 22px 24px; background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); border-left: 3px solid var(--accent);
+    }
+    .clue-card .clue-label {
+      font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--accent); font-weight: 600;
+    }
+    .clue-card p.q {
+      font-family: "Noto Serif JP", serif; font-size: 17px; line-height: 1.85;
+      color: var(--ink); margin: 8px 0 0;
+    }
+    .clue-card p.n { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+    /* 抽象的な問いは、例が無いと出てこない人が多い。思い出すためのフック */
+    .clue-card p.eg {
+      font-size: 13px; color: var(--ink-soft); line-height: 1.85;
+      background: var(--paper-deep); border-radius: var(--radius);
+      padding: 10px 12px; margin: 10px 0 0;
+    }
+    .clue-card p.eg b { color: var(--accent); font-weight: 600; }
+
+    .flip-table { display: grid; gap: 2px; margin-top: 8px; }
+    .flip-row {
+      display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center;
+      padding: 14px 18px; border-radius: var(--radius); font-size: 14.5px; line-height: 1.7;
+    }
+    .flip-row:nth-child(odd) { background: var(--paper-deep); }
+    .flip-row .was { color: var(--muted); }
+    .flip-row .mark { color: var(--accent); font-family: "Inter", sans-serif; font-weight: 600; }
+    .flip-row .now { color: var(--ink); font-weight: 500; }
+    @media (max-width: 620px) {
+      .flip-row { grid-template-columns: 1fr; gap: 4px; }
+      .flip-row .mark { font-size: 12px; }
+    }
+
+    .memo-box {
+      padding: 26px 28px; background: var(--paper-deep);
+      border: 1px solid var(--line); border-radius: var(--radius-lg);
+    }
+    .memo-quote {
+      font-family: "Noto Serif JP", serif; font-size: 17px; color: var(--ink);
+      line-height: 1.85; margin-bottom: 18px;
+    }
+
+    /* 書き込み欄。スマホだけで参加しても手ぶらで帰らないための入力欄 */
+    .wsheet {
+      display: block; width: 100%; margin-top: 12px;
+      font-family: "Noto Sans JP", sans-serif; font-size: 15px; line-height: 1.8;
+      color: var(--ink); background: var(--paper);
+      border: 1px solid rgba(31,27,22,.22); border-radius: var(--radius);
+      padding: 12px 14px; resize: vertical;
+    }
+    .wsheet::placeholder { color: rgba(31,27,22,.32); }
+    .wsheet:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+    .wsheet-label {
+      display: block; margin-top: 18px; font-size: 13.5px; font-weight: 600; color: var(--ink-soft);
+    }
+    .memo-box .wsheet-label:first-of-type { margin-top: 0; }
+
+    /* キーボード操作でチェックボックスの位置が分かるように */
+    .tsui-list input:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .tsui-clear:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    .save-note { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
+    .save-note[data-state="off"] { color: #B8452F; }
+
+    .note-strip {
+      padding: 18px 22px; background: var(--primary-light);
+      border-radius: var(--radius-lg); font-size: 14.5px; color: var(--ink-soft);
+      line-height: 1.85; margin-top: 20px;
+    }
+    .note-strip strong { color: var(--primary); }
+  </style>
+</head>
+<body>
+  <header class="topbar" aria-label="サイト内ナビゲーション">
+    <a class="brand" href="index.html" aria-label="おけもん式ストレングス入門 ホーム">
+      <span class="brand-mark">OK</span>
+      <span>おけもん式ストレングス入門</span>
+    </a>
+    <nav class="nav-links" aria-label="主要セクション">
+      <a href="#work1">つい、やっちゃう</a>
+      <a href="#work2">5つのサイン</a>
+      <a href="#work3">言葉をもらう</a>
+      <a href="#flip">短所だと思ってた</a>
+      <a href="#faq">よくある質問</a>
+      <a href="index.html#themes" class="nav-cta">→ 34資質を見る</a>
+      <a href="index.html" class="nav-cta">→ 入門ホーム</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <section class="hero-section" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">2026.08.13 Osaka Umeda</p>
+        <h1 id="hero-title">さよなら、<br>じぶん迷子。</h1>
+        <p class="hero-sub">
+          聞くより、手を動かす2時間です。<br>
+          帰るころには、自分の「つい」が、少し好きになっているはずです。
+        </p>
+        <p class="hero-lead">
+          このページは、その場で手を動かすためのものです。上から順に、みんなで一緒に進みます。<br>
+          ストレングスファインダーを受けていない方でも、全部そのまま参加できます。むしろ、受けていない人のほうが強いワークもあります。
+        </p>
+        <div class="hero-actions" aria-label="ページ内リンク">
+          <a class="primary-action" href="#work1">最初のワークへ</a>
+          <a class="secondary-action" href="index.html#foundation">そもそもSFって？</a>
+        </div>
+      </div>
+      <div class="hero-dashboard" aria-label="今日のワークの概要">
+        <div class="dashboard-panel">
+          <p>Today's Worksheet</p>
+          <strong>説明を聞く時間より、手を動かす時間のほうが長い会です</strong>
+          <span>つい、やってしまうこと50個。才能が顔を出す5つの場所。そして、人からもらう言葉ひとつ。</span>
+        </div>
+        <dl class="mini-metrics">
+          <div>
+            <dt>50</dt>
+            <dd>つい、やっちゃう</dd>
+          </div>
+          <div>
+            <dt>5</dt>
+            <dd>才能のサイン</dd>
+          </div>
+          <div>
+            <dt>1</dt>
+            <dd>持って帰る言葉</dd>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <section class="plain-section sheet-section" aria-labelledby="today-title">
+      <div class="section-heading">
+        <p class="eyebrow">Today</p>
+        <h2 id="today-title">今日やること、3つだけ</h2>
+        <p>説明を聞く時間より、手を動かす時間のほうが長いです。正解を当てる会ではないので、間違えようがありません。</p>
+      </div>
+      <div class="flow-grid">
+        <article class="flow-step">
+          <span>1</span>
+          <h3>自分の「当たり前」に丸をつける</h3>
+          <p>つい、やってしまうことを50個並べました。考え込まずに直感でチェックします。</p>
+          <strong>ひとりで5分 → 隣の人と見せ合う</strong>
+        </article>
+        <article class="flow-step">
+          <span>2</span>
+          <h3>才能のサインを、聞き合う</h3>
+          <p>Gallupが教える「才能が顔を出す5つの場所」を、ペアで交互に質問します。</p>
+          <strong>ふたりで20分</strong>
+        </article>
+        <article class="flow-step">
+          <span>3</span>
+          <h3>自分では聞こえない声をもらう</h3>
+          <p>自分がしんどいと思っている部分が、他の人にはどう見えていたのかを聞きます。</p>
+          <strong>みんなで25分</strong>
+        </article>
+      </div>
+      <div class="note-strip">
+        <strong>先に、ふたつだけ。</strong><br>
+        ひとつ。<b>今日このページでやるチェックやワークは、診断ではありません。</b>
+        ストレングスファインダー（CliftonStrengths）は、Gallup社の正式なアセスメントを受けて結果を出すものです。今日やるのは、その手前にある「才能の手がかり」を探す時間です。<br>
+        ふたつ。<b>資質に、良いも悪いもありません。</b>
+        Gallup公式は下位の資質について「必ずしも弱みではない」と書いています。ただし「まったく無害」とも言っていません。自然には出てこないだけで、時には自分の足を引っぱることもある——その両方を持ったまま扱います。
+      </div>
+    </section>
+
+    <section class="plain-section sheet-section" id="work1" aria-labelledby="work1-title">
+      <div class="section-heading">
+        <p class="eyebrow">Work 01</p>
+        <h2 id="work1-title">つい、やっちゃうことリスト</h2>
+        <p>
+          「これ、普通じゃない？」と思ったものほど、チェックしてください。その「普通」が、たぶんあなたの才能です。
+          数は多くても少なくても関係ありません。大事なのは、隣の人とちがうところです。
+        </p>
+      </div>
+
+      <div class="tsui-bar">
+        <div class="tsui-num" role="status" aria-live="polite" aria-label="チェックした数"><span id="cnt">0</span><small> / 50</small></div>
+        <p class="tsui-msg" id="msg" role="status" aria-live="polite">直感で。迷ったら押してください。</p>
+        <button class="tsui-clear" id="clear" type="button">すべて外す</button>
+      </div>
+
+      <ul class="tsui-list" id="tsuiList"></ul>
+
+      <div class="note-strip">
+        <strong>チェックが終わったら。</strong>
+        その中から「これが一番自分らしい」と思うものを3つ選んで、隣の人と画面を見せ合ってください。
+        狙いは「え、それチェックしてないの？」が起きることです。自分の当たり前は、みんなの当たり前ではなかった——それが今日いちばん持って帰ってほしいものです。
+      </div>
+
+      <div class="memo-box" style="margin-top: 24px;">
+        <p class="memo-quote">わたしの、これが自分らしい3つ</p>
+        <label class="wsheet-label" for="w1-1">ひとつめ</label>
+        <textarea class="wsheet" id="w1-1" rows="1" placeholder="上のリストから、または自分で思いついたものでも"></textarea>
+        <label class="wsheet-label" for="w1-2">ふたつめ</label>
+        <textarea class="wsheet" id="w1-2" rows="1" placeholder="…"></textarea>
+        <label class="wsheet-label" for="w1-3">みっつめ</label>
+        <textarea class="wsheet" id="w1-3" rows="1" placeholder="…"></textarea>
+        <label class="wsheet-label" for="w1-4">リストに無かったけど、わたしはこれもつい、やってしまう</label>
+        <textarea class="wsheet" id="w1-4" rows="2" placeholder="50個に入っていないものが出てきたら、それが一番あなたらしいかもしれません"></textarea>
+
+        <label class="wsheet-label" for="w1-5">この3つ、何かつながっていませんか？</label>
+        <textarea class="wsheet" id="w1-5" rows="2" placeholder="ばらばらの3つに見えて、同じ根っこから出ていることがあります。うまく言えなくて大丈夫です"></textarea>
+      </div>
+
+      <div class="note-strip">
+        <strong>ここが今日いちばんの山場かもしれません。</strong>
+        ばらばらの短所だと思っていたものが、実は<b>ひとつの根っこから出ている</b>と気づく瞬間があります。
+        「これって意味ある？と考えこむ」と「リストを作って満足して動かない」が、別々のダメなところではなく同じ癖だった、というふうに。
+        そうやって線がつながったとき、それはもう欠点の寄せ集めではなく、<b>あなたの形</b>です。
+      </div>
+    </section>
+
+    <section class="plain-section sheet-section" id="work2" aria-labelledby="work2-title">
+      <div class="section-heading">
+        <p class="eyebrow">Work 02 &middot; Five clues to talent</p>
+        <h2 id="work2-title">才能は、5つの場所に顔を出す</h2>
+        <p>
+          Gallupは「才能の手がかりは5つある」と教えています。診断結果はいりません。
+          ペアになって、この5つを順に聞き合ってください。聞く側は、アドバイスも解釈もせず、ただ質問してメモするだけです。
+        </p>
+      </div>
+
+      <div class="note-strip" style="margin-bottom: 22px;">
+        <strong>先に、ふたつ言っておきます。</strong><br>
+        <b>5つ全部に答えなくて大丈夫です。</b>出てこない項目があるのが普通です。ひとつ出てくれば十分。
+        自分に厳しい人ほど、「できる」「うまくできた」と認める質問で手が止まります。止まったら「これは出てこなかった」と言ってください。それも立派な答えです。<br>
+        そして<b>派手なエピソードでなくていい。</b>むしろ、自分では地味すぎると思っていることほど、まわりからは見えていません。「そんなこと？」と思うくらいのことを言ってみてください。
+      </div>
+
+      <div class="clue-list">
+        <article class="clue-card">
+          <p class="clue-label">Yearning ／ 憧れ</p>
+          <p class="q">なぜか惹かれて、やってみたくなることは？</p>
+          <p class="n">理由はうまく説明できないけれど、気になってしまうもの。</p>
+          <p class="eg"><b>たとえば</b>——知らない分野の入門書をつい買って積んでしまう／資料館や図書館があると寄り道してしまう／人の相談にのっているアカウントをつい見てしまう</p>
+          <textarea class="wsheet" id="w2-1" rows="2" aria-label="憧れ、の答え" placeholder="聞いてもらったことを、ここに残しておけます"></textarea>
+        </article>
+        <article class="clue-card">
+          <p class="clue-label">Rapid Learning ／ 習得の速さ</p>
+          <p class="q">覚えるのが、あまり苦じゃなかったことは？</p>
+          <p class="n">「できる」と言い切れなくて大丈夫です。まわりが手こずっていたのに自分は平気だった、くらいのことで。</p>
+          <p class="eg"><b>たとえば</b>——新しい社内システムの操作／人の名前と顔／エクセルの関数／初めての場所の道順／流行りの言い回し</p>
+          <textarea class="wsheet" id="w2-2" rows="2" aria-label="習得の速さ、の答え" placeholder="…"></textarea>
+        </article>
+        <article class="clue-card">
+          <p class="clue-label">Satisfaction ／ 満足感</p>
+          <p class="q">終わったあとに「またやりたい」と思う活動は？</p>
+          <p class="n">やっている最中も、後も、じわっと満たされるもの。</p>
+          <p class="eg"><b>たとえば</b>——書類の不備を全部つぶし終わったとき／友達の相談にのった後／部屋を片づけ終わったとき／誰かに何かを教えた後。地味なほど、たぶん本物です</p>
+          <textarea class="wsheet" id="w2-3" rows="2" aria-label="満足感、の答え" placeholder="…"></textarea>
+        </article>
+        <article class="clue-card">
+          <p class="clue-label">Glimpses of Excellence ／ 卓越の瞬間</p>
+          <p class="q">人から「それ、得意だよね」「助かった」と言われたことは？</p>
+          <p class="n">自分では「まぐれ」「慣れただけ」と思っていることでかまいません。自分で自分を褒めるのが苦手なら、他の人の言葉を借りてください。</p>
+          <p class="eg"><b>たとえば</b>——「話をまとめるの上手いね」／「よく気がつくね」／「あなたに聞けば分かると思って」／「一緒にいると落ち着く」。言われたとき「そんなことないです」と返したやつで大丈夫です</p>
+          <textarea class="wsheet" id="w2-4" rows="2" aria-label="卓越の瞬間、の答え" placeholder="…"></textarea>
+        </article>
+        <article class="clue-card" style="grid-column: 1 / -1;">
+          <p class="clue-label">Flow ／ フロー</p>
+          <p class="q">時間を忘れて没頭しているとき、何をしていますか？</p>
+          <p class="n">気づいたら何時間も経っていた、あの状態。</p>
+          <p class="eg"><b>たとえば</b>——気になった言葉を調べ始めて3時間経っていた／家計簿の数字を合わせていた／推しの動画を見比べていた／黙々と手を動かす作業。「こんなこと」と思っているものほど、書いてみてください</p>
+          <textarea class="wsheet" id="w2-5" rows="2" aria-label="フロー、の答え" placeholder="…"></textarea>
+        </article>
+      </div>
+
+      <div class="note-strip">
+        <strong>最後にひとつだけ、返してください。</strong>
+        20分聞き終えたら、聞き手から相手へ「聞いていて、ここが一番あなたらしいと思った」を一つだけ伝えます。
+        自分の強みは、自分ではいちばん見えません。近すぎるからです。<strong>誰かに言葉にしてもらった瞬間</strong>にはじめて輪郭が出ます。この一言が今日の本体です。
+      </div>
+    </section>
+
+    <section class="plain-section sheet-section" id="work3" aria-labelledby="work3-title">
+      <div class="section-heading">
+        <p class="eyebrow">Work 03</p>
+        <h2 id="work3-title">自分では聞こえない声を、もらう</h2>
+        <p>
+          Gallupのチーム向け教材にある「資質の好きなところ・苛立たせるところ」を参考に、この人数向けにアレンジしたワークです。
+          自分ではマイナスだと思っている部分が、他の人からはどう見えているのかを聞く時間です。
+        </p>
+      </div>
+
+      <div class="flow-grid">
+        <article class="flow-step">
+          <span>1</span>
+          <h3>ひとつだけ、言ってみる</h3>
+          <p>自分のこういうところが、ちょっとしんどい。それを一人ずつ、ひとつだけ話します。深い傷の話をする場ではないので、軽いもので大丈夫です。</p>
+          <strong>パスする人がいて当たり前です。何人いてもかまいません</strong>
+        </article>
+        <article class="flow-step">
+          <span>2</span>
+          <h3>ふたりが、見えたことを返す</h3>
+          <p>全員ではなく、隣のふたりが返します。返すのは「あなたは○○な人」ではなく、<b>今日その人を見ていて気づいた行動</b>です。</p>
+          <strong>「さっき、こういう場面でこうしてましたよね」から始める</strong>
+        </article>
+        <article class="flow-step">
+          <span>3</span>
+          <h3>受け取り方は、自分で決める</h3>
+          <p>「ありがとう」でも、「それはちょっと違う気がする」でも、「持ち帰って考えます」でもかまいません。</p>
+          <strong>しんどいものはしんどいままでいい。無理に才能に変換しません</strong>
+        </article>
+      </div>
+
+      <div class="memo-box" style="margin-top: 28px;">
+        <p class="memo-quote">今日の持ち帰り</p>
+
+        <label class="wsheet-label" for="w3-1">言ってみた「ちょっとしんどい」こと</label>
+        <textarea class="wsheet" id="w3-1" rows="2" placeholder="…"></textarea>
+
+        <label class="wsheet-label" for="w3-2">人からもらった言葉</label>
+        <textarea class="wsheet" id="w3-2" rows="3" placeholder="そのまま、言われたとおりに書いておくのがおすすめです"></textarea>
+
+        <label class="wsheet-label" for="w3-3">明日、ちょっとだけ試してみること</label>
+        <textarea class="wsheet" id="w3-3" rows="2" placeholder="小さいことでかまいません"></textarea>
+
+        <p class="save-note" id="saveNote">書いた内容はこの端末の中だけに自動保存されます。どこにも送信されません。</p>
+      </div>
+
+      <div class="note-strip">
+        <strong>最後に、カードを1枚。</strong>
+        くじで引いた相手に、今日の2時間で見えたことを書いて渡します。書き出しは、こう決めておきます——
+        <b>「あなたのこれが活きているのが、わかりました。」</b>
+        このうしろに、今日その人を見ていて気づいた場面をひとこと足してください。
+        資質名が分かる人は資質名で、まだ受けていない人は「さっきの、こういうところ」で大丈夫です。どちらでも同じ重さの言葉になります。
+      </div>
+    </section>
+
+    <section class="plain-section sheet-section" id="flip" aria-labelledby="flip-title">
+      <div class="section-heading">
+        <p class="eyebrow">Reframe</p>
+        <h2 id="flip-title">短所だと思っていた、あれ</h2>
+        <p>
+          これまでのセッションで、実際にひっくり返った例です。あなたのものがここにあるとは限りません。
+          「こういう向きで見ることもできる」という地図として、持って帰ってください。
+        </p>
+      </div>
+      <div class="flip-table">
+        <div class="flip-row"><span class="was">変化が苦手で、不安になる</span><span class="mark">→</span><span class="now">積み重ねで、コツコツ続けられる</span></div>
+        <div class="flip-row"><span class="was">何度も振り出しに戻る、不器用さ</span><span class="mark">→</span><span class="now">丁寧に深く受け取っている。自分を守るブレーキ</span></div>
+        <div class="flip-row"><span class="was">発信が伸びない。向いていない</span><span class="mark">→</span><span class="now">エネルギーの源が、1対1にあるだけ</span></div>
+        <div class="flip-row"><span class="was">人の顔色を伺いすぎる</span><span class="mark">→</span><span class="now">場の変化に、誰より早く気づける</span></div>
+        <div class="flip-row"><span class="was">共感しすぎて、疲れる</span><span class="mark">→</span><span class="now">相手の困りごとを、先回りして取り除ける</span></div>
+        <div class="flip-row"><span class="was">結果にピンとこない。違和感がある</span><span class="mark">→</span><span class="now">その違和感が、まだ自覚していない才能のサイン</span></div>
+        <div class="flip-row"><span class="was">自己開示が下手</span><span class="mark">→</span><span class="now">出す相手を選んでいるだけの、聞き上手</span></div>
+        <div class="flip-row"><span class="was">急にもろくなる。自分が矛盾している</span><span class="mark">→</span><span class="now">もろさは、深い信頼関係を築ける才能の裏返し</span></div>
+        <div class="flip-row"><span class="was">優柔不断で、なかなか決められない</span><span class="mark">→</span><span class="now">一番いいものを探し続ける、こだわりの強さ</span></div>
+        <div class="flip-row"><span class="was">すぐ飽きる</span><span class="mark">→</span><span class="now">学ぶのが速いから、学び切ると自然に飽きるだけ</span></div>
+        <div class="flip-row"><span class="was">広く浅くで、中途半端</span><span class="mark">→</span><span class="now">満遍なく知りたい。それでいい</span></div>
+        <div class="flip-row"><span class="was">一人で抱え込んで、消耗する</span><span class="mark">→</span><span class="now">強みが、まだ未成熟な形で出ているだけ</span></div>
+        <div class="flip-row"><span class="was">情報が多いと、フリーズする</span><span class="mark">→</span><span class="now">能力の問題ではなく、環境の問題</span></div>
+      </div>
+
+      <div class="note-strip">
+        <strong>弱みについて、Gallupが言っていること。</strong>
+        「弱みを直す、ということは存在しません。管理はできますが、本当に直すことはできない」。
+        ストレングスファインダーを作ったドン・クリフトンは、目指すのは「強みが強くなりすぎて、弱みがどうでもよくなること」だと言いました。
+        苦手は、自分で埋めなくてもいい。人に任せていい、というのが公式の立場です。
+      </div>
+    </section>
+
+    <section class="faq-section" id="faq" aria-labelledby="faq-title">
+      <div class="section-heading">
+        <p class="eyebrow">FAQ</p>
+        <h2 id="faq-title">たぶん、聞きたいこと</h2>
+        <p>今日その場で聞けなかったこと、家に帰ってから湧いてきた疑問のために。都合の悪い質問にも、正直に書いておきます。</p>
+      </div>
+      <div class="faq-list">
+
+        <details open>
+          <summary>結局、適職とか向いてる副業が分かるんですか？</summary>
+          <p>
+            分かりません。Gallupも「職業を当てるものではない」とはっきり言っています。
+            「あなたは営業向き」のような答えは出ないし、出してはいけないことになっています。<br><br>
+            そのかわり分かるのは、<b>どの仕事をしていても、自分がどう動くと力が出るか</b>です。
+            同じ営業職でも、人と会う時間で充電される人と、資料を作りこむ時間で充電される人がいます。職種を変える前に、いまの仕事の中で自分の力が出る動き方に寄せられることは、けっこうあります。<br><br>
+            副業を選ぶときも同じで、「これをやりなさい」は出てきません。ただ、<b>候補が2つに絞れたときに、どちらが自分の消耗が少ないか</b>を判断する材料にはなります。
+          </p>
+        </details>
+
+        <details>
+          <summary>無意識にやってることが分かって、どうなるんですか？</summary>
+          <p>
+            <b>選べるようになります。</b>これが一番の答えです。<br><br>
+            無意識のままだと、毎回おなじ場所で転びます。「なんでいつも私はこうなるんだろう」と思いながら、また同じことをする。
+            そこに名前がついて「自分はこうなりやすい」と分かると、はじめてその手前で手が打てます。<br><br>
+            たとえば「相手の立場になりすぎて自分の意見が言えなくなる」が自分の癖だと分かっていれば、大事な会議の前に自分の意見だけ先にメモしておく、という一手が打てます。
+            癖そのものは変わりません。<b>変わるのは、癖に対して打てる手の数です。</b><br><br>
+            もうひとつ。今まで「私のダメなところ」だと思って隠していたものが、実は自然に出てしまう特徴だったと分かると、<b>隠すために使っていた力が浮きます</b>。それが一番大きいかもしれません。
+          </p>
+        </details>
+
+        <details>
+          <summary>受けても「ふーん」で終わりそうなんですけど</summary>
+          <p>
+            正直に言うと、<b>実際そうなる人がいちばん多いです。</b>結果のPDFを1回読んで、「当たってるかも」で終わる。私もそういう時期がありました。<br><br>
+            Gallupはこれを式で説明しています。<b>才能 × 投資 = 強み</b>。
+            持って生まれた傾向（才能）は、そのままでは強みになりません。時間や練習を注ぎこんで、はじめて強みになる。
+            診断結果を見ただけの状態は、<b>種の袋を眺めているのと同じ</b>です。袋の裏の説明を読んでも、何も育ちません。<br><br>
+            「ふーん」で終わらせないためにできることを、小さい順に3つ。
+          </p>
+          <p>
+            <b>1. 資質名を、自分の現場の言葉に言い換える。</b>
+            「慎重さ」ではなく「失敗を先回りして潰すセンサー」のように。資質名のままだと、他人事の言葉なので忘れます。<br>
+            <b>2. 1週間だけ、ひとつの資質を新しい使い方で使ってみる。</b>
+            心理学の実験でも、「自分の強みをいつもと違うやり方で1回使う」という小さな介入が、半年後まで効いていたという結果があります。大きく変えなくていい。<br>
+            <b>3. 人に話す。</b>
+            今日みたいに。自分ひとりで結果を眺めるより、誰かに「それってこういうこと？」と返してもらったほうが、はるかに残ります。
+          </p>
+          <p>
+            続きは <a href="index.html#investment">「才能は、投資してはじめて強みになる」</a> に詳しく書いてあります。
+          </p>
+        </details>
+
+        <details>
+          <summary>今日やったこと、当たってない気がするんですけど</summary>
+          <p>
+            それでいいです。むしろ、<b>その違和感のほうが情報として濃い</b>ことがあります。<br><br>
+            実際のセッションでも、「結果を読んでもピンとこない」と言った方が、話しているうちに「あ、でもこれは思い当たる」と別の入口から自分に行き着くことがよくあります。
+            説明の言葉が、その人の生活の言葉になっていないだけ、ということが多いです。<br><br>
+            Gallupがコーチに求めていることも「教えるな、訊け」です。
+            <b>正解はこちらが持っていません。</b>だから、当たっていないと感じたら、そのまま「違う気がする」と言ってください。そこから探し直すのが本来のやり方です。
+          </p>
+        </details>
+
+        <details>
+          <summary>MBTIとか動物占いと、何が違うんですか？</summary>
+          <p>
+            いちばん大きな違いは、<b>タイプに分けない</b>ことです。<br><br>
+            MBTIは16、動物占いは12というように、決まった数の型に人を振り分けます。分かりやすくて面白い反面、「私は◯◯タイプだから」で説明が終わりやすい。<br><br>
+            ストレングスファインダーは34個の資質に順位をつけます。上位5つの並び方だけで <b>33,390,720通り</b>（34×33×32×31×30）。
+            同じ型に入る人がほぼいないので、「あなたは◯◯タイプ」という言い方自体が成立しません。<br><br>
+            それと、Gallupは結果を人に貼るラベルにすることを明確に禁じています。「才能のテーマは、人に貼りつけるラベルではない」。
+            今日、資質名をほとんど出さずに「行動」だけで話したのは、そのためです。
+          </p>
+        </details>
+
+        <details>
+          <summary>正直、お金を払う価値ありますか？</summary>
+          <p>
+            人によります。ここは正直に書きます。<br><br>
+            <b>価値が出にくい人：</b>結果を知って満足したい人。受ければ何かが変わると思っている人。今すぐ答えがほしい人。
+            さっき書いたとおり、受けただけでは何も変わりません。読んで終わる人がいちばん多いです。<br><br>
+            <b>価値が出やすい人：</b>「自分のこの動き方、なんなんだろう」という具体的な引っかかりを持っている人。使うつもりがある人。
+            そして、<b>結果について誰かと話す機会がある人</b>。今日みたいな場でも、1対1でも。<br><br>
+            今日のワークで手が動いた感じがあった方は、たぶん後者です。逆に、今日ずっと「で？」と思っていた方は、いま急いで受けなくていいと思います。
+          </p>
+        </details>
+
+        <details>
+          <summary>弱いところは、放っておいていいんですか？</summary>
+          <p>
+            放っておいていい、とまでは言いません。Gallupの立場はもう少し細かいです。<br><br>
+            まず<b>「弱みを直す」ということ自体が存在しない</b>、というのがGallupの言い方です。管理はできるが、本当に直すことはできない。
+            そして「弱みは沼のようなもので、直そうとするほど深く沈む」とも書いています。<br><br>
+            ただし「無害だから無視していい」とは言っていません。<b>自分の成功の邪魔になっているもの</b>は扱う対象です。扱い方が「直す」ではなく「管理する」だというだけで。<br><br>
+            管理のしかたは3つあります。<b>やらなくて済む仕組みにする</b>／<b>得意な人に任せる</b>／<b>自分の上位資質で迂回する</b>。
+            Gallupは「あなたの強みが相手の弱みを打ち消し、相手の強みがあなたの弱みを打ち消す」とも言っていて、ひとりで全部埋める前提を置いていません。
+          </p>
+        </details>
+
+        <details>
+          <summary>資質で人を決めつけることになりませんか？</summary>
+          <p>
+            なります。<b>それがこの道具のいちばんの誤用です。</b><br><br>
+            「あの人は◯◯だから仕方ない」「あなたは◯◯だからこの仕事ね」。これはGallup公式が名指しで止めています。
+            「才能のテーマは、社員に貼りつけるべきラベルではない」。資質名から役割を割り当てるのも「単純化しすぎ」だと書かれています。<br><br>
+            見分け方は簡単です。<b>その資質名が、話を終わらせるために使われたか、話を始めるために使われたか。</b>
+            「あなたは◯◯だからね」で会話が終わったら誤用。「◯◯が出てるのって、どういうときですか？」と続いたら本来の使い方です。<br><br>
+            今日この場でも、誰かの資質名を当てにいくのではなく、その人が実際にやっていた行動を返してもらったのは、この線を越えないためでした。
+          </p>
+        </details>
+
+        <details>
+          <summary>今日チェックした50個は、診断結果ですか？</summary>
+          <p>
+            違います。今日のリストは、おけもんが日ごろ集めている「つい、やってしまうこと」を並べたもので、正式なアセスメントではありません。
+            資質名との対応もつけていません（つけた瞬間にラベル貼りになるので、あえてつけていません）。<br><br>
+            正式なCliftonStrengthsは、Gallup社のアセスメントを受けて出るものです。
+            今日やったのは、その手前にある<b>「才能の手がかり」を自分の生活の中から拾う</b>時間でした。
+          </p>
+        </details>
+      </div>
+      <p class="lede" style="margin-top: 22px;">
+        もっと基本的なところ（そもそもSFとは、上位と下位の違い、受け方など）は
+        <a href="index.html#faq">入門ホームのFAQ</a> にまとめてあります。
+      </p>
+    </section>
+
+    <section class="share-section" aria-labelledby="next-title">
+      <div class="section-heading">
+        <p class="eyebrow">After today</p>
+        <h2 id="next-title">今日のつづきは、こちらに置いてあります</h2>
+      </div>
+      <div class="share-grid">
+        <article class="share-card">
+          <h3>34資質を見てみる</h3>
+          <p>今日その場で名前が出た資質も、出なかった資質も。OK環境とNG環境つきで全部並べてあります。<br><a href="index.html#themes">→ 34資質のページへ</a></p>
+        </article>
+        <article class="share-card">
+          <h3>そもそもSFって何だっけ</h3>
+          <p>適職診断ではないこと、順位は成績表ではなく地図であること。今日の前半で話した内容が全部あります。<br><a href="index.html#foundation">→ そもそも、の話へ</a></p>
+        </article>
+        <article class="share-card">
+          <h3>受けてみたくなったら</h3>
+          <p>受け方の手順と、受けるときのコツ。それから「いまは違うかもしれない人」の話も正直に書いてあります。<br><a href="index.html#take">→ 受け方のページへ</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section class="cta-section" aria-labelledby="cta-title">
+      <div>
+        <p class="eyebrow">Next step</p>
+        <h2 id="cta-title">今日の2時間を、あなた専用の取扱説明書に。</h2>
+        <p>
+          8月20日（木）10:00–12:00、同じ梅田で「カラー×ストレングスときめきオフ会」を開きます。色と資質の2軸で自分を見る回です。定員6名、残り1枠。<br>
+          もっとじっくり1対1で話したい方には、読み解きのセッションもあります。TOP5やTOP10を持ってきてもらえたら、強みの出方・OK環境・NG環境・明日からの一歩まで、一緒に言葉にします。
+        </p>
+      </div>
+      <a class="primary-action" href="index.html#themes">まず資質を見てみる</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      本ページは、2026年8月13日に大阪梅田で開催した「ストレングスファインダーゆるっと雑談会」の参加者向けワークシートです。
+      おけもん式の自己理解・強み活用ガイドであり、Gallup社による承認・提携・推薦を示すものではありません。
+      ページ内のGallupおよびドン・クリフトンの言葉は、下記の公開情報からの短い引用です。ワークの手順は、Gallupの教材を参考にしたおけもん式のアレンジであり、公式プログラムそのものではありません。
+    </p>
+    <p>
+      公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/402029/how-to-develop-improve-strengths.aspx" target="_blank" rel="noopener noreferrer">How to Develop Strengths</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/266435/unleash-people-strengths-help-manage-weaknesses.aspx" target="_blank" rel="noopener noreferrer">Unleash Strengths, Manage Weaknesses</a>（本ページの「弱み」についての引用元）、
+      商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
+    </p>
+  </footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* 保存できない端末（プライベートモード等）だと黙って消えるので、その場で知らせる */
+  var storageOK = true;
+  function flagStorageOff() {
+    if (!storageOK) return;
+    storageOK = false;
+    var note = document.getElementById("saveNote");
+    if (note) {
+      note.setAttribute("data-state", "off");
+      note.textContent = "この端末では自動保存ができません（プライベートモードなどの可能性があります）。書いたものは、画面を閉じる前にスクリーンショットで残してください。";
+    }
+  }
+
+  var TSUI = [
+    "気づいたらブラウザのタブが20個開いてる",
+    "調べ物をしてたら人生哲学にたどり着く",
+    "頼まれてもいないのにYahoo知恵袋みたいな回答をしてしまう",
+    "グループLINEで誰かが既読スルーされてるとそわそわする",
+    "「みんな仲良くしようよ〜」が口癖",
+    "電気を消してから「生きるとは？」の人生会議が始まり眠れない",
+    "「この話、オチあるの？」と真顔で聞いてしまう",
+    "話を論理的に整理しすぎて、恋人にキレられる",
+    "タスクリストを作るのに満足して1個も手をつけない",
+    "話の途中でアイデアが浮かびすぎてメモタイムに入る",
+    "SNSの投稿文を30分以上かけて書いて、結局投稿しない",
+    "1秒で自分の思考の世界に没入できる",
+    "空気がざわついたら誰よりも先に気づく",
+    "無意識にエレベーターの「閉」ボタンを連打している",
+    "自分が話してる最中にテンション上がって、声がでかくなる",
+    "「なんかあった？」とすぐ声をかけたくなる",
+    "誰かが困ってると勝手に段取り組んでしまう",
+    "“効率の悪さ”が視界に入るとモヤモヤしてくる",
+    "タスクが終わっていないと寝つけない",
+    "自分ルールに従って1日を過ごしてる",
+    "グループワークで自然と進行役をやっている",
+    "メモアプリがアイデアだらけでぐちゃぐちゃ",
+    "謎に例え話が上手くなっていく",
+    "他人の会話から“資質予想”してしまう",
+    "人の個性や変化を見つけて勝手に感動する",
+    "話の論点を構造化してスライドにしたくなる",
+    "話しながら「これnoteに書けそう」って思っている",
+    "「それってつまり…」と要約したくなる",
+    "“答えが出ない問い”が好きすぎて永遠に考えてる",
+    "アイデアが浮かぶと、誰かに話したくてうずうずする",
+    "誰かの成長に涙が出そうになる",
+    "自分の感情を細かくラベリングして分析してる",
+    "「これ、もっと良くできないかな」が頭から離れない",
+    "気づいたら話をまとめようとしてる",
+    "雑談してるだけのはずが、いつの間にか相談会になってる",
+    "飲み会で自然とみんなの飲み物を気にしてる",
+    "相手のためにと思ってやったことを後で後悔する",
+    "「これって意味ある？」とすぐ考えてしまう",
+    "締切が近づくとテンションが上がる",
+    "逆に予定がないと不安になる",
+    "人の褒めポイントを見つけるのが得意すぎる",
+    "感情よりも理屈を優先して空気を凍らせることがある",
+    "他人の気持ちを勝手に代弁してしまう",
+    "朝の支度をしてる間に深すぎる問いに迷い込む",
+    "自分の過去エピソードを突然掘り起こして自己解釈してる",
+    "話してる途中で「話戻すね？」と言いがち",
+    "気づけばToDoリストが30項目になってる",
+    "脳内で勝手に“人間関係図”を作ってる",
+    "相手の立場になりすぎて、自分の意見を言えなくなる",
+    "「で、最終的にどうしたいの？」ってまとめたくなる"
+  ];
+
+  /* 固定バーの位置を topbar の実測高さに追従させる（幅によって66〜96pxまで変わるため） */
+  var topbar = document.querySelector(".topbar");
+  function syncBarTop() {
+    if (!topbar) return;
+    document.documentElement.style.setProperty("--bar-top", Math.ceil(topbar.getBoundingClientRect().height) + 2 + "px");
+  }
+  var syncQueued = false;
+  function queueSync() {
+    if (syncQueued) return;
+    syncQueued = true;
+    window.requestAnimationFrame(function () { syncQueued = false; syncBarTop(); });
+  }
+  syncBarTop();
+  window.addEventListener("resize", queueSync);
+  window.addEventListener("orientationchange", queueSync);
+  window.addEventListener("scroll", queueSync, { passive: true });
+  if (window.ResizeObserver && topbar) { new ResizeObserver(queueSync).observe(topbar); }
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(syncBarTop); }
+
+  var KEY = "okemon.offkai.20260813";
+  var saved = readStore(KEY);
+
+  /* 保存データが壊れていても落ちないようにする */
+  function readStore(key) {
+    var parsed;
+    try { parsed = JSON.parse(localStorage.getItem(key) || "{}"); }
+    catch (e) { flagStorageOff(); return {}; }
+    return (parsed && typeof parsed === "object" && !Array.isArray(parsed)) ? parsed : {};
+  }
+
+  var list = document.getElementById("tsuiList");
+  if (!list) return;
+
+  TSUI.forEach(function (text, i) {
+    var li = document.createElement("li");
+    var lab = document.createElement("label");
+    var box = document.createElement("input");
+    box.type = "checkbox";
+    box.dataset.i = i;
+    if (saved[i]) box.checked = true;
+    var txt = document.createElement("span");
+    txt.className = "txt";
+    txt.textContent = text;
+    lab.appendChild(box);
+    lab.appendChild(txt);
+    li.appendChild(lab);
+    list.appendChild(li);
+  });
+
+  var cnt = document.getElementById("cnt");
+  var msg = document.getElementById("msg");
+
+  function refresh() {
+    var boxes = list.querySelectorAll("input");
+    var n = 0, state = {};
+    Array.prototype.forEach.call(boxes, function (b) {
+      if (b.checked) { n++; state[b.dataset.i] = 1; }
+    });
+    cnt.textContent = n;
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { flagStorageOff(); }
+    if (n === 0)      msg.textContent = "直感で。迷ったら押してください。";
+    else if (n < 8)   msg.textContent = "そのくらいで大丈夫です。数は関係ありません。";
+    else if (n < 20)  msg.textContent = "この中から「一番自分らしい」3つを選んでみてください。";
+    else              msg.textContent = "3つに絞るのが難しいくらいが、ちょうどいいです。";
+  }
+
+  list.addEventListener("change", refresh);
+  document.getElementById("clear").addEventListener("click", function () {
+    Array.prototype.forEach.call(list.querySelectorAll("input"), function (b) { b.checked = false; });
+    refresh();
+  });
+  refresh();
+
+  /* 書き込み欄の保存と復元。端末のなかだけに残る */
+  var TKEY = "okemon.offkai.20260813.text";
+  var texts = readStore(TKEY);
+  try {
+    localStorage.setItem(TKEY + ".probe", "1");
+    localStorage.removeItem(TKEY + ".probe");
+  } catch (e) {
+    flagStorageOff();
+  }
+
+  var fields = Array.prototype.slice.call(document.querySelectorAll(".wsheet"));
+  fields.forEach(function (f) {
+    if (texts[f.id]) {
+      f.value = texts[f.id];
+      f.style.height = "auto";
+      f.style.height = f.scrollHeight + "px";
+    }
+    f.addEventListener("input", function () {
+      texts[f.id] = f.value;
+      try { localStorage.setItem(TKEY, JSON.stringify(texts)); } catch (e) { flagStorageOff(); }
+      f.style.height = "auto";
+      f.style.height = f.scrollHeight + "px";
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
