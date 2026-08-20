@@ -1056,13 +1056,13 @@
   if (!Array.isArray(S.hist)) S.hist = [];
   if (!Array.isArray(S.dp)) S.dp = ["", "", ""];
 
-  /* ---------- 色の候補（意味の判定はしない） ---------- */
+  /* ---------- 色の候補（TCカラー14本のボトル順。意味の判定はしない） ---------- */
   var COLORS = [
-    ["赤", "#C0504D"], ["ピンク", "#E3A2B4"], ["オレンジ", "#DD9457"],
-    ["黄", "#E2BF5C"], ["黄緑", "#A5BF66"], ["緑", "#5B8C5A"],
-    ["ターコイズ", "#4FA9A0"], ["水色", "#8FC1DC"], ["青", "#4A6FA5"],
-    ["紺", "#2E4160"], ["紫", "#8B6FA8"], ["白・透明", "#F4F1EA"],
-    ["茶", "#8A6A4F"], ["黒", "#3A342E"]
+    ["レッド", "#C33B32"], ["コーラル", "#E8897D"], ["オレンジ", "#E0752B"],
+    ["ゴールド", "#D9A62E"], ["イエロー", "#E7CE3C"], ["ライム", "#A6C34B"],
+    ["グリーン", "#3E9B4F"], ["ターコイズ", "#38AFC0"], ["ブルー", "#3672C4"],
+    ["インディゴ", "#2E3A6E"], ["パープル", "#7B54A8"], ["ピンク", "#ED8FB7"],
+    ["ダークブラウン", "#7A4632"], ["クリア", "#F4F1EA"]
   ];
   var chips = document.getElementById("chips");
   COLORS.forEach(function (c) {
@@ -1095,8 +1095,8 @@
   function applyMyColor() {
     var hex = colorHex();
     var root = document.documentElement;
-    /* 白・透明は薄すぎて飾りが消えるので、金色の飾りのままにする */
-    if (hex && S.color !== "白・透明") {
+    /* クリアは薄すぎて飾りが消えるので、金色の飾りのままにする */
+    if (hex && S.color !== "クリア") {
       root.style.setProperty("--my-color", hex);
     } else {
       root.style.removeProperty("--my-color");
