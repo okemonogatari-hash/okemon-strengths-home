@@ -64,6 +64,39 @@
     .tk-seed.done { background: var(--my-color); border-color: var(--my-color); }
     .tk-seed.now  { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(31,27,22,.08); }
 
+    /* いまどこ・ゴールはどこ、の1行と「じぶんの回答」ボタン */
+    .tk-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: -8px 2px 16px;
+    }
+    .tk-goalline {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tk-goalline b { color: var(--primary); font-weight: 600; }
+    .tk-myans {
+      appearance: none;
+      flex: none;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+    .tk-myans:hover { border-color: var(--ink-soft); color: var(--ink); }
+    .tk-myans:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
     /* 画面カード */
     .tk-screen {
       background: var(--paper);
@@ -708,6 +741,10 @@
     <div class="tk-shell">
       <div class="tk-ribbon" aria-hidden="true"></div>
       <div class="tk-progress" id="progress" role="img" aria-label="進み具合"></div>
+      <div class="tk-topline">
+        <p class="tk-goalline" id="goalLine" aria-live="polite"></p>
+        <button class="tk-myans" type="button" id="myAnswers">じぶんの回答を見る</button>
+      </div>
 
       <!-- ============ 画面1：はじめに ============ -->
       <section class="tk-screen" id="scr-start" aria-labelledby="t-start">
@@ -816,7 +853,7 @@
         <div id="finalRescue" hidden>
           <div class="tk-cheer">
             今は思い出さなくて大丈夫です。<br>
-            今日ここで自然にしていたことを、隣の人に見つけてもらいましょう。
+            今日ここで自然にしていたことを、一緒のグループの人に見つけてもらいましょう。
           </div>
           <div class="tk-actions">
             <button class="tk-btn gold" type="button" id="pathGift">人から見えたことをもらう</button>
@@ -840,15 +877,16 @@
         <label class="tk-label" for="dp2">周りの人はどう反応しましたか？</label>
         <textarea class="tk-textarea" id="dp2" rows="2"></textarea>
         <div class="tk-actions">
-          <button class="tk-btn primary" type="button" data-go="pair">ペアワークへ</button>
+          <button class="tk-btn primary" type="button" data-go="pair">聞き合いタイムへ</button>
         </div>
       </section>
 
-      <!-- ============ 画面7：ペアで聞き合う ============ -->
+      <!-- ============ 画面7：聞き合いタイム（人数は決めつけない） ============ -->
       <section class="tk-screen" id="scr-pair" aria-labelledby="t-pair" hidden>
         <button class="tk-back" type="button" data-back>← もどる</button>
-        <p class="tk-eyebrow">Step 4 / Pair talk</p>
-        <h2 class="tk-title" id="t-pair">ペアで、4分ずつ</h2>
+        <p class="tk-eyebrow">Step 4 / Share time</p>
+        <h2 class="tk-title" id="t-pair">聞き合いタイム、1人4分</h2>
+        <p class="tk-lead tk-soft" style="margin-bottom:16px;">ペアでも、3〜4人のグループでも。話す番の人以外は、みんな「聞く人」です。</p>
         <div class="tk-mode" role="group" aria-label="いまの役割">
           <button type="button" id="modeTalk" aria-pressed="true">話す人</button>
           <button type="button" id="modeListen" aria-pressed="false">聞く人</button>
@@ -971,7 +1009,7 @@
           <tbody>
             <tr><th>0〜2分</th><td>境界説明</td></tr>
             <tr><th>2〜5分</th><td>個人で入口を選ぶ</td></tr>
-            <tr><th>5〜13分</th><td>ペアで4分ずつ</td></tr>
+            <tr><th>5〜13分</th><td>グループで聞き合い（1人4分）</td></tr>
             <tr><th>13〜23分</th><td>全体で価値返し</td></tr>
             <tr><th>23〜28分</th><td>明日10分＋持ち帰り</td></tr>
           </tbody>
@@ -994,6 +1032,16 @@
   <div class="tk-solo" id="soloView" hidden role="dialog" aria-modal="true" aria-label="持ち帰りカードだけの表示">
     <div class="tk-card" id="soloCard"></div>
     <button class="tk-btn ghost tk-solo-close" type="button" id="soloClose">閉じる</button>
+  </div>
+
+  <!-- じぶんの回答一覧（どの画面からでも見られる） -->
+  <div class="tk-solo" id="ansView" hidden role="dialog" aria-modal="true" aria-label="じぶんの回答一覧">
+    <div class="tk-card" style="width:100%;max-width:480px;">
+      <p class="tk-card-head">My Notes</p>
+      <p class="tk-card-title">いま書いてあること</p>
+      <div id="ansList"></div>
+    </div>
+    <button class="tk-btn ghost tk-solo-close" type="button" id="ansClose">閉じる</button>
   </div>
 
   <footer class="site-footer">
@@ -1143,10 +1191,21 @@
       seed.className = "tk-seed" + (i < reached ? " done" : "") + (i === reached ? " now done" : "");
       bar.appendChild(seed);
     });
-    var labels = ["色", "入口", "具体化", "ペア", "言葉", "一歩", "カード"];
+    var labels = ["色", "入口", "具体化", "シェア", "言葉", "一歩", "カード"];
     bar.setAttribute("aria-label", reached >= 0
       ? "進み具合：" + labels[reached] + "（" + (reached + 1) + "／" + STATIONS.length + "）"
       : "はじめの画面");
+    /* どこまでいったらOKか、をいつも1行で示す */
+    var goal = document.getElementById("goalLine");
+    if (step === "fac") {
+      goal.innerHTML = "ファシリテーター用の進行表です";
+    } else if (step === "card") {
+      goal.innerHTML = "<b>ゴール到着！</b> このカードがお土産です";
+    } else if (reached >= 0) {
+      goal.innerHTML = "いま「<b>" + labels[reached] + "</b>」（" + (reached + 1) + "歩め／全" + STATIONS.length + "歩）｜ゴールは<b>持ち帰りカード</b>";
+    } else {
+      goal.innerHTML = "ぜんぶで7歩。ゴールは最後の<b>持ち帰りカード</b>です";
+    }
   }
   function go(step) {
     if (S.step !== step) S.hist.push(S.step);
@@ -1346,9 +1405,9 @@
     } else if (S.finalPath === "observe") {
       span.textContent = "今日は観察の回。聞く人にまわって、相手の「らしさ」を見つけてあげてください。";
     } else if (S.finalPath === "pass") {
-      span.textContent = "パスもOK。ペアの相手の話をゆっくり聞く時間にしましょう。";
+      span.textContent = "パスもOK。同じグループの人の話をゆっくり聞く時間にしましょう。";
     } else {
-      span.textContent = "今日は、隣の人に「今日ここで自然にしていたこと」を見つけてもらう回です。";
+      span.textContent = "今日は、一緒のグループの人に「今日ここで自然にしていたこと」を見つけてもらう回です。";
     }
   }
 
@@ -1538,6 +1597,63 @@
   document.getElementById("soloClose").addEventListener("click", closeSolo);
   soloView.addEventListener("keydown", function (e) {
     if (e.key === "Escape") closeSolo();
+  });
+
+  /* ---------- じぶんの回答一覧（どの画面からでも） ---------- */
+  var ansView = document.getElementById("ansView");
+  var myAnsBtn = document.getElementById("myAnswers");
+  function ansRow(label, value) {
+    var row = document.createElement("div");
+    row.className = "tk-card-row";
+    var b = document.createElement("b");
+    b.textContent = label;
+    var p = document.createElement("p");
+    p.textContent = value;
+    row.appendChild(b);
+    row.appendChild(p);
+    return row;
+  }
+  function renderAnswers() {
+    var list = document.getElementById("ansList");
+    list.innerHTML = "";
+    var rows = [];
+    var c = colorLabel();
+    if (c) rows.push(["今日の色", c]);
+    if ((S.entryText || "").trim()) {
+      rows.push([S.entryQ >= 0 ? ENTRY_QS[S.entryQ] : "キュンの入口", S.entryText.trim()]);
+    }
+    if ((S.r1Text || "").trim()) rows.push(["この1週間の手がかり", S.r1Text.trim()]);
+    if ((S.r2Text || "").trim()) rows.push(["人からの手がかり", S.r2Text.trim()]);
+    var dpLabels = ["その時していたこと", "嬉しかった／気になったこと", "周りの反応"];
+    S.dp.forEach(function (t, i) {
+      if ((t || "").trim()) rows.push([dpLabels[i], t.trim()]);
+    });
+    if ((S.giftAction || "").trim()) rows.push(["相手が見つけてくれた行動", S.giftAction.trim()]);
+    if ((S.giftWords || "").trim()) rows.push(["もらった言葉", S.giftWords.trim() + (S.giftFit ? "（" + S.giftFit + "）" : "")]);
+    if ((S.giftStrength || "").trim()) rows.push(["つながっていそうな資質", S.giftStrength.trim()]);
+    var tm = tomorrowLine();
+    if (tm) rows.push(["明日10分", tm]);
+    if (!rows.length) {
+      var empty = document.createElement("p");
+      empty.className = "tk-soft";
+      empty.textContent = "まだ何も書いていません。書いたそばから、ここに集まっていきます。";
+      list.appendChild(empty);
+      return;
+    }
+    rows.forEach(function (r) { list.appendChild(ansRow(r[0], r[1])); });
+  }
+  myAnsBtn.addEventListener("click", function () {
+    renderAnswers();
+    ansView.hidden = false;
+    document.getElementById("ansClose").focus();
+  });
+  function closeAns() {
+    ansView.hidden = true;
+    myAnsBtn.focus();
+  }
+  document.getElementById("ansClose").addEventListener("click", closeAns);
+  ansView.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeAns();
   });
 
   /* やり直し・全消去 */
