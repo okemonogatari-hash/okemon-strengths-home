@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>キュンの種ひろい | おけもん式ストレングス入門</title>
+  <meta name="description" content="カラー×ストレングスのオフ会で使う、自分の行動の手がかりを1つ持ち帰るためのミニアプリです。">
+  <meta name="robots" content="noindex,nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ============================================================
+       キュンの種ひろい — 1画面1判断のウィザード型ワークアプリ。
+       色・角丸・余白は styles.css のトークンを再利用。
+       選んだ色は --my-color として、飾り（帯・種・カード）にだけ使い、
+       文字色には使わない（コントラスト事故を避けるため）
+       ============================================================ */
+    :root {
+      --my-color: var(--accent);
+      --my-color-soft: var(--accent-soft);
+    }
+
+    body.tk-body { background: var(--paper-deep); }
+
+    .tk-main {
+      min-height: calc(100vh - 66px);
+      display: flex;
+      justify-content: center;
+      padding: 28px 16px 72px;
+    }
+
+    .tk-shell {
+      width: 100%;
+      max-width: 560px;
+    }
+
+    /* 選んだ色がここに灯る。上端のリボン */
+    .tk-ribbon {
+      height: 6px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--my-color) 0%, var(--my-color-soft) 100%);
+      margin-bottom: 18px;
+      transition: background 400ms ease;
+    }
+
+    /* 進み具合 = 種が実っていく */
+    .tk-progress {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .tk-seed {
+      width: 12px; height: 12px;
+      border-radius: 50% 50% 50% 0;
+      transform: rotate(-45deg);
+      border: 1.5px solid rgba(31,27,22,.25);
+      background: var(--paper);
+      transition: background 300ms ease, border-color 300ms ease;
+    }
+    .tk-seed.done { background: var(--my-color); border-color: var(--my-color); }
+    .tk-seed.now  { border-color: var(--ink); box-shadow: 0 0 0 3px rgba(31,27,22,.08); }
+
+    /* いまどこ・ゴールはどこ、の1行と「じぶんの回答」ボタン */
+    .tk-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin: -8px 2px 16px;
+    }
+    .tk-goalline {
+      margin: 0;
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+    .tk-goalline b { color: var(--primary); font-weight: 600; }
+    .tk-myans {
+      appearance: none;
+      flex: none;
+      min-height: 44px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--paper);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+    }
+    .tk-myans:hover { border-color: var(--ink-soft); color: var(--ink); }
+    .tk-myans:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* 画面カード */
+    .tk-screen {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      padding: 34px 26px 30px;
+    }
+    @media (min-width: 480px) { .tk-screen { padding: 42px 40px 36px; } }
+
+    .tk-screen[hidden] { display: none; }
+
+    .tk-appear {
+      animation: tkAppear 360ms ease both;
+    }
+    @keyframes tkAppear {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .tk-eyebrow {
+      margin: 0 0 12px;
+      color: var(--accent);
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .tk-title {
+      margin: 0 0 14px;
+      font-family: "Noto Serif JP", serif;
+      font-size: 24px;
+      line-height: 1.5;
+      font-weight: 600;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .tk-title .spark { color: var(--accent); font-size: 0.8em; }
+    .tk-lead {
+      margin: 0 0 22px;
+      color: var(--ink-soft);
+      font-size: 15px;
+      line-height: 2;
+    }
+    .tk-lead b { color: var(--primary); font-weight: 600; }
+    .tk-note {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      color: var(--ink-soft);
+      font-size: 13.5px;
+      line-height: 1.9;
+    }
+    .tk-soft {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.9;
+    }
+
+    /* ボタン */
+    .tk-actions { display: grid; gap: 10px; margin-top: 26px; }
+    .tk-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 12px 24px;
+      border-radius: var(--radius);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      text-align: center;
+      line-height: 1.5;
+    }
+    .tk-btn.primary {
+      background: var(--primary);
+      color: var(--paper);
+      border: 1px solid var(--primary);
+      box-shadow: 0 8px 20px rgba(44, 95, 75, 0.16);
+    }
+    .tk-btn.primary:hover { transform: translateY(-2px); box-shadow: 0 12px 28px rgba(44, 95, 75, 0.22); }
+    .tk-btn.ghost {
+      background: transparent;
+      color: var(--ink-soft);
+      border: 1px solid var(--line);
+    }
+    .tk-btn.ghost:hover { background: rgba(31,27,22,.04); }
+    .tk-btn.gold {
+      background: var(--accent);
+      color: #fff;
+      border: 1px solid var(--accent);
+    }
+    .tk-btn.gold:hover { background: #B68353; border-color: #B68353; }
+    .tk-btn:focus-visible,
+    .tk-chip input:focus-visible + .tk-chip-face,
+    .tk-radio input:focus-visible + .tk-radio-face {
+      outline: 2px solid var(--primary);
+      outline-offset: 2px;
+    }
+
+    .tk-back {
+      appearance: none;
+      background: none;
+      border: none;
+      padding: 10px 8px 10px 0;
+      min-height: 44px;
+      margin: -6px 0 6px;
+      color: var(--muted);
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tk-back:hover { color: var(--ink); }
+    .tk-back:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+
+    /* 入力欄 */
+    .tk-label {
+      display: block;
+      margin: 18px 0 8px;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-soft);
+    }
+    .tk-textarea, .tk-input {
+      display: block;
+      width: 100%;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 16px; /* iOSのズーム防止のため16px以上 */
+      line-height: 1.8;
+      color: var(--ink);
+      background: var(--paper);
+      border: 1px solid rgba(31,27,22,.22);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      resize: vertical;
+    }
+    .tk-textarea::placeholder, .tk-input::placeholder { color: rgba(31,27,22,.32); }
+    .tk-textarea:focus-visible, .tk-input:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+    /* 色チップ */
+    .tk-chips {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(96px, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .tk-chip { position: relative; }
+    .tk-chip input {
+      position: absolute;
+      opacity: 0;
+      width: 1px; height: 1px;
+    }
+    .tk-chip-face {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 6px 10px;
+      min-height: 44px;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      cursor: pointer;
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      font-size: 13px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .tk-chip-face:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .tk-chip-dot {
+      width: 34px; height: 34px;
+      border-radius: 50%;
+      border: 1px solid rgba(31,27,22,.14);
+      background: var(--chip, #ccc);
+      position: relative;
+    }
+    .tk-chip input:checked + .tk-chip-face {
+      border-color: var(--ink);
+      box-shadow: 0 0 0 2px rgba(31,27,22,.10);
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .tk-chip input:checked + .tk-chip-face .tk-chip-dot::after {
+      content: "✓";
+      position: absolute;
+      right: -6px; top: -6px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--ink);
+      color: var(--paper);
+      font-size: 11px;
+      line-height: 18px;
+      text-align: center;
+      font-weight: 700;
+    }
+    .tk-chip input:checked + .tk-chip-face::after {
+      content: "えらんだ色";
+      font-size: 10px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+
+    /* 質問カード（選択式） */
+    .tk-qcards { display: grid; gap: 12px; margin-top: 20px; }
+    .tk-qcard {
+      appearance: none;
+      width: 100%;
+      text-align: left;
+      padding: 18px 20px;
+      min-height: 44px;
+      background: var(--paper);
+      border: 1.5px solid var(--line);
+      border-left: 4px solid var(--my-color);
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-family: "Noto Serif JP", serif;
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--ink);
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease, background 160ms ease;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+    .tk-qcard:hover { transform: translateY(-2px); box-shadow: var(--shadow-sm); }
+    .tk-qcard .mark {
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .tk-qcard[aria-pressed="true"] {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+    .tk-qcard[aria-pressed="true"] .mark { color: var(--primary); }
+    .tk-qcard[aria-pressed="true"] .mark::before { content: "✓ "; }
+
+    /* めくりカード（救済） */
+    .tk-flip {
+      margin-top: 20px;
+      padding: 26px 22px;
+      background: var(--paper-deep);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      position: relative;
+    }
+    .tk-flip-count {
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: .12em;
+      color: var(--accent);
+      margin: 0 0 10px;
+    }
+    .tk-flip-q {
+      font-family: "Noto Serif JP", serif;
+      font-size: 18px;
+      line-height: 1.85;
+      color: var(--ink);
+      margin: 0;
+      min-height: 66px;
+    }
+    .tk-flip-next {
+      margin-top: 14px;
+      appearance: none;
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      min-height: 44px;
+      padding: 8px 18px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      cursor: pointer;
+    }
+    .tk-flip-next:hover { border-color: var(--ink-soft); color: var(--ink); }
+    .tk-flip-next:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* やさしい合図（失敗表示にしない） */
+    .tk-cheer {
+      margin: 18px 0 0;
+      padding: 16px 18px;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 var(--radius) var(--radius) 0;
+      color: var(--ink-soft);
+      font-size: 14px;
+      line-height: 1.95;
+    }
+
+    /* カンペ（自分の言葉が上に残る） */
+    .tk-kanpe {
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      background: var(--paper-deep);
+      border-radius: var(--radius);
+      border: 1px dashed rgba(31,27,22,.18);
+      font-size: 13.5px;
+      line-height: 1.9;
+      color: var(--ink-soft);
+    }
+    .tk-kanpe b { display: block; font-size: 11px; letter-spacing: .1em; color: var(--accent); font-family: "Inter", sans-serif; text-transform: uppercase; margin-bottom: 4px; }
+
+    /* ペアワーク：モード切替 */
+    .tk-mode {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+      padding: 5px;
+      background: var(--paper-deep);
+      border-radius: 999px;
+      margin: 6px 0 22px;
+    }
+    .tk-mode button {
+      appearance: none;
+      border: none;
+      min-height: 44px;
+      border-radius: 999px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+      background: transparent;
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease;
+    }
+    .tk-mode button[aria-pressed="true"] {
+      background: var(--primary);
+      color: var(--paper);
+    }
+    .tk-mode button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    /* タイマー */
+    .tk-timer {
+      text-align: center;
+      padding: 22px 16px 18px;
+      background: var(--paper-deep);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--line);
+      margin-top: 22px;
+    }
+    .tk-timer-num {
+      font-family: "Inter", sans-serif;
+      font-size: 56px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      color: var(--ink);
+      line-height: 1.1;
+      letter-spacing: .02em;
+    }
+    .tk-timer-num.done { color: var(--primary); }
+    .tk-timer-msg { font-size: 13px; color: var(--muted); min-height: 22px; margin-top: 4px; }
+    .tk-timer-btns {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .tk-timer-btns .tk-btn { min-height: 46px; padding: 8px 18px; font-size: 13.5px; }
+
+    .tk-pairq { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+    .tk-pairq li {
+      padding: 15px 18px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--my-color);
+      border-radius: var(--radius);
+      font-family: "Noto Serif JP", serif;
+      font-size: 15.5px;
+      line-height: 1.85;
+      color: var(--ink);
+    }
+    .tk-pairq li small {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-size: 10.5px;
+      letter-spacing: .1em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .tk-rule {
+      margin-top: 22px;
+      padding: 12px 16px;
+      background: var(--primary-light);
+      border-radius: var(--radius);
+      font-size: 12.5px;
+      color: var(--ink-soft);
+      line-height: 1.9;
+      text-align: center;
+    }
+
+    /* しっくり度ラジオ */
+    .tk-radios { display: grid; gap: 8px; margin-top: 8px; }
+    .tk-radio { position: relative; display: block; }
+    .tk-radio input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+    .tk-radio-face {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 12px;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px 16px;
+      border: 1.5px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      cursor: pointer;
+      font-size: 14.5px;
+      color: var(--ink-soft);
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+    .tk-radio-face::before {
+      content: "";
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(31,27,22,.3);
+      background: var(--paper);
+    }
+    .tk-radio input:checked + .tk-radio-face {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      color: var(--ink);
+      font-weight: 600;
+    }
+    .tk-radio input:checked + .tk-radio-face::before {
+      border-color: var(--primary);
+      background: radial-gradient(circle, var(--primary) 0 6px, var(--paper) 7px);
+    }
+
+    details.tk-details {
+      margin-top: 20px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 14px 18px;
+    }
+    details.tk-details summary {
+      cursor: pointer;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      min-height: 30px;
+      display: flex;
+      align-items: center;
+    }
+    details.tk-details summary:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 4px; }
+    details.tk-details p { margin-top: 10px; font-size: 13px; color: var(--muted); line-height: 1.9; }
+
+    /* 持ち帰りカード */
+    .tk-card {
+      border: 1px solid var(--line);
+      border-top: 8px solid var(--my-color);
+      border-radius: var(--radius-lg);
+      background: var(--paper);
+      box-shadow: var(--shadow-md);
+      padding: 30px 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .tk-card::before {
+      content: "";
+      position: absolute;
+      right: -60px; top: -60px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: var(--my-color);
+      opacity: .1;
+      pointer-events: none;
+    }
+    .tk-card-head {
+      font-family: "Inter", sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 4px;
+    }
+    .tk-card-title {
+      font-family: "Noto Serif JP", serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--ink);
+      margin: 0 0 20px;
+    }
+    .tk-card-row { padding: 13px 0; border-top: 1px solid var(--line-soft); }
+    .tk-card-row b {
+      display: block;
+      font-family: "Inter", sans-serif;
+      font-size: 10.5px;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 5px;
+    }
+    .tk-card-row p {
+      margin: 0;
+      font-family: "Noto Serif JP", serif;
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: var(--ink);
+      overflow-wrap: anywhere;
+    }
+    .tk-card-row .colorline { display: inline-flex; align-items: center; gap: 8px; }
+    .tk-card-row .colorline i {
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--my-color);
+      border: 1px solid rgba(31,27,22,.15);
+      flex: none;
+    }
+    .tk-card-empty { color: var(--muted) !important; font-size: 13.5px !important; }
+
+    .tk-copybox {
+      margin-top: 14px;
+      width: 100%;
+      min-height: 120px;
+      font-size: 13px;
+    }
+    .tk-status { font-size: 13px; color: var(--primary); font-weight: 600; min-height: 20px; margin-top: 8px; }
+
+    /* カードだけ表示（スクショ用） */
+    .tk-solo {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: var(--paper-deep);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+      overflow: auto;
+    }
+    .tk-solo[hidden] { display: none; }
+    .tk-solo .tk-card { width: 100%; max-width: 480px; }
+    .tk-solo-close {
+      margin-top: 18px;
+      min-height: 44px;
+    }
+
+    /* ファシリテーター */
+    .tk-fac-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .tk-fac-table th, .tk-fac-table td {
+      text-align: left;
+      padding: 10px 12px;
+      border-top: 1px solid var(--line-soft);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+    .tk-fac-table th {
+      white-space: nowrap;
+      font-family: "Inter", sans-serif;
+      font-size: 12.5px;
+      color: var(--primary);
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .tk-footlinks {
+      margin-top: 26px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 22px;
+    }
+    .tk-footlinks button, .tk-footlinks a {
+      appearance: none;
+      background: none;
+      border: none;
+      min-height: 44px;
+      padding: 8px;
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 12.5px;
+      color: var(--muted);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      cursor: pointer;
+    }
+    .tk-footlinks button:hover, .tk-footlinks a:hover { color: var(--ink); }
+    .tk-footlinks button:focus-visible, .tk-footlinks a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+    .tk-savenote { font-size: 12px; color: var(--muted); margin-top: 16px; line-height: 1.8; text-align: center; }
+    .tk-savenote[data-state="off"] { color: #B8452F; }
+
+    /* 最後のお祝い。ふわっと種が舞う（reduced-motionでは止める） */
+    .tk-petals { position: relative; height: 0; }
+    .tk-petals i {
+      position: absolute;
+      top: -10px;
+      width: 10px; height: 10px;
+      border-radius: 50% 50% 50% 0;
+      background: var(--my-color);
+      opacity: 0;
+    }
+    @media (prefers-reduced-motion: no-preference) {
+      .tk-petals.play i { animation: tkFloat 2.8s ease-out forwards; }
+      .tk-petals i:nth-child(1) { left: 12%; animation-delay: 0s; }
+      .tk-petals i:nth-child(2) { left: 34%; animation-delay: .3s; background: var(--accent); }
+      .tk-petals i:nth-child(3) { left: 58%; animation-delay: .15s; }
+      .tk-petals i:nth-child(4) { left: 80%; animation-delay: .45s; background: var(--accent); }
+      @keyframes tkFloat {
+        0%   { opacity: 0; transform: translateY(0) rotate(-45deg); }
+        15%  { opacity: .9; }
+        100% { opacity: 0; transform: translateY(-90px) rotate(140deg); }
+      }
+    }
+
+    /* ==== v2 レビュー反映 ==== */
+    /* display:flex等のクラスがhidden属性に勝ってしまう事故を防ぐ */
+    [hidden] { display: none !important; }
+    /* ゴールドの小さな文字はコントラスト不足（2.6:1）だったので濃い金に */
+    :root { --accent-text: #8A5F2E; }
+    .tk-eyebrow { color: var(--accent-text); }
+    .tk-flip-count { color: var(--accent-text); }
+    .tk-kanpe b { color: var(--accent-text); }
+    .tk-pairq li small { color: var(--accent-text); }
+    .tk-card-head { color: var(--accent-text); }
+    .tk-btn.gold { background: #8A5F2E; border-color: #8A5F2E; color: #fff; }
+    .tk-btn.gold:hover { background: #74501F; border-color: #74501F; }
+    .tk-textarea::placeholder, .tk-input::placeholder { color: rgba(31,27,22,.45); }
+    details.tk-details summary { min-height: 44px; }
+    .tk-cheer .tk-btn { margin-top: 12px; width: 100%; }
+    .tk-timer-preset { display: flex; justify-content: center; gap: 8px; margin-bottom: 12px; }
+    .tk-timer-preset button {
+      appearance: none; min-height: 44px; padding: 6px 16px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--paper);
+      font-family: "Noto Sans JP", sans-serif; font-size: 13px; font-weight: 600;
+      color: var(--muted); cursor: pointer;
+    }
+    .tk-timer-preset button[aria-pressed="true"] {
+      border-color: var(--primary); color: var(--primary); background: var(--primary-light);
+    }
+    .tk-timer-preset button:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .tk-alert {
+      margin: 0 0 14px; padding: 12px 16px; border-radius: var(--radius);
+      background: #F7E5DF; border: 1px solid #D8A090; color: #7C2D1C;
+      font-size: 13px; line-height: 1.8;
+    }
+    .tk-resume {
+      margin-top: 14px; padding: 12px 16px; background: var(--paper-deep);
+      border-radius: var(--radius); font-size: 13px; color: var(--ink-soft); line-height: 1.8;
+    }
+    body.tk-lock { overflow: hidden; }
+    .tk-goalline { flex: 1; min-width: 0; }
+
+    @media (max-width: 400px) {
+      .tk-title { font-size: 21px; }
+      .tk-chips { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); }
+      .tk-timer-num { font-size: 46px; }
+    }
+  </style>
+</head>
+<body class="tk-body">
+  <header class="topbar" aria-label="サイト内ナビゲーション">
+    <a class="brand" href="index.html" aria-label="おけもん式ストレングス入門 ホーム">
+      <span class="brand-mark">OK</span>
+      <span>おけもん式ストレングス入門</span>
+    </a>
+    <nav class="nav-links" aria-label="関連ページ">
+      <a href="index.html" class="nav-cta">→ 入門ホーム</a>
+    </nav>
+  </header>
+
+  <main class="tk-main">
+    <div class="tk-shell">
+      <div class="tk-ribbon" aria-hidden="true"></div>
+      <div class="tk-progress" id="progress" role="img" aria-label="進み具合"></div>
+      <div class="tk-topline">
+        <p class="tk-goalline" id="goalLine" aria-live="polite"></p>
+        <button class="tk-myans" type="button" id="myAnswers">じぶんの回答</button>
+      </div>
+
+      <!-- ============ 画面1：はじめに ============ -->
+      <section class="tk-screen" id="scr-start" aria-labelledby="t-start">
+        <p class="tk-eyebrow" id="eventEyebrow">Color × Strengths</p>
+        <h1 class="tk-title" id="t-start"><span class="spark">✦</span> キュンの種ひろい</h1>
+        <p class="tk-lead">
+          色は「今の自分のアンテナ」。<br>
+          ストレングスは「考える前についやっている、いつもの動き方」。<br>
+          今日は、今のアンテナがどんな動き方に<b>キュン</b>を灯すのか探します。
+        </p>
+        <p class="tk-note">
+          これは診断でも、資質当てでもありません。正解はありません。<br>
+          出てこなくても、パスしても大丈夫です。
+        </p>
+        <p class="tk-resume" id="resumeNote" hidden>前回のつづきが残っています。「はじめる」を押すと、書いたものはそのまま見られます。</p>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" data-go="color">はじめる</button>
+        </div>
+        <details class="tk-details">
+          <summary>このアプリで保存されるもの</summary>
+          <p>
+            入力はこの端末内（ブラウザのlocalStorage）だけに保存され、外部へ送信されません。
+            保存されるのは、選んだ色とあなたが書いた言葉だけです。
+            最後の画面の「すべて消す」で、いつでも全部消せます。
+          </p>
+        </details>
+      </section>
+
+      <!-- ============ 画面2：今日選んだ色 ============ -->
+      <section class="tk-screen" id="scr-color" aria-labelledby="t-color" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">1歩め ／ きょうの色</p>
+        <h2 class="tk-title" id="t-color">今日、選んだ色は？</h2>
+        <p class="tk-lead">カラーボトルで選んだ色を、ここでも選んでみてください。</p>
+        <fieldset style="border:none;margin:0;padding:0;">
+          <legend class="tk-soft">この色を見ながら、最近の自分を少し思い出してみます。</legend>
+          <div class="tk-chips" id="chips"></div>
+        </fieldset>
+        <label class="tk-label" for="colorFree">近い色がない／まだ決めていない</label>
+        <input class="tk-input" id="colorFree" type="text" placeholder="自由に書いてください（例：くすんだ金色）">
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" id="colorNext" data-go="entry">この色でいく</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面3：最初の3問 ============ -->
+      <section class="tk-screen" id="scr-entry" aria-labelledby="t-entry" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">2歩め ／ キュンの入口</p>
+        <h2 class="tk-title" id="t-entry">答えやすいものを、1枚どうぞ</h2>
+        <p class="tk-lead">3枚のうち、いちばんピンときたカードを選んでください。</p>
+        <div class="tk-qcards" role="group" aria-label="キュンの入口 3問">
+          <button class="tk-qcard" type="button" data-entryq="0" aria-pressed="false">なぜか惹かれる・やってみたくなること<span class="mark">えらぶ</span></button>
+          <button class="tk-qcard" type="button" data-entryq="1" aria-pressed="false">時間を忘れてやってしまうこと<span class="mark">えらぶ</span></button>
+          <button class="tk-qcard" type="button" data-entryq="2" aria-pressed="false">終わったあと「またやりたい」と思うこと<span class="mark">えらぶ</span></button>
+        </div>
+        <div id="entryWrite" hidden>
+          <label class="tk-label" for="entryText" id="entryTextLabel">思い浮かんだこと</label>
+          <textarea class="tk-textarea" id="entryText" rows="3" placeholder="大きなことでなくて大丈夫。最近の小さな1場面を書いてみてください。"></textarea>
+        </div>
+        <div class="tk-cheer" id="entryCheer" hidden>
+          大丈夫。質問をもっと小さくします。<br>
+          才能がないのではなく、自分にとって普通すぎて見えないことがあります。
+          <button class="tk-btn gold" type="button" id="entrySmaller">→ 小さい質問にする</button>
+        </div>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" id="entryDone">書けたので次へ</button>
+          <button class="tk-btn ghost" type="button" id="entryStuck">うまく出てこない</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面4：救済レベル1「この1週間」 ============ -->
+      <section class="tk-screen" id="scr-rescue1" aria-labelledby="t-r1" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">2歩め ／ ちいさな手がかり</p>
+        <h2 class="tk-title" id="t-r1">この1週間だけ、思い出してみる</h2>
+        <p class="tk-lead">カードをめくって、どれか1つ書ければ十分です。</p>
+        <div class="tk-flip">
+          <p class="tk-flip-count"><span id="r1Count">1</span> / 4</p>
+          <p class="tk-flip-q" id="r1Q" aria-live="polite">この1週間で、つい見た・調べた・保存したことは？</p>
+          <button class="tk-flip-next" type="button" id="r1Next">次のカードをめくる →</button>
+        </div>
+        <label class="tk-label" for="r1Text">思い浮かんだこと</label>
+        <textarea class="tk-textarea" id="r1Text" rows="3" placeholder="ひとことでも、単語だけでも。"></textarea>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" id="r1Done">これなら書けそう → 次へ</button>
+          <button class="tk-btn ghost" type="button" data-go="rescue2">まだ出てこない</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面5：救済レベル2「自分以外を手がかりに」 ============ -->
+      <section class="tk-screen" id="scr-rescue2" aria-labelledby="t-r2" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">2歩め ／ 人からの手がかり</p>
+        <h2 class="tk-title" id="t-r2">自分以外を、手がかりにする</h2>
+        <p class="tk-lead">自分では見えないものも、人には見えていたりします。</p>
+        <div class="tk-flip">
+          <p class="tk-flip-count"><span id="r2Count">1</span> / 3</p>
+          <p class="tk-flip-q" id="r2Q" aria-live="polite">最近、人から頼まれたことは？</p>
+          <button class="tk-flip-next" type="button" id="r2Next">次のカードをめくる →</button>
+        </div>
+        <label class="tk-label" for="r2Text">思い浮かんだこと</label>
+        <textarea class="tk-textarea" id="r2Text" rows="3" placeholder="言われたまま、そのままどうぞ。"></textarea>
+        <div class="tk-actions" id="r2Actions">
+          <button class="tk-btn primary" type="button" id="r2Done">書けたので次へ</button>
+          <button class="tk-btn ghost" type="button" id="r2Stuck">まだ出てこない</button>
+        </div>
+        <div id="finalRescue" hidden>
+          <div class="tk-cheer">
+            今は思い出さなくて大丈夫です。<br>
+            今日ここで自然にしていたことを、一緒のグループの人に見つけてもらいましょう。
+          </div>
+          <div class="tk-actions">
+            <button class="tk-btn gold" type="button" id="pathGift">人から見えたことをもらう</button>
+            <button class="tk-btn ghost" type="button" id="pathObserve">今日は観察だけにする</button>
+            <button class="tk-btn ghost" type="button" id="pathPass">このワークをパスする</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 画面6：場面を具体化 ============ -->
+      <section class="tk-screen" id="scr-deepen" aria-labelledby="t-deepen" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">3歩め ／ ズームイン</p>
+        <h2 class="tk-title" id="t-deepen">その場面に、少しズームイン</h2>
+        <div class="tk-kanpe" id="deepenKanpe"><b>あなたの書いたこと</b><span id="deepenKanpeText"></span></div>
+        <p class="tk-lead tk-soft">3つとも任意です。書けるところだけどうぞ。</p>
+        <label class="tk-label" for="dp0">その時、実際に何をしていましたか？</label>
+        <textarea class="tk-textarea" id="dp0" rows="2"></textarea>
+        <label class="tk-label" for="dp1">何がいちばん嬉しかった／気になった？</label>
+        <textarea class="tk-textarea" id="dp1" rows="2"></textarea>
+        <label class="tk-label" for="dp2">周りの人はどう反応しましたか？</label>
+        <textarea class="tk-textarea" id="dp2" rows="2"></textarea>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" data-go="pair">聞き合いタイムへ</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面7：聞き合いタイム（人数は決めつけない） ============ -->
+      <section class="tk-screen" id="scr-pair" aria-labelledby="t-pair" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">4歩め ／ 聞き合いタイム</p>
+        <h2 class="tk-title" id="t-pair">聞き合いタイム、1人4分</h2>
+        <p class="tk-lead tk-soft" style="margin-bottom:16px;">ペアでも、3〜4人のグループでも。話す番の人以外は、みんな「聞く人」です。1人あたりの時間はタイマーの上で選べます（ペア=4分／3人=3分／4人=2分が目安）。</p>
+        <div class="tk-mode" role="group" aria-label="いまの役割">
+          <button type="button" id="modeTalk" aria-pressed="true">話す人</button>
+          <button type="button" id="modeListen" aria-pressed="false">聞く人</button>
+        </div>
+        <div id="paneTalk">
+          <div class="tk-kanpe" id="talkKanpe"><b>あなたのカンペ</b><span id="talkKanpeText"></span></div>
+          <p class="tk-lead tk-soft">これを見ながら、そのまま話せばOK。きれいにまとめようとしなくていいです。</p>
+        </div>
+        <div id="paneListen" hidden>
+          <ul class="tk-pairq">
+            <li><small>Q1</small>その時、実際に何をしていましたか？</li>
+            <li><small>Q2</small>何がいちばん嬉しかったですか？</li>
+            <li><small>Q3</small>聞いていて、どの行動がその人らしいと感じましたか？</li>
+          </ul>
+          <p class="tk-lead tk-soft" style="margin-top:14px;">アドバイスも解釈もいりません。ただ聞いて、見えたことを返します。</p>
+        </div>
+        <div class="tk-timer">
+          <div class="tk-timer-preset" role="group" aria-label="1人あたりの時間">
+            <button type="button" data-min="2" aria-pressed="false">2分</button>
+            <button type="button" data-min="3" aria-pressed="false">3分</button>
+            <button type="button" data-min="4" aria-pressed="true">4分</button>
+          </div>
+          <div class="tk-timer-num" id="timerNum" role="timer" aria-live="off">4:00</div>
+          <p class="tk-timer-msg" id="timerMsg" role="status" aria-live="polite"></p>
+          <div class="tk-timer-btns">
+            <button class="tk-btn gold" type="button" id="timerToggle">スタート</button>
+            <button class="tk-btn ghost" type="button" id="timerReset">リセット</button>
+            <button class="tk-btn ghost" type="button" id="timerSwap">交代する</button>
+          </div>
+        </div>
+        <p class="tk-rule">資質名（才能の呼び名）を当てなくてOK。<br>「○○した行動が、私には価値に見えました」と返します。</p>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" id="pairNext" data-go="gift">もらった言葉を書きにいく</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面8：人からもらった言葉 ============ -->
+      <section class="tk-screen" id="scr-gift" aria-labelledby="t-gift" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">5歩め ／ もらった言葉</p>
+        <h2 class="tk-title" id="t-gift">人からもらった言葉</h2>
+        <p class="tk-lead">言われたとおりに書いておくのがおすすめです。あとで効いてきます。</p>
+        <label class="tk-label" for="giftAction">相手が見つけてくれた、私の行動</label>
+        <textarea class="tk-textarea" id="giftAction" rows="2" placeholder="例：話が散らばったとき、そっと戻してた"></textarea>
+        <label class="tk-label" for="giftWords">言ってもらって嬉しかった言葉</label>
+        <textarea class="tk-textarea" id="giftWords" rows="2" placeholder="そのまま、言われたとおりに"></textarea>
+        <fieldset style="border:none;margin:18px 0 0;padding:0;">
+          <legend class="tk-label" style="margin:0 0 8px;">しっくり度（どれを選んでも正解です）</legend>
+          <div class="tk-radios">
+            <label class="tk-radio"><input type="radio" name="fit" value="しっくりくる"><span class="tk-radio-face">しっくりくる</span></label>
+            <label class="tk-radio"><input type="radio" name="fit" value="少し考えたい"><span class="tk-radio-face">少し考えたい</span></label>
+            <label class="tk-radio"><input type="radio" name="fit" value="ちょっと違う気がする"><span class="tk-radio-face">ちょっと違う気がする</span></label>
+          </div>
+        </fieldset>
+        <details class="tk-details">
+          <summary>受検済みの人向け：自分の上位資質とつながるとしたら？（任意）</summary>
+          <p style="margin-bottom:6px;">資質名はあなたが自由に書きます。アプリは推測も判定もしません。</p>
+          <label class="tk-label" for="giftStrength" style="margin-top:8px;">つながっていそうな資質</label>
+          <input class="tk-input" id="giftStrength" type="text" placeholder="例：◯◯かも？">
+        </details>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" data-go="tomorrow">次へ</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面9：明日10分 ============ -->
+      <section class="tk-screen" id="scr-tomorrow" aria-labelledby="t-tomorrow" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">6歩め ／ あしたの10分</p>
+        <h2 class="tk-title" id="t-tomorrow">明日、10分だけ</h2>
+        <p class="tk-lead">7日間がんばらなくていいです。まず、明日の10分だけ。</p>
+        <label class="tk-label" for="tmMove">私は「＿＿する動き」を…</label>
+        <input class="tk-input" id="tmMove" type="text" placeholder="例：みんなの話を整理（→「整理する動き」になります）">
+        <label class="tk-label" for="tmWhere">明日「＿＿」で10分だけ使ってみます。</label>
+        <input class="tk-input" id="tmWhere" type="text" placeholder="例：朝の打ち合わせ">
+        <p class="tk-soft" style="margin-top:14px;">例：私は「みんなの話を整理する動き」を、明日「朝の打ち合わせ」で10分だけ使ってみます。</p>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" data-go="card">持ち帰りカードを作る</button>
+        </div>
+      </section>
+
+      <!-- ============ 画面10：持ち帰りカード ============ -->
+      <section class="tk-screen" id="scr-card" aria-labelledby="t-card" hidden>
+        <button class="tk-back" type="button" data-back>← もどる</button>
+        <p class="tk-eyebrow">ゴール ／ 持ち帰りカード</p>
+        <h2 class="tk-title" id="t-card">今日の種、ひろえました <span class="spark">✦</span></h2>
+        <div class="tk-petals" id="petals" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+        <div class="tk-card" id="takeCard">
+          <p class="tk-card-head" id="cardHead">Kyun Seed Card</p>
+          <p class="tk-card-title">キュンの種ひろい</p>
+          <div class="tk-card-row"><b>今日の色</b><p class="colorline"><i aria-hidden="true"></i><span id="cColor">—</span></p></div>
+          <div class="tk-card-row"><b>今日見つけた「ついやること」</b><p id="cAction">—</p></div>
+          <div class="tk-card-row"><b>人からもらった価値の言葉</b><p id="cWords">—</p></div>
+          <div class="tk-card-row"><b>明日10分だけ試すこと</b><p id="cTomorrow">—</p></div>
+        </div>
+        <div class="tk-actions">
+          <button class="tk-btn primary" type="button" id="copyBtn">内容をまとめてコピー</button>
+          <button class="tk-btn gold" type="button" id="shareBtn" hidden>共有する</button>
+          <button class="tk-btn ghost" type="button" id="soloBtn">カードだけ表示（スクショ用）</button>
+          <button class="tk-btn ghost" type="button" id="restartBtn">最初からやり直す</button>
+        </div>
+        <p class="tk-status" id="copyStatus" role="status" aria-live="polite"></p>
+        <div id="copyFallback" hidden>
+          <p class="tk-soft">コピーが使えない端末のようです。下の文を長押しで選択して保存してください。</p>
+          <textarea class="tk-textarea tk-copybox" id="copyText" readonly aria-label="持ち帰り用テキスト"></textarea>
+        </div>
+        <details class="tk-details">
+          <summary>保存されているものと、消し方</summary>
+          <p>
+            この端末のブラウザ内（localStorage）だけに、選んだ色と入力した言葉が自動保存されています。
+            外部への送信はありません。下のボタンで全部消せます。
+          </p>
+          <div class="tk-actions" style="margin-top:12px;">
+            <button class="tk-btn ghost" type="button" id="wipeBtn">すべて消す</button>
+          </div>
+        </details>
+      </section>
+
+      <!-- ============ ファシリテーター用 ============ -->
+      <section class="tk-screen" id="scr-fac" aria-labelledby="t-fac" hidden>
+        <button class="tk-back" type="button" id="facClose">← アプリにもどる</button>
+        <p class="tk-eyebrow">進行役のページ</p>
+        <h2 class="tk-title" id="t-fac">進行表（28分）</h2>
+        <table class="tk-fac-table">
+          <tbody>
+            <tr><th>0〜2分</th><td>はじめの約束を読み上げる（診断じゃない・パスOK）</td></tr>
+            <tr><th>2〜5分</th><td>各自で 画面「色」→「入口」へ（出てこない人はそのまま救済へ）</td></tr>
+            <tr><th>5〜13分</th><td>画面「シェア」＝グループで聞き合い（ペア=1人4分／3人=3分／4人=2分。タイマー上で切替）</td></tr>
+            <tr><th>13〜23分</th><td>全体で、見えた価値を本人に返す → 各自 画面「言葉」へメモ</td></tr>
+            <tr><th>23〜28分</th><td>画面「一歩」→「カード」でお土産づくり</td></tr>
+          </tbody>
+        </table>
+        <div class="tk-cheer" style="margin-top:22px;">
+          <b>読み上げ文：</b><br>
+          「出てこない」は失敗ではありません。自分にとって普通すぎたり、今日は疲れて思い出せなかったりします。
+          パスして、あとで人から見えたことをもらっても大丈夫です。
+        </div>
+      </section>
+
+      <div class="tk-footlinks">
+        <button type="button" id="facOpen">進行を見る</button>
+      </div>
+      <p class="tk-savenote" id="saveNote">入力はこの端末の中だけに自動保存されます。どこにも送信されません。</p>
+    </div>
+  </main>
+
+  <!-- カードだけ表示 -->
+  <div class="tk-solo" id="soloView" hidden role="dialog" aria-modal="true" aria-label="持ち帰りカードだけの表示">
+    <div class="tk-card" id="soloCard"></div>
+    <button class="tk-btn ghost tk-solo-close" type="button" id="soloClose">閉じる</button>
+  </div>
+
+  <!-- じぶんの回答一覧（どの画面からでも見られる） -->
+  <div class="tk-solo" id="ansView" hidden role="dialog" aria-modal="true" aria-label="じぶんの回答一覧">
+    <div class="tk-card" style="width:100%;max-width:480px;">
+      <p class="tk-card-head">My Notes</p>
+      <p class="tk-card-title">いま書いてあること</p>
+      <div id="ansList"></div>
+    </div>
+    <button class="tk-btn ghost tk-solo-close" type="button" id="ansClose">閉じる</button>
+  </div>
+
+  <footer class="site-footer">
+    <p>
+      このページは、日常の行動から自分らしさの手がかりを探す、おけもん式の体験ワークです。
+      CliftonStrengthsの正式な診断・公式プログラムではありません。
+      CliftonStrengthsおよび各資質名はGallup, Inc.の商標です。
+    </p>
+    <p>
+      色の意味の判定や、色と資質の対応づけは行いません。入力内容はこの端末内だけに保存され、外部へ送信されません。
+    </p>
+  </footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ==== 次のオフ会で使う時は、この3行だけ書き換える ====
+     id を変えると前回参加者の回答と混ざらない（localStorageの引き出し名になる）。
+     dateLabel は画面・持ち帰りカード・コピー文に、placeLabel は開始画面に出る */
+  var EVENT = {
+    id: "20260820",
+    dateLabel: "2026.08.20",
+    placeLabel: "Osaka Umeda"
+  };
+  var KEY = "tokimekiApp.v1." + EVENT.id;
+
+  /* ---------- 保存まわり。壊れていても落ちない ---------- */
+  var storageOK = true;
+  function flagStorageOff() {
+    if (!storageOK) return;
+    storageOK = false;
+    var note = document.getElementById("saveNote");
+    if (note) {
+      note.setAttribute("data-state", "off");
+      note.textContent = "この端末では自動保存ができません（プライベートモードなどの可能性）。最後の画面はスクリーンショットで残してください。";
+    }
+    /* ページ最下部の注記だけだと気づけないので、画面の上にも出す */
+    if (!document.getElementById("storageAlert")) {
+      var alertEl = document.createElement("p");
+      alertEl.id = "storageAlert";
+      alertEl.className = "tk-alert";
+      alertEl.setAttribute("role", "alert");
+      alertEl.textContent = "この端末では自動保存ができません（プライベートモードなど）。画面を閉じる前に、書いたものをスクリーンショットで残してください。";
+      var shell = document.querySelector(".tk-shell");
+      if (shell) shell.insertBefore(alertEl, shell.firstChild);
+    }
+  }
+  function load() {
+    var parsed;
+    try { parsed = JSON.parse(localStorage.getItem(KEY) || "{}"); }
+    catch (e) { flagStorageOff(); return {}; }
+    return (parsed && typeof parsed === "object" && !Array.isArray(parsed)) ? parsed : {};
+  }
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { flagStorageOff(); }
+  }
+  try {
+    localStorage.setItem(KEY + ".probe", "1");
+    localStorage.removeItem(KEY + ".probe");
+  } catch (e) { flagStorageOff(); }
+
+  /* ---------- 状態 ---------- */
+  var SCREENS_LIST = ["start", "color", "entry", "rescue1", "rescue2", "deepen", "pair", "gift", "tomorrow", "card"];
+  var DEFAULTS = {
+    step: "start",
+    hist: [],
+    color: "",       /* 色チップの選択 */
+    colorFree: "",   /* 自由入力の色 */
+    entryQ: -1, entryText: "",
+    r1Idx: 0, r1Text: "",
+    r2Idx: 0, r2Text: "",
+    finalPath: "",   /* gift / observe / pass */
+    dp: ["", "", ""],
+    giftAction: "", giftWords: "", giftFit: "", giftStrength: "",
+    tmMove: "", tmWhere: ""
+  };
+  var S = Object.assign({}, DEFAULTS, load());
+  S.hist = Array.isArray(S.hist) ? S.hist.slice() : [];
+  S.dp = Array.isArray(S.dp) ? S.dp.slice(0, 3) : ["", "", ""];
+  while (S.dp.length < 3) S.dp.push("");
+  if (SCREENS_LIST.indexOf(S.step) < 0 || S.step === "fac") S.step = "start";
+
+  /* ---------- 色の候補（TCカラー14本のボトル順。意味の判定はしない） ---------- */
+  var COLORS = [
+    ["レッド", "#C33B32"], ["コーラル", "#E8897D"], ["オレンジ", "#E0752B"],
+    ["ゴールド", "#D9A62E"], ["イエロー", "#E7CE3C"], ["ライム", "#A6C34B"],
+    ["グリーン", "#3E9B4F"], ["ターコイズ", "#38AFC0"], ["ブルー", "#3672C4"],
+    ["インディゴ", "#2E3A6E"], ["パープル", "#7B54A8"], ["ピンク", "#ED8FB7"],
+    ["ダークブラウン", "#7A4632"], ["クリア", "#F4F1EA"]
+  ];
+  var chips = document.getElementById("chips");
+  COLORS.forEach(function (c) {
+    var lab = document.createElement("label");
+    lab.className = "tk-chip";
+    var input = document.createElement("input");
+    input.type = "radio";
+    input.name = "color";
+    input.value = c[0];
+    if (S.color === c[0]) input.checked = true;
+    var face = document.createElement("span");
+    face.className = "tk-chip-face";
+    var dot = document.createElement("span");
+    dot.className = "tk-chip-dot";
+    dot.style.setProperty("--chip", c[1]);
+    var name = document.createElement("span");
+    name.textContent = c[0];
+    face.appendChild(dot);
+    face.appendChild(name);
+    lab.appendChild(input);
+    lab.appendChild(face);
+    chips.appendChild(lab);
+  });
+  function colorHex() {
+    for (var i = 0; i < COLORS.length; i++) {
+      if (COLORS[i][0] === S.color) return COLORS[i][1];
+    }
+    return "";
+  }
+  function applyMyColor() {
+    var hex = colorHex();
+    var root = document.documentElement;
+    /* クリアは薄すぎて飾りが消えるので、金色の飾りのままにする */
+    if (hex && S.color !== "クリア") {
+      root.style.setProperty("--my-color", hex);
+    } else {
+      root.style.removeProperty("--my-color");
+    }
+  }
+  chips.addEventListener("change", function (e) {
+    if (e.target && e.target.name === "color") {
+      S.color = e.target.value;
+      applyMyColor();
+      persist();
+      /* 次へ進むボタンが画面外で「押したのに何も起きない」と感じさせないように */
+      var nx = document.getElementById("colorNext");
+      if (nx) nx.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  });
+
+  /* ---------- 画面遷移 ---------- */
+  var SCREENS = ["start", "color", "entry", "rescue1", "rescue2", "deepen", "pair", "gift", "tomorrow", "card", "fac"];
+  /* 種の進み具合。主要ステーションのみ */
+  var STATIONS = ["color", "entry", "deepen", "pair", "gift", "tomorrow", "card"];
+  var STATION_ALIAS = { rescue1: "entry", rescue2: "entry", start: "" };
+
+  function show(step) {
+    SCREENS.forEach(function (id) {
+      var el = document.getElementById("scr-" + id);
+      if (!el) return;
+      if (id === step) {
+        el.hidden = false;
+        el.classList.remove("tk-appear");
+        void el.offsetWidth; /* アニメを毎回リスタートさせる */
+        el.classList.add("tk-appear");
+      } else {
+        el.hidden = true;
+      }
+    });
+    renderProgress(step);
+    if (step === "start") {
+      var rn = document.getElementById("resumeNote");
+      if (rn) rn.hidden = !hasAnyContent();
+    }
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+  function renderProgress(step) {
+    var bar = document.getElementById("progress");
+    var current = STATION_ALIAS.hasOwnProperty(step) ? STATION_ALIAS[step] : step;
+    if (step === "fac") current = "";
+    bar.innerHTML = "";
+    var reached = STATIONS.indexOf(current);
+    STATIONS.forEach(function (st, i) {
+      var seed = document.createElement("span");
+      seed.className = "tk-seed" + (i < reached ? " done" : "") + (i === reached ? " now done" : "");
+      bar.appendChild(seed);
+    });
+    var labels = ["色", "入口", "具体化", "シェア", "言葉", "一歩", "カード"];
+    bar.setAttribute("aria-label", reached >= 0
+      ? "進み具合：" + labels[reached] + "（" + (reached + 1) + "／" + STATIONS.length + "）"
+      : "はじめの画面");
+    /* どこまでいったらOKか、をいつも1行で示す */
+    var goal = document.getElementById("goalLine");
+    if (step === "fac") {
+      goal.innerHTML = "ファシリテーター用の進行表です";
+    } else if (step === "card") {
+      goal.innerHTML = "<b>ゴール到着！</b>おつかれさま";
+    } else if (reached >= 0) {
+      goal.innerHTML = "いま「<b>" + labels[reached] + "</b>」（" + (reached + 1) + "歩め／全" + STATIONS.length + "歩）｜ゴールは<b>持ち帰りカード</b>";
+    } else {
+      goal.innerHTML = "ぜんぶで7歩。ゴールは最後の<b>持ち帰りカード</b>です";
+    }
+  }
+  function go(step) {
+    if (S.step !== step) S.hist.push(S.step);
+    S.step = step;
+    document.getElementById("entryCheer").hidden = true;
+    if (step === "rescue2") {
+      document.getElementById("r2Actions").hidden = false;
+      document.getElementById("finalRescue").hidden = true;
+    }
+    if (step === "deepen") renderDeepenKanpe();
+    if (step === "pair") renderTalkKanpe();
+    if (step === "card") renderCard(true);
+    persist();
+    show(step);
+    armHistory();
+  }
+  function goBack() {
+    var prev = S.hist.pop() || "start";
+    S.step = prev;
+    if (prev === "deepen") renderDeepenKanpe();
+    if (prev === "pair") renderTalkKanpe();
+    if (prev === "card") renderCard(false);
+    persist();
+    show(prev);
+  }
+  document.querySelectorAll("[data-go]").forEach(function (btn) {
+    btn.addEventListener("click", function () { go(btn.getAttribute("data-go")); });
+  });
+  document.querySelectorAll("[data-back]").forEach(function (btn) {
+    btn.addEventListener("click", goBack);
+  });
+
+  /* スマホの「戻る」（スワイプ・戻るボタン）でも画面が1つ戻るようにする。
+     番兵として履歴を1つ積んでおき、popstateで受け止めて内部の戻るに変換。
+     開始画面まで戻り切ったら、次の「戻る」で普通にページを離れられる */
+  var histArmed = false;
+  function armHistory() {
+    if (histArmed) return;
+    try { history.pushState({ tk: 1 }, ""); histArmed = true; } catch (e) { /* 履歴が使えない環境では従来どおり */ }
+  }
+  window.addEventListener("popstate", function () {
+    histArmed = false;
+    if (facVisible) {
+      /* 進行表を見ているだけの時は、回答画面の位置を動かさずに閉じる */
+      closeFacView();
+      if (S.hist.length > 0 || S.step !== "start") armHistory();
+      return;
+    }
+    if (S.hist.length > 0 || S.step !== "start") {
+      goBack();
+      /* まだ戻り先がある時だけ番兵を積み直す。開始画面に着いたら
+         次の「戻る」で普通にページを離れられるようにする */
+      if (S.hist.length > 0 || S.step !== "start") armHistory();
+    }
+  });
+
+  /* ---------- 入力欄の共通バインド ---------- */
+  function bindText(id, key, isDp, dpIdx) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    var val = isDp ? S.dp[dpIdx] : S[key];
+    if (val) el.value = val;
+    el.addEventListener("input", function () {
+      if (isDp) S.dp[dpIdx] = el.value;
+      else S[key] = el.value;
+      persist();
+    });
+  }
+  bindText("colorFree", "colorFree");
+  bindText("entryText", "entryText");
+  bindText("r1Text", "r1Text");
+  bindText("r2Text", "r2Text");
+  bindText("dp0", null, true, 0);
+  bindText("dp1", null, true, 1);
+  bindText("dp2", null, true, 2);
+  bindText("giftAction", "giftAction");
+  bindText("giftWords", "giftWords");
+  bindText("giftStrength", "giftStrength");
+  bindText("tmMove", "tmMove");
+  bindText("tmWhere", "tmWhere");
+
+  document.querySelectorAll("input[name='fit']").forEach(function (r) {
+    if (S.giftFit === r.value) r.checked = true;
+    r.addEventListener("change", function () {
+      if (r.checked) { S.giftFit = r.value; persist(); }
+    });
+  });
+
+  /* ---------- 画面3：最初の3問 ---------- */
+  var ENTRY_QS = [
+    "なぜか惹かれる・やってみたくなること",
+    "時間を忘れてやってしまうこと",
+    "終わったあと「またやりたい」と思うこと"
+  ];
+  function renderEntry() {
+    document.querySelectorAll("[data-entryq]").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(+b.getAttribute("data-entryq") === S.entryQ));
+    });
+    var write = document.getElementById("entryWrite");
+    write.hidden = S.entryQ < 0;
+    if (S.entryQ >= 0) {
+      document.getElementById("entryTextLabel").textContent = ENTRY_QS[S.entryQ];
+    }
+  }
+  document.querySelectorAll("[data-entryq]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      S.entryQ = +b.getAttribute("data-entryq");
+      persist();
+      renderEntry();
+    });
+  });
+  renderEntry();
+  /* 何も書いていないのに「書けたので次へ」だと嘘になるので、状態で言い分ける */
+  var entryDoneBtn = document.getElementById("entryDone");
+  function updateEntryBtn() {
+    entryDoneBtn.textContent = (S.entryText || "").trim() ? "書けたので次へ" : "書かずに次へ";
+  }
+  document.getElementById("entryText").addEventListener("input", updateEntryBtn);
+  updateEntryBtn();
+  document.getElementById("entrySmaller").addEventListener("click", function () { go("rescue1"); });
+  document.getElementById("entryDone").addEventListener("click", function () {
+    document.getElementById("entryCheer").hidden = true;
+    go("deepen"); /* 「書けた」という本人の宣言を尊重。空でも止めない */
+  });
+  document.getElementById("entryStuck").addEventListener("click", function () {
+    var cheer = document.getElementById("entryCheer");
+    if (cheer.hidden) {
+      cheer.hidden = false; /* まず励まし。もう一度押したら進む */
+      cheer.scrollIntoView({ block: "nearest" });
+    } else {
+      go("rescue1");
+    }
+  });
+
+  /* ---------- 画面4：救済レベル1 ---------- */
+  var R1_QS = [
+    "この1週間で、つい見た・調べた・保存したことは？",
+    "頼まれていないのに、気づいたらやっていたことは？",
+    "終わったあと、少しホッとしたことは？",
+    "「もう10分なら続けられた」と思えることは？"
+  ];
+  function renderR1() {
+    document.getElementById("r1Q").textContent = R1_QS[S.r1Idx];
+    document.getElementById("r1Count").textContent = S.r1Idx + 1;
+  }
+  document.getElementById("r1Next").addEventListener("click", function () {
+    S.r1Idx = (S.r1Idx + 1) % R1_QS.length;
+    persist();
+    renderR1();
+  });
+  renderR1();
+  document.getElementById("r1Done").addEventListener("click", function () { go("deepen"); });
+
+  /* ---------- 画面5：救済レベル2＋最終救済 ---------- */
+  var R2_QS = [
+    "最近、人から頼まれたことは？",
+    "最近、「助かった」「ありがとう」と言われたことは？",
+    "他の人より、あまり苦にならなかったことは？"
+  ];
+  function renderR2() {
+    document.getElementById("r2Q").textContent = R2_QS[S.r2Idx];
+    document.getElementById("r2Count").textContent = S.r2Idx + 1;
+  }
+  document.getElementById("r2Next").addEventListener("click", function () {
+    S.r2Idx = (S.r2Idx + 1) % R2_QS.length;
+    persist();
+    renderR2();
+  });
+  renderR2();
+  document.getElementById("r2Done").addEventListener("click", function () { go("deepen"); });
+  document.getElementById("r2Stuck").addEventListener("click", function () {
+    var fr = document.getElementById("finalRescue");
+    fr.hidden = false;
+    document.getElementById("r2Actions").hidden = true;
+    fr.scrollIntoView({ block: "nearest" });
+  });
+  function finalPath(path) {
+    S.finalPath = path;
+    persist();
+    go("pair"); /* どれを選んでも完了として先へ */
+  }
+  document.getElementById("pathGift").addEventListener("click", function () { finalPath("gift"); });
+  document.getElementById("pathObserve").addEventListener("click", function () { finalPath("observe"); });
+  document.getElementById("pathPass").addEventListener("click", function () { finalPath("pass"); });
+
+  /* ---------- 自分の回答の集約 ---------- */
+  function ownAnswer() {
+    return (S.entryText || "").trim() || (S.r1Text || "").trim() || (S.r2Text || "").trim();
+  }
+  function hasAnyContent() {
+    return !!(S.color || (S.colorFree || "").trim() || ownAnswer() ||
+      (S.giftAction || "").trim() || (S.giftWords || "").trim() || (S.giftStrength || "").trim() ||
+      (S.tmMove || "").trim() || (S.tmWhere || "").trim() || S.dp.join("").trim());
+  }
+
+  /* ---------- 画面6：具体化のカンペ ---------- */
+  function renderDeepenKanpe() {
+    var box = document.getElementById("deepenKanpe");
+    var txt = ownAnswer();
+    if (txt) {
+      box.hidden = false;
+      document.getElementById("deepenKanpeText").textContent = txt;
+    } else {
+      box.hidden = true;
+    }
+  }
+
+  /* ---------- 画面7：ペアワーク ---------- */
+  function renderTalkKanpe() {
+    var parts = [];
+    var own = ownAnswer();
+    if (own) parts.push(own);
+    S.dp.forEach(function (t, i) {
+      if ((t || "").trim()) {
+        parts.push(["していたこと：", "嬉しかったこと：", "周りの反応："][i] + t.trim());
+      }
+    });
+    var span = document.getElementById("talkKanpeText");
+    if (parts.length) {
+      span.textContent = parts.join(" ／ ");
+    } else if (S.finalPath === "observe") {
+      span.textContent = "今日は観察の回。聞く人にまわって、相手の「らしさ」を見つけてあげてください。";
+    } else if (S.finalPath === "pass") {
+      span.textContent = "パスもOK。同じグループの人の話をゆっくり聞く時間にしましょう。";
+    } else {
+      span.textContent = "今日は、一緒のグループの人に「今日ここで自然にしていたこと」を見つけてもらう回です。";
+    }
+  }
+
+  var modeTalk = document.getElementById("modeTalk");
+  var modeListen = document.getElementById("modeListen");
+  function setMode(listen) {
+    modeTalk.setAttribute("aria-pressed", String(!listen));
+    modeListen.setAttribute("aria-pressed", String(listen));
+    document.getElementById("paneTalk").hidden = listen;
+    document.getElementById("paneListen").hidden = !listen;
+  }
+  modeTalk.addEventListener("click", function () { setMode(false); });
+  modeListen.addEventListener("click", function () { setMode(true); });
+
+  /* タイマー。tick回数でなく実時間（締切時刻）で数える：
+     スマホの画面ロックやバックグラウンドでintervalが止まっても、実際の残り時間を保つ。
+     音は鳴らさない。振動できる端末だけ短く */
+  var TIMER_TOTAL = 4 * 60;
+  var remain = TIMER_TOTAL;
+  var deadline = null;
+  var ticking = null;
+  var wakeLock = null;
+  var numEl = document.getElementById("timerNum");
+  var msgEl = document.getElementById("timerMsg");
+  var toggleBtn = document.getElementById("timerToggle");
+  function fmt(sec) {
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return m + ":" + (s < 10 ? "0" : "") + s;
+  }
+  function paintTimer() {
+    numEl.textContent = fmt(remain);
+    numEl.classList.toggle("done", remain === 0);
+  }
+  function requestWake() {
+    if (navigator.wakeLock && navigator.wakeLock.request) {
+      navigator.wakeLock.request("screen").then(function (l) { wakeLock = l; })
+        .catch(function () { /* 未対応・省電力中は静かに諦める */ });
+    }
+  }
+  function releaseWake() {
+    if (wakeLock) { try { wakeLock.release(); } catch (e) {} wakeLock = null; }
+  }
+  function syncRemain() {
+    if (deadline === null) return;
+    remain = Math.max(0, Math.ceil((deadline - Date.now()) / 1000));
+  }
+  function stopTick() {
+    if (ticking) { clearInterval(ticking); ticking = null; }
+    deadline = null;
+    releaseWake();
+    toggleBtn.textContent = remain === TIMER_TOTAL ? "スタート" : (remain === 0 ? "もう一度" : "再開");
+  }
+  function finishTimer() {
+    remain = 0;
+    stopTick();
+    paintTimer();
+    msgEl.textContent = "おつかれさま。次の人は「交代する」、全員終わったら下の緑のボタンへ";
+    if (navigator.vibrate) { try { navigator.vibrate(200); } catch (e) { /* 対応外は静かに */ } }
+    var next = document.getElementById("pairNext");
+    if (next && !document.getElementById("scr-pair").hidden) {
+      next.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
+  function startTick() {
+    if (ticking) return;
+    if (remain === 0) remain = TIMER_TOTAL; /* 0:00からでも、押せばもう一度数えられる */
+    deadline = Date.now() + remain * 1000;
+    toggleBtn.textContent = "一時停止";
+    msgEl.textContent = "";
+    requestWake();
+    ticking = setInterval(function () {
+      syncRemain();
+      paintTimer();
+      if (remain <= 0) finishTimer();
+    }, 250);
+  }
+  function resetTimer() {
+    if (ticking) { clearInterval(ticking); ticking = null; }
+    deadline = null;
+    releaseWake();
+    remain = TIMER_TOTAL;
+    paintTimer();
+    toggleBtn.textContent = "スタート";
+    msgEl.textContent = "";
+  }
+  document.addEventListener("visibilitychange", function () {
+    if (!document.hidden && ticking) {
+      syncRemain();
+      paintTimer();
+      if (remain <= 0) finishTimer();
+      else requestWake(); /* ロック解除で切れたwake lockを取り直す */
+    }
+  });
+  /* カウント中のリセット・交代は、誤タップで話し手の残り時間が消えるので2度押しで確定 */
+  var confirmBtn = null, confirmAt = 0;
+  function needsSecondTap(btn, warn) {
+    if (!ticking) return false;
+    if (confirmBtn === btn && Date.now() - confirmAt < 3500) { confirmBtn = null; return false; }
+    confirmBtn = btn;
+    confirmAt = Date.now();
+    msgEl.textContent = warn;
+    return true;
+  }
+  toggleBtn.addEventListener("click", function () {
+    if (ticking) stopTick(); else startTick();
+  });
+  document.getElementById("timerReset").addEventListener("click", function () {
+    if (needsSecondTap(this, "もう一度押すと、いまの時間を消してリセットします")) return;
+    resetTimer();
+  });
+  document.getElementById("timerSwap").addEventListener("click", function () {
+    if (needsSecondTap(this, "もう一度押すと、交代して最初からスタートします")) return;
+    resetTimer();
+    setMode(modeListen.getAttribute("aria-pressed") !== "true");
+    startTick(); /* 交代のスタート押し忘れ対策：交代したらそのまま数えはじめる */
+    msgEl.textContent = "交代！役割が入れ替わって、カウント中です";
+  });
+  /* 人数に合わせて1人あたりの時間を選ぶ（ペア=4分／3人=3分／4人=2分の目安） */
+  document.querySelectorAll(".tk-timer-preset button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      document.querySelectorAll(".tk-timer-preset button").forEach(function (x) {
+        x.setAttribute("aria-pressed", "false");
+      });
+      b.setAttribute("aria-pressed", "true");
+      TIMER_TOTAL = (+b.getAttribute("data-min")) * 60;
+      resetTimer();
+    });
+  });
+  paintTimer();
+
+  /* ---------- 画面10：持ち帰りカード ---------- */
+  function colorLabel() {
+    var free = (S.colorFree || "").trim();
+    if (S.color && free) return S.color + "（" + free + "）";
+    return S.color || free || "";
+  }
+  function tomorrowLine() {
+    var mv = (S.tmMove || "").trim();
+    var wh = (S.tmWhere || "").trim();
+    if (!mv && !wh) return "";
+    return "私は「" + (mv || "＿＿") + "する動き」を、明日「" + (wh || "＿＿") + "」で10分だけ使ってみます。";
+  }
+  function setCardField(id, text, emptyText) {
+    var el = document.getElementById(id);
+    if (text) {
+      el.textContent = text;
+      el.classList.remove("tk-card-empty");
+    } else {
+      el.textContent = emptyText;
+      el.classList.add("tk-card-empty");
+    }
+  }
+  function renderCard(celebrate) {
+    setCardField("cColor", colorLabel(), "今日は色なしで");
+    var action = ownAnswer() || (S.giftAction || "").trim();
+    setCardField("cAction", action, "今日は観察の日。人の種を見つける側でした");
+    var words = (S.giftWords || "").trim();
+    var withFit = words && S.giftFit ? words + "（" + S.giftFit + "）" : words;
+    setCardField("cWords", withFit, "まだこれから。もらったら書き足せます");
+    setCardField("cTomorrow", tomorrowLine(), "決まったら書き足せます");
+    if (celebrate) {
+      var petals = document.getElementById("petals");
+      petals.classList.remove("play");
+      void petals.offsetWidth;
+      petals.classList.add("play");
+    }
+  }
+
+  function buildTakeout() {
+    var lines = ["【キュンの種ひろい" + (EVENT.dateLabel ? " " + EVENT.dateLabel : "") + "】"];
+    var c = colorLabel();
+    if (c) lines.push("今日の色：" + c);
+    var action = ownAnswer() || (S.giftAction || "").trim();
+    if (action) lines.push("見つけた「ついやること」：" + action);
+    S.dp.forEach(function (t, i) {
+      if ((t || "").trim()) lines.push(["その時していたこと：", "嬉しかったこと：", "周りの反応："][i] + t.trim());
+    });
+    var words = (S.giftWords || "").trim();
+    if (words) lines.push("人からもらった言葉：" + words + (S.giftFit ? "（" + S.giftFit + "）" : ""));
+    var st = (S.giftStrength || "").trim();
+    if (st) lines.push("つながっていそうな資質：" + st);
+    var tm = tomorrowLine();
+    if (tm) lines.push("明日10分：" + tm);
+    if (lines.length === 1) lines.push("今日は観察の回。人の種を見つけた日でした。");
+    lines.push("");
+    lines.push("つづき → https://okemonogatari-hash.github.io/okemon-strengths-home/");
+    return lines.join("\n");
+  }
+
+  var copyStatus = document.getElementById("copyStatus");
+  function showFallbackText(text) {
+    var box = document.getElementById("copyFallback");
+    box.hidden = false;
+    var ta = document.getElementById("copyText");
+    ta.value = text;
+    ta.focus();
+    ta.select();
+  }
+  document.getElementById("copyBtn").addEventListener("click", function () {
+    var text = buildTakeout();
+    function done() { copyStatus.textContent = "コピーしました。LINEやメモに貼って残してください"; }
+    function fallback() {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-1000px";
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      var ok = false;
+      try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+      document.body.removeChild(ta);
+      if (ok) { done(); }
+      else {
+        copyStatus.textContent = "コピーできない端末のため、下に全文を出しました";
+        showFallbackText(text);
+      }
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(fallback);
+    } else {
+      fallback();
+    }
+  });
+
+  /* Web Share API対応端末のみ表示。共有先の最終選択は本人がOSの共有シートで行う */
+  var shareBtn = document.getElementById("shareBtn");
+  if (navigator.share) {
+    shareBtn.hidden = false;
+    shareBtn.addEventListener("click", function () {
+      navigator.share({ text: buildTakeout() }).catch(function () { /* キャンセルは正常系 */ });
+    });
+  }
+
+  /* オーバーレイ共通：背景スクロールを止め、フォーカスを閉じるボタンに閉じ込める */
+  var openedOverlay = null, openedOverlayClose = null, overlayOpener = null;
+  function showOverlay(view, closeBtn, opener) {
+    openedOverlay = view;
+    openedOverlayClose = closeBtn;
+    overlayOpener = opener;
+    view.hidden = false;
+    document.body.classList.add("tk-lock");
+    closeBtn.focus();
+  }
+  function hideOverlay() {
+    if (!openedOverlay) return;
+    openedOverlay.hidden = true;
+    document.body.classList.remove("tk-lock");
+    if (overlayOpener) overlayOpener.focus();
+    openedOverlay = null;
+    openedOverlayClose = null;
+    overlayOpener = null;
+  }
+  document.addEventListener("keydown", function (e) {
+    if (!openedOverlay) return;
+    if (e.key === "Escape") hideOverlay();
+    else if (e.key === "Tab") { e.preventDefault(); openedOverlayClose.focus(); }
+  });
+
+  /* カードだけ表示 */
+  var soloView = document.getElementById("soloView");
+  var soloBtn = document.getElementById("soloBtn");
+  soloBtn.addEventListener("click", function () {
+    renderCard(false);
+    var host = document.getElementById("soloCard");
+    host.innerHTML = document.getElementById("takeCard").innerHTML;
+    /* IDの重複を残さない（本体側のカードと二重になるため） */
+    host.querySelectorAll("[id]").forEach(function (n) { n.removeAttribute("id"); });
+    showOverlay(soloView, document.getElementById("soloClose"), soloBtn);
+  });
+  document.getElementById("soloClose").addEventListener("click", hideOverlay);
+
+  /* ---------- じぶんの回答一覧（どの画面からでも） ---------- */
+  var ansView = document.getElementById("ansView");
+  var myAnsBtn = document.getElementById("myAnswers");
+  function ansRow(label, value) {
+    var row = document.createElement("div");
+    row.className = "tk-card-row";
+    var b = document.createElement("b");
+    b.textContent = label;
+    var p = document.createElement("p");
+    p.textContent = value;
+    row.appendChild(b);
+    row.appendChild(p);
+    return row;
+  }
+  function renderAnswers() {
+    var list = document.getElementById("ansList");
+    list.innerHTML = "";
+    var rows = [];
+    var c = colorLabel();
+    if (c) rows.push(["今日の色", c]);
+    if ((S.entryText || "").trim()) {
+      rows.push([S.entryQ >= 0 ? ENTRY_QS[S.entryQ] : "キュンの入口", S.entryText.trim()]);
+    }
+    if ((S.r1Text || "").trim()) rows.push(["この1週間の手がかり", S.r1Text.trim()]);
+    if ((S.r2Text || "").trim()) rows.push(["人からの手がかり", S.r2Text.trim()]);
+    var dpLabels = ["その時していたこと", "嬉しかった／気になったこと", "周りの反応"];
+    S.dp.forEach(function (t, i) {
+      if ((t || "").trim()) rows.push([dpLabels[i], t.trim()]);
+    });
+    if ((S.giftAction || "").trim()) rows.push(["相手が見つけてくれた行動", S.giftAction.trim()]);
+    if ((S.giftWords || "").trim()) rows.push(["もらった言葉", S.giftWords.trim() + (S.giftFit ? "（" + S.giftFit + "）" : "")]);
+    if ((S.giftStrength || "").trim()) rows.push(["つながっていそうな資質", S.giftStrength.trim()]);
+    var tm = tomorrowLine();
+    if (tm) rows.push(["明日10分", tm]);
+    if (!rows.length) {
+      var empty = document.createElement("p");
+      empty.className = "tk-soft";
+      empty.textContent = "まだ何も書いていません。書いたそばから、ここに集まっていきます。";
+      list.appendChild(empty);
+      return;
+    }
+    rows.forEach(function (r) { list.appendChild(ansRow(r[0], r[1])); });
+  }
+  myAnsBtn.addEventListener("click", function () {
+    renderAnswers();
+    showOverlay(ansView, document.getElementById("ansClose"), myAnsBtn);
+  });
+  document.getElementById("ansClose").addEventListener("click", hideOverlay);
+
+  /* 別タブで同じページを開いた時：あとから保存された状態に画面を合わせる */
+  function syncInputsFromState() {
+    var map = { colorFree: "colorFree", entryText: "entryText", r1Text: "r1Text", r2Text: "r2Text",
+                giftAction: "giftAction", giftWords: "giftWords", giftStrength: "giftStrength",
+                tmMove: "tmMove", tmWhere: "tmWhere" };
+    Object.keys(map).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.value !== (S[map[id]] || "")) el.value = S[map[id]] || "";
+    });
+    ["dp0", "dp1", "dp2"].forEach(function (id, i) {
+      var el = document.getElementById(id);
+      if (el && el.value !== (S.dp[i] || "")) el.value = S.dp[i] || "";
+    });
+    document.querySelectorAll("input[name='color']").forEach(function (r) { r.checked = (r.value === S.color); });
+    document.querySelectorAll("input[name='fit']").forEach(function (r) { r.checked = (r.value === S.giftFit); });
+    applyMyColor();
+    renderEntry();
+    updateEntryBtn();
+    renderR1();
+    renderR2();
+  }
+  window.addEventListener("storage", function (e) {
+    if (e.key !== KEY) return;
+    var incoming = load();
+    S = Object.assign({}, DEFAULTS, incoming);
+    S.hist = Array.isArray(S.hist) ? S.hist.slice() : [];
+    S.dp = Array.isArray(S.dp) ? S.dp.slice(0, 3) : ["", "", ""];
+    while (S.dp.length < 3) S.dp.push("");
+    if (SCREENS_LIST.indexOf(S.step) < 0) S.step = "start";
+    syncInputsFromState();
+    if (S.step === "deepen") renderDeepenKanpe();
+    if (S.step === "pair") renderTalkKanpe();
+    if (S.step === "card") renderCard(false);
+    if (!facVisible) show(S.step);
+  });
+
+  /* やり直し・全消去 */
+  function resetAll() {
+    S = Object.assign({}, DEFAULTS);
+    S.hist = [];
+    S.dp = ["", "", ""];
+    try { localStorage.removeItem(KEY); } catch (e) { /* 消せなくても画面は初期化する */ }
+    ["colorFree", "entryText", "r1Text", "r2Text", "dp0", "dp1", "dp2",
+     "giftAction", "giftWords", "giftStrength", "tmMove", "tmWhere", "copyText"].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) el.value = "";
+    });
+    document.querySelectorAll("input[name='color'], input[name='fit']").forEach(function (r) { r.checked = false; });
+    document.getElementById("entryCheer").hidden = true;
+    document.getElementById("entryWrite").hidden = true;
+    document.getElementById("finalRescue").hidden = true;
+    document.getElementById("r2Actions").hidden = false;
+    document.getElementById("copyFallback").hidden = true;
+    copyStatus.textContent = "";
+    applyMyColor();
+    renderEntry();
+    updateEntryBtn();
+    renderR1();
+    renderR2();
+    resetTimer();
+    setMode(false);
+    show("start");
+  }
+  document.getElementById("restartBtn").addEventListener("click", function () {
+    if (window.confirm("最初からやり直しますか？（書いた内容は消えます）")) resetAll();
+  });
+  document.getElementById("wipeBtn").addEventListener("click", function () {
+    if (window.confirm("この端末に保存された内容をすべて消しますか？")) resetAll();
+  });
+
+  /* ---------- ファシリテーターモード ---------- */
+  var facVisible = false;
+  function openFacView() {
+    facVisible = true;
+    show("fac");
+    armHistory(); /* スマホの戻るで進行表だけ閉じられるように */
+  }
+  function closeFacView() {
+    facVisible = false;
+    show(S.step);
+  }
+  document.getElementById("facOpen").addEventListener("click", openFacView);
+  document.getElementById("facClose").addEventListener("click", closeFacView);
+  var isFacilitator = false;
+  try { isFacilitator = new URLSearchParams(window.location.search).get("facilitator") === "1"; }
+  catch (e) { isFacilitator = false; }
+
+  /* ---------- 起動：保存された場所から再開 ---------- */
+  document.getElementById("eventEyebrow").textContent =
+    ((EVENT.dateLabel || "") + " " + (EVENT.placeLabel || "")).trim() || "Color × Strengths";
+  document.getElementById("cardHead").textContent =
+    "Kyun Seed Card" + (EVENT.dateLabel ? " — " + EVENT.dateLabel : "");
+  applyMyColor();
+  renderEntry();
+  updateEntryBtn();
+  var startStep = S.step;
+  if (startStep === "deepen") renderDeepenKanpe();
+  if (startStep === "pair") renderTalkKanpe();
+  if (startStep === "card") renderCard(false);
+  if (isFacilitator) {
+    /* リロードのたびに進行表へ飛ばされないよう、URLからパラメータを外す */
+    try { history.replaceState(null, "", window.location.pathname); } catch (e) {}
+    openFacView();
+  } else {
+    show(startStep);
+  }
+  if (startStep !== "start") armHistory(); /* 再開時もスマホの戻るを受け止める */
+})();
+</script>
+</body>
+</html>
