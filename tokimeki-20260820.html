@@ -1156,6 +1156,7 @@
     if (step === "card") renderCard(true);
     persist();
     show(step);
+    armHistory();
   }
   function goBack() {
     var prev = S.hist.pop() || "start";
@@ -1171,6 +1172,24 @@
   });
   document.querySelectorAll("[data-back]").forEach(function (btn) {
     btn.addEventListener("click", goBack);
+  });
+
+  /* スマホの「戻る」（スワイプ・戻るボタン）でも画面が1つ戻るようにする。
+     番兵として履歴を1つ積んでおき、popstateで受け止めて内部の戻るに変換。
+     開始画面まで戻り切ったら、次の「戻る」で普通にページを離れられる */
+  var histArmed = false;
+  function armHistory() {
+    if (histArmed) return;
+    try { history.pushState({ tk: 1 }, ""); histArmed = true; } catch (e) { /* 履歴が使えない環境では従来どおり */ }
+  }
+  window.addEventListener("popstate", function () {
+    histArmed = false;
+    if (S.hist.length > 0 || S.step !== "start") {
+      goBack();
+      /* まだ戻り先がある時だけ番兵を積み直す。開始画面に着いたら
+         次の「戻る」で普通にページを離れられるようにする */
+      if (S.hist.length > 0 || S.step !== "start") armHistory();
+    }
   });
 
   /* ---------- 入力欄の共通バインド ---------- */
@@ -1579,6 +1598,7 @@
   } else {
     show(startStep);
   }
+  if (startStep !== "start") armHistory(); /* 再開時もスマホの戻るを受け止める */
 })();
 </script>
 </body>
