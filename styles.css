@@ -2566,3 +2566,139 @@ h1, h2, h3, h4,
 .sensei-lead .src-link {
   margin-right: 18px;
 }
+
+/* ============================================
+   after.html 抽出版（おけもんの場合ボックス・5つの知恵・出典・2026-08-28）
+   ============================================ */
+.okemon-case {
+  margin-top: 18px;
+  padding: 18px 20px;
+  background: var(--accent-soft);
+  border-left: 3px solid var(--accent-ink);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.okemon-case .case-tag {
+  margin: 0 0 8px;
+  color: var(--accent-ink);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.03em;
+}
+
+.okemon-case p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.95;
+}
+
+.standalone-case {
+  margin-top: 28px;
+}
+
+#wisdom { counter-reset: wisdom; }
+
+.wisdom-block {
+  counter-increment: wisdom;
+  max-width: 860px;
+  margin: 0 0 26px;
+  padding: 36px clamp(22px, 4vw, 40px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  background: var(--paper);
+}
+
+.wisdom-block h3 {
+  margin: 0 0 14px;
+  font-size: 20px;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.wisdom-block h3::before {
+  content: "知恵 " counter(wisdom);
+  display: inline-block;
+  margin-right: 12px;
+  padding: 2px 12px;
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  color: var(--primary);
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  vertical-align: middle;
+}
+
+.wisdom-block > p {
+  margin: 0 0 6px;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 2.0;
+}
+
+.source-group {
+  max-width: 860px;
+  margin-bottom: 16px;
+  padding: 22px clamp(18px, 3vw, 30px);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+}
+
+.source-group summary {
+  cursor: pointer;
+  font-family: "Noto Serif JP", serif;
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.source-group p {
+  margin: 14px 0 0;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.95;
+}
+
+.source-group blockquote {
+  margin: 14px 0 0;
+  padding-left: 16px;
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.source-group cite {
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.source-list {
+  margin: 14px 0 0;
+  padding-left: 20px;
+}
+
+.source-list li {
+  margin-bottom: 8px;
+  color: var(--ink-soft);
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.source-list a {
+  color: var(--accent-ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+}
+
+.coi-line {
+  color: var(--muted);
+  font-size: 12.5px;
+}
