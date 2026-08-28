@@ -18,15 +18,16 @@
 
   --primary: #2C5F4B;        /* 深緑 */
   --primary-light: #E8F0EB;
-  --accent: #C4915E;         /* ゴールド */
+  --accent: #C4915E;         /* ゴールド（線・装飾用。文字に使わない） */
+  --accent-ink: #8A5A2B;     /* 文字用ゴールド（明地で比5.1以上・2026-08-28 doc-gate） */
   --accent-soft: #EFE3D2;
 
   /* 4ドメイン（公式配色準拠・彩度落とし版） */
   /* 実行力=紫 / 影響力=オレンジ / 人間関係構築力=青 / 戦略的思考力=緑 */
   --exec: #6B5B95;
-  --influence: #C97B5B;
+  --influence: #A85434;
   --relation: #4A6FA5;
-  --thinking: #5B8C7E;
+  --thinking: #41705C;
 
   --shadow-sm: 0 4px 16px rgba(31, 27, 22, 0.06);
   --shadow-md: 0 12px 36px rgba(31, 27, 22, 0.08);
@@ -87,7 +88,7 @@ a { color: inherit; }
   background: var(--primary);
   color: var(--paper);
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.05em;
 }
@@ -218,9 +219,9 @@ p {
 
 .eyebrow {
   margin: 0 0 14px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.22em;
   text-transform: uppercase;
@@ -356,9 +357,9 @@ p {
 
 .dashboard-panel p {
   margin: 0 0 12px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -407,7 +408,7 @@ p {
 .mini-metrics dd {
   margin: 8px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.06em;
 }
 
@@ -465,7 +466,7 @@ p {
 
 .formula-strip b {
   font-family: "Noto Serif JP", serif;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 22px;
   font-weight: 400;
 }
@@ -512,9 +513,9 @@ p {
 .premise-card span {
   display: block;
   margin-bottom: 16px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.12em;
 }
@@ -560,9 +561,9 @@ p {
   padding: 4px 12px;
   border: 1px solid var(--accent);
   border-radius: 999px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -590,7 +591,7 @@ p {
 }
 
 .philosophy-section .eyebrow {
-  color: var(--accent);
+  color: var(--accent-soft);
 }
 
 .philosophy-section .section-heading p {
@@ -613,9 +614,9 @@ p {
 .philosophy-list strong {
   display: block;
   margin-bottom: 14px;
-  color: var(--accent);
+  color: var(--accent-soft);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -689,9 +690,9 @@ p {
 
 .investment-formula span {
   display: block;
-  color: var(--accent);
+  color: var(--accent-soft);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -744,7 +745,7 @@ p {
   background: var(--primary);
   color: var(--paper);
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
 }
 
@@ -808,9 +809,9 @@ p {
 
 .case-label {
   margin: 0 0 10px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -839,7 +840,7 @@ p {
   margin-bottom: 8px;
   color: var(--ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -897,7 +898,7 @@ p {
   color: var(--muted);
   text-align: left;
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -988,9 +989,9 @@ p {
 .card-index {
   display: block;
   margin-bottom: 18px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
 }
@@ -1016,7 +1017,7 @@ p {
 }
 
 .fit-panel.careful {
-  border-left-color: var(--accent);
+  border-left-color: var(--accent-ink);
 }
 
 .fit-panel h3 {
@@ -1029,7 +1030,7 @@ p {
 }
 
 .fit-panel.careful h3 {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .fit-panel ul {
@@ -1061,7 +1062,7 @@ p {
   margin-top: 16px;
   padding-top: 16px;
   border-top: 1px solid var(--line-soft);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-size: 13px;
   font-weight: 600;
   line-height: 1.7;
@@ -1093,7 +1094,7 @@ p {
   left: -14px;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Noto Serif JP", serif;
   font-size: 16px;
   font-weight: 400;
@@ -1101,9 +1102,9 @@ p {
 
 .process-node span {
   display: block;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1163,7 +1164,7 @@ p {
 }
 
 .themes-section .eyebrow {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .themes-section .section-heading p {
@@ -1183,7 +1184,7 @@ p {
   margin-bottom: 10px;
   color: rgba(251, 248, 243, 0.7);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -1204,7 +1205,7 @@ p {
 }
 
 .search-box input:focus {
-  border-color: var(--accent);
+  border-color: var(--accent-ink);
   background: rgba(251, 248, 243, 0.10);
 }
 
@@ -1234,12 +1235,12 @@ p {
 }
 
 .filter-button:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-ink);
 }
 
 .filter-button.is-active {
   background: var(--accent);
-  border-color: var(--accent);
+  border-color: var(--accent-ink);
   color: var(--ink);
 }
 
@@ -1297,7 +1298,7 @@ p {
 
 .theme-button span {
   color: rgba(251, 248, 243, 0.62);
-  font-size: 12px;
+  font-size: 12.5px;
   line-height: 1.6;
 }
 
@@ -1308,7 +1309,7 @@ p {
   padding: 2px 8px;
   border-radius: 999px;
   font-family: "Inter", sans-serif;
-  font-size: 10px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.06em;
 }
@@ -1345,7 +1346,7 @@ p {
   padding: 4px 12px;
   border-radius: 999px;
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.08em;
   color: #fff;
@@ -1365,7 +1366,7 @@ p {
 
 .detail-catch {
   margin: 0 0 22px;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Noto Serif JP", serif;
   font-size: 15px;
   font-weight: 500;
@@ -1380,7 +1381,7 @@ p {
   margin: 0 0 10px;
   color: var(--primary);
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -1447,7 +1448,7 @@ p {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  color: var(--accent);
+  color: var(--accent-ink);
   font-family: "Inter", sans-serif;
   font-size: 22px;
   font-weight: 300;
@@ -1481,7 +1482,7 @@ p {
 }
 
 .cta-section .eyebrow {
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 .cta-section p {
@@ -1496,7 +1497,7 @@ p {
   flex: 0 0 auto;
   background: var(--accent);
   color: var(--ink);
-  border-color: var(--accent);
+  border-color: var(--accent-ink);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
 }
 
@@ -1709,7 +1710,7 @@ p {
 .guide-banner-link .guide-banner-go {
   font-size: 12.5px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent-ink);
   white-space: nowrap;
 }
 
@@ -1768,7 +1769,7 @@ p {
   font-family: "Inter", sans-serif;
   font-size: 32px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
   opacity: 0.5;
   display: block;
   margin-bottom: 16px;
@@ -1811,9 +1812,9 @@ p {
 .discount-content .badge {
   display: inline-block;
   align-self: flex-start;
-  background: var(--accent);
+  background: var(--accent-ink);
   color: var(--paper);
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
   padding: 4px 12px;
   border-radius: 30px;
@@ -1934,7 +1935,7 @@ p {
   content: "・";
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: bold;
 }
 
@@ -1975,15 +1976,15 @@ p {
   right: -20px;
   top: 36px;
   font-size: 20px;
-  color: var(--accent);
+  color: var(--accent-ink);
   opacity: 0.6;
 }
 
 .flow-num {
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
   background: var(--accent-soft);
   padding: 4px 12px;
   border-radius: 20px;
@@ -2027,7 +2028,7 @@ p {
   .brand-mark {
     width: 32px;
     height: 32px;
-    font-size: 11px;
+    font-size: 12.5px;
   }
 
   .nav-links {
@@ -2037,7 +2038,7 @@ p {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
     gap: 14px;
-    font-size: 12px;
+    font-size: 12.5px;
     padding-bottom: 4px;
   }
 
@@ -2047,7 +2048,7 @@ p {
 
   .nav-links a.nav-cta {
     padding: 5px 12px;
-    font-size: 11.5px;
+    font-size: 12.5px;
   }
 
   h1 { font-size: 36px; line-height: 1.45; }
@@ -2213,21 +2214,21 @@ p {
 .nav-links a.nav-hot {
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--accent);
+  background: var(--accent-ink);
   color: #fff;
   font-weight: 700;
 }
 .nav-links a.nav-hot::after { display: none; }
-.nav-links a.nav-hot:hover { background: #a97a48; color: #fff; }
+.nav-links a.nav-hot:hover { background: #6B451F; color: #fff; }
 
 /* 目次の該当行 */
 .toc-hot a {
-  color: var(--accent);
+  color: var(--accent-ink);
   font-weight: 700;
 }
 .toc-hot a::before {
   content: "★ ";
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* 見出し横のバッジ */
@@ -2238,8 +2239,8 @@ p {
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: #8a5f2e;
-  font-size: 12px;
+  color: #6B451F;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
   white-space: nowrap;
@@ -2256,10 +2257,10 @@ p {
 .market-eyebrow {
   margin: 0 0 10px;
   font-family: "Inter", sans-serif;
-  font-size: 11px;
+  font-size: 12.5px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: #8a5f2e;
+  color: #6B451F;
   font-weight: 600;
 }
 .market-title {
@@ -2294,19 +2295,19 @@ p {
   transition: border-color 200ms ease, transform 200ms ease;
 }
 .market-card:hover {
-  border-color: var(--accent);
+  border-color: var(--accent-ink);
   transform: translateY(-2px);
 }
 .market-tag {
   align-self: flex-start;
   padding: 4px 12px;
   border-radius: 999px;
-  font-size: 11.5px;
+  font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.04em;
 }
 .market-tag-set { background: var(--primary-light); color: var(--primary); }
-.market-tag-solo { background: var(--accent-soft); color: #8a5f2e; }
+.market-tag-solo { background: var(--accent-soft); color: #6B451F; }
 .market-card strong {
   font-size: 15px;
   line-height: 1.7;
@@ -2323,7 +2324,7 @@ p {
   padding-top: 6px;
   font-size: 13px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--accent-ink);
 }
 
 /* 最終CTAのボタン並び */
@@ -2363,8 +2364,131 @@ p {
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: #8a5f2e;
-  font-size: 11px;
+  color: #6B451F;
+  font-size: 12.5px;
   line-height: 1.4;
   margin-bottom: 16px;
+}
+
+/* ============================================
+   ここから広がる部屋（枝分かれマップ・2026-08-28）
+   ============================================ */
+.rooms-section {
+  padding: 120px 80px;
+  background: var(--paper-deep);
+}
+
+.rooms-section .section-lede {
+  margin-top: 16px;
+  color: var(--ink-soft);
+  font-size: 15.5px;
+  line-height: 1.95;
+  max-width: 40em;
+}
+
+.rooms-cat {
+  margin: 48px 0 18px;
+  font-size: 15.5px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: 0.05em;
+}
+
+.rooms-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.room-card {
+  display: flex;
+  flex-direction: column;
+  padding: 32px 28px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  text-decoration: none;
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+.room-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-sm);
+}
+
+.room-card h4 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.room-card p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14.5px;
+  line-height: 1.95;
+}
+
+.room-go {
+  margin-top: auto;
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 13.5px;
+}
+
+@media (max-width: 1120px) {
+  .rooms-section {
+    padding: 96px 40px;
+  }
+  .rooms-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .rooms-section {
+    padding: 72px 20px;
+  }
+  .rooms-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* 深緑地（cta）の上の文字は明るい側で持つ（2026-08-28 doc-gate） */
+.cta-section .eyebrow {
+  color: var(--accent-soft);
+}
+
+.cta-section .secondary-action {
+  color: var(--paper);
+  border-color: rgba(251, 248, 243, 0.45);
+}
+
+.cta-section .secondary-action:hover {
+  background: rgba(251, 248, 243, 0.10);
+}
+
+/* 折り返し孤児の予防（2026-08-28 doc-gate・台帳の前例どおり balance で行を均す） */
+h1, h2, h3, h4,
+.dashboard-panel strong {
+  text-wrap: balance;
+}
+
+@media (max-width: 768px) {
+  /* スマホでは hero の固定改行を解除（<br>とbalanceの衝突は台帳2026-08-28行の前例） */
+  .hero-sub br,
+  .hero-lead br {
+    display: none;
+  }
+  .hero-sub,
+  .hero-lead {
+    text-wrap: balance;
+  }
+}
+
+/* <br>入り見出しはbalanceが行単位で効かないため、行をblock spanに分ける（台帳2026-08-26落とし穴21） */
+.h2-line {
+  display: block;
+  text-wrap: balance;
 }

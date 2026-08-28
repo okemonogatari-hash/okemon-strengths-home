@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>持ち帰りカード｜ストレングス・シェア会</title>
+<style>
+  :root{
+    --paper:#F7F8F6;
+    --card:#FFFFFF;
+    --line:#E7E2D8;
+    --ink:#23272B;
+    --ink-soft:#55524C;
+    --ink-faint:#6E6A62;
+    --accent:#8A4A2E;
+    --accent-deep:#6B3922;
+    --accent-tint:#F3E6DC;
+  }
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Yu Gothic Medium","游ゴシック Medium","YuGothic","游ゴシック","Hiragino Kaku Gothic ProN","Hiragino Sans",sans-serif;
+    font-size:16px;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:640px;margin:0 auto;padding:40px 24px 64px;}
+
+  header.top{text-align:center;margin-bottom:28px;}
+  .top .kicker{font-size:13px;color:var(--accent-deep);font-weight:700;letter-spacing:.12em;margin:0 0 8px;}
+  .top h1{font-size:clamp(24px,6vw,30px);margin:0 0 10px;line-height:1.5;text-wrap:balance;}
+  .top .lede{font-size:14.5px;color:var(--ink-soft);margin:0;line-height:1.8;}
+
+  main{counter-reset:step;}
+  section.step{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:26px clamp(18px,5vw,32px) 28px;
+    margin-bottom:18px;
+  }
+  section.step{counter-increment:step;}
+  .step h2{
+    font-size:17px;margin:0 0 6px;line-height:1.6;text-wrap:balance;
+    display:flex;align-items:baseline;gap:10px;
+  }
+  .step h2::before{
+    content:counter(step);
+    flex:none;
+    font-size:13px;font-weight:700;color:var(--accent);
+    border:1px solid var(--accent);border-radius:999px;
+    padding:1px 10px;
+  }
+  .step .hint{font-size:13.5px;color:var(--ink-faint);margin:0 0 18px;line-height:1.8;}
+
+  .fill{
+    font-size:clamp(17px,4.6vw,20px);
+    line-height:2.1;
+    margin:0;
+  }
+  .fill .l{
+    display:flex;
+    align-items:flex-end;
+    gap:8px;
+    margin-bottom:6px;
+  }
+  .fill .l span:not(.blank){flex:none;}
+  .fill .l .blank{
+    flex:1 1 auto;
+    min-width:4em;
+    border-bottom:2px solid var(--accent);
+    background:var(--accent-tint);
+    border-radius:6px 6px 0 0;
+    height:1.5em;
+  }
+
+  .memo-lines{margin:0;}
+  .memo-lines span{
+    display:block;
+    border-bottom:1.5px solid var(--line);
+    height:2.4em;
+  }
+
+  footer.note{
+    text-align:center;
+    font-size:13.5px;
+    color:var(--ink-soft);
+    line-height:1.9;
+    margin-top:26px;
+  }
+  footer.note strong{color:var(--accent-deep);}
+  .backlink{display:block;text-align:center;margin-top:20px;font-size:13.5px;}
+  .backlink a{color:var(--accent-deep);font-weight:700;text-decoration:none;border-bottom:1px solid currentColor;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <p class="kicker">ストレングス・シェア会</p>
+    <h1>今日の持ち帰りカード</h1>
+    <p class="lede">強みは、自分でも、AIでも、見つけられない。<br>人に語って、深掘られた時に出てくる。</p>
+  </header>
+
+  <main>
+    <section class="step">
+      <h2>今日、まわりに言われて気づいたこと</h2>
+      <p class="hint">深掘られている間に出てきた、自分では当たり前すぎて気づかなかった言葉を、そのまま書き留めておく。</p>
+      <p class="memo-lines"><span></span><span></span></p>
+    </section>
+
+    <section class="step">
+      <h2>締めの1文を、自分の言葉で埋める</h2>
+      <p class="hint">かっこいい言葉じゃなくていい。今日の会で出てきた言葉のままで。</p>
+      <div class="fill">
+        <div class="l"><span>私は</span><span class="blank"></span><span>が</span></div>
+        <div class="l">苦もなくできる。</div>
+        <div class="l"><span>だから</span><span class="blank"></span><span>で</span></div>
+        <div class="l">困ってる人の役に立てる。</div>
+      </div>
+    </section>
+
+    <section class="step">
+      <h2>明日、どこで1回使う？</h2>
+      <p class="hint">一言でいい。「会議で」「子どもに」「プロフィールに書く」——それだけで、知って終わる日が、使い始める日に変わる。</p>
+      <p class="memo-lines"><span></span></p>
+    </section>
+  </main>
+
+  <footer class="note">
+    <p>先日の会では、<strong>帰ったその日にプロフィールを書き換えた人</strong>がいたそうです。<br>今日の1文、よかったら今日のうちにプロフィールへ。</p>
+    <p class="backlink"><a href="./">← おけもん式ストレングス入門ホームへ</a></p>
+  </footer>
+
+</div>
+</body>
+</html>
