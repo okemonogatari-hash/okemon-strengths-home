@@ -2492,3 +2492,77 @@ h1, h2, h3, h4,
   display: block;
   text-wrap: balance;
 }
+
+/* after.html 受けた後専門ページ（2026-08-28） */
+.official-q {
+  margin: 14px 0;
+  padding: 14px 18px;
+  background: var(--primary-light);
+  border-left: 3px solid var(--primary);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.sensei-card .coi-note {
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: var(--paper-deep);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--ink-soft);
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.sensei-card blockquote {
+  margin: 14px 0;
+  padding-left: 18px;
+  border-left: 3px solid var(--accent);
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.sensei-card cite {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.sensei-card .src-link {
+  color: var(--accent-ink);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid currentColor;
+  font-size: 13.5px;
+}
+
+/* セクション内に置くguide-banner（after.html導線・2026-08-28） */
+.section-inner-banner {
+  padding: 48px 0 0;
+}
+
+/* 先人の知恵・筆頭カード（after.html・2026-08-28） */
+.sensei-lead {
+  margin-bottom: 12px;
+}
+
+.sensei-lead h3 {
+  font-size: 21px;
+  margin-bottom: 14px;
+}
+
+.sensei-lead p {
+  font-size: 15px;
+  line-height: 1.95;
+  color: var(--ink-soft);
+}
+
+.sensei-lead .src-link {
+  margin-right: 18px;
+}
