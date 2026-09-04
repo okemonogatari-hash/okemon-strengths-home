@@ -14,6 +14,22 @@
        （追加前の時点で既に余白ぎりぎり＝navScroll 913 / navClient 875）。
         折り返しを許して受け止める。styles.css は他ページと共有なので触らない */
     .nav-links { flex-wrap: wrap; row-gap: 10px; }
+
+    /* 資質徹底解説シリーズの号数。h4 に実テキストで「01」を入れると
+       Range の行走査が別行と誤認して折り返し孤児の偽陽性が出るので
+       （doc-gate 落とし穴30）、CSSカウンタの生成コンテンツで出す。
+       styles.css は他ページと共有なので触らず、このページ内に閉じる */
+    .trait-grid { counter-reset: trait; }
+    .trait-card { counter-increment: trait; }
+    .trait-card h4::before {
+      content: "0" counter(trait);
+      margin-right: 10px;
+      font-family: "Inter", sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--accent-ink);
+    }
   </style>
 </head>
 <body>
@@ -830,6 +846,40 @@
         <a class="room-card" href="after.html">
           <h4>🌱 SFを、受けたままにしないために</h4>
           <p>公式の3ステップの問い・最初の1週間メニュー・下位資質との付き合い方・先人の知恵。「読んだだけで終わってる」からの再スタート専門ページ。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+      </div>
+
+      <h3 class="rooms-cat">資質をひとつずつ、じっくり</h3>
+      <div class="rooms-grid trait-grid">
+        <a class="room-card trait-card" href="trait-kaifuku.html">
+          <h4>回復志向</h4>
+          <p>欠けているところが、先に目に入る。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-kouheisei.html">
+          <h4>公平性</h4>
+          <p>「人によって変わる」が、どうしても気になる。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-shinchou.html">
+          <h4>慎重さ</h4>
+          <p>まだ起きていないことが、先に見えてしまう。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-jiga.html">
+          <h4>自我</h4>
+          <p>「あなたがいてよかった」の一言で、また走れる。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-kobetsuka.html">
+          <h4>個別化</h4>
+          <p>「人による」が、いちばん正確な答え。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-chouwa.html">
+          <h4>調和性</h4>
+          <p>探しているのは、同意ではなく合意点です。</p>
           <span class="room-go">ひらく →</span>
         </a>
       </div>
