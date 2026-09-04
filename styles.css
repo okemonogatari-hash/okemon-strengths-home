@@ -710,7 +710,7 @@ p {
 .investment-formula b {
   justify-self: center;
   font-family: "Noto Serif JP", serif;
-  color: rgba(251, 248, 243, 0.5);
+  color: rgba(251, 248, 243, 0.82);
   font-size: 22px;
   font-weight: 400;
 }
@@ -889,7 +889,7 @@ p {
 
 .compare-table {
   width: 100%;
-  min-width: 880px;
+  min-width: 840px;
   border-collapse: collapse;
 }
 
@@ -932,6 +932,56 @@ p {
 
 .compare-table td {
   color: var(--ink-soft);
+}
+
+.compare-table .cell-label {
+  display: none;
+}
+
+/* 狭い幅では表をカード積みに切り替える（横スクロールで列が隠れるのを防ぐ） */
+@media (max-width: 959px) {
+  .compare-table-wrap { overflow: visible; }
+
+  .compare-table { min-width: 0; }
+
+  /* 列名は各セルの data-label で出すので、ヘッダー行そのものは畳む */
+  .compare-table thead { display: none; }
+
+  .compare-table tbody tr {
+    display: block;
+    padding: 22px 20px 24px;
+    border-top: 1px solid var(--line-soft);
+  }
+
+  .compare-table tbody th {
+    display: block;
+    width: auto;
+    padding: 0 0 14px;
+    border: 0;
+    font-size: 16px;
+  }
+
+  .compare-table tbody td {
+    display: block;
+    padding: 0;
+    border: 0;
+  }
+
+  .compare-table tbody td + td { margin-top: 16px; }
+
+  .compare-table .cell-label {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--muted);
+    font-family: "Inter", sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+  }
+
+  .compare-table caption {
+    padding: 22px 20px;
+  }
 }
 
 /* intro / flow / job / share / fit 共通 */
@@ -2232,10 +2282,16 @@ p {
 }
 
 /* 見出し横のバッジ */
+.take-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 12px;
+}
+
 .hot-badge {
   display: inline-block;
   vertical-align: middle;
-  margin-left: 12px;
   padding: 4px 12px;
   border-radius: 999px;
   background: var(--accent-soft);
@@ -2338,7 +2394,7 @@ p {
 @media (max-width: 720px) {
   .market-box { padding: 28px 20px; }
   .market-cards { grid-template-columns: 1fr; }
-  .hot-badge { display: inline-block; margin: 10px 0 0; }
+  .hot-badge { display: inline-block; margin: 0; }
 }
 
 /* 中間幅（タブレット〜小型ノート）で4列が潰れるのを防ぐ
