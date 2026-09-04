@@ -83,12 +83,20 @@
       if (note) note.textContent = '書いた内容は、この端末のブラウザにだけ残ります';
     }
 
+    // 印刷はワーク章とタイトルだけ。全11章を刷ると紙が10枚を超える
     var printBtn = work.querySelector('[data-print]');
-    if (printBtn) printBtn.addEventListener('click', function () { window.print(); });
+    if (printBtn) printBtn.addEventListener('click', function () {
+      var body = document.body;
+      var off = function () { body.classList.remove('print-work'); };
+      body.classList.add('print-work');
+      window.addEventListener('afterprint', off, { once: true });
+      window.addEventListener('focus', off, { once: true });
+      window.print();
+    });
 
     var clearBtn = work.querySelector('[data-clear]');
     if (clearBtn) clearBtn.addEventListener('click', function () {
-      if (!window.confirm('書いた3つの欄を消します。よろしいですか。')) return;
+      if (!window.confirm('書いた' + fields.length + 'つの欄を消します。よろしいですか。')) return;
       Array.prototype.forEach.call(fields, function (f) {
         f.value = '';
         if (store) { try { store.removeItem(key + f.id); } catch (e) { /* 諦める */ } }

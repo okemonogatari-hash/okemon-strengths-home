@@ -51,6 +51,7 @@
   --i-facets:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6'%3E%3Ccircle cx='7' cy='8.4' r='3.4'/%3E%3Ccircle cx='16.8' cy='7' r='2.2'/%3E%3Ccircle cx='13.4' cy='16.6' r='4.5'/%3E%3C/svg%3E");
   --i-pause: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.6' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='8.7'/%3E%3Cpath d='M10 9.2v5.6M14 9.2v5.6'/%3E%3C/svg%3E");
   --i-check: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.4 6.4 9.6 17.2 3.8 11.4'/%3E%3C/svg%3E");
+  --i-fwd:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h15.5'/%3E%3Cpath d='M14 6l6 6-6 6'/%3E%3C/svg%3E");
   --i-back:  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 12H4.5'/%3E%3Cpath d='M10 6 4 12l6 6'/%3E%3C/svg%3E");
 }
 
@@ -89,6 +90,7 @@ body.trait {
 .ico-facets { -webkit-mask-image: var(--i-facets); mask-image: var(--i-facets); }
 .ico-pause  { -webkit-mask-image: var(--i-pause);  mask-image: var(--i-pause); }
 .ico-check  { -webkit-mask-image: var(--i-check);  mask-image: var(--i-check); }
+.ico-fwd    { -webkit-mask-image: var(--i-fwd);    mask-image: var(--i-fwd); }
 
 /* ---------- ヘッダー ----------------------------------------------------- */
 /* styles.css の .topbar は ≤1120px で overflow-x:auto になり、リンクが
@@ -757,6 +759,69 @@ body.trait {
   font-size: 13.5px;
 }
 
+/* ---------- シリーズの他の資質へ ---------------------------------------- */
+.t-series-nav {
+  max-width: var(--wide);
+  margin: 0 auto;
+  padding: 32px clamp(18px, 4vw, 64px) 8px;
+}
+.t-series-h {
+  margin: 0 0 12px;
+  color: var(--ink-soft);
+  font-family: "Noto Serif JP", serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+.t-series-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0 0 16px;
+  padding: 0;
+  list-style: none;
+}
+.t-series-list li { display: flex; }
+.t-series-list a,
+.t-series-list .is-current {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink-soft);
+  font-size: 13.5px;
+  text-decoration: none;
+  transition: border-color 200ms ease, box-shadow 200ms ease;
+}
+.t-series-list a:hover { border-color: var(--theme); box-shadow: var(--shadow-sm); }
+.t-series-list .is-current {
+  border-color: var(--theme);
+  background: var(--theme-soft);
+  color: var(--theme);
+  font-weight: 700;
+}
+.t-series-list .no {
+  color: var(--theme);
+  font-family: "Inter", sans-serif;
+  font-size: 12.8px;
+  font-weight: 700;
+}
+.t-series-move { display: flex; flex-wrap: wrap; gap: 10px 20px; }
+.t-series-move a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--theme);
+  font-size: 13.5px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 200ms ease;
+}
+.t-series-move a:hover { border-bottom-color: var(--theme); }
+
 /* ---------- 出典・関連 --------------------------------------------------- */
 .src {
   max-width: var(--wide);
@@ -773,12 +838,24 @@ body.trait {
 
 /* ---------- 印刷 --------------------------------------------------------- */
 @media print {
-  .tbar, .t-toc, .work-tools, .bb-meters, .src { display: none !important; }
+  /* 出典（.src）は消さない。紙に落ちた瞬間に出どころが分からなくなるため */
+  .tbar, .t-toc, .work-tools, .bb-meters, .t-series-nav { display: none !important; }
   body.trait { background: #fff; }
   .t-hero, .closing { background: #fff; }
   .tsec, .closing, .t-hero { break-inside: auto; }
   .card, .work-step, .bb-col, .quote { break-inside: avoid; }
   .work-step textarea { min-height: 100px; background: #fff; }
+
+  /* 「印刷して持ち帰る」＝タイトルとワーク章だけ。JSが body に付ける */
+  body.print-work .tsec { display: none !important; }
+  body.print-work .tsec.is-work { display: block !important; }
+  body.print-work .closing,
+  body.print-work .site-footer { display: none !important; }
+  body.print-work .t-hero { padding-top: 24px; padding-bottom: 10px; border-bottom: 0; }
+  body.print-work .t-hero-mark,
+  body.print-work .t-catch,
+  body.print-work .t-lead,
+  body.print-work .t-tags { display: none !important; }
 }
 
 /* ---------- 動きを減らす設定に従う --------------------------------------- */
