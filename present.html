@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>おけもんプレゼント集 | さぁ最高のわたしに会いに行こう</title>
+  <meta name="description" content="セッションやオフ会でお渡ししてきた資料・ワークシート・アプリを、ひとつの棚にまとめました。全部そのまま持って帰ってください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ─────────────────────────────────────────────────────────────
+       おけもんプレゼント集（present.html）専用の追加分。
+       色・角丸・影は styles.css のトークンだけを使う（文字色の出口は
+       --ink / --ink-soft / --muted / --accent-ink の4系統に固定）。
+       ライト単一テーマ。贈り物なので明暗の分岐は持たない。
+       ───────────────────────────────────────────────────────────── */
+
+    [hidden] { display: none !important; }
+
+    /* 日本語の行頭禁則。長音符「ー」や小書き仮名が行頭に落ちるのを止める */
+    .gp-hero, .gp-filter, .gp-shelves, .gp-soon-sec, .gp-close, .gp-foot { line-break: strict; }
+
+    /* ── ヘッダー ────────────────────────────────────────────── */
+    /* styles.css は 720px 以下でサイト名を隠すが、このページは
+       「おけもんプレゼント集」という名前そのものが案内になるので出す。
+       そのぶん狭い幅では2本目のリンクを畳む（締めのCTAに同じ導線がある） */
+    .gp-nav-short { display: none; }
+    @media (max-width: 720px) {
+      .brand > span:last-child { display: inline; }
+      .nav-links a.nav-cta { display: none; }
+      /* サイト名を出すぶん、残り1本のリンクは短い言い方にして窮屈さを取る */
+      .gp-nav-long { display: none; }
+      .gp-nav-short { display: inline; }
+    }
+
+    /* ── HERO ───────────────────────────────────────────────── */
+    .gp-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 34px;
+      padding: 76px 80px 64px;
+      background: var(--paper-deep);
+      border-bottom: 1px solid var(--line);
+    }
+    .gp-hero-inner { max-width: 1000px; width: 100%; margin: 0 auto; }
+    .gp-hero h1 {
+      font-size: clamp(28px, 6vw, 44px);
+      line-height: 1.5;
+      text-wrap: balance;
+      line-break: strict;
+    }
+    .gp-hero-sub {
+      margin: 18px 0 0;
+      font-family: "Noto Serif JP", serif;
+      font-size: clamp(16px, 2.4vw, 19px);
+      font-weight: 500;
+      color: var(--primary);
+      letter-spacing: 0.04em;
+    }
+    .gp-hero-lead {
+      max-width: 36em;
+      width: 100%;
+      margin: 16px 0 0;
+      color: var(--ink-soft);
+      font-size: 15.5px;
+      line-height: 1.95;
+    }
+    .gp-hero-facts {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 26px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .gp-hero-facts li {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 7px;
+      padding: 7px 15px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 12.6px;
+      color: var(--ink-soft);
+      letter-spacing: 0.03em;
+    }
+    .gp-hero-facts b {
+      font-family: "Inter", sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary);
+      font-variant-numeric: tabular-nums;
+    }
+    /* 棚の絵。1段だけの横長にして、載せるものを5つの棚と1対1にしてある */
+    .gp-hero-art { width: 100%; max-width: 460px; margin: 4px 0 0; }
+    .gp-hero-art svg { display: block; width: 100%; height: auto; }
+
+    /* ── 棚をえらぶバー ─────────────────────────────────────── */
+    .gp-filter {
+      position: sticky;
+      top: var(--bar-top, 98px);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding: 14px 80px;
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
+    }
+    .gp-filter-label {
+      margin: 0 4px 0 0;
+      font-family: "Inter", sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      color: var(--accent-ink);
+      text-transform: uppercase;
+    }
+    .gp-chip {
+      font-family: "Noto Sans JP", sans-serif;
+      font-size: 13.2px;
+      font-weight: 500;
+      line-height: 1.6;
+      padding: 8px 15px;
+      border-radius: 999px;
+      cursor: pointer;
+      background: var(--paper);
+      color: var(--ink-soft);
+      border: 1px solid var(--line);
+      transition: border-color 200ms ease, box-shadow 200ms ease;
+    }
+    .gp-chip:hover { border-color: var(--primary); }
+    .gp-chip:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .gp-chip-on {
+      background: var(--primary);
+      color: var(--paper);
+      border-color: var(--primary);
+      font-weight: 600;
+      box-shadow: 0 6px 16px rgba(44, 95, 75, 0.20);
+    }
+    .gp-filter-count {
+      margin-left: auto;
+      font-size: 12.6px;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    .gp-filter-count b {
+      font-family: "Inter", sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* ── 棚 ─────────────────────────────────────────────────── */
+    .gp-shelves { padding: 8px 80px 0; }
+    .gp-shelf {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--line-soft);
+      /* 棚を切り替えたときに、固定ヘッダーの下へちょうど着地させる */
+      scroll-margin-top: var(--pin-top, 150px);
+    }
+
+    .gp-shelf-head {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 20px;
+      align-items: start;
+      margin-bottom: 8px;
+    }
+    .gp-shelf-icon {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      border: 1px solid rgba(44, 95, 75, 0.16);
+      color: var(--primary);
+    }
+    .gp-shelf-icon svg { width: 26px; height: 26px; }
+    .gp-shelf h2 {
+      margin: 4px 0 0;
+      font-size: clamp(19px, 3.6vw, 25px);
+      line-height: 1.6;
+      text-wrap: balance;
+      line-break: strict;
+    }
+    .gp-shelf-lead {
+      grid-column: 2;
+      max-width: 40em;
+      width: 100%;
+      margin: 12px 0 0;
+      color: var(--ink-soft);
+      font-size: 14.6px;
+      line-height: 1.95;
+    }
+
+    /* ── おくりもの1件。カードを並べず、目録の行として並べる ──── */
+    .gp-list { margin: 24px 0 0; padding: 0; list-style: none; }
+    .gp-item {
+      display: grid;
+      /* 本文の幅を決めてしまい、ボタンをその直後に置く。
+         1fr にするとPCでボタンだけが右端へ飛んで280pxの空白ができる */
+      grid-template-columns: minmax(0, 560px) auto;
+      gap: 12px 24px;
+      align-items: center;
+      padding: 20px 0;
+      border-top: 1px solid var(--line-soft);
+    }
+    .gp-item:first-child { border-top: 1px solid var(--line); }
+    .gp-form {
+      margin: 0 0 5px;
+      font-family: "Inter", sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--accent-ink);
+    }
+    /* 名前は必ず単独行で全幅を使う。形のラベルを横に置くと
+       375pxで「資質別解／説図解」のように語の途中で割れる */
+    .gp-name {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.7;
+      word-break: auto-phrase;
+    }
+    .gp-say {
+      margin: 9px 0 0;
+      padding-left: 14px;
+      border-left: 2px solid var(--accent);
+      color: var(--ink-soft);
+      font-size: 14.4px;
+      line-height: 1.95;
+    }
+    .gp-note {
+      margin: 9px 0 0;
+      color: var(--ink-soft);
+      font-size: 14.4px;
+      line-height: 1.95;
+    }
+    .gp-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+    }
+    .gp-open {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 40px;
+      padding: 0 18px;
+      white-space: nowrap;
+      border-radius: var(--radius);
+      border: 1px solid var(--primary);
+      background: var(--paper);
+      color: var(--primary);
+      font-size: 13.4px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-decoration: none;
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    }
+    .gp-open:hover {
+      background: var(--primary);
+      color: var(--paper);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(44, 95, 75, 0.20);
+    }
+    .gp-open svg { width: 14px; height: 14px; flex: 0 0 auto; }
+
+    /* ── これから棚に並ぶもの（名前だけ） ───────────────────── */
+    .gp-soon-sec { padding: 8px 80px 60px; }
+    .gp-soon-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding-top: 44px;
+    }
+    .gp-soon-sec h2 {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+    .gp-soon-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .gp-soon-list li {
+      padding: 8px 16px;
+      border: 1px dashed var(--line);
+      border-radius: 999px;
+      background: var(--paper-deep);
+      color: var(--muted);
+      font-size: 13.2px;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── おわりに ───────────────────────────────────────────── */
+    .gp-close {
+      padding: 68px 80px 76px;
+      background: var(--paper-deep);
+      border-top: 1px solid var(--line);
+    }
+    .gp-close-inner { max-width: 1000px; margin: 0 auto; }
+    .gp-close h2 {
+      margin: 0;
+      font-size: clamp(21px, 4.2vw, 30px);
+      line-height: 1.65;
+      text-wrap: balance;
+      line-break: strict;
+    }
+    .gp-close p {
+      max-width: 38em;
+      width: 100%;
+      margin: 18px 0 0;
+      color: var(--ink-soft);
+      font-size: 15.2px;
+      line-height: 2;
+    }
+    .gp-close-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    .gp-sign {
+      margin: 30px 0 0;
+      font-family: "Noto Serif JP", serif;
+      font-size: 14.5px;
+      color: var(--muted);
+      letter-spacing: 0.06em;
+    }
+
+    /* ── 脚注（黒帯にせず、地のまま小さく） ─────────────────── */
+    .gp-foot {
+      padding: 30px 80px 44px;
+      background: var(--paper);
+      border-top: 1px solid var(--line-soft);
+    }
+    .gp-foot p {
+      max-width: 1000px;
+      width: 100%;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.9;
+    }
+    .gp-foot a { color: var(--accent-ink); }
+
+    /* ── 幅 ─────────────────────────────────────────────────── */
+    @media (max-width: 1120px) {
+      .gp-hero { padding: 60px 28px 52px; }
+      .gp-filter { padding: 12px 28px; }
+      .gp-shelves { padding: 4px 28px 0; }
+      .gp-soon-sec { padding: 4px 28px 52px; }
+      .gp-close { padding: 56px 28px 64px; }
+      .gp-foot { padding: 26px 28px 40px; }
+    }
+    @media (max-width: 720px) {
+      .gp-hero { padding: 40px 20px 36px; gap: 26px; }
+      .gp-hero-art { max-width: 300px; }
+
+      /* スマホでは棚バーを固定しない。topbar と合わせて画面上部が
+         330px 埋まっていたため（375px実測）。ラベルと件数も畳む */
+      .gp-filter { position: static; padding: 12px 20px; gap: 8px; }
+      .gp-filter-label, .gp-filter-count { display: none; }
+
+      .gp-shelves { padding: 4px 20px 0; }
+      .gp-shelf { padding: 38px 0; }
+      /* 見出しに横幅を全部渡す。アイコンを左に置いたままだと
+         「まずは、ぜんぶの入／口から見てみましょう」のように語の途中で割れる */
+      .gp-shelf-head { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+      .gp-shelf-icon { width: 44px; height: 44px; }
+      .gp-shelf-icon svg { width: 22px; height: 22px; }
+      .gp-shelf h2 { grid-column: 1; margin-top: 0; }
+      .gp-shelf-lead { grid-column: 1; margin-top: 4px; }
+
+      .gp-item { grid-template-columns: minmax(0, 1fr); gap: 14px; align-items: start; }
+      .gp-soon-sec { padding: 4px 20px 44px; }
+      .gp-soon-inner { padding-top: 36px; }
+      .gp-close { padding: 48px 20px 56px; }
+      .gp-foot { padding: 24px 20px 36px; }
+    }
+    @media (max-width: 540px) {
+      .nav-links { flex-wrap: wrap; justify-content: flex-end; overflow: visible; gap: 8px 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .gp-open, .gp-chip { transition: none; }
+      .gp-open:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="topbar" aria-label="サイト内ナビゲーション">
+    <a class="brand" href="#top" aria-label="おけもんプレゼント集 ページ先頭へ">
+      <span class="brand-mark">OK</span>
+      <span>おけもんプレゼント集</span>
+    </a>
+    <nav class="nav-links" aria-label="関連ページ">
+      <a href="https://okemonogatari-hash.github.io/okemon-strengths-home/"><span class="gp-nav-long">← ストレングス入門ホーム</span><span class="gp-nav-short">← 入門ホーム</span></a>
+      <a href="https://okemonogatari-hash.github.io/okemon-strengths-home/okemon.html" class="nav-cta">→ おけもん本人</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- ══ HERO ══════════════════════════════════════════════ -->
+    <section class="gp-hero" aria-labelledby="gp-hero-title">
+      <div class="gp-hero-inner">
+        <p class="eyebrow">A gift from okemon</p>
+        <h1 id="gp-hero-title">さぁ最高のわたしに<br>会いに行こう</h1>
+        <p class="gp-hero-sub">おけもんプレゼント集</p>
+        <p class="gp-hero-lead">
+          セッションやオフ会でお渡ししてきた資料・ワークシート・アプリを、ひとつの棚にまとめました。
+          たとえば、セッションのあとで自分の資質を読み返したいときは、いちばん上の棚から見てみてくださいね。
+        </p>
+        <ul class="gp-hero-facts">
+          <li><b>17</b> おくりもの</li>
+          <li><b>5</b> つの棚</li>
+          <li>2026年9月4日 更新</li>
+        </ul>
+        <div class="gp-hero-art" aria-hidden="true">
+          <!-- 棚に載っているものが、下の5つの棚とそのまま対応している -->
+          <svg viewBox="0 0 344 136" fill="none" xmlns="http://www.w3.org/2000/svg"
+               stroke-linecap="round" stroke-linejoin="round">
+            <g stroke="#2C5F4B" stroke-width="1.6">
+              <rect x="8" y="8" width="328" height="104" rx="11"/>
+              <path d="M8 96h328M44 112v12M300 112v12"/>
+
+              <!-- ① まず知る＝ひらいた本 -->
+              <path d="M32 88V44c9-6 19-6 28 0v44c-9-5-19-5-28 0z"/>
+              <path d="M60 88V44c9-6 19-6 28 0v44c-9-5-19-5-28 0z"/>
+              <path d="M60 44v44"/>
+
+              <!-- ② 資質をひとつずつ＝多面体 -->
+              <path d="M124 40l24 13.5v27L124 94l-24-13.5v-27z"/>
+              <path d="M124 67l24-13.5M124 67l-24-13.5M124 67v27"/>
+
+              <!-- ③ 書き出す＝紙とペン -->
+              <rect x="168" y="44" width="34" height="44" rx="3"/>
+              <path d="M176 56h18M176 66h18M176 76h11"/>
+              <path d="M206 90l1.5-8 17-17 6.5 6.5-17 17z"/>
+              <path d="M224.5 65l6.5 6.5"/>
+
+              <!-- ④ オフ会のアプリ＝スマホ -->
+              <rect x="246" y="42" width="30" height="48" rx="5"/>
+              <path d="M256 50h10"/>
+              <path d="M253 68l4.5 4.5L268 62"/>
+
+              <!-- ⑤ 個性診断＝羅針盤 -->
+              <circle cx="306" cy="66" r="20"/>
+              <path d="M306 46v-4M306 90v-4M286 66h-4M330 66h-4"/>
+            </g>
+            <g stroke="#C4915E" stroke-width="1.6">
+              <path d="M306 66l12-13-5 17z"/>
+            </g>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ 棚をえらぶ ════════════════════════════════════════ -->
+    <nav class="gp-filter" aria-label="棚をえらぶ">
+      <p class="gp-filter-label">Shelves</p>
+      <button type="button" class="gp-chip gp-chip-on" data-shelf="all" aria-pressed="true">ぜんぶ</button>
+      <button type="button" class="gp-chip" data-shelf="s1" aria-pressed="false">まず知る</button>
+      <button type="button" class="gp-chip" data-shelf="s2" aria-pressed="false">資質ひとつずつ</button>
+      <button type="button" class="gp-chip" data-shelf="s3" aria-pressed="false">書き出す</button>
+      <button type="button" class="gp-chip" data-shelf="s4" aria-pressed="false">オフ会のアプリ</button>
+      <button type="button" class="gp-chip" data-shelf="s5" aria-pressed="false">個性診断</button>
+      <p class="gp-filter-count">いま <b id="gp-count">17</b> 件ならんでいます</p>
+    </nav>
+
+    <div class="gp-shelves">
+
+      <!-- ── 棚1 ────────────────────────────────────────── -->
+      <section class="gp-shelf" data-shelf="s1" aria-labelledby="gp-s1">
+        <div class="gp-shelf-head">
+          <span class="gp-shelf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 5.5c2.8-1.4 5.7-1.4 8.5 0v13c-2.8-1.4-5.7-1.4-8.5 0z"/>
+              <path d="M20.5 5.5c-2.8-1.4-5.7-1.4-8.5 0v13c2.8-1.4 5.7-1.4 8.5 0z"/>
+            </svg>
+          </span>
+          <h2 id="gp-s1">まずは、ぜんぶの入口から見てみましょう</h2>
+          <p class="gp-shelf-lead">ストレングスファインダーって結局なんなの、というところから。オフ会でよく使っている資料と、振り返り用の図解です。</p>
+        </div>
+
+        <ul class="gp-list">
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">PDF</p>
+              <h3 class="gp-name">ストレングス資質別解説図解</h3>
+              <p class="gp-say">わかりやすくまとめているので振り返りにご活用ください😊</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://drive.google.com/file/d/16jD5ROcFLW2kQQaE0ZVaZ8NEl_95BjSG/view?usp=sharing" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">スライド</p>
+              <h3 class="gp-name">ストレングスファインダーとは？？</h3>
+              <p class="gp-say">オフ会する時の資料でよく使ってます</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://www.genspark.ai/slides?project_id=d9dee237-9029-4ae4-9000-e871c5f06ac6" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">PDF</p>
+              <h3 class="gp-name">ストレングスファインダーで遊ぼう</h3>
+              <p class="gp-note">ファイル名は「ストレングスを楽しもう　資料」です。かたく考えずに、ひらいてみてください。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://drive.google.com/file/d/1RNoX5BCjz98Q2vOfP4FJUWr1ucpVz1b9/view?usp=sharing" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── 棚2 ────────────────────────────────────────── -->
+      <section class="gp-shelf" data-shelf="s2" aria-labelledby="gp-s2">
+        <div class="gp-shelf-head">
+          <span class="gp-shelf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2.8l8.4 4.85v8.7L12 21.2 3.6 16.35v-8.7z"/>
+              <path d="M12 12l8.4-4.35M12 12l-8.4-4.35M12 12v9.2"/>
+            </svg>
+          </span>
+          <h2 id="gp-s2">資質を、ひとつずつ深く見ていきます</h2>
+          <p class="gp-shelf-lead">オフ会で使った、資質ごとの資料です。いま新しく作り直しています。気になる資質から読んでみてください。</p>
+        </div>
+
+        <ul class="gp-list">
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">個別化</h3>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://manus.im/share/file/2f144e4c-a324-4bab-965a-9adee9f067ac" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">公平性</h3>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://claude.ai/public/artifacts/54a834a3-b151-4b3e-b8dd-7d5ecc1288ea" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ ＋ PDF</p>
+              <h3 class="gp-name">回復志向</h3>
+              <p class="gp-note">この資質だけ、読みものとPDFの2つがあります。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://claude.ai/public/artifacts/98022ae1-28d3-40ee-b7bb-435844908b55" target="_blank" rel="noopener">
+                Webページ
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+              <a class="gp-open" href="https://drive.google.com/file/d/1burU3OtzM8Wh6MQ1IAl3vNrVjtOZ3cIo/view" target="_blank" rel="noopener">
+                PDF
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">慎重さ</h3>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://claude.ai/public/artifacts/42758de2-ca9b-40bc-9421-376d7372d608" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">自我</h3>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://claude.ai/public/artifacts/2a4287c6-581b-4a5d-8bcd-2948458180dc" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">PDF</p>
+              <h3 class="gp-name">調和性</h3>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://drive.google.com/file/d/1eLVFlzBdlTX2bXbvdNIKhBW4rWFlg-jj/view" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── 棚3 ────────────────────────────────────────── -->
+      <section class="gp-shelf" data-shelf="s3" aria-labelledby="gp-s3">
+        <div class="gp-shelf-head">
+          <span class="gp-shelf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 20.2l.9-4 11-11 3.1 3.1-11 11z"/>
+              <path d="M15.4 5.6l3.1 3.1"/>
+              <path d="M3.6 21.4h6"/>
+            </svg>
+          </span>
+          <h2 id="gp-s3">自分のことを、書き出してみましょう</h2>
+          <p class="gp-shelf-lead">読むだけで終わらせないための、手を動かすシートです。楽しかった時間と嫌だった時間を並べて書いていくと、自分がどこで燃えるのかが見えてきます。想像してみてください、それが分かっている人と分かっていない人では、次の一歩の選び方がまるで違います。</p>
+        </div>
+
+        <ul class="gp-list">
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">シート</p>
+              <h3 class="gp-name">夢中が見つかるシート（コピーしてお使いください）</h3>
+              <p class="gp-say">自分がどういう時に熱中しているか、逆に嫌なのか　書き出していくことで可視化できます。使い方がわからなければまたご説明しますね😊</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://docs.google.com/spreadsheets/d/1og61_9BtaFXy3yfZ-NU5rg11WTAnf4_cpDHq8QiDTzU/edit?gid=1578151413" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">PDF</p>
+              <h3 class="gp-name">でもだってにサヨナラ</h3>
+              <p class="gp-say">変わりたいけど変われないと思っている時の対処法</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://drive.google.com/file/d/1ceF8WmBnuUWPpY_ybRxp-pavYF6f1M_q/view?usp=sharing" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── 棚4 ────────────────────────────────────────── -->
+      <section class="gp-shelf" data-shelf="s4" aria-labelledby="gp-s4">
+        <div class="gp-shelf-head">
+          <span class="gp-shelf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6.2" y="2.4" width="11.6" height="19.2" rx="2.6"/>
+              <path d="M10.4 5.4h3.2"/>
+              <path d="M9 11.4l2 2 4-4.2"/>
+              <path d="M9 17.4h6"/>
+            </svg>
+          </span>
+          <h2 id="gp-s4">オフ会で、実際に遊んだアプリです</h2>
+          <p class="gp-shelf-lead">当日みんなでスマホから触ったものを、そのまま置いています。ひとりで開いても当日と同じで、最後まで指だけで進みます。</p>
+        </div>
+
+        <ul class="gp-list">
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">キュンの種ひろい</h3>
+              <p class="gp-note">「キュンとした瞬間」を色と資質から拾って、自分の行動の手がかりを1つ持ち帰るミニアプリです。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://okemonogatari-hash.github.io/okemon-strengths-home/tokimeki.html" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">強みのおしゃべり会 ワークシート</h3>
+              <p class="gp-note">「つい、やっちゃう」にチェックを入れて、その中からベスト3を選んで書き出すワークシートです。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://okemonogatari-hash.github.io/okemon-strengths-home/offkai-20260813.html" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">ゆるっと雑談会 スライド＆ワークシート</h3>
+              <p class="gp-note">当日のスライドと、スマホで書き込めるワークシートが1枚になっています。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://okemonogatari-hash.github.io/html-share-box/diagrams/sf-zatsudankai-2026-09-04-slides.html" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── 棚5 ────────────────────────────────────────── -->
+      <section class="gp-shelf" data-shelf="s5" aria-labelledby="gp-s5">
+        <div class="gp-shelf-head">
+          <span class="gp-shelf-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9.2"/>
+              <path d="M15.6 8.4l-2 5.2-5.2 2 2-5.2z"/>
+              <path d="M12 2.8v1.8M12 19.4v1.8M2.8 12h1.8M19.4 12h1.8"/>
+            </svg>
+          </span>
+          <h2 id="gp-s5">個性診断（CQ）のことも、ここにまとめました</h2>
+          <p class="gp-shelf-lead">ストレングスファインダーと並んで、よく聞かれるのが個性診断です。何がわかるのか、どちらを受けるといいのかを置いています。</p>
+        </div>
+
+        <ul class="gp-list">
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">スライド</p>
+              <h3 class="gp-name">個性診断とは？？（Canvaスライド）</h3>
+              <p class="gp-note">スマホで開くと、Canvaのお知らせが画面いっぱいに出ることがあります。閉じるとスライドが読めます。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://www.canva.com/design/DAGw9G3RHbk/qUwQEhLq81Uj2XLncr0EGg/view" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">個性診断（CQ）とは（Webページ）</h3>
+              <p class="gp-note">同じ話を、スマホでそのまま読めるページにしたものです。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://okemonogatari-hash.github.io/html-share-box/diagrams/cq-guide.html" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+
+          <li class="gp-item" data-gift>
+            <div>
+              <p class="gp-form">Webページ</p>
+              <h3 class="gp-name">診断メニューの選び方</h3>
+              <p class="gp-note">個性診断・ストレングスファインダー・AI相棒のうち、いまの自分に合うのはどれかを選ぶためのガイドです。</p>
+            </div>
+            <div class="gp-actions">
+              <a class="gp-open" href="https://okemonogatari-hash.github.io/html-share-box/diagrams/shindan-menu-guide.html" target="_blank" rel="noopener">
+                ひらく
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+
+    <!-- ══ これから棚に並ぶもの ══════════════════════════════ -->
+    <section class="gp-soon-sec" aria-labelledby="gp-soon-title">
+      <div class="gp-soon-inner">
+        <h2 id="gp-soon-title">これから棚に並ぶもの</h2>
+        <ul class="gp-soon-list">
+          <li>わたしのトリセツ 印刷用ワークシート</li>
+          <li>価値観マップ AI羅針盤</li>
+          <li>タイムバケット AIプロンプト</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══ おわりに ══════════════════════════════════════════ -->
+    <section class="gp-close" aria-labelledby="gp-close-title">
+      <div class="gp-close-inner">
+        <h2 id="gp-close-title">ぜんぶ、持って帰ってください。</h2>
+        <p>
+          ここにあるものは、受け取ってくださった方のものです。何度でも開いていいですし、必要なら誰かに渡してもらってもかまいません。
+          使い方がわからないものがあれば、いつでも聞いてくださいね。また増えたら、この棚に足していきます。
+        </p>
+        <div class="gp-close-actions">
+          <a class="primary-action" href="https://okemonogatari-hash.github.io/okemon-strengths-home/" target="_blank" rel="noopener">ストレングス入門ホームをひらく</a>
+          <a class="secondary-action" href="https://okemonogatari-hash.github.io/okemon-strengths-home/okemon.html" target="_blank" rel="noopener">おけもん本人のページを見る</a>
+        </div>
+        <p class="gp-sign">寄り添い型 個性診断師 おけもん</p>
+      </div>
+    </section>
+
+    <div class="gp-foot">
+      <p>
+        本ページは、おけもん式の自己理解・強み活用のための配布物をまとめたものです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a> を確認してください。2026年9月4日 更新。
+      </p>
+    </div>
+
+  </main>
+
+  <script>
+  (function () {
+    "use strict";
+
+    var bar = document.querySelector(".gp-filter");
+    var shelves = Array.prototype.slice.call(document.querySelectorAll(".gp-shelf"));
+    var countEl = document.getElementById("gp-count");
+    var topbar = document.querySelector(".topbar");
+
+    // 固定されているものの高さを実測して、棚の着地位置（scroll-margin-top）に渡す。
+    // スマホでは棚バーが static なので topbar の分だけでよい
+    var setPin = function () {
+      var h = topbar ? topbar.getBoundingClientRect().height : 0;
+      if (bar && getComputedStyle(bar).position === "sticky") {
+        h += bar.getBoundingClientRect().height;
+      }
+      var de = document.documentElement;
+      de.style.setProperty("--bar-top", Math.round(topbar ? topbar.getBoundingClientRect().height : 0) + "px");
+      de.style.setProperty("--pin-top", Math.round(h + 16) + "px");
+    };
+    setPin();
+    window.addEventListener("resize", setPin);
+
+    // 棚のしぼりこみ。JSが動かなくても全件が見えている状態から始める
+    if (bar && shelves.length) {
+      var chips = Array.prototype.slice.call(bar.querySelectorAll(".gp-chip"));
+      var apply = function (key, move) {
+        chips.forEach(function (c) {
+          var on = c.getAttribute("data-shelf") === key;
+          c.classList.toggle("gp-chip-on", on);
+          c.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        var n = 0, first = null;
+        shelves.forEach(function (s) {
+          var show = (key === "all") || (s.getAttribute("data-shelf") === key);
+          s.hidden = !show;
+          if (show) { n += s.querySelectorAll("[data-gift]").length; if (!first) first = s; }
+        });
+        if (countEl) countEl.textContent = String(n);
+        // 棚を隠すとページが縮み、いまの位置が末尾へ寄せられてしまう。
+        // 選んだ棚の先頭へ自分で着地させる（アニメーションは待たない）
+        if (move && first) {
+          setPin();
+          first.scrollIntoView({ behavior: "instant", block: "start" });
+        }
+      };
+      bar.addEventListener("click", function (e) {
+        var c = e.target.closest ? e.target.closest(".gp-chip") : null;
+        if (c) apply(c.getAttribute("data-shelf"), true);
+      });
+      apply("all", false);
+    }
+  })();
+  </script>
+
+</body>
+</html>
