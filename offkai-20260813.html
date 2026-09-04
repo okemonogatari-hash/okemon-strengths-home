@@ -38,6 +38,30 @@
     }
     .tsui-clear:hover { color: var(--ink); border-color: var(--ink-soft); }
 
+    /* 2026-09-04 本人指摘「チェックした中から3つを抜き出す時に記述がやりづらい」→ チェック済みだけを集めて★3つを選び、書き込み欄へ自動転記＋コピー */
+    .pick-panel { margin: 0 0 20px; padding: 16px 20px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-lg); }
+    .pick-lead { margin: 0 0 10px; font-size: 14px; color: var(--ink-soft); line-height: 1.8; }
+    .pick-lead b { color: var(--ink); }
+    .pick-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .pick-chip {
+      font-family: "Noto Sans JP", sans-serif; font-size: 14px; line-height: 1.6; text-align: left;
+      padding: 8px 12px 8px 10px; border-radius: 999px; cursor: pointer;
+      background: var(--primary-light); color: var(--ink); border: 1px solid rgba(44,95,75,.2);
+    }
+    .pick-chip::before { content: "☆ "; color: var(--accent-ink); }
+    .pick-chip.on { background: var(--primary); color: var(--paper); border-color: var(--primary); font-weight: 600; }
+    .pick-chip.on::before { content: "★ "; color: var(--paper); }
+    .pick-chip:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .pick-empty { font-size: 14px; color: var(--muted); }
+    .pick-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 12px; }
+    .pick-copy {
+      font-family: "Noto Sans JP", sans-serif; font-size: 14px; font-weight: 600;
+      padding: 10px 18px; border-radius: var(--radius); cursor: pointer;
+      background: var(--primary); color: var(--paper); border: 1px solid var(--primary);
+    }
+    .pick-copy[disabled] { background: var(--paper-deep); color: var(--ink-soft); border-color: var(--line); cursor: default; }
+    .pick-copy:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .pick-msg { font-size: 13px; color: var(--primary); font-weight: 600; }
     .tsui-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
     @media (min-width: 760px) { .tsui-list { grid-template-columns: 1fr 1fr; gap: 4px 20px; } }
     .tsui-list label {
@@ -68,7 +92,7 @@
     }
     .clue-card .clue-label {
       font-family: "Inter", sans-serif; font-size: 11px; letter-spacing: .08em;
-      text-transform: uppercase; color: var(--accent); font-weight: 600;
+      text-transform: uppercase; color: var(--accent-ink); font-weight: 600;
     }
     .clue-card p.q {
       font-family: "Noto Serif JP", serif; font-size: 17px; line-height: 1.85;
@@ -81,7 +105,7 @@
       background: var(--paper-deep); border-radius: var(--radius);
       padding: 10px 12px; margin: 10px 0 0;
     }
-    .clue-card p.eg b { color: var(--accent); font-weight: 600; }
+    .clue-card p.eg b { color: var(--accent-ink); font-weight: 600; }
 
     .flip-table { display: grid; gap: 2px; margin-top: 8px; }
     .flip-row {
@@ -90,7 +114,7 @@
     }
     .flip-row:nth-child(odd) { background: var(--paper-deep); }
     .flip-row .was { color: var(--muted); }
-    .flip-row .mark { color: var(--accent); font-family: "Inter", sans-serif; font-weight: 600; }
+    .flip-row .mark { color: var(--accent-ink); font-family: "Inter", sans-serif; font-weight: 600; }
     .flip-row .now { color: var(--ink); font-weight: 500; }
     @media (max-width: 620px) {
       .flip-row { grid-template-columns: 1fr; gap: 4px; }
@@ -128,6 +152,21 @@
     .save-note { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.7; }
     .save-note[data-state="off"] { color: #B8452F; }
 
+    /* 書いたものを持ち帰るための書き出し。8/13の参加者から「コピーできない」と指摘があって追加 */
+    .takeout {
+      margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--line);
+      display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+    }
+    .takeout-lead { flex: 1 1 100%; font-size: 13.5px; color: var(--ink-soft); line-height: 1.8; }
+    .takeout-btn {
+      font-family: "Noto Sans JP", sans-serif; font-size: 14px; font-weight: 600;
+      padding: 11px 22px; border-radius: var(--radius); cursor: pointer;
+      background: var(--primary); color: var(--paper); border: 1px solid var(--primary);
+    }
+    .takeout-btn:hover { background: #24503f; border-color: #24503f; }
+    .takeout-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .takeout-msg { font-size: 13px; color: var(--primary); font-weight: 600; }
+
     .note-strip {
       padding: 18px 22px; background: var(--primary-light);
       border-radius: var(--radius-lg); font-size: 14.5px; color: var(--ink-soft);
@@ -148,6 +187,7 @@
       <a href="#work3">言葉をもらう</a>
       <a href="#flip">短所だと思ってた</a>
       <a href="#faq">よくある質問</a>
+      <a href="gakucho.html">両学長で見る</a>
       <a href="index.html#themes" class="nav-cta">→ 34資質を見る</a>
       <a href="index.html" class="nav-cta">→ 入門ホーム</a>
     </nav>
@@ -170,6 +210,7 @@
         <div class="hero-actions" aria-label="ページ内リンク">
           <a class="primary-action" href="#work1">最初のワークへ</a>
           <a class="secondary-action" href="index.html#foundation">そもそもSFって？</a>
+          <a class="secondary-action" href="gakucho.html">両学長の資質で例える</a>
         </div>
       </div>
       <div class="hero-dashboard" aria-label="今日のワークの概要">
@@ -246,6 +287,14 @@
         <button class="tsui-clear" id="clear" type="button">すべて外す</button>
       </div>
 
+      <div class="pick-panel" id="pickPanel">
+        <p class="pick-lead"><b>チェックしたものは、ここに集まります。</b>その中から「一番自分らしい」と思うものを★で3つまで選ぶと、下の「わたしの、これが自分らしい3つ」に自動で入ります。</p>
+        <div class="pick-chips" id="pickChips" role="group" aria-label="チェックした項目"><span class="pick-empty">まだチェックがありません。</span></div>
+        <div class="pick-actions">
+          <button class="pick-copy" id="pickCopy" type="button" disabled>★の3つをコピー</button>
+          <span class="pick-msg" id="pickMsg" role="status" aria-live="polite"></span>
+        </div>
+      </div>
       <ul class="tsui-list" id="tsuiList"></ul>
 
       <div class="note-strip">
@@ -383,6 +432,12 @@
         <textarea class="wsheet" id="w3-3" rows="2" placeholder="小さいことでかまいません"></textarea>
 
         <p class="save-note" id="saveNote">書いた内容はこの端末の中だけに自動保存されます。どこにも送信されません。</p>
+
+        <div class="takeout">
+          <p class="takeout-lead"><b>持って帰る</b>——今日チェックしたことと書いたことを、まとめてコピーできます。LINEやメモアプリに貼って残してください。</p>
+          <button class="takeout-btn" id="copyAll" type="button">今日書いたものを全部コピー</button>
+          <span class="takeout-msg" id="copyMsg" role="status" aria-live="polite"></span>
+        </div>
       </div>
 
       <div class="note-strip">
@@ -771,7 +826,149 @@
     });
   });
 
+  /* 書いたものを持ち帰る。チェックと入力欄をまとめて1つのテキストにする
+     （2026-08-13の参加者から「コピー機能がない」と指摘があって追加） */
+  var LABELS = {
+    "w1-1": "自分らしい①", "w1-2": "自分らしい②", "w1-3": "自分らしい③",
+    "w1-4": "リストに無かった「つい」", "w1-5": "3つのつながり",
+    "w2-1": "憧れ", "w2-2": "習得の速さ", "w2-3": "満足感",
+    "w2-4": "人から言われたこと", "w2-5": "フロー",
+    "w3-1": "ちょっとしんどいこと", "w3-2": "人からもらった言葉", "w3-3": "明日ためしてみること"
+  };
+
+  function buildTakeout() {
+    var lines = ["【2026-08-13 強みのおしゃべり会】", ""];
+    var checked = [];
+    Array.prototype.forEach.call(list.querySelectorAll("input"), function (b) {
+      if (b.checked) checked.push(TSUI[+b.dataset.i]);
+    });
+    if (checked.length) {
+      lines.push("■ つい、やっちゃうこと（" + checked.length + "個）");
+      checked.forEach(function (t) { lines.push("・" + t); });
+      lines.push("");
+    }
+    var wrote = false;
+    Object.keys(LABELS).forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el && el.value.trim()) {
+        if (!wrote) { lines.push("■ 書いたこと"); wrote = true; }
+        lines.push("【" + LABELS[id] + "】" + el.value.trim());
+      }
+    });
+    if (!checked.length && !wrote) return null;
+    lines.push("");
+    lines.push("続き → https://okemonogatari-hash.github.io/okemon-strengths-home/");
+    return lines.join("\n");
+  }
+
+  var copyBtn = document.getElementById("copyAll");
+  var copyMsg = document.getElementById("copyMsg");
+  if (copyBtn) {
+    copyBtn.addEventListener("click", function () {
+      var text = buildTakeout();
+      if (!text) { copyMsg.textContent = "まだ何も入っていません"; return; }
+      function done() { copyMsg.textContent = "コピーしました。貼り付けて残してください"; }
+      function fallback() {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.setAttribute("readonly", "");
+        ta.style.position = "fixed";
+        ta.style.top = "-1000px";
+        document.body.appendChild(ta);
+        ta.select();
+        ta.setSelectionRange(0, text.length);
+        var ok = false;
+        try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        if (ok) { done(); }
+        else { copyMsg.textContent = "コピーできませんでした。画面を長押しして選んでください"; }
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(done).catch(fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
+
 })();
 </script>
+<script>
+/* 2026-09-04 ★3つの選択（本人指摘への対処）。既存のチェック保存・書き込み欄保存には触らず、DOM経由で連携する */
+(function () {
+  var list = document.getElementById("tsuiList");
+  var chips = document.getElementById("pickChips");
+  var copyBtn = document.getElementById("pickCopy");
+  var pmsg = document.getElementById("pickMsg");
+  if (!list || !chips || !copyBtn) return;
+  var SKEY = "okemon.offkai.20260813.star";
+  var stars = [];
+  try { stars = JSON.parse(localStorage.getItem(SKEY) || "[]"); if (!Array.isArray(stars)) stars = []; } catch (e) { stars = []; }
+  function save() { try { localStorage.setItem(SKEY, JSON.stringify(stars)); } catch (e) {} }
+  function checkedItems() {
+    var out = [];
+    Array.prototype.forEach.call(list.querySelectorAll("input"), function (b) {
+      if (b.checked) { var t = b.parentNode.querySelector(".txt"); out.push({ i: b.dataset.i, text: t ? t.textContent : "" }); }
+    });
+    return out;
+  }
+  function fillSheet() {
+    var items = checkedItems();
+    var byI = {}; items.forEach(function (it) { byI[it.i] = it.text; });
+    ["w1-1", "w1-2", "w1-3"].forEach(function (id, k) {
+      var f = document.getElementById(id); if (!f) return;
+      var want = stars[k] != null && byI[stars[k]] ? byI[stars[k]] : "";
+      if (f.value === want) return;
+      if (f.value && f.dataset.auto !== "1") return; /* 手で書いたものは上書きしない */
+      f.value = want; f.dataset.auto = want ? "1" : "";
+      f.dispatchEvent(new Event("input", { bubbles: true }));
+    });
+  }
+  function render() {
+    var items = checkedItems();
+    var alive = {}; items.forEach(function (it) { alive[it.i] = 1; });
+    stars = stars.filter(function (i) { return alive[i]; });
+    chips.innerHTML = "";
+    if (!items.length) { chips.innerHTML = '<span class="pick-empty">まだチェックがありません。</span>'; }
+    items.forEach(function (it) {
+      var b = document.createElement("button");
+      b.type = "button"; b.className = "pick-chip" + (stars.indexOf(it.i) >= 0 ? " on" : "");
+      b.textContent = it.text; b.dataset.i = it.i;
+      b.setAttribute("aria-pressed", stars.indexOf(it.i) >= 0 ? "true" : "false");
+      chips.appendChild(b);
+    });
+    copyBtn.disabled = stars.length === 0;
+    if (stars.length === 3) pmsg.textContent = "3つそろいました。下の書き込み欄にも入っています。";
+    else if (stars.length > 0) pmsg.textContent = "あと" + (3 - stars.length) + "つ選べます。";
+    else pmsg.textContent = items.length ? "★を押して、3つまで選んでください。" : "";
+    save(); fillSheet();
+  }
+  chips.addEventListener("click", function (e) {
+    var b = e.target.closest(".pick-chip"); if (!b) return;
+    var i = b.dataset.i, at = stars.indexOf(i);
+    if (at >= 0) stars.splice(at, 1);
+    else if (stars.length >= 3) { pmsg.textContent = "★は3つまでです。どれかを外してから選んでください。"; return; }
+    else stars.push(i);
+    render();
+  });
+  copyBtn.addEventListener("click", function () {
+    var items = checkedItems(); var byI = {}; items.forEach(function (it) { byI[it.i] = it.text; });
+    var lines = stars.map(function (i, k) { return "\u2460\u2461\u2462".charAt(k) + " " + byI[i]; });
+    var text = "わたしの「つい、やっちゃう」ベスト3\n" + lines.join("\n");
+    var done = function () { pmsg.textContent = "コピーしました。LINEやメモに貼ってください。"; };
+    var fail = function () {
+      var ta = document.createElement("textarea"); ta.value = text; ta.setAttribute("readonly", ""); ta.style.position = "fixed"; ta.style.left = "-9999px";
+      document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); done(); } catch (e) { pmsg.textContent = "コピーできない環境です。下の書き込み欄から手で写してください。"; }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fail); else fail();
+  });
+  list.addEventListener("change", render);
+  var clr = document.getElementById("clear"); if (clr) clr.addEventListener("click", function () { stars = []; render(); });
+  render();
+})();
+</script>
+
 </body>
 </html>
