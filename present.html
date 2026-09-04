@@ -17,7 +17,15 @@
        ライト単一テーマ。贈り物なので明暗の分岐は持たない。
        ───────────────────────────────────────────────────────────── */
 
-    [hidden] { display: none !important; }
+    /* しぼりこみの非表示は、JSが動いたときだけ有効にする。
+       JSが死んだ環境では html.js-ready が付かないので、hidden 属性が
+       残っていても棚は全部見える（コンテンツをJSの人質にしない）。
+       なお下の @media 内の display:none は幅による出し分けで、JSとは無関係 */
+    html.js-ready [hidden] { display: none !important; }
+    /* ブラウザ既定にも [hidden]{display:none} があるので、それも打ち消す。
+       これが無いと「hidden属性が残ったままJSが止まった」ときに棚が消える
+       （実測：6件が見えなくなった） */
+    html:not(.js-ready) .gp-shelf[hidden] { display: block !important; }
 
     /* 日本語の行頭禁則。長音符「ー」や小書き仮名が行頭に落ちるのを止める */
     .gp-hero, .gp-filter, .gp-shelves, .gp-soon-sec, .gp-close, .gp-foot { line-break: strict; }
@@ -854,6 +862,9 @@
   <script>
   (function () {
     "use strict";
+
+    // ここまで来た＝JSが動いている。この印が付いて初めて非表示CSSが効く
+    document.documentElement.classList.add("js-ready");
 
     var bar = document.querySelector(".gp-filter");
     var shelves = Array.prototype.slice.call(document.querySelectorAll(".gp-shelf"));

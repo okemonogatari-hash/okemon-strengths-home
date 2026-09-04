@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* プレゼント集への導線を1本足したぶん、1280pxでナビが枠を97px超えた
+       （追加前の時点で既に余白ぎりぎり＝navScroll 913 / navClient 875）。
+        折り返しを許して受け止める。styles.css は他ページと共有なので触らない */
+    .nav-links { flex-wrap: wrap; row-gap: 10px; }
+  </style>
 </head>
 <body>
   <header class="topbar" aria-label="サイト内ナビゲーション">
@@ -25,6 +31,7 @@
       <a href="#take" class="nav-hot">受け方</a>
       <a href="#themes">34資質</a>
       <a href="#faq">FAQ</a>
+      <a href="present.html" class="nav-cta">→ プレゼント集</a>
       <a href="okemon.html" class="nav-cta">→ おけもん本人</a>
       <a href="gakucho.html" class="nav-cta">→ 両学長</a>
     </nav>
