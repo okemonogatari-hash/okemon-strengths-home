@@ -1,0 +1,665 @@
+/* ============================================================================
+   trait2.css ── 資質徹底解説シリーズ・第2骨（5画面版）
+   2026-09-05 きょう（図解・デザイン担当）
+
+   なぜ作り直したか
+   ・第1骨（trait.css）は「縦の巻物」だった。1440pxで13,900〜15,000px、
+     塗り箱50〜60個、h2が本文と同サイズ。おけちゃんの言葉＝「余白が下手」。
+   ・外の見本4本の実測（あおいCDO/デザイン実測/2026-09-05）から借りたのは4つ。
+       Stripe   → 目次は右sticky・1項目1行
+       Stripe/16P → 引用は塗らない。左罫だけ
+       16P      → h2を本文の2.2倍にして、間隔ではなく見出しで章を切る
+       Pudding/16P → 本文カラムは細いまま、図と表だけが幅を破る
+
+   このファイルが自分に課している数
+   ・色は5つ（紙・墨・副墨・罫・ドメイン色1）。資質ごとの差し色は作らない
+   ・塗りつぶした面は1ページ4つまで（表紙帯／地下室列／ワーク欄／締め）
+   ・章の余白は3階層だけ（章100 ／ 小見出し40 ／ 段落14）
+   ・幅を破るのは図・表・触る部品だけ。本文は最後まで38em
+   ・ライト固定。おけちゃんのMacはダークなので、追従すると明るい姿を一度も
+     見せられない（feedback-light-default-not-os-following）
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+
+  /* ---- 色。5つ。ここに6つめを足したくなったら罫の濃淡で解けないか先に見る -- */
+  --paper: #FBF8F3;                      /* 紙 */
+  --ink: #1F1B16;                        /* 墨。paper比 15.6 */
+  --ink-soft: #574E43;                   /* 副墨。paper比 7.4 */
+  --rule: rgba(31, 27, 22, 0.16);        /* 罫。文字には使わない */
+  --domain: #5D5A96;                     /* ドメイン色（ページ側で差し替え） */
+
+  /* ドメイン色から引いた面と罫。新しい色ではなく、同じ色の薄い版 */
+  --domain-face: color-mix(in srgb, var(--domain) 9%, var(--paper));
+  --domain-rule: color-mix(in srgb, var(--domain) 34%, var(--paper));
+  --ink-face: color-mix(in srgb, var(--ink) 5%, var(--paper));
+  /* 12px前後の小さい文字にドメイン色を使う時だけ、墨を混ぜて濃くする。
+     新しい色ではなく同じ色の濃い版（paper比 11.0） */
+  --domain-ink: color-mix(in srgb, var(--domain) 62%, var(--ink));
+
+  /* ---- 寸法 ---- */
+  --col: 38em;      /* 本文の柱＝18px×38＝684px（正本の日本語38〜44em内） */
+  --break: 1080px;  /* 幅を破るものの上限 */
+  --gut: 24px;
+  --toc: 232px;
+
+  /* ---- 余白の3階層。この3つ以外の縦マージンを新しく作らない ---- */
+  --gap-chapter: 100px;
+  --gap-block: 40px;
+  --gap-para: 14px;
+}
+
+@media (max-width: 900px) {
+  :root { --gap-chapter: 64px; --gap-block: 32px; }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Sans JP", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+  font-size: 18px;
+  line-height: 1.9;
+  font-feature-settings: "palt" 1;
+  text-wrap: pretty;   /* 最終行が1〜2文字だけ残る「孤児」を作らない */
+}
+
+:where(a):focus-visible,
+:where(button, input, textarea, summary):focus-visible {
+  outline: 2px solid var(--domain);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ---------- 柱と、幅を破る器 -------------------------------------------- */
+/* 本文はすべてこの1本の柱。左右は同じ値で、必ず対称にする */
+.col {
+  width: min(var(--col), 100% - var(--gut) * 2);
+  margin-inline: auto;
+}
+/* 図・表・触る部品だけがここへ出る */
+.break {
+  width: min(var(--break), 100% - var(--gut) * 2);
+  margin-inline: auto;
+}
+
+/* ---------- ヘッダー ----------------------------------------------------- */
+.tbar {
+  border-bottom: 1px solid var(--rule);
+  background: var(--paper);
+}
+.tbar-in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 28px;
+  padding: 14px 0;
+}
+.tbar-brand {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.tbar-nav { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-left: auto; }
+.tbar-nav a {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.tbar-nav a:hover { border-bottom-color: var(--domain-rule); }
+
+/* ---------- 表紙 --------------------------------------------------------- */
+/* 塗り①。ページで唯一のベタ面。ここでドメイン色を使い切る */
+.cover {
+  background: var(--domain);
+  color: #fff;
+  padding: 84px 0 76px;
+}
+.cover-domain {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  opacity: 0.82;
+  margin: 0 0 20px;
+}
+.cover h1 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 1.25;
+  letter-spacing: 0.02em;
+  margin: 0;
+  text-wrap: balance;
+}
+.cover-en {
+  margin: 10px 0 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  opacity: 0.72;
+}
+/* 一言メタファー。表紙で最も大事な1行なので、罫を1本だけ引いて持ち上げる */
+.cover-line {
+  margin: 30px 0 0;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255, 255, 255, 0.34);
+  font-family: "Noto Serif JP", serif;
+  font-size: 25px;
+  line-height: 1.7;
+  font-weight: 500;
+  text-wrap: balance;
+}
+.cover-lead {
+  margin: 22px 0 0;
+  font-size: 16px;
+  line-height: 1.9;
+  opacity: 0.9;
+}
+.cover-meta {
+  margin: 26px 0 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  opacity: 0.72;
+}
+
+/* ---------- 本文の骨（右sticky目次と本文の2列） -------------------------- */
+.shell {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+}
+@media (min-width: 1100px) {
+  /* 左に目次と同じ幅の空きを置く。そうしないと本文柱が画面の左寄りに座って、
+     右だけ350px空く（第1骨の実測がまさにこれだった） */
+  .shell {
+    grid-template-columns: var(--toc) minmax(0, 1fr) var(--toc);
+    gap: 0 40px;
+    max-width: calc(var(--break) + (var(--toc) + 40px) * 2);
+    margin-inline: auto;
+    padding-inline: var(--gut);
+  }
+  .shell > main { grid-column: 2; }
+  .shell > .toc { grid-column: 3; }
+  /* 2列に入れた時点で、中の .col / .break の基準は親の幅になる */
+  .shell > main { min-width: 0; }
+  .shell .col   { width: min(var(--col), 100%); }
+  .shell .break { width: 100%; }
+}
+
+/* 目次。1項目1行・5つだけ・現在地が出る（Stripe型） */
+.toc {
+  display: none;
+  position: sticky;
+  top: 28px;
+  padding: var(--gap-chapter) 0 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+@media (min-width: 1100px) { .toc { display: block; } }
+.toc-h {
+  margin: 0 0 12px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.toc a {
+  display: flex;
+  gap: 10px;
+  padding: 5px 0 5px 12px;
+  border-left: 2px solid var(--rule);
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.toc a .no {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  padding-top: 2px;
+}
+.toc a:hover { color: var(--ink); }
+.toc a.is-here { color: var(--domain); border-left-color: var(--domain); font-weight: 600; }
+
+/* 小さい画面用。畳んで置く */
+.toc-sp { display: block; margin: 32px 0 0; }
+@media (min-width: 1100px) { .toc-sp { display: none; } }
+.toc-sp summary {
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--ink-soft);
+  padding: 10px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.toc-sp ol { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+.toc-sp a { color: var(--ink); text-decoration: none; font-size: 15px; }
+
+/* ---------- 章 ----------------------------------------------------------- */
+/* 章と章は「間隔」ではなく「見出しの大きさ」で切る。間隔はその補助 */
+.sec { padding-top: var(--gap-chapter); }
+.sec h2 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 40px;             /* 本文18pxの2.22倍 */
+  line-height: 1.4;
+  letter-spacing: 0.01em;
+  margin: 0 0 var(--gap-para);
+  text-wrap: balance;
+}
+.sec-no {
+  display: block;
+  margin: 0 0 6px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--domain-ink);
+  font-variant-numeric: tabular-nums;
+}
+.sec-lead {
+  margin: 0 0 var(--gap-block);
+  color: var(--ink-soft);
+  font-size: 16.5px;
+}
+.sec h3 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 22px;
+  text-wrap: balance;
+  line-height: 1.6;
+  margin: var(--gap-block) 0 var(--gap-para);
+}
+.sec p { margin: 0 0 var(--gap-para); }
+.sec p:last-child { margin-bottom: 0; }
+strong { font-weight: 600; }
+
+/* 引用。塗らない。左罫だけ（Stripe・16Pの共通解） */
+.quote {
+  margin: var(--gap-block) 0;
+  padding: 2px 0 2px 20px;
+  border-left: 3px solid var(--domain-rule);
+}
+/* 引用は原文を1字も変えない。だから最終行が1〜2文字だけ残る時は、
+   文をいじらず balance で行を均す */
+.quote p { margin: 0 0 8px; text-wrap: balance; }
+.quote p:last-child { margin-bottom: 0; }
+.quote .en {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+.quote-label {
+  text-wrap: balance;
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--ink-soft);
+}
+
+/* 畳むところ。Gallup原文の細かい話はここへ入れる */
+.more {
+  margin: var(--gap-block) 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.more > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 14px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary::before {
+  content: "";
+  width: 9px; height: 9px;
+  border-right: 1.6px solid var(--domain);
+  border-bottom: 1.6px solid var(--domain);
+  transform: rotate(45deg) translate(-2px, -2px);
+  transition: transform 0.18s ease;
+}
+.more[open] > summary::before { transform: rotate(-135deg) translate(-2px, -2px); }
+.more > summary:hover { color: var(--ink); }
+/* 畳んである側はGallup原文の参照。本文と同じ1本の柱で縦に伸ばすと、それだけで
+   1章ぶんの高さになる（実測774px）。開いた時だけ2段の帯にして、横を使う */
+.more-body { padding: 0 0 24px; }
+.more-body p { text-wrap: balance; }
+@media (min-width: 1000px) {
+  .more-body { columns: 2; column-gap: 44px; }
+  .more-body > * { break-inside: avoid; }
+}
+.more-body > :first-child { margin-top: 0; }
+
+/* ---------- あるある（②）------------------------------------------------ */
+/* 塗らない。番号と罫だけでリズムを作る */
+.aru { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px 36px; }
+@media (min-width: 760px) { .aru { grid-template-columns: 1fr 1fr; } }
+.aru li { padding-top: 18px; border-top: 1px solid var(--rule); }
+.aru b { display: block; font-size: 17px; line-height: 1.7; font-weight: 600; margin-bottom: 4px; }
+.aru span { display: block; margin-top: 6px; font-size: 15px; color: var(--ink-soft); }
+
+/* ---------- バルコニー／地下室（③・幅を破る1つめ）----------------------- */
+.bb {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: var(--gap-block) 0 0;
+  border: 1px solid var(--rule);
+}
+@media (max-width: 760px) { .bb { grid-template-columns: 1fr; } }
+.bb-col { padding: 28px 26px 30px; }
+.bb-col--bal { border-right: 1px solid var(--rule); }
+@media (max-width: 760px) {
+  .bb-col--bal { border-right: 0; border-bottom: 1px solid var(--rule); }
+}
+/* 塗り②。日なた側は紙のまま、地下室側だけ地を沈める。色は増やさず墨の薄い版 */
+.bb-col--bas { background: var(--ink-face); }
+.bb-col h3 {
+  font-family: "Noto Serif JP", serif;
+  font-size: 19px;
+  text-wrap: balance;
+  margin: 0 0 4px;
+  line-height: 1.6;
+}
+.bb-col--bal h3 { color: var(--domain); }
+.bb-note { text-wrap: balance; margin: 0 0 18px; font-size: 13.5px; color: var(--ink-soft); }
+.bb-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.bb-list label {
+  display: grid;
+  grid-template-columns: 22px 1fr;
+  gap: 12px;
+  align-items: start;
+  cursor: pointer;
+  font-size: 15.5px;
+  line-height: 1.75;
+}
+.bb-list input {
+  appearance: none;
+  width: 20px; height: 20px;
+  margin: 5px 0 0;
+  border: 1.5px solid var(--ink-soft);
+  background: var(--paper);
+  cursor: pointer;
+}
+.bb-list input:checked { border-color: var(--domain); background: var(--domain); }
+.bb-list input:checked::after {
+  content: "";
+  display: block;
+  width: 10px; height: 5px;
+  margin: 4px auto 0;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(-45deg);
+}
+.bb-read {
+  padding: 24px 26px 26px;
+  border-top: 1px solid var(--rule);
+  grid-column: 1 / -1;
+}
+.bb-count {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 28px;
+  margin: 0 0 12px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-soft);
+}
+.bb-count b { font-weight: 600; color: var(--ink); }
+.bb-say { margin: 0; font-size: 16px; }
+
+/* 出口2つ。塗らずに、番号と左罫で並べる */
+.exits { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 22px; }
+@media (min-width: 760px) { .exits { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.exits li { padding-left: 18px; border-left: 2px solid var(--domain-rule); }
+.exits b { display: block; font-size: 17px; margin-bottom: 6px; }
+.exits p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+/* ---------- 見分ける表（④・幅を破る2つめ）------------------------------- */
+.cmp-wrap { margin: var(--gap-block) 0 0; }
+.cmp {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
+}
+.cmp th, .cmp td {
+  text-align: left;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+  line-height: 1.75;
+}
+.cmp thead th {
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  padding-bottom: 10px;
+}
+.cmp tbody th {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 17px;
+  white-space: nowrap;
+}
+/* 自分の資質の行だけ、罫を太くする。塗らない */
+.cmp .is-self th { color: var(--domain); }
+.cmp .is-self th, .cmp .is-self td { border-bottom-color: var(--domain-rule); box-shadow: inset 0 2px 0 -1px var(--domain-rule); }
+
+/* 狭い画面。横に流さず、1資質＝1ブロックへ積み替える */
+@media (max-width: 700px) {
+  .cmp, .cmp thead, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; }
+  .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .cmp tr { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+  .cmp .is-self { box-shadow: inset 2px 0 0 var(--domain-rule); padding-left: 14px; }
+  .cmp .is-self th, .cmp .is-self td { box-shadow: none; }
+  .cmp th, .cmp td { padding: 0; border-bottom: 0; white-space: normal; }
+  .cmp tbody th { font-size: 18px; margin-bottom: 4px; }
+  .cmp td::before {
+    content: attr(data-lb) "：";
+    color: var(--ink-soft);
+    font-size: 14px;
+  }
+}
+
+/* 見え方のズレ。左右2列の対 */
+.flip { list-style: none; margin: var(--gap-block) 0 0; padding: 0; border-top: 1px solid var(--rule); }
+.flip li {
+  display: grid;
+  grid-template-columns: 1fr 28px 1fr;
+  gap: 12px;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 16px;
+}
+@media (max-width: 640px) { .flip li { grid-template-columns: 1fr; gap: 4px; } }
+.flip .a { color: var(--ink-soft); }
+.flip .arrow { color: var(--domain); text-align: center; }
+.flip .b { font-weight: 600; }
+
+/* 掛け合わせ。罫だけの3列 */
+.mixes { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px; }
+@media (min-width: 760px) { .mixes { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
+.mixes li { padding-top: 18px; border-top: 2px solid var(--domain-rule); }
+.mixes b { display: block; font-family: "Noto Serif JP", serif; font-size: 17px; margin-bottom: 6px; }
+.mixes p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+/* ---------- 今日から（⑤）------------------------------------------------ */
+.today { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px 32px; counter-reset: t; }
+@media (min-width: 860px) { .today { grid-template-columns: repeat(3, 1fr); } }
+.today li {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  gap: 12px;
+  padding-top: 18px;
+  border-top: 2px solid var(--domain-rule);
+}
+.today li::before {
+  counter-increment: t;
+  content: counter(t, decimal-leading-zero);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--domain-ink);
+  font-variant-numeric: tabular-nums;
+  line-height: 1.9;
+}
+.today b { display: block; font-size: 17px; line-height: 1.7; margin-bottom: 4px; }
+.today p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+
+/* 書き込み欄。塗り③ */
+.work {
+  margin: var(--gap-block) 0 0;
+  background: var(--domain-face);
+  border: 1px solid var(--domain-rule);
+  padding: 30px 28px 28px;
+}
+.work-h { margin: 0 0 4px; font-family: "Noto Serif JP", serif; font-size: 21px; text-wrap: balance; }
+.work-note { margin: 0 0 24px; font-size: 14px; color: var(--ink-soft); }
+.work-steps { display: grid; gap: 22px; }
+@media (min-width: 860px) { .work-steps { grid-template-columns: 1fr 1fr; } }
+.work-step .badge {
+  display: inline-block;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--domain-ink);
+  margin-bottom: 4px;
+}
+.work-step .q { text-wrap: balance; margin: 0 0 4px; font-size: 16px; font-weight: 600; line-height: 1.7; }
+.work-step .hint { text-wrap: balance; margin: 0 0 10px; font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
+.work-step textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--domain-rule);
+  background: var(--paper);
+  color: var(--ink);
+  font: inherit;
+  font-size: 15.5px;
+  line-height: 1.8;
+  resize: vertical;
+}
+.work-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 24px; }
+.btn {
+  font: inherit;
+  font-size: 15px;
+  padding: 10px 20px;
+  border: 1px solid var(--domain);
+  background: var(--domain);
+  color: #fff;
+  cursor: pointer;
+}
+.btn--ghost { background: transparent; color: var(--domain); }
+.btn:hover { opacity: 0.88; }
+.work-save { font-size: 12.6px; color: var(--ink-soft); }
+
+/* ---------- 締めの手紙。塗り④ ------------------------------------------- */
+.closing { margin-top: var(--gap-chapter); background: var(--ink-face); padding: 76px 0 72px; }
+.closing h2 {
+  font-family: "Noto Serif JP", serif;
+  font-weight: 600;
+  font-size: 32px;
+  text-wrap: balance;
+  line-height: 1.5;
+  margin: 0 0 var(--gap-block);
+}
+.closing p { margin: 0 0 var(--gap-para); }
+.closing .sign {
+  margin: 30px 0 0;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  letter-spacing: 0.06em;
+  color: var(--ink-soft);
+}
+
+/* ---------- シリーズナビ・出典・フッター --------------------------------- */
+.series { padding-top: var(--gap-chapter); }
+.series-h {
+  margin: 0 0 14px;
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.series ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 15px; }
+.series a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--domain-rule); }
+.series a:hover { border-bottom-color: var(--domain); }
+.series .is-current { color: var(--domain); font-weight: 600; }
+.series .no { font-family: Inter, system-ui, sans-serif; font-size: 12.5px; margin-right: 6px; font-variant-numeric: tabular-nums; }
+
+.src { padding-top: var(--gap-block); }
+.src h2 { font-family: "Noto Serif JP", serif; font-size: 20px; text-wrap: balance; margin: 0 0 var(--gap-para); }
+.src ul { margin: 0 0 var(--gap-para); padding-left: 1.2em; }
+.src li, .src p { font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+.src a, .site-footer a { color: var(--domain); }
+
+.site-footer {
+  margin-top: var(--gap-chapter);
+  border-top: 1px solid var(--rule);
+  padding: 32px 0 60px;
+}
+.site-footer p { margin: 0 0 10px; font-size: 12.5px; line-height: 1.85; color: var(--ink-soft); }
+
+/* ---------- 印刷 --------------------------------------------------------- */
+/* 「印刷して持ち帰る」は⑤の書き込み欄だけを刷る。全画面刷ると紙が増える */
+@media print {
+  .toc, .toc-sp, .tbar, .series { display: none !important; }
+  body { font-size: 11pt; background: #fff; }
+  .cover { background: #fff; color: #000; padding: 0 0 12pt; border-bottom: 1pt solid #000; }
+  .cover-line, .cover-lead, .cover-meta, .cover-en { color: #000; }
+  body.print-work .sec,
+  body.print-work .closing,
+  body.print-work .src,
+  body.print-work .site-footer,
+  body.print-work .cover-lead,
+  body.print-work .cover-line { display: none !important; }
+  body.print-work .sec.is-work { display: block !important; padding-top: 16pt; }
+  body.print-work .work { background: #fff; }
+  body.print-work .work-tools { display: none !important; }
+  .work-step textarea { min-height: 70pt; }
+}
+
+/* ---------- 小さい画面 --------------------------------------------------- */
+@media (max-width: 640px) {
+  body { font-size: 17px; }
+  .cover { padding: 52px 0 48px; }
+  .cover h1 { font-size: 38px; }
+  .cover-line { font-size: 20px; }
+  .sec h2 { font-size: 30px; }        /* 本文17pxの1.76倍 */
+  .closing h2 { font-size: 25px; }
+  .bb-col, .bb-read { padding: 22px 18px; }
+  .work { padding: 24px 18px; }
+}

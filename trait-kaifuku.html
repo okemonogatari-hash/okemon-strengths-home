@@ -4,161 +4,158 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>回復志向（Restorative）を、Gallup公式の言葉で読み直す | おけもん式ストレングス入門</title>
-<meta name="description" content="回復志向は「ネガティブな人」ではありません。バルコニーと地下室のどちらに出ているかを自分で確かめて、Gallup公式のBring／Needと弱みの定義まで一気に読める、資質徹底解説シリーズ 第1号です。">
+<meta name="description" content="回復志向は「ネガティブな人」ではありません。バルコニーと地下室のどちらに出ているかを自分で確かめて、Gallup公式のBring／Needと弱みの定義まで読める、資質徹底解説シリーズ 第1号です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="trait.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="trait2.css">
 <style>
-  /* この資質の3色。ドメイン＝実行力（Gallup公式・紫）から色相を寄せた1色。
-     #5D5A96 白地6.23／paper 5.89（2026-09-04 実測） */
-  :root { --theme: #5D5A96; --theme-soft: #ECE9F4; --theme-line: #CFC9E0; }
+  /* この資質のドメイン色。実行力（Executing）＝Gallup公式の紫を、
+     白地・紙地の両方で比4.5以上まで寄せた1色（#5D5A96：白 6.23／paper 5.89）。
+     資質ごとの差し色は作らない。6本のシリーズで使う色は4ドメイン色だけ。 */
+  :root { --domain: #5D5A96; }
 </style>
 </head>
-<body class="trait">
+<body>
 
 <header class="tbar">
-  <a class="tbar-brand" href="index.html">
-    <span class="tbar-mark">OK</span>
-    <span>おけもん式ストレングス入門</span>
-  </a>
-  <nav class="tbar-nav" aria-label="関連ページ">
-    <a href="index.html"><span class="ico ico-back" aria-hidden="true"></span>入門ホーム</a>
-    <a href="index.html#themes">34資質ダッシュボード</a>
-    <a href="index.html#take">受け方</a>
-  </nav>
+  <div class="col tbar-in">
+    <a class="tbar-brand" href="index.html">おけもん式ストレングス入門</a>
+    <nav class="tbar-nav" aria-label="関連ページ">
+      <a href="index.html">入門ホーム</a>
+      <a href="index.html#themes">34資質ダッシュボード</a>
+      <a href="index.html#take">受け方</a>
+    </nav>
+  </div>
 </header>
+
+<!-- ============================ ① 表紙 ============================ -->
+<section class="cover" aria-labelledby="ttl">
+  <div class="col">
+    <p class="cover-domain">実行力 ／ Executing</p>
+    <h1 id="ttl">回復志向</h1>
+    <p class="cover-en">RESTORATIVE</p>
+    <p class="cover-line">欠けているところが、先に目に入る。</p>
+    <p class="cover-lead">
+      探しに行っている自覚は、たぶんありません。目に入ってしまうだけです。
+      その「見えちゃう」を直せる力として置き直すために、Gallup公式の言葉と、自分で確かめられる場所を入れました。
+    </p>
+    <p class="cover-meta">資質徹底解説シリーズ 01 ／ 2026年9月版 ／ 読むのに約12分</p>
+  </div>
+</section>
+
+<div class="shell">
 
 <main>
 
-  <!-- ============================ ヒーロー ============================ -->
-  <section class="t-hero" aria-labelledby="ttl">
-    <div class="t-hero-in">
-      <span class="ico ico-gap t-hero-mark" aria-hidden="true"></span>
-      <span class="t-domain">実行力 ／ Executing</span>
-      <h1 id="ttl">回復志向<span class="en">RESTORATIVE</span></h1>
-      <p class="t-catch">欠けているところが、先に目に入る。</p>
-      <p class="t-lead">
-        探しに行っている自覚は、たぶんありません。目に入ってしまうだけです。
-        このページは、その「見えちゃう」を、直せる力として置き直すために書きました。
-        Gallup公式の言葉と、あなたが自分で確かめられる場所を、両方入れてあります。
-      </p>
-      <ul class="t-tags">
-        <li>問題を見つける</li>
-        <li>根本まで掘る</li>
-        <li>直したくなる</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- ============================ 目次 ============================ -->
-  <nav class="t-toc" aria-labelledby="toc-h">
-    <h2 id="toc-h">このページの並び</h2>
+  <details class="toc-sp col">
+    <summary>このページの並び（4章）</summary>
     <ol>
-      <li><a href="#s1"><span class="no">01</span>先に、誤解をほどく</a></li>
-      <li><a href="#s2"><span class="no">02</span>目に入ってしまう瞬間</a></li>
-      <li><a href="#s3"><span class="no">03</span>バルコニーと、地下室</a></li>
-      <li><a href="#s4"><span class="no">04</span>Gallupが渡す言葉</a></li>
-      <li><a href="#s5"><span class="no">05</span>回復志向が輝く場面</a></li>
-      <li><a href="#s6"><span class="no">06</span>弱みに見えるとき</a></li>
-      <li><a href="#s7"><span class="no">07</span>隣の資質と見分ける</a></li>
-      <li><a href="#s8"><span class="no">08</span>おせっかいから、頼られるへ</a></li>
-      <li><a href="#s9"><span class="no">09</span>書いて持ち帰るワーク</a></li>
-      <li><a href="#s10"><span class="no">10</span>回復志向を持つあなたへ</a></li>
+      <li><a href="#s1">01 この資質の人に、起きていること</a></li>
+      <li><a href="#s2">02 日なた側と、地下室側</a></li>
+      <li><a href="#s3">03 隣の資質と、見分ける</a></li>
+      <li><a href="#s4">04 今日から、できること</a></li>
+      <li><a href="#s5">05 回復志向を持つあなたへ</a></li>
     </ol>
-  </nav>
+  </details>
 
-  <!-- ============================ 01 ============================ -->
-  <section class="tsec" id="s1" aria-labelledby="h1-1">
-    <div class="tsec-head">
-      <span class="ico ico-eye tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">01</span>
-      <h2 id="h1-1">先に、誤解をほどく</h2>
-    </div>
-    <p>
-      回復志向は、なぜか道の途中で「ネガティブな人」に置き換わって伝わります。
-      粗探しが好き、文句が多い、褒めない。言われたことがある人もいると思います。
-    </p>
-    <p>
-      でも、順番を見てください。回復志向が最初に感じているのは「嫌だな」ではなく、「ここ、直せるな」です。
-      壊れているところが見えるのは、直る見込みがあるから見えているだけで、見えた時点でもう半分は直っています。
-    </p>
-    <p>
-      たとえば、修理の人が工場に入って「ここのネジ、緩んでますね」と言うとき、その人は工場を貶しているわけではありません。
-      明日も動かすために言っています。あなたの「これ、変じゃない？」も、たぶん同じ場所から出ています。
-    </p>
-    <p class="tsec-sub">
-      Gallupは回復志向を、実行力（Executing）の資質に置いています。頭で考える側ではなく、手を動かす側です。
-      気づいて終わりになりません。見つけたら手が出る、そこまでが一続きになっている。この資質がいちばん誤解されやすいのは、たぶんそこです。
-    </p>
-  </section>
-
-  <!-- ============================ 02 ============================ -->
-  <section class="tsec" id="s2" aria-labelledby="h2-2">
-    <div class="tsec-head">
-      <span class="ico ico-talk tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">02</span>
-      <h2 id="h2-2">目に入ってしまう瞬間</h2>
-      <p class="tsec-sub">
-        Gallupは、才能の見つけ方に「才能の5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入すること・一瞬の卓越・深い満足の5つ。
-        下の4つが当たっているかどうかより、そのとき自分の中で何が動いたかのほうが手がかりになります。
+  <!-- ============================ ② 起きていること ============================ -->
+  <section class="sec" id="s1" aria-labelledby="h-1">
+    <div class="col">
+      <span class="sec-no">01</span>
+      <h2 id="h-1">この資質の人に、起きていること</h2>
+      <p class="sec-lead">
+        回復志向は、なぜか道の途中で「ネガティブな人」に置き換わって伝わります。粗探しが好き、文句が多い、褒めない。言われたことがある人もいると思います。
       </p>
+      <p>
+        でも、順番を見てください。回復志向が最初に感じているのは「嫌だな」ではなく、「ここ、直せるな」です。
+        修理の人が「ここのネジ、緩んでますね」と言うとき、その人は工場を貶していません。明日も動かすために言っています。
+      </p>
+      <p>
+        Gallupは回復志向を、実行力（Executing）の資質に置いています。頭で考える側ではなく、手を動かす側。
+        <strong>見つけたら手が出る、そこまでが一続きになっている。</strong>この資質がいちばん誤解されやすいのは、たぶんそこです。
+      </p>
+
+      <h3>心当たりがあるかどうかは、この4つで</h3>
     </div>
-    <ul class="aru">
-      <li>
-        <b>感動的な映画を観ているのに、字幕の誤字が目に入って、一瞬ストーリーが飛ぶ。</b>
-        泣くつもりで来たのに、脳の一部が校正を始めてしまう。
-        <span>探しに行った覚えはないのに、勝手に目に入ってくる。これが「惹かれるもの」の出方です。</span>
-      </li>
-      <li>
-        <b>行列のカフェに並びながら、頭の中で勝手にコンサルが始まる。</b>
-        「レジをあと1メートル奥に寄せたら、この列、5分は短くなるのにな」。
-        <span>並んでいるだけの15分が、勝手に改善案の時間に変わっています。これが「没入」の出方です。</span>
-      </li>
-      <li>
-        <b>「順調です、問題ありません」と報告を受けると、なぜかソワソワする。</b>
-        何も起きていないことのほうが落ち着かない。
-        <span>これは疑り深いのとは違って、直す相手がいないと手が余るだけです。これも「惹かれるもの」の出方で、あとで出てくる Need の話につながります。</span>
-      </li>
-      <li>
-        <b>誰かの困った話を聞くと、気づいたら一緒に手順を書き出している。</b>
-        「それ、どこで詰まってるの？」が先に口から出る。
-        <span>慰めるより先に直しにいく。これが「深い満足」の出方で、解決したあとの疲れが心地よかったら、たぶん当たりです。</span>
-      </li>
+    <ul class="aru break">
+        <li>
+          <b>感動的な映画を観ているのに、字幕の誤字が目に入って、一瞬ストーリーが飛ぶ。</b>
+          泣くつもりで来たのに、脳の一部が校正を始めてしまう。
+          <span>探しに行った覚えはないのに、勝手に目に入ってくる。</span>
+        </li>
+        <li>
+          <b>行列のカフェに並びながら、頭の中で勝手にコンサルが始まる。</b>
+          「レジをあと1メートル奥に寄せたら、この列、5分は短くなるのにな」。
+          <span>並んでいるだけの15分が、勝手に改善案の時間に変わっています。</span>
+        </li>
+        <li>
+          <b>「順調です、問題ありません」と報告を受けると、なぜかソワソワする。</b>
+          何も起きていないことのほうが落ち着かない。
+          <span>これは疑り深いのとは違って、直す相手がいないと手が余るだけです。あとで出てくる Need の話につながります。</span>
+        </li>
+        <li>
+          <b>誰かの困った話を聞くと、気づいたら一緒に手順を書き出している。</b>
+          「それ、どこで詰まってるの？」が先に口から出る。
+          <span>慰めるより先に直しにいく。解決したあとの疲れが心地よかったら、たぶん当たりです。</span>
+        </li>
     </ul>
-    <p class="tsec-sub">
-      「気にしすぎだよ」と言われたことがあるかもしれません。気にしているというより、目に入ってしまうんです。探していないのに見えている、というのは、自分の口からはうまく言えません。
-    </p>
+    <div class="col">
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（才能の5つの手がかり／Bring・Need）</summary>
+        <div class="more-body">
+          <p>
+            Gallupは、才能の見つけ方に「才能の5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入すること・一瞬の卓越・深い満足の5つ。
+            上の4つが当たっているかより、そのとき自分の中で何が動いたかのほうが手がかりになります。
+          </p>
+          <p>
+            そのうえで、公式には34資質ぶんの <strong>Bring／Need</strong> という一文があります。回復志向のぶんとして公式が置いているのは、この2行です。
+          </p>
+          <div class="quote">
+            <p><strong>Bring：もたらすもの</strong>　問題のある状況への勇気と創造性</p>
+            <p class="en">courage and creativity to problematic situations</p>
+            <p><strong>Need：必要とするもの</strong>　解かれるべき問題</p>
+            <p class="en">problems that must be solved</p>
+            <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（実行力／Restorative）</p>
+          </div>
+          <p>
+            置き場所は2つです。<strong>ひとつめは、地下室に落ちる前の目印として。</strong>「解かれるべき問題」が手元に無い場所で「なんとなく元気が出ない」なら、気分ではなく、直す相手がいないだけかもしれません。
+          </p>
+          <p>
+            <strong>ふたつめは、名乗るときのひと言として。</strong>出どころが公式のレポートなので、プロフィール欄にも提案書の1行目にも、盛らずにそのまま貼ることができます。
+          </p>
+          <p>
+            なお、Needが正反対の資質が同じ人の上位に並ぶことがあります。公式の例は、調和性の「合意点が要る」と指令性の「挑戦と対立が要る」。
+            Gallupはこれを矛盾として扱いません。どちらかを削るのではなく、両方に出口を用意する形で見ます。
+          </p>
+      </div>
+    </details>
   </section>
 
-  <!-- ============================ 03 ============================ -->
-  <section class="tsec" id="s3" aria-labelledby="h2-3">
-    <div class="tsec-head">
-      <span class="ico ico-floors tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">03</span>
-      <h2 id="h2-3">バルコニーと、地下室</h2>
-      <p class="tsec-sub">
-        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはこれをバルコニー（Balcony）とベースメント（Basement）と呼びます。
-        日なたのバルコニーと、ひんやりした地下室。季節で着るものが変わるのと同じで、入れ替わるのは資質そのものではなく、その日の出方です。
+  <!-- ============================ ③ バルコニー／地下室 ============================ -->
+  <section class="sec" id="s2" aria-labelledby="h-2">
+    <div class="col">
+      <span class="sec-no">02</span>
+      <h2 id="h-2">日なた側と、地下室側</h2>
+      <p class="sec-lead">
+        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはこれをバルコニーとベースメントと呼びます。
+        入れ替わるのは資質そのものではなく、その日の出方です。
+      </p>
+      <div class="quote">
+        <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
+        <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
+        <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
+      </div>
+      <p>
+        ここ1〜2週間を思い出して、心当たりのある行に触れてみてください。点数でも診断でもありません。どちらの階に足が向いていた時期か、そこだけを見ます。
       </p>
     </div>
 
-    <div class="quote">
-      <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
-      <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
-      <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
-    </div>
-
-    <p>
-      ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。合計を出しますが、これは点数でも診断でもありません。
-      どちらの階に足が向いていた時期か、だけを見ます。
-    </p>
-
-    <div data-bb>
+    <div class="break" data-bb>
       <div class="bb">
         <div class="bb-col bb-col--bal">
-          <h3><span class="ico ico-shine" aria-hidden="true"></span>日なた側（バルコニー）</h3>
+          <h3>日なた側（バルコニー）</h3>
           <p class="bb-note">力がプラスに働いていた時の出方です。</p>
           <ul class="bb-list">
             <li><label><input type="checkbox" data-side="bal"><span>うまくいっていない原因を、順番にたどって見つけられた</span></label></li>
@@ -168,297 +165,152 @@
           </ul>
         </div>
         <div class="bb-col bb-col--bas">
-          <h3><span class="ico ico-hurdle" aria-hidden="true"></span>地下室側（ベースメント）</h3>
+          <h3>地下室側（ベースメント）</h3>
           <p class="bb-note">同じ力が、自分の側に向いてしまった時の出方です。</p>
           <ul class="bb-list">
             <li><label><input type="checkbox" data-side="bas"><span>できていないところばかりが目に入って、できている部分を言わなかった</span></label></li>
             <li><label><input type="checkbox" data-side="bas"><span>うまくいった日でも満足しないまま、次の粗を探していた</span></label></li>
             <li><label><input type="checkbox" data-side="bas"><span>相手の課題まで、自分が先回りして直してしまった</span></label></li>
-            <li><label><input type="checkbox" data-side="bas"><span>「どうしてできないんだろう」と、自分を責める時間が長かった</span></label></li>
+            <li><label><input type="checkbox" data-side="bas"><span>直す相手がいない時期に、自分の欠点を直し始めた</span></label></li>
           </ul>
         </div>
-      </div>
-
-      <div class="bb-read">
-        <div class="bb-meters" aria-hidden="true">
-          <div class="bb-meter bb-meter--bal">
-            <span class="lb">日なた側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bal"></i></span></span>
-            <span class="num" data-num="bal">0 / 4</span>
-          </div>
-          <div class="bb-meter bb-meter--bas">
-            <span class="lb">地下室側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bas"></i></span></span>
-            <span class="num" data-num="bas">0 / 4</span>
-          </div>
-        </div>
-        <p class="bb-say" data-say aria-live="polite">左と右で、印が多くついたのはどちらの列でしたか。数えたら、下の2つを読んでみてください。</p>
-        <div class="bb-advice">
-          <div>
-            <b>出口その1｜満たされていないニーズを先に見る</b>
-            <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多い、とGallupは言っています。回復志向のニーズは「解かれるべき問題」。直す相手がいない場所に長く置かれると、矛先が自分に向きます。行動を矯正するより先に、直しがいのある問題が手元にあるかを見るほうが早いです。</p>
-          </div>
-          <div>
-            <b>出口その2｜別の資質のバルコニーを出す</b>
-            <p>Gallupの処方は「To avoid the basement of one theme, lean into another theme!」。ひとつのテーマの地下を避けるには、別の資質のバルコニーを出す。回復志向にふたをしなくていい。上位にある別の資質を1つ選んで、そちらを先に動かします。</p>
-          </div>
+        <div class="bb-read">
+          <p class="bb-count">
+            <span>日なた側　<b data-num="bal">0 / 4</b></span>
+            <span>地下室側　<b data-num="bas">0 / 4</b></span>
+          </p>
+          <p class="bb-say" data-say aria-live="polite">まだ印がついていません。ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。</p>
         </div>
       </div>
     </div>
+
+    <div class="col">
+      <h3>地下室から上がる、公式の出口は2つです</h3>
+    </div>
+    <ul class="exits break">
+        <li>
+          <b>満たされていないニーズを、先に見る</b>
+          <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多い、とGallupは言っています。回復志向のニーズは「解かれるべき問題」。直す相手がいない場所に長く置かれると、矛先が自分に向きます。行動を矯正するより先に、直しがいのある問題が手元にあるかを見るほうが早いです。</p>
+        </li>
+        <li>
+          <b>別の資質のバルコニーを出す</b>
+          <p>公式の処方は「To avoid the basement of one theme, lean into another theme!」。ひとつのテーマの地下を避けるには、別の資質のバルコニーを出す。回復志向にふたをしなくていい。上位にある別の資質を1つ選んで、そちらを先に動かします。</p>
+        </li>
+    </ul>
   </section>
 
-  <!-- ============================ 04 ============================ -->
-  <section class="tsec" id="s4" aria-labelledby="h2-4">
-    <div class="tsec-head">
-      <span class="ico ico-swap tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">04</span>
-      <h2 id="h2-4">Gallupが渡す言葉</h2>
-      <p class="tsec-sub">
-        Gallup公式に、34資質ぶんの Bring／Need という一文があります。その人がチームに何を加えるか（Bring）と、力を出すために何が要るか（Need）を、公式の言い方で書いたものです。
+  <!-- ============================ ④ 見分ける ============================ -->
+  <section class="sec" id="s3" aria-labelledby="h-3">
+    <div class="col">
+      <span class="sec-no">03</span>
+      <h2 id="h-3">隣の資質と、見分ける</h2>
+      <p class="sec-lead">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
+    </div>
+
+    <div class="break cmp-wrap">
+      <table class="cmp">
+        <caption class="quote-label" style="text-align:left;padding-bottom:10px">回復志向と、似ていると言われやすい4資質。左から「資質」「何を見ているか」「何で動き出すか」。</caption>
+        <thead>
+          <tr><th scope="col">資質</th><th scope="col">見ているもの</th><th scope="col">動き出す合図</th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-self"><th scope="row">回復志向</th><td data-lb="見ているもの">壊れているところ</td><td data-lb="動き出す合図">「これ、直せる」</td></tr>
+          <tr><th scope="row">最上志向</th><td data-lb="見ているもの">すでに良いところ</td><td data-lb="動き出す合図">「これ、もっと良くなる」</td></tr>
+          <tr><th scope="row">ポジティブ</th><td data-lb="見ているもの">明るいところ</td><td data-lb="動き出す合図">「まず、楽しくしよう」</td></tr>
+          <tr><th scope="row">分析思考</th><td data-lb="見ているもの">根拠</td><td data-lb="動き出す合図">「その数字、どこから？」</td></tr>
+          <tr><th scope="row">慎重さ</th><td data-lb="見ているもの">これから起きうること</td><td data-lb="動き出す合図">「先に潰しておこう」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p style="margin-top:var(--gap-block)">
+        いちばん近いのは最上志向です。ゼロより下をゼロに戻すのが回復志向、ゼロから上へ磨くのが最上志向。同じ「良くする」でも、始まりの地点が違います。
+      </p>
+
+      <h3>掛け合わせると、味が変わります</h3>
+    </div>
+    <ul class="mixes break">
+        <li><b>× 共感性</b><p>「つらいね」で終わらず、「どこが痛いんだろう」まで一緒に降りていけます。</p></li>
+        <li><b>× 戦略性</b><p>こじれた案件でも、詰まっている一点を見つけて軌道に戻せる。直し方の選択肢が増えます。</p></li>
+        <li><b>× 最上志向</b><p>マイナスをゼロに戻す力と、ゼロをプラスに磨く力。両方を持つと、直したあとに「ついでにここも良くしとくね」まで届きます。</p></li>
+    </ul>
+    <div class="col">
+      <h3>「ネガティブだね」と言われたときは</h3>
+      <p>左は、あなたがそう言われることのある言葉。右は、そのとき中で起きていること——たぶん、こんなところだろうと思います。</p>
+      <ul class="flip">
+        <li><span class="a">ネガティブだと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">良くしたいから、先に目に入る</span></li>
+        <li><span class="a">批判的だと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">直し方まで手元にある</span></li>
+        <li><span class="a">完璧主義だと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">壊れたまま出したくない</span></li>
+        <li><span class="a">良いところを見ないと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">改善の余地が先に見えている</span></li>
+      </ul>
+
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（弱みの定義／弱みの扱い方4つ）</summary>
+        <div class="more-body">
+          <div class="quote">
+            <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
+            <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
+            <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
+            <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
+          </div>
+          <p>
+            34位のそばにある資質は、壊れている場所ではありません。放っておくと出てこないだけです。
+            回復志向が下のほうにある人が、「すでに壊れているものを直す」仕事にどうしても気持ちが動かないと話すことがあります。やる気でも能力でもなく、配線の向きが違うだけ、という見方ができます。
+          </p>
+          <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
+          <p>
+            自分の弱みかどうかは公式の3つで見ます。①成功を損ねたことがあったか。②ネガティブなフィードバックを受けたことがあるか。③役割上使う必要があるけれど、使うと消耗するか。
+          </p>
+          <p>
+            扱い方も4つ決まっています——<strong>Claim them</strong>（知る）／<strong>Collaborate</strong>（支えを頼む）／<strong>Apply a strength</strong>（別の資質で同じ結果へ）／<strong>Just do it</strong>（腹をくくる）。
+            「弱みに投資しても、強みには決してならない」。だから公式が置いているのは、鍛える道ではなく、扱う道のほうです。
+          </p>
+          <p>
+            もうひとつ、レポートに短く書いてあります——「あるドメインに上位資質がなくても心配いりません」。別のドメインの強い資質を使って、同じ場所に着いているだけです。
+          </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================ ⑤ 今日から ============================ -->
+  <section class="sec is-work" id="s4" aria-labelledby="h-4">
+    <div class="col">
+      <span class="sec-no">04</span>
+      <h2 id="h-4">今日から、できること</h2>
+      <p class="sec-lead">
+        回復志向は、育つと腕が上がるというより、向ける先が変わります。
+        人の課題まで自分が解こうとする時期から、まだ誰も気づいていない問題に自分から切り込む時期へ。その移り方が、この3つです。
       </p>
     </div>
-
-    <div class="bn">
-      <div class="bn-item">
-        <span class="k">Bring：もたらすもの</span>
-        <p class="ja">問題のある状況への勇気と創造性</p>
-        <p class="en">courage and creativity to problematic situations</p>
-      </div>
-      <div class="bn-item">
-        <span class="k">Need：必要とするもの</span>
-        <p class="ja">解かれるべき問題</p>
-        <p class="en">problems that must be solved</p>
-      </div>
-    </div>
-    <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（実行力／Restorative）</p>
-
-    <div class="note-warn">
-      <b>Needが正反対の資質が、同じ人の上位に並ぶことがあります</b>
-      <p>「解かれるべき問題」を求める側と、逆を向いたニーズが同じ人の中に同居することがあります。公式が挙げている例は、調和性の「合意点が要る」と指令性の「挑戦と対立が要る」。Gallupはこれを矛盾として扱いません。どちらかを削るのではなく、両方に出口を用意する形で見ます。回復志向なら、問題を掘る時間と場所を先に決めておくと、掘りたい側と、穏やかでいたい側が、同じ日に両方おさまります。</p>
-    </div>
-
-    <h3>この2行、置き場所が2つあります</h3>
-    <p>
-      <strong>ひとつめ。地下室に落ちる前の、目印として。</strong>
-      「解かれるべき問題」が手元に無い場所に置かれると、回復志向は行き場をなくします。
-      静かで、何も壊れていなくて、直す余地もない。そういう場所で「なんとなく元気が出ない」なら、気分の問題ではなく、直す相手が手元にいないだけかもしれません。
-    </p>
-    <p>
-      <strong>ふたつめ。名乗るときの、ひと言として。</strong>
-      「問題のある状況に、勇気と創造性を持ち込みます」——出どころはGallupのレポートなので、自分で盛った言葉になりません。
-      プロフィール欄にも、提案書の1行目にも、そのまま貼れます。自分の手柄を口に出すのが苦手なら、借りてきた言葉から始めるほうが早いです。
-    </p>
-    <p>
-      それと、ひとこと言っておくと周りが助かります。「問題を見つけるの、けっこう好きなんです」。
-      この一言が無いと、あなたの指摘は「不機嫌」として届きます。あると「あ、いつものやつだ」で済みます（笑）
-    </p>
-    <p class="tsec-sub">
-      自分のレポートを持っている人は、「あなたの回復志向がユニークな理由」の欄を開いてみてください。あの欄の文だけは、34資質の共通説明ではなく、あなたの順位から起こされたものです。
-    </p>
-  </section>
-
-  <!-- ============================ 05 ============================ -->
-  <section class="tsec" id="s5" aria-labelledby="h2-5">
-    <div class="tsec-head">
-      <span class="ico ico-shine tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">05</span>
-      <h2 id="h2-5">回復志向が輝く場面</h2>
-      <p class="tsec-sub">仕事だけの話にしません。オフ会でも、家でも、同じ形で出ます。</p>
-    </div>
-    <ul class="cards cards--2">
-      <li class="card">
-        <h3><span class="n">01</span>トラブルが起きた、最初の10分</h3>
-        <p>みんなが固まる10分で、手が動きます。「まず、どこまでは動いてた？」から入れる人は、その場でいちばん頼りになります。</p>
-        <p class="eg">たとえば、オンラインイベントで音が出ない。犯人探しが始まる前に「配信側？受信側？」と切り分けを始められる。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>引き継いだ仕組みが、古びている時</h3>
-        <p>前の人が作ったものを「そういうものだから」で通せません。どこが今の使い方と合わなくなったのかが見えます。</p>
-        <p class="eg">たとえば、毎月2時間かけている集計。3か所を直せば20分になる、が見えて、しかも実際に直せる。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>品質を守る役</h3>
-        <p>小さなズレを、小さいうちに見つけます。大事故の前に止まるので、防いだ手柄は誰にも見えません。そこがこの資質のつらいところで、価値の高いところです。</p>
-        <p class="eg">たとえば、送信前の資料で日付が1日ずれている。気づいた人がいなければ、そのまま100人に届いていた。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">04</span>相談される役</h3>
-        <p>困りごとを整理するのが得意です。話を聞きながら、絡まった糸のどこが結び目かを見つけて、そこだけほどきにいけます。</p>
-        <p class="eg">たとえば、オフ会で「なんかうまくいってなくて」と言われた時。共感で終わらせず、詰まっている一点まで一緒に降りていける。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============================ 06 ============================ -->
-  <section class="tsec" id="s6" aria-labelledby="h2-6">
-    <div class="tsec-head">
-      <span class="ico ico-hurdle tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">06</span>
-      <h2 id="h2-6">弱みに見えるとき</h2>
-      <p class="tsec-sub">まず、見え方のズレから。左は、あなたがそう言われることのある言葉。右は、そのとき中で起きていること——たぶん、こんなところ。合っているかどうかは、読みながら確かめてみてください。</p>
-    </div>
-
-    <ul class="flip">
-      <li><span class="a">ネガティブだと言われる</span><span class="arrow">→</span><span class="b">良くしたいから、先に目に入る</span></li>
-      <li><span class="a">批判的だと言われる</span><span class="arrow">→</span><span class="b">直し方まで手元にある</span></li>
-      <li><span class="a">完璧主義だと言われる</span><span class="arrow">→</span><span class="b">壊れたまま出したくない</span></li>
-      <li><span class="a">良いところを見ないと言われる</span><span class="arrow">→</span><span class="b">改善の余地が先に見えている</span></li>
+    <ul class="today break">
+        <li>
+          <div>
+            <b>気づきと直し方を、同じ息で言う</b>
+            <p>「ここダメだよね」を、「ここ、こうすれば良くなると思うんだけど」に変えるだけです。言っていることは1つも変えていないのに、相手には批判ではなく提案として届きます。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>「なんで？」を3回だけ掘る</b>
+            <p>表面で止めず、「なんでこうなった？」「その原因は？」「本当の根っこは？」。3回でだいたい底が見えます。得意な掘り方に、深さの目安をつけるイメージです。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>直さずに見守る枠を、1日ひとつ</b>
+            <p>「これは相手に任せる」と決めた1件を、今日ひとつ選びます。手を離すのが怖いのは、こけてほしくないからです。全部を自分が直さなくても、たいてい回ります。</p>
+          </div>
+        </li>
     </ul>
 
-    <h3>Gallupは、弱みをこう言っています</h3>
-    <div class="quote">
-      <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
-      <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
-      <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
-      <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
-    </div>
-
-    <p>
-      ここは取り違えが起きやすいところです。34位のそばにある資質は、壊れている場所ではありません。放っておくと出てこないだけです。
-      回復志向が下のほうにある人が、「すでに壊れているものを直す」種類の仕事に、どうしても気持ちが動かないと話すことがあります。
-      やる気の話でも能力の話でもなく、配線の向きが違うだけ、という見方ができます。
-    </p>
-    <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
-
-    <h3>自分の弱みかどうかは、この3つで見ます</h3>
-    <ul class="cards">
-      <li class="card"><h3><span class="n">01</span>損ねたことがあるか</h3><p>この資質が、自分の成功を損ねたことがあったか。</p></li>
-      <li class="card"><h3><span class="n">02</span>言われたことがあるか</h3><p>この資質について、ネガティブなフィードバックを受けたことがあるか。</p></li>
-      <li class="card"><h3><span class="n">03</span>消耗するか</h3><p>役割上その資質を使う必要があるけれど、使うと消耗するか。</p></li>
-    </ul>
-
-    <h3>弱みは、鍛えるものではありません</h3>
-    <p>
-      Gallupの言い方はきっぱりしていて、「強みと弱みは対義語ではない。弱みに投資しても、強みには決してならない」。
-      だから公式が置いているのは、鍛える道ではなく、扱う道の4つです。
-    </p>
-    <ul class="cards cards--2">
-      <li class="card"><h3><span class="n">01</span>Claim them</h3><p>自分の弱みと、それがどう邪魔をするかを知る。</p></li>
-      <li class="card"><h3><span class="n">02</span>Collaborate</h3><p>パートナーに支えを頼む。</p></li>
-      <li class="card"><h3><span class="n">03</span>Apply a strength</h3><p>別の資質を使って、同じ結果に到達する。</p></li>
-      <li class="card"><h3><span class="n">04</span>Just do it</h3><p>腹をくくってやる。ベストを尽くす。</p></li>
-    </ul>
-    <p class="tsec-sub">
-      もうひとつ、レポートの本文に短く書いてあります——「あるドメインに上位資質がなくても心配いりません」。
-      実行力が上位にない人が、物事を成し遂げられないという意味ではありません。別のドメインの強い資質を使って、同じ場所に着いているだけです。
-    </p>
-  </section>
-
-  <!-- ============================ 07 ============================ -->
-  <section class="tsec" id="s7" aria-labelledby="h2-7">
-    <div class="tsec-head">
-      <span class="ico ico-venn tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">07</span>
-      <h2 id="h2-7">隣の資質と見分ける</h2>
-      <p class="tsec-sub">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
-    </div>
-    <ul class="cmp">
-      <li class="is-self">
-        <span class="nm">回復志向</span>
-        <span><span class="lb">見ているもの</span>壊れているところ</span>
-        <span><span class="lb">動き出す合図</span>「これ、直せる」</span>
-      </li>
-      <li>
-        <span class="nm">最上志向</span>
-        <span><span class="lb">見ているもの</span>すでに良いところ</span>
-        <span><span class="lb">動き出す合図</span>「これ、もっと良くなる」</span>
-      </li>
-      <li>
-        <span class="nm">ポジティブ</span>
-        <span><span class="lb">見ているもの</span>明るいところ</span>
-        <span><span class="lb">動き出す合図</span>「まず、楽しくしよう」</span>
-      </li>
-      <li>
-        <span class="nm">分析思考</span>
-        <span><span class="lb">見ているもの</span>根拠</span>
-        <span><span class="lb">動き出す合図</span>「その数字、どこから？」</span>
-      </li>
-      <li>
-        <span class="nm">慎重さ</span>
-        <span><span class="lb">見ているもの</span>これから起きうること</span>
-        <span><span class="lb">動き出す合図</span>「先に潰しておこう」</span>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      いちばん近いのは最上志向です。ゼロより下をゼロに戻すのが回復志向、ゼロから上へ磨くのが最上志向。同じ「良くする」でも、始まりの地点が違います。
-    </p>
-
-    <h3>掛け合わせると、味が変わります</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3>回復志向 × 共感性</h3>
-        <p>痛みに寄り添いながら、根本まで降りていける。「つらいね」で終わらず、「どこが痛いんだろう」まで一緒に行けます。</p>
-      </li>
-      <li class="card">
-        <h3>回復志向 × 戦略性</h3>
-        <p>複雑にこじれた案件でも、詰まっている一点を見つけて軌道に戻せる。道が何本も見えるので、直し方の選択肢が増えます。</p>
-      </li>
-      <li class="card">
-        <h3>回復志向 × 最上志向</h3>
-        <p>マイナスをゼロに戻す力と、ゼロをプラスに磨く力。両方を持つと、直したあとに「ついでにここも良くしとくね」まで届きます。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============================ 08 ============================ -->
-  <section class="tsec" id="s8" aria-labelledby="h2-8">
-    <div class="tsec-head">
-      <span class="ico ico-sprout tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">08</span>
-      <h2 id="h2-8">おせっかいから、頼られるへ</h2>
-      <p class="tsec-sub">回復志向は、育つと使い方が変わります。腕が上がるというより、向ける先が変わります。</p>
-    </div>
-    <ul class="steps">
-      <li>
-        <span class="st">STEP 1</span>
-        <b>ついつい、おせっかいなヒーロー</b>
-        <p>人の課題まで、自分が解こうとしてしまう時期です。「私がやったほうが早いから」と先回りして直す。良かれと思ってやっているのに、相手が自分で直す機会は減っていきます。</p>
-      </li>
-      <li class="is-goal">
-        <span class="st">STEP 2</span>
-        <b>頼れる、本当のヒーロー</b>
-        <p>チームにとって本当に重い問題や、まだ誰も気づいていない問題に、自分から切り込む時期です。自分のためだけでなく、みんなのために使うので、頼られ方が変わります。</p>
-      </li>
-    </ul>
-
-    <h3>今日からできる3つ</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3><span class="n">01</span>気づきと直し方を、同じ息で言う</h3>
-        <p>「ここダメだよね」を、「ここ、こうすれば良くなると思うんだけど」に変えるだけです。言っていることは1つも変えていないのに、相手には批判ではなく提案として届きます。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>「なんで？」を3回だけ掘る</h3>
-        <p>表面で止めず、「なんでこうなった？」「その原因は？」「本当の根っこは？」。3回でだいたい底が見えます。得意な掘り方に、深さの目安をつけるイメージです。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>直さずに見守る枠を、1日ひとつ</h3>
-        <p>「これは相手に任せる」と決めた1件を、今日ひとつ選びます。自転車の補助輪を外す時と同じで、手を離すのが怖いのは、こけてほしくないからです。全部を自分が直さなくても、たいてい回ります。</p>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      それと、休んでください。回復志向は自分にも厳しくなりやすいので、「できていないこと」を見る目を、意識して切る時間が要ります。いい修理屋さんほど、道具の手入れと休みが上手です。
-    </p>
-  </section>
-
-  <!-- ============================ 09 ============================ -->
-  <section class="tsec is-work" id="s9" aria-labelledby="h2-9">
-    <div class="tsec-head">
-      <span class="ico ico-pen tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">09</span>
-      <h2 id="h2-9">書いて持ち帰るワーク</h2>
-      <p class="tsec-sub">
-        Gallup公式の3段階です。読んで分かった状態のことを、公式は「Name it で止まっている」と呼んで、はっきり失敗として名前をつけています。
-        3つの問いは公式の日本語版の言い回しそのままなので、そのまま自分に聞いてください。
+    <div class="break work" data-work="kaifuku">
+      <h3 class="work-h">書いて持ち帰る（理解する！／受容する！／活用する！）</h3>
+      <p class="work-note">
+        Gallup公式の3段階です。読んで分かった状態のことを、公式は「Name it で止まっている」と呼んで、はっきり失敗として名前をつけています。これは、あなたを決める紙ではありません。当てはまらない行は、空けたままで大丈夫です。
       </p>
-    </div>
-
-    <div class="work" data-work="kaifuku">
-      <div class="work-head">
-        <h3>理解する！／受容する！／活用する！</h3>
-        <p>これは、あなたを決める紙ではありません。当てはまらない行は、空けたままで大丈夫です。</p>
-      </div>
-      <div class="work-body">
+      <div class="work-steps">
         <div class="work-step">
           <span class="badge">理解する！（NAME IT!）</span>
           <p class="q">この資質の説明の中で、強く共感できる説明は何ですか？</p>
@@ -481,56 +333,42 @@
           <span class="badge">これから育てるもの</span>
           <p class="q">上の3つを見て、これから育てると決めたことを1つだけ書いてください。</p>
           <p class="hint">1つで足ります。3つ書くと、たいてい1つも残りません（笑）</p>
-          <textarea id="w4" aria-label="これから育てるもの" rows="2" placeholder="例：気づいたことを言うとき、直し方まで同じ息で言う"></textarea>
+          <textarea id="w4" aria-label="これから育てるもの" rows="4" placeholder="例：気づいたことを言うとき、直し方まで同じ息で言う"></textarea>
         </div>
       </div>
       <div class="work-tools">
-        <button class="btn" type="button" data-print><span class="ico ico-pen" aria-hidden="true"></span>印刷して持ち帰る</button>
-        <button class="btn" type="button" data-clear>書いたものを消す</button>
+        <button class="btn" type="button" data-print>印刷して持ち帰る</button>
+        <button class="btn btn--ghost" type="button" data-clear>書いたものを消す</button>
         <span class="work-save" data-save-note>書いた内容は、この端末のブラウザにだけ残ります</span>
       </div>
     </div>
 
-    <h3>オフ会で回すなら、この順番で</h3>
-    <ul class="run">
-      <li><span class="t">2分</span><span><b>ペアを作る</b>初対面でも大丈夫です。回復志向が上位ではない人と組むと、見え方の差が出ておもしろくなります。</span></li>
-      <li><span class="t">3分×2</span><span><b>02の「あるある」を見ながら話す</b>4つのうち、どれがいちばん自分に近かったかを話します。当たっていない行があるのも、大事な情報です。</span></li>
-      <li><span class="t">3分×2</span><span><b>受容する！を声に出す</b>過去に役立った場面を、相手に1つ話します。声に出すと、書いた時よりも自分で受け取れます。</span></li>
-      <li><span class="t">5分</span><span><b>「最近見つけた世界のバグ」を出し合う</b>日ごろ「もっとこうすればいいのに」と思っていることを、遠慮なく言う時間です。ここは盛り上がります。</span></li>
-    </ul>
-    <p class="tsec-sub">
-      進行役の人へ。相手がどう働くかを教える会にしないでください。誘導する問いも要りません。Gallupがはっきり書いています——才能のテーマは、人に貼りつけるラベルではない。
-    </p>
-  </section>
-
-  <!-- ============================ 10 ============================ -->
-  <section class="closing" id="s10" aria-labelledby="h2-10">
-    <div class="closing-in">
-    <span class="ico ico-mail closing-ico" aria-hidden="true"></span>
-    <h2 id="h2-10">回復志向を持つあなたへ</h2>
-    <p>
-      直したものには、あとから名前がつきません。防いだ事故は起きなかったことになるし、直った手順書は「最初からこうだった」ような顔をして棚に戻ります。
-    </p>
-    <p>
-      それでも、あなたが「なんか変じゃない？」と言った日から、そこは静かに直り始めています。
-      気づける人がいなければ、緩んだネジは緩んだままです。
-    </p>
-    <p>
-      帰り道に1つだけ持って帰るなら、これにしてください。
-      <strong>見えてしまうことに、後ろめたさを持たなくていいです。</strong>
-      見えたあとに何を言うかは選べるし、その言い方は09のワークで練習できます。見えること自体は、直せる人にしか起きません。
-    </p>
-    <p>
-      あなたの「これ、変じゃない？」を、明日もどうぞ。
-    </p>
-    <p class="sign">資質徹底解説シリーズ ／ 01 回復志向（Restorative）・2026年9月版</p>
+    <div class="col">
     </div>
   </section>
 
-  <!-- ============================ 出典 ============================ -->
-  <nav class="t-series-nav" aria-label="シリーズの他の資質">
-    <p class="t-series-h">資質徹底解説シリーズ（全6本）</p>
-    <ul class="t-series-list">
+  <!-- ============================ 締め ============================ -->
+  <section class="closing" id="s5" aria-labelledby="h-5">
+    <div class="col">
+      <h2 id="h-5">回復志向を持つ、あなたへ</h2>
+      <p>
+        直したものには、あとから名前がつきません。防いだ事故は起きなかったことになるし、直った手順書は「最初からこうだった」ような顔をして棚に戻ります。
+      </p>
+      <p>
+        それでも、あなたが「なんか変じゃない？」と言った日から、そこは静かに直り始めています。気づける人がいなければ、緩んだネジは緩んだままです。
+      </p>
+      <p>
+        帰り道に1つだけ持って帰るなら、これにしてください。<strong>見えてしまうことに、後ろめたさを持たなくていいです。</strong>
+        見えたあとに何を言うかは選べるし、その言い方は04で練習できます。
+      </p>
+      <p>あなたの「これ、変じゃない？」を、明日もどうぞ。</p>
+      <p class="sign">資質徹底解説シリーズ ／ 01 回復志向（Restorative）・2026年9月版</p>
+    </div>
+  </section>
+
+  <nav class="series col" aria-label="シリーズの他の資質">
+    <p class="series-h">資質徹底解説シリーズ（全6本）</p>
+    <ul>
       <li><span class="is-current"><span class="no">01</span>回復志向</span></li>
       <li><a href="trait-kouheisei.html"><span class="no">02</span>公平性</a></li>
       <li><a href="trait-shinchou.html"><span class="no">03</span>慎重さ</a></li>
@@ -538,13 +376,9 @@
       <li><a href="trait-kobetsuka.html"><span class="no">05</span>個別化</a></li>
       <li><a href="trait-chouwa.html"><span class="no">06</span>調和性</a></li>
     </ul>
-    <div class="t-series-move">
-      <a href="trait-chouwa.html"><span class="ico ico-back" aria-hidden="true"></span>前：06 調和性</a>
-      <a href="trait-kouheisei.html">次：02 公平性<span class="ico ico-fwd" aria-hidden="true"></span></a>
-    </div>
   </nav>
 
-  <section class="src" aria-labelledby="src-h">
+  <section class="src col" aria-labelledby="src-h">
     <h2 id="src-h">このページが使っている一次情報</h2>
     <ul>
       <li>Gallup公式 <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">34 CliftonStrengths Themes</a>（回復志向＝Restorative／実行力）</li>
@@ -562,17 +396,32 @@
 
 </main>
 
+<nav class="toc" aria-label="このページの並び">
+  <p class="toc-h">Contents</p>
+  <ol>
+    <li><a href="#s1"><span class="no">01</span>起きていること</a></li>
+    <li><a href="#s2"><span class="no">02</span>日なたと地下室</a></li>
+    <li><a href="#s3"><span class="no">03</span>隣と見分ける</a></li>
+    <li><a href="#s4"><span class="no">04</span>今日から</a></li>
+    <li><a href="#s5"><span class="no">05</span>あなたへ</a></li>
+  </ol>
+</nav>
+
+</div>
+
 <footer class="site-footer">
-  <p>
-    本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。
-  </p>
-  <p>
-    公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
-    <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
-    商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
-  </p>
+  <div class="col">
+    <p>
+      本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。
+    </p>
+    <p>
+      公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
+      商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
+    </p>
+  </div>
 </footer>
 
-<script src="trait.js"></script>
+<script src="trait2.js"></script>
 </body>
 </html>
