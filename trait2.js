@@ -2,10 +2,10 @@
    trait2.js ── 資質徹底解説シリーズ・第2骨（5画面版）の共通スクリプト
    2026-09-05 きょう（図解・デザイン担当）
 
-   trait.js から変えたのは2つだけ。
+   trait.js から変えたのは2つ。
    ・バルコニー／地下室のメーター（塗ったバー2本）を捨て、数字と一文だけにした
-   ・右stickyの目次に「いま読んでいる章」を出した（Stripeが持っていてうちが
-     持っていなかった唯一の機能。実測ノート 2026-09-05 §3）
+   ・右stickyの目次に「いま読んでいる章」を出した。交差判定ではなく
+     「見出しの線を最後に越えた章」を採る（最終章を過ぎても消えないため）
 
    守っていること（第1骨から継続）
    ・JSが無くても全文が読める。断定しない。人を規定する文は作らない
@@ -102,21 +102,36 @@
   }
 
   /* ---- ③ 目次に、いま読んでいる章を出す ------------------------------- */
+  /* 交差しているかで決めると、最後の章を過ぎた瞬間（フッター手前）に
+     どれも交差せず現在地が消える。「見出しの線を最後に越えた章」を採る。 */
   var links = document.querySelectorAll('.toc a[href^="#"]');
-  if (links.length && 'IntersectionObserver' in window) {
-    var map = {};
+  if (links.length) {
+    var items = [];
     Array.prototype.forEach.call(links, function (a) {
       var el = document.getElementById(a.getAttribute('href').slice(1));
-      if (el) { map[el.id] = a; }
+      if (el) { items.push({ a: a, el: el }); }
     });
-    var seen = {};
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting ? e.boundingClientRect.top : null; });
-      var here = null;
-      Object.keys(map).forEach(function (id) { if (seen[id] !== null && seen[id] !== undefined) { if (here === null) here = id; } });
-      Array.prototype.forEach.call(links, function (a) { a.classList.remove('is-here'); });
-      if (here && map[here]) { map[here].classList.add('is-here'); }
-    }, { rootMargin: '-10% 0px -70% 0px', threshold: 0 });
-    Object.keys(map).forEach(function (id) { io.observe(document.getElementById(id)); });
+    var ticking = false;
+
+    function mark() {
+      ticking = false;
+      if (!items.length) return;
+      var line = window.innerHeight * 0.3;   // 画面の上から3割を「いま読んでいる線」とする
+      var here = items[0];
+      items.forEach(function (it) {
+        if (it.el.getBoundingClientRect().top <= line) { here = it; }
+      });
+      items.forEach(function (it) { it.a.classList.toggle('is-here', it === here); });
+    }
+
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(mark);
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    mark();
   }
 })();
