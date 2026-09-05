@@ -4,175 +4,189 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>慎重さ（Deliberative）を、Gallup公式の言葉で読み直す | おけもん式ストレングス入門</title>
-<meta name="description" content="慎重さは「臆病な人」ではありません。バルコニーと地下室のどちらに出ているかを自分で確かめて、Gallup公式のBring／Needと弱みの定義まで一気に読める、資質徹底解説シリーズ 第3号です。">
+<meta name="description" content="慎重さは「臆病な人」ではありません。バルコニーと地下室のどちらに出ているかを自分で確かめて、Gallup公式のBring／Needと弱みの定義まで読める、資質徹底解説シリーズ 第3号です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="trait.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="trait2.css">
 <style>
-  /* この資質の3色。ドメイン＝実行力（Gallup公式・紫）から色相を寄せた1色。
-     回復志向より青へ半歩ふって、同じ紫の並びの中で見分けがつくようにした。
-     #4F5488 白地7.10／paper 6.71／theme-soft面 6.04（2026-09-04 実測） */
-  :root { --theme: #4F5488; --theme-soft: #ECECF2; --theme-line: #CACCDB; }
+  /* この資質のドメイン色。実行力（Executing）＝Gallup公式の紫を、
+     白地・紙地の両方で比4.5以上まで寄せた1色（#5D5A96：白 6.23／paper 5.89）。
+     資質ごとの差し色は作らない。6本のシリーズで使う色は4ドメイン色だけ。 */
+  :root { --domain: #5D5A96; }
 </style>
 </head>
-<body class="trait">
+<body>
 
 <header class="tbar">
-  <a class="tbar-brand" href="index.html">
-    <span class="tbar-mark">OK</span>
-    <span>おけもん式ストレングス入門</span>
-  </a>
-  <nav class="tbar-nav" aria-label="関連ページ">
-    <a href="index.html"><span class="ico ico-back" aria-hidden="true"></span>入門ホーム</a>
-    <a href="index.html#themes">34資質ダッシュボード</a>
-    <a href="index.html#take">受け方</a>
-  </nav>
+  <div class="col tbar-in">
+    <a class="tbar-brand" href="index.html">おけもん式ストレングス入門</a>
+    <nav class="tbar-nav" aria-label="関連ページ">
+      <a href="index.html">入門ホーム</a>
+      <a href="index.html#themes">34資質ダッシュボード</a>
+      <a href="index.html#take">受け方</a>
+    </nav>
+  </div>
 </header>
+
+<!-- ============================ ① 表紙 ============================ -->
+<section class="cover" aria-labelledby="ttl">
+  <div class="col">
+    <p class="cover-domain">実行力 ／ Executing</p>
+    <h1 id="ttl">慎重さ</h1>
+    <p class="cover-en">DELIBERATIVE</p>
+    <p class="cover-line">まだ起きていないことが、先に見えてしまう人へ。</p>
+    <p class="cover-lead">
+      怖がっているつもりは、たぶんありません。転びそうな場所のほうが、先に目に入るだけです。
+      その力を置き直すために、Gallup公式の言葉と、自分で確かめられる場所を入れました。
+    </p>
+    <p class="cover-meta">資質徹底解説シリーズ 03 ／ 2026年9月版 ／ 読むのに約12分</p>
+  </div>
+</section>
+
+<div class="shell">
 
 <main>
 
-  <!-- ============================ ヒーロー ============================ -->
-  <section class="t-hero" aria-labelledby="ttl">
-    <div class="t-hero-in">
-      <span class="ico ico-shield t-hero-mark" aria-hidden="true"></span>
-      <span class="t-domain">実行力 ／ Executing</span>
-      <h1 id="ttl">慎重さ<span class="en">DELIBERATIVE</span></h1>
-      <p class="t-catch">まだ起きていないことが、先に見えてしまう。</p>
-      <p class="t-lead">
-        怖がっているつもりは、たぶんありません。転びそうな場所のほうが、先に目に入るだけです。
-        このページは、その「先に見えてしまう」を、誰かを守る力として置き直すために書きました。
-        Gallup公式の言葉と、あなたが自分で確かめられる場所を、両方入れてあります。
-      </p>
-      <ul class="t-tags">
-        <li>危ないところが見える</li>
-        <li>確かめてから決める</li>
-        <li>決めたら守り切る</li>
-      </ul>
-    </div>
-  </section>
+  <p class="ways col">
+    <span><b>3分で読むなら</b>01のあるあると、02のチェックだけ。</span>
+    <span><b>10分なら</b>04の書き込み欄まで。</span>
+    <span><a href="#series">他の5資質を見る</a></span>
+  </p>
 
-  <!-- ============================ 目次 ============================ -->
-  <nav class="t-toc" aria-labelledby="toc-h">
-    <h2 id="toc-h">このページの並び</h2>
+  <details class="toc-sp col">
+    <summary>このページの並び（5つ）</summary>
     <ol>
-      <li><a href="#s1"><span class="no">01</span>先に、誤解をほどく</a></li>
-      <li><a href="#s2"><span class="no">02</span>立ち止まってしまう瞬間</a></li>
-      <li><a href="#s3"><span class="no">03</span>バルコニーと、地下室</a></li>
-      <li><a href="#s4"><span class="no">04</span>Gallupが渡す言葉</a></li>
-      <li><a href="#s5"><span class="no">05</span>慎重さが輝く場面</a></li>
-      <li><a href="#s6"><span class="no">06</span>弱みに見えるとき</a></li>
-      <li><a href="#s7"><span class="no">07</span>隣の資質と見分ける</a></li>
-      <li><a href="#s8"><span class="no">08</span>黙るブレーキから、呼ばれる人へ</a></li>
-      <li><a href="#s9"><span class="no">09</span>書いて持ち帰るワーク</a></li>
-      <li><a href="#s10"><span class="no">10</span>慎重さを持つあなたへ</a></li>
+      <li><a href="#s1">01 この資質の人に、起きていること</a></li>
+      <li><a href="#s2">02 日なた側と、地下室側</a></li>
+      <li><a href="#s3">03 隣の資質と、見分ける</a></li>
+      <li><a href="#s4">04 今日から、できること</a></li>
+      <li><a href="#s5">05 慎重さを持つあなたへ</a></li>
     </ol>
-  </nav>
+  </details>
 
-  <!-- ============================ 01 ============================ -->
-  <section class="tsec" id="s1" aria-labelledby="h2-1">
-    <div class="tsec-head">
-      <span class="ico ico-eye tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">01</span>
-      <h2 id="h2-1">先に、誤解をほどく</h2>
-    </div>
-    <p>
-      慎重さは、道の途中でよく「臆病な人」に置き換わって伝わります。
-      優柔不断、ノリが悪い、心配しすぎ。言われたことがある人もいると思います。
-    </p>
-    <p>
-      でも、自分の中で起きている順番を思い出してみてください。
-      最初に浮かんでいるのは「怖い」ではなく、「ここ、まだ確かめてない」ではありませんか。
-      怖いから止まるのではなく、確かめていない場所が見えているから手が止まる。この2つは、外からだと同じ形に見えます。
-    </p>
-    <p>
-      たとえば、車のブレーキを思い浮かべてください。ブレーキは、止まるためについているように見えます。
-      でも、レースの車にいちばん強いブレーキが積まれているのは、いちばん速く走るためです。
-      きちんと止まれると分かっているから、その手前まで踏み込める。慎重さも、たぶん同じ役をしています。
-    </p>
-
-    <div class="quote">
-      <p>慎重さは優しさであり、最高の愛の形。</p>
-      <p class="quote-label">出典：おけもん（2026-02-21・慎重さの資質を扱ったオフ会での発言）</p>
-    </div>
-
-    <p>
-      止まる理由が「自分が怖いから」ではなく「誰かが困る道筋が見えたから」だとすると、それはもう心配性の話ではありません。
-      同じ「ちょっと待って」でも、伝わる音がまるごと変わります。
-    </p>
-    <p class="tsec-sub">
-      それと、置かれている場所をひとつ直させてください。Gallupは慎重さを、実行力（Executing）の資質に入れています。
-      頭で考える側ではなく、手を動かす側です。考えすぎる人だと思われがちですが、公式の並びでは「やり遂げる」列にいます。
-      確かめるのは、動かないためではなく、動き切るためだからです。
-    </p>
-  </section>
-
-  <!-- ============================ 02 ============================ -->
-  <section class="tsec" id="s2" aria-labelledby="h2-2">
-    <div class="tsec-head">
-      <span class="ico ico-talk tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">02</span>
-      <h2 id="h2-2">立ち止まってしまう瞬間</h2>
-      <p class="tsec-sub">
-        Gallupは、才能の見つけ方に「才能の5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入すること・一瞬の卓越・深い満足の5つ。
-        下の4つが当たっているかどうかより、そのとき自分の中で何が動いたかのほうが手がかりになります。
+  <!-- ============================ ② 起きていること ============================ -->
+  <section class="sec" id="s1" aria-labelledby="h-1">
+    <div class="col">
+      <span class="sec-no">01</span>
+      <h2 id="h-1">この資質の人に、起きていること</h2>
+      <p class="sec-lead">
+        慎重さは、道の途中でよく「臆病な人」に置き換わって伝わります。優柔不断、ノリが悪い、心配しすぎ。でも最初に浮かんでいるのは「怖い」ではなく、「ここ、まだ確かめてない」のほうです。
       </p>
+      <p>
+        レースの車に強いブレーキが積まれているのは、速く走るためです。Gallupが慎重さを実行力（Executing）に置くのも同じ理由。<strong>確かめるのは、動き切るためです。</strong>
+      </p>
+      <div class="quote">
+        <p>慎重さは優しさであり、最高の愛の形。</p>
+        <p class="quote-label">出典：おけもん（2026-02-21・慎重さの資質を扱ったオフ会での発言）</p>
+      </div>
+
+      <h3>心当たりがあるかどうかは、この4つで</h3>
     </div>
-    <ul class="aru">
-      <li>
-        <b>全員が「よし、行こう」と立ち上がった会議で、ひとりだけ資料をめくり直している。</b>
-        止めたいわけではなくて、まだ開いていないページがあることに気づいてしまう。
-        <span>探しに行った覚えはないのに、そこだけ光って見える。これが「惹かれるもの」の出方です。</span>
-      </li>
-      <li>
-        <b>旅行の前の日、持ち物リストを2回見直したうえで、「雨だったら」の1本を足している。</b>
-        しかも、その作業がわりと楽しい。
-        <span>準備が苦行ではなく時間を忘れる作業になっていたら、これが「没入」の出方です。</span>
-      </li>
-      <li>
-        <b>「大丈夫だって、いけるいける」と言われるほど、逆に確かめたくなる。</b>
-        疑っているのではなく、根拠が置かれていない状態だと手が動かない。
-        <span>これは性格が固いのとは違って、判断の材料が足りないだけです。これも「惹かれるもの」の出方で、あとで出てくる Need の話につながります。</span>
-      </li>
-      <li>
-        <b>迷っていたのは決める前だけで、決めたあとの動きは速い。</b>
-        あれだけ悩んだのに、進み始めたら振り返らない。
-        <span>ここがいちばん誤解されているところで、「一瞬の卓越」が出るのは動き出したあとです。</span>
-      </li>
+    <ul class="aru break">
+        <li>
+          <b>全員が「よし、行こう」と立ち上がった会議で、ひとりだけ資料をめくり直している。</b>
+          止めたいわけではなくて、まだ開いていないページがあることに気づいてしまう。
+          <span>探しに行った覚えはないのに、そこだけ光って見える。</span>
+        </li>
+        <li>
+          <b>旅行の前の日、持ち物リストを2回見直したうえで、「雨だったら」の1本を足している。</b>
+          しかも、その作業がわりと楽しい。
+          <span>準備が苦行ではなく、時間を忘れる作業になっていたら、たぶん当たりです。</span>
+        </li>
+        <li>
+          <b>「大丈夫だって、いけるいける」と言われるほど、逆に確かめたくなる。</b>
+          疑っているのではなく、根拠が置かれていない状態だと手が動かない。
+          <span>これは性格が固いのとは違って、判断の材料が足りないだけです。あとで出てくる Need の話につながります。</span>
+        </li>
+        <li>
+          <b>迷っていたのは決める前だけで、決めたあとの動きは速い。</b>
+          あれだけ悩んだのに、進み始めたら振り返らない。
+          <span>ここがいちばん誤解されているところで、力が出るのは動き出したあとです。</span>
+        </li>
     </ul>
-    <p class="tsec-sub">
-      「気にしすぎだよ」と言われたことがあるかもしれません。気にしているというより、見えてしまうんです。ここを人に説明しようとすると、たいてい言い訳っぽく響いて、途中で飲み込むことになります。
-    </p>
+    <div class="col">
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（才能の5つの手がかり／Bring・Need）</summary>
+        <div class="more-body">
+          <p>
+            Gallupは才能の見つけ方に「5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入・一瞬の卓越・深い満足。上の4つが当たっているかより、そのとき何が動いたかが手がかりです。
+          </p>
+          <p>
+            そのうえで、公式には34資質ぶんの <strong>Bring／Need</strong> という一文があります。慎重さのぶんは、この2行です。
+          </p>
+          <div class="quote">
+            <p><strong>Bring：<span class="nw">もたらすもの</span></strong>　徹底した、良心的な進め方</p>
+            <p class="en">a thorough and conscientious approach</p>
+            <p><strong>Need：<span class="nw">必要とするもの</span></strong>　発言を求められる前に、聴いて考える時間</p>
+            <p class="en">time to listen and think before being expected to speak</p>
+            <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（実行力／Deliberative）</p>
+          </div>
+          <p>
+            <strong>置き場所は2つ。</strong>ひとつは会議の組み立てに。Needが求めているのは「時間」ではなく「発言を求められる前の時間」です。
+          </p>
+          <p>
+            もうひとつは、名乗るときのひと言として。「徹底した、良心的な進め方を持ち込みます」。出どころが公式レポートなので、盛らずにそのまま貼れます。
+          </p>
+          <div class="quote">
+            <p>自慢でも売り込みでもなくレポート由来の記述なので、調和性や慎重さが上位で自己PRが苦手な人でも口にできる。</p>
+            <p class="quote-label">出典：Gallup公式 Bring and Need Statements（使いどころは当サイトの整理ノート）</p>
+          </div>
+      </div>
+    </details>
   </section>
 
-  <!-- ============================ 03 ============================ -->
-  <section class="tsec" id="s3" aria-labelledby="h2-3">
-    <div class="tsec-head">
-      <span class="ico ico-floors tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">03</span>
-      <h2 id="h2-3">バルコニーと、地下室</h2>
-      <p class="tsec-sub">
-        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはこれをバルコニー（Balcony）とベースメント（Basement）と呼びます。
-        日なたのバルコニーと、ひんやりした地下室。季節で着るものが変わるのと同じで、入れ替わるのは資質そのものではなく、その日の出方です。
+  <!-- ============================ ③ バルコニー／地下室 ============================ -->
+  <section class="sec" id="s2" aria-labelledby="h-2">
+    <div class="col">
+      <span class="sec-no">02</span>
+      <h2 id="h-2">日なた側と、地下室側</h2>
+      <p class="sec-lead">
+        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはこれをバルコニーとベースメントと呼びます。
       </p>
+      <div class="quote">
+        <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
+        <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
+        <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
+      </div>
     </div>
 
-    <div class="quote">
-      <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
-      <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
-      <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
-    </div>
+    <figure class="floors break">
+      <div class="floors-grid">
+        <div class="floors-cell floors-cell--bal">
+          <svg viewBox="0 0 260 96" role="img" aria-label="日なたのバルコニーから、力が外の進む先へ向かっている図">
+            <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="34" r="14"/>
+              <path d="M40 10V2M40 66v8M12 34H4M76 34h8M21 15l-6-6M59 53l6 6M59 15l6-6M21 53l-6 6"/>
+              <path d="M4 88h252"/>
+              <path d="M110 34h108M196 20l22 14-22 14"/>
+            </g>
+          </svg>
+          <b>バルコニー（日なた側）</b>
+          <span>まだ間に合ううちに、確かめた先へ力が向かっている。</span>
+        </div>
+        <div class="floors-cell floors-cell--bas">
+          <svg viewBox="0 0 260 96" role="img" aria-label="地下室で、同じ力が自分の側へ向き直っている図">
+            <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 8h252"/>
+              <path d="M40 20v40M26 46l14 14 14-14"/>
+              <path d="M218 34H110M124 20l-14 14 14 14"/>
+              <path d="M96 78h68"/>
+            </g>
+          </svg>
+          <b>ベースメント（地下室側）</b>
+          <span>同じ力が、自分の側へ向き直っている。</span>
+        </div>
+      </div>
+      <figcaption>変わるのは資質そのものではなく、その日の出方です。下のチェックは、どちらの階に足が向いていた時期かを見るためのものです。</figcaption>
+    </figure>
 
-    <p>
-      ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。合計を出しますが、これは点数でも診断でもありません。
-      どちらの階に足が向いていた時期か、だけを見ます。
-    </p>
 
-    <div data-bb>
+    <div class="break" data-bb>
       <div class="bb">
         <div class="bb-col bb-col--bal">
-          <h3><span class="ico ico-shine" aria-hidden="true"></span>日なた側（バルコニー）</h3>
+          <h3>日なた側（バルコニー）</h3>
           <p class="bb-note">力がプラスに働いていた時の出方です。</p>
           <ul class="bb-list">
             <li><label><input type="checkbox" data-side="bal"><span>気になった危なさを、まだ間に合ううちに言えた</span></label></li>
@@ -182,7 +196,7 @@
           </ul>
         </div>
         <div class="bb-col bb-col--bas">
-          <h3><span class="ico ico-hurdle" aria-hidden="true"></span>地下室側（ベースメント）</h3>
+          <h3>地下室側（ベースメント）</h3>
           <p class="bb-note">同じ力が、自分の側に向いてしまった時の出方です。</p>
           <ul class="bb-list">
             <li><label><input type="checkbox" data-side="bas"><span>材料を集め続けて、決める日がずるずる後ろに動いた</span></label></li>
@@ -191,379 +205,201 @@
             <li><label><input type="checkbox" data-side="bas"><span>動けなかった自分を、そのあと長いあいだ責めていた</span></label></li>
           </ul>
         </div>
-      </div>
-
-      <div class="bb-read">
-        <div class="bb-meters" aria-hidden="true">
-          <div class="bb-meter bb-meter--bal">
-            <span class="lb">日なた側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bal"></i></span></span>
-            <span class="num" data-num="bal">0 / 4</span>
-          </div>
-          <div class="bb-meter bb-meter--bas">
-            <span class="lb">地下室側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bas"></i></span></span>
-            <span class="num" data-num="bas">0 / 4</span>
-          </div>
-        </div>
-        <p class="bb-say" data-say aria-live="polite">左と右で、印が多くついたのはどちらの列でしたか。数えたら、下の2つを読んでみてください。</p>
-        <div class="bb-advice">
-          <div>
-            <b>出口その1｜満たされていないニーズを先に見る</b>
-            <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多い、とGallupは言っています。慎重さのニーズは「発言を求められる前に、聴いて考える時間」。その場で即答を求められる会議が続くと、言えなかった言葉が自分への責めに変わります。行動を矯正するより先に、考える時間が渡されているかを見るほうが早いです。</p>
-          </div>
-          <div>
-            <b>出口その2｜別の資質のバルコニーを出す</b>
-            <p>Gallupの処方は「To avoid the basement of one theme, lean into another theme!」。ひとつのテーマの地下を避けるには、別の資質のバルコニーを出す。慎重さのほうを薄めにいかなくて大丈夫。上位にある別の資質を1つ選んで、そちらを先に動かします。</p>
-          </div>
+        <div class="bb-read">
+          <p class="bb-count">
+            <span>日なた側　<b data-num="bal">0 / 4</b></span>
+            <span>地下室側　<b data-num="bas">0 / 4</b></span>
+          </p>
+          <p class="bb-say" data-say aria-live="polite">まだ印がついていません。ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。</p>
         </div>
       </div>
     </div>
+
+    <div class="col">
+      <h3>地下室から上がる、公式の出口は2つです</h3>
+    </div>
+    <ul class="exits break">
+        <li>
+          <b>満たされていないニーズを、先に見る</b>
+          <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多い、とGallupは言っています。</p>
+          <p>慎重さのニーズは「発言を求められる前に、聴いて考える時間」。即答を求められる会議が続くと、言えなかった言葉が自分への責めに変わります。</p>
+          <p>行動を矯正するより先に、考える時間が渡されているかを見るほうが早いです。</p>
+        </li>
+        <li>
+          <b>別の資質のバルコニーを出す</b>
+          <p>公式の処方は「To avoid the basement of one theme, lean into another theme!」。ひとつのテーマの地下を避けるには、別の資質のバルコニーを出す。</p>
+          <p>慎重さを薄めにいかなくていい。上位にある別の資質を1つ選んで、そちらを先に動かします。</p>
+        </li>
+    </ul>
   </section>
 
-  <!-- ============================ 04 ============================ -->
-  <section class="tsec" id="s4" aria-labelledby="h2-4">
-    <div class="tsec-head">
-      <span class="ico ico-swap tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">04</span>
-      <h2 id="h2-4">Gallupが渡す言葉</h2>
-      <p class="tsec-sub">
-        Gallup公式に、34資質ぶんの Bring／Need という一文があります。その人がチームに何を加えるか（Bring）と、力を出すために何が要るか（Need）を、公式の言い方で書いたものです。
+  <!-- ============================ ④ 見分ける ============================ -->
+  <section class="sec" id="s3" aria-labelledby="h-3">
+    <div class="col">
+      <span class="sec-no">03</span>
+      <h2 id="h-3">隣の資質と、見分ける</h2>
+      <p class="sec-lead">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
+    </div>
+
+    <div class="break cmp-wrap">
+      <table class="cmp">
+        <caption class="quote-label" style="text-align:left;padding-bottom:10px">慎重さと、似ていると言われやすい4資質。</caption>
+        <thead>
+          <tr><th scope="col">資質</th><th scope="col">見ているもの</th><th scope="col">動き出す合図</th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-self"><th scope="row">慎重さ</th><td data-lb="見ているもの">これから起きうること</td><td data-lb="動き出す合図">「先に潰しておこう」</td></tr>
+          <tr><th scope="row">分析思考</th><td data-lb="見ているもの">根拠</td><td data-lb="動き出す合図">「その数字、どこから？」</td></tr>
+          <tr><th scope="row">回復志向</th><td data-lb="見ているもの">壊れているところ</td><td data-lb="動き出す合図">「これ、直せる」</td></tr>
+          <tr><th scope="row">規律性</th><td data-lb="見ているもの">決まった手順</td><td data-lb="動き出す合図">「いつもの順番でいこう」</td></tr>
+          <tr><th scope="row">適応性</th><td data-lb="見ているもの">いま起きていること</td><td data-lb="動き出す合図">「じゃあ、こうしよう」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p style="margin-top:var(--gap-block)">
+        いちばん近いのは分析思考です。慎重さが見ているのは、起きたら困る先のこと。分析思考が見ているのは、いま出ている話が本当かどうかです。
+      </p>
+
+      <h3>掛け合わせると、味が変わります</h3>
+    </div>
+    <ul class="mixes break">
+        <li><b>× 共感性</b><p>相手が傷つく道筋まで先に見えます。危ないと伝えるだけでなく、伝え方まで含めて安全に運べます。</p></li>
+        <li><b>× 活発性</b><p>アクセルとブレーキを、ひとりで両方持っている状態。速くて事故らない代わりに、頭の中では毎回ちょっとした言い合いが起きます（笑）</p></li>
+        <li><b>× 最上志向</b><p>いい状態のまま世に出したい気持ちが強く出ます。出す前の最後の1回の見直しが、いちばん効きます。</p></li>
+    </ul>
+    <div class="col">
+      <h3>「臆病だね」と言われたときは</h3>
+      <ul class="flip">
+        <li><span class="a">臆病だと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">まだ確かめていない場所が見えている</span></li>
+        <li><span class="a">優柔不断だと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">決めるための材料が、まだ足りていない</span></li>
+        <li><span class="a">ネガティブだと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">うまくいかない道筋が先に浮かぶ</span></li>
+        <li><span class="a">ノリが悪いと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">その場の勢いより、明日の全員を見ている</span></li>
+      </ul>
+
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（弱みの定義／弱みの扱い方4つ）</summary>
+        <div class="more-body">
+          <div class="quote">
+            <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
+            <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
+            <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
+            <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
+          </div>
+          <p>
+            慎重さが下のほうにある人が、確かめる作業に気持ちが動かないと話すことがあります。いいかげんなのでも能力不足でもなく、配線の向きが違うだけです。
+          </p>
+          <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
+          <p>
+            自分の弱みかは公式の3つで見ます。①成功を損ねたか。②ネガティブな評価を受けたか。③使うと消耗するか。
+          </p>
+          <p>
+            扱い方も4つ決まっています。<strong>Claim them</strong>（知る）／<strong>Collaborate</strong>（支えを頼む）／<strong>Apply a strength</strong>（別の資質で）／<strong>Just do it</strong>（腹をくくる）。
+          </p>
+          <p>
+            「弱みに投資しても、強みには決してならない」。公式が置いているのは、鍛える道ではなく扱う道のほうです。レポートにも書いてあります——「あるドメインに上位資質がなくても心配いりません」。
+          </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================ ⑤ 今日から ============================ -->
+  <section class="sec is-work" id="s4" aria-labelledby="h-4">
+    <div class="col">
+      <span class="sec-no">04</span>
+      <h2 id="h-4">今日から、できること</h2>
+      <p class="sec-lead">
+        慎重さは、育つとよく見えるようになるというより、見えたものの渡し方が変わります。
+        黙るブレーキの時期から、「決める前に一回見て」と呼ばれる時期へ。その移り方が、この3つです。
       </p>
     </div>
-
-    <div class="bn">
-      <div class="bn-item">
-        <span class="k">Bring：もたらすもの</span>
-        <p class="ja">徹底した、良心的な進め方</p>
-        <p class="en">a thorough and conscientious approach</p>
-      </div>
-      <div class="bn-item">
-        <span class="k">Need：必要とするもの</span>
-        <p class="ja">発言を求められる前に、聴いて考える時間</p>
-        <p class="en">time to listen and think before being expected to speak</p>
-      </div>
-    </div>
-    <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（実行力／Deliberative）</p>
-
-    <h3>この2行は、あとから効いてきます</h3>
-    <p>
-      <strong>ひとつは、会議の組み立てを変えるのに。</strong>
-      Needの一文をよく見ると、慎重さが欲しているのは「時間」ではなく「発言を求められる前の時間」です。
-      その場で意見を回される会議に何度も置かれると、いちばん大事な指摘が、いちばん最後まで出てきません。
-      前の日にアジェンダが1枚届くだけで出方が変わる、ということが起こります。
-    </p>
-    <p>
-      <strong>もうひとつ。名乗る時の一行になります。</strong>
-      「徹底した、良心的な進め方を持ち込みます」——Gallupのレポートに載っている一文です。
-      自分で考えた売り文句ではないので、口にしても盛っていることになりません。提案書の冒頭でも、面談の最初の30秒でも、この形のまま置けます。
-    </p>
-    <div class="quote">
-      <p>自慢でも売り込みでもなくレポート由来の記述なので、調和性や慎重さが上位で自己PRが苦手な人でも口にできる。</p>
-      <p class="quote-label">出典：Gallup公式 Bring and Need Statements（使いどころは当サイトの整理ノート）</p>
-    </div>
-    <p>
-      この整理ノートの中で、慎重さが名指しで出てくるのはこの一文だけです。自分をよく言うのが苦手な資質だと、うちでも扱われてきました。
-      借りられる言葉があるなら、遠慮なく借りてください。
-    </p>
-    <p class="tsec-sub">
-      自分のレポートを持っている人は、「あなたの慎重さがユニークな理由」の欄を開いてみてください。ほかの誰かと同じ文章にはなりません。あなたの回答から作られた段落が、そこだけに入っています。
-    </p>
-  </section>
-
-  <!-- ============================ 05 ============================ -->
-  <section class="tsec" id="s5" aria-labelledby="h2-5">
-    <div class="tsec-head">
-      <span class="ico ico-shine tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">05</span>
-      <h2 id="h2-5">慎重さが輝く場面</h2>
-      <p class="tsec-sub">仕事だけの話にしません。オフ会でも、家でも、同じ形で出ます。</p>
-    </div>
-    <ul class="cards cards--2">
-      <li class="card">
-        <h3><span class="n">01</span>「行こう」の声が揃った、その一歩手前</h3>
-        <p>盛り上がりを止める役ではありません。戻れなくなる前に、一回だけ確かめる役です。ここで1分使うか使わないかで、あとの3か月が変わります。</p>
-        <p class="eg">たとえば、申し込みボタンの手前で「解約はいつまで無料だっけ」に気づける。押したあとでは調べても遅い場所です。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>やり直しがきかない決めごと</h3>
-        <p>契約、引っ越し、大きな買い物。取り消しに手数料と気力がかかる決めごとほど、先に読む人がいると助かります。</p>
-        <p class="eg">たとえば、契約書の自動更新の1行を見つけて、更新の1か月前を手帳に書いておける。半年後の自分が助かります。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>人の安全を預かる場所</h3>
-        <p>仕事の外でも同じように働きます。危ないものが先に見えるので、家の中や毎日の暮らしでも自然に手が伸びます。</p>
-        <p class="eg">たとえば、慎重さを持つ人が集まった会で「この資質が、毎日の怪我の防止と健康の維持に役立っている」と話した人がいました。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">04</span>走り出したあと、約束を守り切る役</h3>
-        <p>Gallupが Bring に置いているのは「徹底した、良心的な進め方」です。慎重さは決める前だけの資質ではなく、決めたあとを最後まで運ぶ資質でもあります。</p>
-        <p class="eg">たとえば、締め切りの前の日に「あと残っているのはこれだけです」と自分から出せる。周りは、それだけで安心して眠れます。</p>
-      </li>
-    </ul>
-    <p class="quote-label">出典：03はおけもんが開いたオフ会の記録（2026-02-21）。参加した人が特定できる内容は載せていません。</p>
-  </section>
-
-  <!-- ============================ 06 ============================ -->
-  <section class="tsec" id="s6" aria-labelledby="h2-6">
-    <div class="tsec-head">
-      <span class="ico ico-hurdle tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">06</span>
-      <h2 id="h2-6">弱みに見えるとき</h2>
-      <p class="tsec-sub">まず、見え方のズレから。左は、外から見えている形です。右が自分の中で起きていることと合っているか、確かめながら読んでみてください。</p>
-    </div>
-
-    <ul class="flip">
-      <li><span class="a">臆病だと言われる</span><span class="arrow">→</span><span class="b">まだ確かめていない場所が見えている</span></li>
-      <li><span class="a">優柔不断だと言われる</span><span class="arrow">→</span><span class="b">決めるための材料が、まだ足りていない</span></li>
-      <li><span class="a">ネガティブだと言われる</span><span class="arrow">→</span><span class="b">うまくいかない道筋が先に浮かぶ</span></li>
-      <li><span class="a">ノリが悪いと言われる</span><span class="arrow">→</span><span class="b">その場の勢いより、明日の全員を見ている</span></li>
+    <ul class="today break">
+        <li>
+          <div>
+            <b>「ちょっと待って」に、1点をくっつける</b>
+            <p>「ちょっと待って」だけだと、相手には全否定に聞こえます。「ちょっと待って、解約の条件だけ見せて」と、確かめたい1点まで一息で。中身は変えていないのに、反対ではなく相談として届きます。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>考える時間を、堂々ともらう</b>
+            <p>「明日の朝までください」と言っていいです。わがままではなく、Gallupが Need に書いている時間です。</p>
+            <p>その場の即答より翌朝の一言のほうが正確なら、待ってもらうほうが全員得をします。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>危なさと、安全にする方法を同じ息で言う</b>
+            <p>「ここ危ないよね」で止めず、「ここが危ないから、こうしておけば進めると思う」まで。道を塞ぐ資質ではなく、通れる道を1本作る資質だと相手に見えるようになります。</p>
+          </div>
+        </li>
     </ul>
 
-    <h3>Gallupは、弱みをこう言っています</h3>
-    <div class="quote">
-      <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
-      <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
-      <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
-      <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
-    </div>
-
-    <p>
-      下のほうにある資質を「弱み」と読むのは、たぶんいちばん多い誤読です。順位が低い資質は、自然には出てこないだけです。
-      慎重さが下のほうにある人が、確かめる作業にどうしても気持ちが動かないと話すことがあります。
-      いいかげんなのでも、能力が足りないのでもなく、配線の向きが違うだけ、という見方ができます。
-      その人は、走りながら直すやり方で同じ場所に着きます。
-    </p>
-
-    <h3>それから、ひとりの中でも言い合いが起きます</h3>
-    <p>
-      上位の資質どうしが、同じ場面で別のことを言い出すことがあります。セッションで、自分の中の声をこう書き出した人がいました——
-      「やりたい、楽しそう」と言う声、「他のもやってるよね、全部やらないと」と言う声、そして「失敗したらどうするの」と言う声。
-      3つが同時にしゃべって、動けなくなる。
-    </p>
-    <p>
-      これは慎重さが悪さをしているのではなく、3つの声に順番がついていないだけです。
-      3人でひとつのハンドルを握っている車と同じで、誰が先に話すかを決めると、だいたい進み始めます。
-      慎重さの出番は、たいてい最後です。行き先が決まってから呼ぶと、いちばんよく働きます。
-    </p>
-    <p class="quote-label">出典：おけもんのセッションでの記録。個人が特定できる内容は載せていません。</p>
-
-    <h3>自分の弱みかどうかは、この3つで見ます</h3>
-    <ul class="cards">
-      <li class="card"><h3><span class="n">01</span>損ねたことがあるか</h3><p>この資質が、自分の成功を損ねたことがあったか。</p></li>
-      <li class="card"><h3><span class="n">02</span>言われたことがあるか</h3><p>この資質について、ネガティブなフィードバックを受けたことがあったか。</p></li>
-      <li class="card"><h3><span class="n">03</span>消耗するか</h3><p>役割上その資質を使う必要があるけれど、使うと消耗するか。</p></li>
-    </ul>
-
-    <h3>弱みは、鍛えるものではありません</h3>
-    <p>
-      Gallupの言い方はきっぱりしていて、「強みと弱みは対義語ではない。弱みに投資しても、強みには決してならない」。
-      だから公式が置いているのは、鍛える道ではなく、扱う道の4つです。
-    </p>
-    <ul class="cards cards--2">
-      <li class="card"><h3><span class="n">01</span>Claim them</h3><p>自分の弱みと、それがどう邪魔をするかを知る。</p></li>
-      <li class="card"><h3><span class="n">02</span>Collaborate</h3><p>パートナーに支えを頼む。</p></li>
-      <li class="card"><h3><span class="n">03</span>Apply a strength</h3><p>別の資質を使って、同じ結果に到達する。</p></li>
-      <li class="card"><h3><span class="n">04</span>Just do it</h3><p>腹をくくってやる。ベストを尽くす。</p></li>
-    </ul>
-    <p class="tsec-sub">
-      レポートの本文には、こんな一文も入っています。「あるドメインに上位資質がなくても心配いりません」。
-      実行力が上位にない人が、物事を成し遂げられないという意味ではありません。別のドメインの強い資質を使って、同じ場所に着いているだけです。
-    </p>
-  </section>
-
-  <!-- ============================ 07 ============================ -->
-  <section class="tsec" id="s7" aria-labelledby="h2-7">
-    <div class="tsec-head">
-      <span class="ico ico-venn tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">07</span>
-      <h2 id="h2-7">隣の資質と見分ける</h2>
-      <p class="tsec-sub">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
-    </div>
-    <ul class="cmp">
-      <li class="is-self">
-        <span class="nm">慎重さ</span>
-        <span><span class="lb">見ているもの</span>これから起きうること</span>
-        <span><span class="lb">動き出す合図</span>「先に潰しておこう」</span>
-      </li>
-      <li>
-        <span class="nm">分析思考</span>
-        <span><span class="lb">見ているもの</span>根拠</span>
-        <span><span class="lb">動き出す合図</span>「その数字、どこから？」</span>
-      </li>
-      <li>
-        <span class="nm">回復志向</span>
-        <span><span class="lb">見ているもの</span>壊れているところ</span>
-        <span><span class="lb">動き出す合図</span>「これ、直せる」</span>
-      </li>
-      <li>
-        <span class="nm">規律性</span>
-        <span><span class="lb">見ているもの</span>決まった手順</span>
-        <span><span class="lb">動き出す合図</span>「いつもの順番でいこう」</span>
-      </li>
-      <li>
-        <span class="nm">適応性</span>
-        <span><span class="lb">見ているもの</span>いま起きていること</span>
-        <span><span class="lb">動き出す合図</span>「じゃあ、こうしよう」</span>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      いちばん近いのは分析思考です。どちらも「ちょっと待って」と言いますが、止める理由が違います。
-      慎重さが見ているのは、起きたら困る先のこと。分析思考が見ているのは、いま出ている話が本当かどうか。
-      未来を見ているか、手元を見ているかの差だと思ってください。
-    </p>
-
-    <h3>掛け合わせると、味が変わります</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3>慎重さ × 共感性</h3>
-        <p>相手が傷つく道筋まで先に見えます。危ないと伝えるだけでなく、伝え方まで含めて安全に運べる人になります。</p>
-      </li>
-      <li class="card">
-        <h3>慎重さ × 活発性</h3>
-        <p>アクセルとブレーキを、ひとりで両方持っている状態です。速くて事故らない代わりに、頭の中では毎回ちょっとした言い合いが起きます（笑）</p>
-      </li>
-      <li class="card">
-        <h3>慎重さ × 最上志向</h3>
-        <p>いい状態のまま世に出したい、という気持ちが強く出ます。出す前の最後の1回の見直しが、いちばん効く人です。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============================ 08 ============================ -->
-  <section class="tsec" id="s8" aria-labelledby="h2-8">
-    <div class="tsec-head">
-      <span class="ico ico-sprout tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">08</span>
-      <h2 id="h2-8">黙るブレーキから、呼ばれる人へ</h2>
-      <p class="tsec-sub">慎重さは、育つと使い方が変わります。よく見えるようになるというより、見えたものの渡し方が変わります。</p>
-    </div>
-    <ul class="steps">
-      <li>
-        <span class="st">STEP 1</span>
-        <b>空気を読んで、黙るブレーキ</b>
-        <p>危ないところは見えているのに、盛り上がりを壊しそうで言えない時期です。言わなかったことが本当に起きて、あとから自分を責める。見えている力が、いちばんもったいない使われ方をしています。</p>
-      </li>
-      <li class="is-goal">
-        <span class="st">STEP 2</span>
-        <b>決める前に、先に呼ばれる人</b>
-        <p>「これ、決める前に一回見て」と、周りから先に声がかかる時期です。止める人ではなく、安全に進めるために通る場所になります。同じ指摘なのに、邪魔ではなく助けとして受け取られます。</p>
-      </li>
-    </ul>
-
-    <h3>今日からできる3つ</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3><span class="n">01</span>「ちょっと待って」に、1点をくっつける</h3>
-        <p>「ちょっと待って」だけだと、相手には全否定に聞こえます。「ちょっと待って、解約の条件だけ見せて」と、確かめたい1点まで一息で。言っている中身は一文字も変わっていないのに、相手の顔つきが変わります。反対されたのではなく、相談された、と受け取られるからです。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>考える時間を、堂々ともらう</h3>
-        <p>「明日の朝までください」と言っていいです。これはわがままではなく、Gallupが Need にはっきり書いている時間です。その場の即答より、翌朝の一言のほうが正確なら、待ってもらったほうが全員が得をします。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>危なさと、安全にする方法を同じ息で言う</h3>
-        <p>「ここ危ないよね」で止めず、「ここが危ないから、こうしておけば進めると思う」まで。慎重さは道を塞ぐ資質ではなく、通れる道を1本作る資質だと、相手に見えるようになります。</p>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      それと、休んでください。慎重さは、危なさを探す目を自分にも向けてしまいます。
-      見張り役を24時間やっていたら、誰でも参ります。何も確かめなくていい時間を、意識して先に予定へ入れておいてください。
-    </p>
-  </section>
-
-  <!-- ============================ 09 ============================ -->
-  <section class="tsec is-work" id="s9" aria-labelledby="h2-9">
-    <div class="tsec-head">
-      <span class="ico ico-pen tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">09</span>
-      <h2 id="h2-9">書いて持ち帰るワーク</h2>
-      <p class="tsec-sub">
-        Gallup公式の3段階です。読んで分かった状態のことを、公式は「Name it で止まっている」と呼んで、はっきり失敗として名前をつけています。
-        3つの問いは公式の日本語版の言い回しそのままなので、そのまま自分に聞いてください。
+    <div class="break work" data-work="shinchou">
+      <h3 class="work-h">書いて持ち帰る（理解する！／受容する！／活用する！）</h3>
+      <p class="work-note">
+        Gallup公式の3段階です。読んで分かった状態を、公式は「Name it で止まっている」と呼んで失敗として名指しします。当てはまらない行は空けたままで大丈夫です。
       </p>
-    </div>
-
-    <div class="work" data-work="shinchou">
-      <div class="work-head">
-        <h3>理解する！／受容する！／活用する！</h3>
-        <p>これは、あなたを決める紙ではありません。当てはまらない行は、空けたままで大丈夫です。</p>
-      </div>
-      <div class="work-body">
+      <div class="work-steps">
         <div class="work-step">
           <span class="badge">理解する！（NAME IT!）</span>
           <p class="q">この資質の説明の中で、強く共感できる説明は何ですか？</p>
-          <p class="hint">このページの中から、1行そのまま抜いてきてください。全部に共感しなくて大丈夫です。</p>
+          <p class="hint">このページから1行、そのまま抜いてきてください。</p>
           <textarea id="w1" aria-label="理解する！の答え" rows="3" placeholder="例：迷っていたのは決める前だけ、のところ"></textarea>
         </div>
         <div class="work-step">
           <span class="badge">受容する！（CLAIM IT!）</span>
           <p class="q">この資質が、過去、あなたの成功に役立ったのはいつですか？</p>
-          <p class="hint">公式の定義は「行動に表れた自分の才能を認識し、感謝する」です。思い出すだけでは半分で、ありがたく思うところまで来ると、次に進めます。</p>
+          <p class="hint">公式の定義は「行動に表れた自分の才能を認識し、感謝する」。思い出すだけでは半分です。</p>
           <textarea id="w2" aria-label="受容する！の答え" rows="3" placeholder="例：契約の自動更新に気づいて、更新月を押さえたとき"></textarea>
         </div>
         <div class="work-step">
           <span class="badge">活用する！（AIM IT!）</span>
           <p class="q">これからもっと意図的にこの資質を利用できる方法を2つ挙げてください。</p>
-          <p class="hint">Gallupはこの手前に「どこへ行きたいか。あなたにとっての卓越とは何か」を置いています。行き先が決まっていると、2つが具体的になります。</p>
-          <textarea id="w3" aria-label="活用する！の答え" rows="4" placeholder="1つめ：&#10;2つめ："></textarea>
+          <p class="hint">公式はこの手前に「どこへ行きたいか。あなたにとっての卓越とは何か」を置いています。</p>
+          <textarea id="w3" aria-label="活用する！の答え" rows="3" placeholder="1つめ：&#10;2つめ："></textarea>
         </div>
         <div class="work-step">
           <span class="badge">これから育てるもの</span>
           <p class="q">上の3つを見て、これから育てると決めたことを1つだけ書いてください。</p>
           <p class="hint">1つで足ります。3つ書くと、たいてい1つも残りません（笑）</p>
-          <textarea id="w4" aria-label="これから育てるもの" rows="2" placeholder="例：気になったことは、確かめたい1点までセットで言う"></textarea>
+          <textarea id="w4" aria-label="これから育てるもの" rows="3" placeholder="例：気になったことは、確かめたい1点までセットで言う"></textarea>
         </div>
       </div>
       <div class="work-tools">
-        <button class="btn" type="button" data-print><span class="ico ico-pen" aria-hidden="true"></span>印刷して持ち帰る</button>
-        <button class="btn" type="button" data-clear>書いたものを消す</button>
+        <button class="btn" type="button" data-print>印刷して持ち帰る</button>
+        <button class="btn btn--ghost" type="button" data-clear>書いたものを消す</button>
         <span class="work-save" data-save-note>書いた内容は、この端末のブラウザにだけ残ります</span>
       </div>
     </div>
 
-    <h3>オフ会で回すなら、この順番で</h3>
-    <ul class="run">
-      <li><span class="t">2分</span><span><b>ペアを作る</b>初対面でも大丈夫です。慎重さが上位ではない人と組むと、見え方の差が出ておもしろくなります。</span></li>
-      <li><span class="t">3分×2</span><span><b>02の「あるある」を見ながら話す</b>4つのうち、どれがいちばん自分に近かったかを話します。当たっていない行があるのも、大事な情報です。</span></li>
-      <li><span class="t">3分×2</span><span><b>受容する！を声に出す</b>過去に役立った場面を、相手に1つ話します。声に出すと、書いた時よりも自分で受け取れます。</span></li>
-      <li><span class="t">5分</span><span><b>「言えなかった、ちょっと待って」を出し合う</b>言おうとしてやめた一言を、この場で言い直してみる時間です。ここは静かに盛り上がります。</span></li>
-    </ul>
-    <p class="tsec-sub">
-      進行役の人へ。慎重さの人は、自分の番が回ってくる前に考える時間を必要とします。問いを先に配ってから始めてください。
-      それと、相手がどう働くかを教える会にしないでください。誘導する問いも要りません。Gallupがはっきり書いています——才能のテーマは、人に貼りつけるラベルではない。
-    </p>
-  </section>
-
-  <!-- ============================ 10 ============================ -->
-  <section class="closing" id="s10" aria-labelledby="h2-10">
-    <div class="closing-in">
-    <span class="ico ico-mail closing-ico" aria-hidden="true"></span>
-    <h2 id="h2-10">慎重さを持つあなたへ</h2>
-    <p>
-      あなたが止めた失敗は、起きなかったので、どこにも記録が残りません。
-      うまくいった日の議事録に「あの時ひとりが止めたから」とは書かれないし、何も起きなかった一日は、ただの平和な一日として過ぎていきます。
-    </p>
-    <p>
-      それでも、あなたが「ちょっと待って」と言った日から、そこは静かに安全になっています。
-      消防設備の点検と同じで、いちばんうまくいっている時ほど、誰の目にも留まりません。
-    </p>
-    <p>
-      ここだけは、このページを閉じたあとも覚えておいてください。
-      <strong>確かめる時間は、堂々ともらっていいです。</strong>
-      わがままではありません。Gallupが公式に「必要とするもの」として書いている時間です。遠慮して飲み込んだ回数のぶんだけ、あなたの力は地下に降りてしまいます。
-    </p>
-    <p>
-      あなたの「これ、大丈夫かな」を、明日もどうぞ。
-    </p>
-    <p class="sign">資質徹底解説シリーズ ／ 03 慎重さ（Deliberative）・2026年9月版</p>
+    <div class="col">
     </div>
   </section>
 
-  <!-- ============================ 出典 ============================ -->
-  <nav class="t-series-nav" aria-label="シリーズの他の資質">
-    <p class="t-series-h">資質徹底解説シリーズ（全6本）</p>
-    <ul class="t-series-list">
+  <!-- ============================ 締め ============================ -->
+  <section class="closing" id="s5" aria-labelledby="h-5">
+    <div class="col">
+      <h2 id="h-5">慎重さを持つ、あなたへ</h2>
+      <p>
+        あなたが止めた失敗は、起きなかったので、どこにも記録が残りません。議事録に「あの時ひとりが止めたから」とは書かれません。
+      </p>
+      <p>
+        帰り道に1つだけ持って帰るなら、これにしてください。<strong>確かめる時間は、堂々ともらっていいです。</strong>
+      </p>
+      <p>
+        わがままではありません。Gallupが「必要とするもの」として書いている時間です。遠慮して飲み込んだ回数のぶんだけ、力は地下に降ります。
+      </p>
+      <p>あなたの「これ、大丈夫かな」を、明日もどうぞ。</p>
+      <p class="sign">資質徹底解説シリーズ ／ 03 慎重さ（Deliberative）・2026年9月版</p>
+    </div>
+  </section>
+
+  <nav class="series col" id="series" aria-label="シリーズの他の資質">
+    <p class="series-h">資質徹底解説シリーズ（全6本）</p>
+    <ul>
       <li><a href="trait-kaifuku.html"><span class="no">01</span>回復志向</a></li>
       <li><a href="trait-kouheisei.html"><span class="no">02</span>公平性</a></li>
       <li><span class="is-current"><span class="no">03</span>慎重さ</span></li>
@@ -571,13 +407,9 @@
       <li><a href="trait-kobetsuka.html"><span class="no">05</span>個別化</a></li>
       <li><a href="trait-chouwa.html"><span class="no">06</span>調和性</a></li>
     </ul>
-    <div class="t-series-move">
-      <a href="trait-kouheisei.html"><span class="ico ico-back" aria-hidden="true"></span>前：02 公平性</a>
-      <a href="trait-jiga.html">次：04 自我<span class="ico ico-fwd" aria-hidden="true"></span></a>
-    </div>
   </nav>
 
-  <section class="src" aria-labelledby="src-h">
+  <section class="src col" aria-labelledby="src-h">
     <h2 id="src-h">このページが使っている一次情報</h2>
     <ul>
       <li>Gallup公式 <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">34 CliftonStrengths Themes</a>（慎重さ＝Deliberative／実行力）</li>
@@ -586,26 +418,44 @@
       <li>Gallup公式 日本語版ワークシート「理解する！／受容する！／活用する！」（Name it / Claim it / Aim it）</li>
     </ul>
     <p>
-      このほかに、当サイトで使っている「資質図解ガイド」（34資質の要約メモ）を参照しています。これはGallup公式の資料ではなく、当方の整理です。本文でそこから引いた箇所は「資質図解ガイドの言い方では」と書き分けています。
+      このほか、当サイトの「資質図解ガイド」（34資質の要約メモ）を参照しています。これは公式資料ではなく当方の整理で、そこから引いた箇所は本文で書き分けています。
     </p>
     <p>
-      本文中の日本語訳は、上記を当方で訳したものです。英語の原文を併記した箇所は、Gallupの表記そのままです。
+      日本語訳は当方のもの、英語を併記した箇所はGallupの表記そのままです。
     </p>
   </section>
 
 </main>
 
+<nav class="toc" aria-label="このページの並び">
+  <p class="toc-h">Contents</p>
+  <ol>
+    <li><a href="#s1"><span class="no">01</span>起きていること</a></li>
+    <li><a href="#s2"><span class="no">02</span>日なたと地下室</a></li>
+    <li><a href="#s3"><span class="no">03</span>隣と見分ける</a></li>
+    <li><a href="#s4"><span class="no">04</span>今日から</a></li>
+    <li><a href="#s5"><span class="no">05</span>あなたへ</a></li>
+  </ol>
+</nav>
+
+</div>
+
 <footer class="site-footer">
-  <p>
-    本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。
-  </p>
-  <p>
-    公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
-    <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
-    商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
-  </p>
+  <div class="col">
+    <p>
+      本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではありません。
+    </p>
+    <p>
+      Gallup社による承認・提携・推薦を示すものでもありません。
+    </p>
+    <p>
+      公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
+      商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
+    </p>
+  </div>
 </footer>
 
-<script src="trait.js"></script>
+<script src="trait2.js"></script>
 </body>
 </html>

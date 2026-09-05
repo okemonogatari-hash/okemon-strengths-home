@@ -7,569 +7,400 @@
 <meta name="description" content="調和性は「自分の意見がない人」ではありません。探しているのは同意ではなく合意点だ、というところから、バルコニーと地下室、Gallup公式のBring／Need、反対のニーズが同じ人の中に並ぶときの扱いまで読める、資質徹底解説シリーズ 第6号です。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="trait.css">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;600&family=Noto+Sans+JP:wght@400;500;600&family=Inter:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="trait2.css">
 <style>
-  /* この資質の3色。ドメイン＝人間関係構築力（Gallup公式・青）から色相を寄せた1色。
-     #3D6E8E 白地5.50／paper 5.19／theme-soft 4.75（2026-09-04 実測）
-     --theme-soft #EAEFF3 は ink 14.79。--theme-line #C5D4DD は罫線専用で文字に使わない */
-  :root { --theme: #3D6E8E; --theme-soft: #EAEFF3; --theme-line: #C5D4DD; }
+  /* この資質のドメイン色。人間関係構築力（Relationship Building）＝Gallup公式の青を、
+     白地・紙地の両方で比4.5以上まで寄せた1色（#3D6E8E：白 5.50／paper 5.19）。
+     資質ごとの差し色は作らない。6本のシリーズで使う色は4ドメイン色だけ。 */
+  :root { --domain: #3D6E8E; }
 </style>
 </head>
-<body class="trait">
+<body>
 
 <header class="tbar">
-  <a class="tbar-brand" href="index.html">
-    <span class="tbar-mark">OK</span>
-    <span>おけもん式ストレングス入門</span>
-  </a>
-  <nav class="tbar-nav" aria-label="関連ページ">
-    <a href="index.html"><span class="ico ico-back" aria-hidden="true"></span>入門ホーム</a>
-    <a href="index.html#themes">34資質ダッシュボード</a>
-    <a href="index.html#take">受け方</a>
-  </nav>
+  <div class="col tbar-in">
+    <a class="tbar-brand" href="index.html">おけもん式ストレングス入門</a>
+    <nav class="tbar-nav" aria-label="関連ページ">
+      <a href="index.html">入門ホーム</a>
+      <a href="index.html#themes">34資質ダッシュボード</a>
+      <a href="index.html#take">受け方</a>
+    </nav>
+  </div>
 </header>
+
+<!-- ============================ ① 表紙 ============================ -->
+<section class="cover" aria-labelledby="ttl">
+  <div class="col">
+    <p class="cover-domain">人間関係構築力 ／ Relationship Building</p>
+    <h1 id="ttl">調和性</h1>
+    <p class="cover-en">HARMONY</p>
+    <p class="cover-line">探しているのは、同意ではなく合意点です。</p>
+    <p class="cover-lead">
+      揉めるくらいなら自分が引く。そうやって場をおさめてきた回数を、たぶん自分では数えていません。その動きを力として置き直すために、Gallup公式の言葉と、自分で確かめられる場所を入れました。
+    </p>
+    <p class="cover-meta">資質徹底解説シリーズ 06 ／ 2026年9月版 ／ 読むのに約12分</p>
+  </div>
+</section>
+
+<div class="shell">
 
 <main>
 
-  <!-- ============================ ヒーロー ============================ -->
-  <section class="t-hero" aria-labelledby="ttl">
-    <div class="t-hero-in">
-      <span class="ico ico-venn t-hero-mark" aria-hidden="true"></span>
-      <span class="t-domain">人間関係構築力 ／ Relationship Building</span>
-      <h1 id="ttl">調和性<span class="en">HARMONY</span></h1>
-      <p class="t-catch">探しているのは、同意ではなく合意点です。</p>
-      <p class="t-lead">
-        揉めるくらいなら自分が引く。そうやって場をおさめてきた回数を、たぶん自分では数えていないと思います。
-        このページは、その動きを「気弱さ」ではなく力として置き直すために書きました。
-        Gallup公式の言葉と、あなたが自分で確かめられる場所を、両方入れてあります。
-      </p>
-      <ul class="t-tags">
-        <li>合意点を探す</li>
-        <li>場の温度を下げる</li>
-        <li>全員が乗れる道を選ぶ</li>
-      </ul>
-    </div>
-  </section>
+  <p class="ways col">
+    <span><b>3分で読むなら</b>01のあるあると、02のチェックだけ。</span>
+    <span><b>10分なら</b>04の書き込み欄まで。</span>
+    <span><a href="#series">他の5資質を見る</a></span>
+  </p>
 
-  <!-- ============================ 目次 ============================ -->
-  <nav class="t-toc" aria-labelledby="toc-h">
-    <h2 id="toc-h">このページの並び</h2>
+  <details class="toc-sp col">
+    <summary>このページの並び（5つ）</summary>
     <ol>
-      <li><a href="#s1"><span class="no">01</span>先に、誤解をほどく</a></li>
-      <li><a href="#s2"><span class="no">02</span>場の温度が、先に届く</a></li>
-      <li><a href="#s3"><span class="no">03</span>バルコニーと、地下室</a></li>
-      <li><a href="#s4"><span class="no">04</span>Gallupが渡す言葉</a></li>
-      <li><a href="#s5"><span class="no">05</span>調和性が輝く場面</a></li>
-      <li><a href="#s6"><span class="no">06</span>弱みに見えるとき</a></li>
-      <li><a href="#s7"><span class="no">07</span>隣の資質と見分ける</a></li>
-      <li><a href="#s8"><span class="no">08</span>板挟みから、架け橋へ</a></li>
-      <li><a href="#s9"><span class="no">09</span>書いて持ち帰るワーク</a></li>
-      <li><a href="#s10"><span class="no">10</span>調和性を持つあなたへ</a></li>
+      <li><a href="#s1">01 この資質の人に、起きていること</a></li>
+      <li><a href="#s2">02 日なた側と、地下室側</a></li>
+      <li><a href="#s3">03 隣の資質と、見分ける</a></li>
+      <li><a href="#s4">04 今日から、できること</a></li>
+      <li><a href="#s5">05 調和性を持つあなたへ</a></li>
     </ol>
-  </nav>
+  </details>
 
-  <!-- ============================ 01 ============================ -->
-  <section class="tsec" id="s1" aria-labelledby="h1-1">
-    <div class="tsec-head">
-      <span class="ico ico-eye tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">01</span>
-      <h2 id="h1-1">先に、誤解をほどく</h2>
-    </div>
-    <p>
-      調和性は、道の途中でだいたい3つのどれかに置き換わって伝わります。自分の意見がない人。対立から逃げる人。まわりに合わせているだけの人。
-      どれか言われたことがある人もいると思います。
-    </p>
-    <p>
-      でも、そのとき実際に何をしていたかを見てください。調和性が探しているのは「同意」ではなく「合意点」です。
-      全員が同じ意見になることではなくて、意見が違ったままでも全員が乗れる一点を見つけることです。ここが混ざると、話がまるごとズレます。
-    </p>
-    <p>
-      たとえば、旅行の行き先が海と山に割れたとします。同意を取りにいく人は、どちらかに全員を寄せます。
-      合意点を探す人は、「今回いちばん大事なのは、久しぶりに全員そろうことだよね」と、割れていない場所を先に置きます。
-      意見を捨ててはいません。意見より一段下にある、みんなが立っている床を探しています。
-    </p>
-    <p class="tsec-sub">
-      Gallupは調和性を、人間関係構築力（Relationship Building）の資質に置いています。資質図解ガイドの言い方では、逆立った羽を滑らかにするように、異なる意見を調整して、平和的な問題解決をもたらす力です。
-      静かにしている資質に見えて、実際にはずっと手を動かしています。この資質がいちばん誤解されやすいのは、たぶんそこです。動いているところが、外から見えません。
-    </p>
-  </section>
-
-  <!-- ============================ 02 ============================ -->
-  <section class="tsec" id="s2" aria-labelledby="h2-2">
-    <div class="tsec-head">
-      <span class="ico ico-talk tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">02</span>
-      <h2 id="h2-2">場の温度が、先に届く</h2>
-      <p class="tsec-sub">
-        Gallupは、才能の見つけ方に「才能の5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入すること・一瞬の卓越・深い満足の5つ。
-        下の4つが当たっているかどうかより、そのとき自分の中で何が動いたかのほうが手がかりになります。
+  <!-- ============================ ② 起きていること ============================ -->
+  <section class="sec" id="s1" aria-labelledby="h-1">
+    <div class="col">
+      <span class="sec-no">01</span>
+      <h2 id="h-1">この資質の人に、起きていること</h2>
+      <p class="sec-lead">
+        調和性は、道の途中で別の言葉に置き換わります。自分の意見がない人。対立から逃げる人。まわりに合わせているだけの人。
       </p>
+      <p>
+        でも、そのとき何をしていたかを見てください。<strong>調和性が探しているのは「同意」ではなく「合意点」です。</strong>
+      </p>
+      <p>
+        意見が違ったままでも全員が乗れる一点を見つけること。ここが混ざると話がまるごとズレます。静かな資質に見えて、実際はずっと手を動かしています。
+      </p>
+
+      <h3>心当たりがあるかどうかは、この4つで</h3>
     </div>
-    <ul class="aru">
-      <li>
-        <b>会議で声が少し尖った瞬間、話の中身より先に、部屋の温度が下がったのが分かる。</b>
-        まだ誰も怒っていないのに、体のほうが先に身構える。
-        <span>聞き取ろうとした覚えはないのに、勝手に届いてしまう。これが「惹かれるもの」の出方です。</span>
-      </li>
-      <li>
-        <b>言い争っている2人を見ながら、頭の中で勝手に翻訳が始まる。</b>
-        「この人は早く決めたいだけ、この人は雑に決めたくないだけで、たぶん同じことを言ってる」。
-        <span>眺めているだけの3分が、勝手に通訳の時間に変わっています。これが「没入」の出方です。</span>
-      </li>
-      <li>
-        <b>飲み会で、輪に入れていない人が1人いると、料理の味が半分になる。</b>
-        自分が楽しむより先に、その席が全員分あるかを見てしまう。
-        <span>気配りをしようと決めているわけではなくて、欠けている席のほうが目に入ります。これが「惹かれるもの」の出方です。</span>
-      </li>
-      <li>
-        <b>意見が割れたまま解散した日は、家に帰ってからも会議が続く。</b>
-        「あそこで、こう言えばよかった」を、風呂の中でもう一回やる。
-        <span>引きずっているというより、合意点が見つからないまま終わったのが片づいていないだけです。これが「深い満足」の裏側の出方で、あとで出てくる Need の話につながります。</span>
-      </li>
+    <ul class="aru break">
+        <li>
+          <b>会議で声が少し尖った瞬間、話の中身より先に、部屋の温度が下がったのが分かる。</b>
+          まだ誰も怒っていないのに、体が先に身構える。
+          <span>聞き取ろうとした覚えはないのに、勝手に届いてしまう。</span>
+        </li>
+        <li>
+          <b>言い争っている2人を見ながら、頭の中で勝手に翻訳が始まる。</b>
+          「この人は早く決めたいだけ、この人は雑に決めたくないだけで、たぶん同じことを言ってる」。
+          <span>眺めているだけの3分が、通訳の時間に変わっています。</span>
+        </li>
+        <li>
+          <b>飲み会で、輪に入れていない人が1人いると、料理の味が半分になる。</b>
+          自分が楽しむより先に、その席が全員分あるかを見てしまう。
+          <span>気配りと決めているのではなく、欠けている席が目に入ります。</span>
+        </li>
+        <li>
+          <b>意見が割れたまま解散した日は、家に帰ってからも会議が続く。</b>
+          「あそこで、こう言えばよかった」を、風呂の中でもう一回やる。
+          <span>合意点が見つからないまま終わったのが、片づいていないだけです。あとで出てくる Need の話につながります。</span>
+        </li>
     </ul>
-    <p class="tsec-sub">
-      「気を遣いすぎだよ」と言われたことがあるかもしれません。遣っているというより、先に届いてしまうんです。切るスイッチのある人にしか、切れという話は通じません。
-    </p>
-    <p>
-      日常のほうにも出ます。あるセッションで、洗い物を洗いカゴに整列させてしまう、という話が出たとき、おけもんは「それ、調和性が出てるんですよ」と返しています。
-      揃っていないものを揃えたくなるのは、皿でも意見でも同じ手が動いているだけかもしれません。
-    </p>
-    <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
+    <div class="col">
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（才能の5つの手がかり／Bring・Need）</summary>
+        <div class="more-body">
+          <p>
+            Gallupは才能の見つけ方に「5つの手がかり」を置いています。惹かれるもの・覚えが早いこと・没入・一瞬の卓越・深い満足。上の4つが当たっているかより、そのとき何が動いたかのほうが手がかりです。
+          </p>
+          <p>
+            そのうえで、公式には34資質ぶんの <strong>Bring／Need</strong> という一文が。調和性のぶんは、この2行です。
+          </p>
+          <div class="quote">
+            <p><strong>Bring：<span class="nw">もたらすもの</span></strong>　平和を愛し、対立に強い姿勢</p>
+            <p class="en">a peace-loving, conflict-resistant approach</p>
+            <p><strong>Need：<span class="nw">必要とするもの</span></strong>　合意点、共通の土台</p>
+            <p class="en">areas of agreement, common ground</p>
+            <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（人間関係構築力／Harmony）</p>
+          </div>
+          <p>
+            英語を見てください。conflict-avoiding ではなく <em>conflict-resistant</em>。避けるではなく、耐えられる。最後まで残れる人のことだ、とも読めます。
+          </p>
+          <p>
+            この2行は、地下室に落ちる前の目印にも、名乗るときのひと言にもなります。前提がバラバラの会議で「なんとなく疲れる」なら、Needの欄が空のまま座っていないかを見てください。公式レポートの言葉なので、盛らずにそのまま貼れます。
+          </p>
+          <p>
+            なお、Needが正反対の資質が同じ人の上位に並ぶことがあります。公式の例は、調和性の「合意点が要る」と指令性の「挑戦と対立が要る」。
+          </p>
+          <p>
+            Gallupはこれを矛盾として扱いません。両方に出口を用意する形で見ます。
+          </p>
+      </div>
+    </details>
   </section>
 
-  <!-- ============================ 03 ============================ -->
-  <section class="tsec" id="s3" aria-labelledby="h2-3">
-    <div class="tsec-head">
-      <span class="ico ico-floors tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">03</span>
-      <h2 id="h2-3">バルコニーと、地下室</h2>
-      <p class="tsec-sub">
-        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはこれをバルコニー（Balcony）とベースメント（Basement）と呼びます。
-        日なたのバルコニーと、ひんやりした地下室。季節で着るものが変わるのと同じで、入れ替わるのは資質そのものではなく、その日の出方です。
+  <!-- ============================ ③ バルコニー／地下室 ============================ -->
+  <section class="sec" id="s2" aria-labelledby="h-2">
+    <div class="col">
+      <span class="sec-no">02</span>
+      <h2 id="h-2">日なた側と、地下室側</h2>
+      <p class="sec-lead">
+        同じ資質でも、上の階から出ている時と、地下から出ている時があります。Gallupはバルコニーとベースメントと呼びます。
       </p>
+      <div class="quote">
+        <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
+        <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
+        <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
+      </div>
     </div>
 
-    <div class="quote">
-      <p>バルコニーは、そのテーマの良い出方。ベースメントは、誤用・不健全・意欲が落ちた状態での出方＝「潜在的な脆弱性」。</p>
-      <p class="en">any strength used in an unhealthy manner can sometimes be a weakness</p>
-      <p class="quote-label">出典：Gallup公式（Balcony and Basement）／当サイトの整理ノート</p>
-    </div>
+    <figure class="floors break">
+      <div class="floors-grid">
+        <div class="floors-cell floors-cell--bal">
+          <svg viewBox="0 0 260 96" role="img" aria-label="日なたのバルコニーから、力が外の合意点へ向かっている図">
+            <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="40" cy="34" r="14"/>
+              <path d="M40 10V2M40 66v8M12 34H4M76 34h8M21 15l-6-6M59 53l6 6M59 15l6-6M21 53l-6 6"/>
+              <path d="M4 88h252"/>
+              <path d="M110 34h108M196 20l22 14-22 14"/>
+            </g>
+          </svg>
+          <b>バルコニー（日なた側）</b>
+          <span>全員が立てる床へ、力が外向きに出ている。</span>
+        </div>
+        <div class="floors-cell floors-cell--bas">
+          <svg viewBox="0 0 260 96" role="img" aria-label="地下室で、同じ力が自分の側へ向き直っている図">
+            <g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 8h252"/>
+              <path d="M40 20v40M26 46l14 14 14-14"/>
+              <path d="M218 34H110M124 20l-14 14 14 14"/>
+              <path d="M96 78h68"/>
+            </g>
+          </svg>
+          <b>ベースメント（地下室側）</b>
+          <span>同じ力が、自分を黙らせる側へ向き直っている。</span>
+        </div>
+      </div>
+      <figcaption>変わるのは資質そのものではなく、その日の出方です。下のチェックは、どちらの階に足が向いていた時期かを見るためのものです。</figcaption>
+    </figure>
 
-    <p>
-      調和性が厄介なのは、日なた側と地下室側で、外から見た形がほとんど同じところです。
-      どちらでもうなずいているし、どちらでも波風は立っていません。違うのは、その場に自分の考えが置かれているかどうかだけです。
-    </p>
-    <p>
-      ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。合計を出しますが、これは点数でも診断でもありません。
-      どちらの階に足が向いていた時期か、だけを見ます。
-    </p>
 
-    <div data-bb>
+    <div class="break" data-bb>
       <div class="bb">
         <div class="bb-col bb-col--bal">
-          <h3><span class="ico ico-shine" aria-hidden="true"></span>日なた側（バルコニー）</h3>
+          <h3>日なた側（バルコニー）</h3>
           <p class="bb-note">力がプラスに働いていた時の出方です。</p>
           <ul class="bb-list">
-            <li><label><input type="checkbox" data-side="bal"><span>意見が割れた場で、両方が乗れる一点を見つけて、話を前に進めた</span></label></li>
+            <li><label><input type="checkbox" data-side="bal"><span>意見が割れた場で、両方が乗れる一点を見つけて前に進めた</span></label></li>
             <li><label><input type="checkbox" data-side="bal"><span>ピリついた空気を、質問ひとつで柔らかくできた</span></label></li>
-            <li><label><input type="checkbox" data-side="bal"><span>言いにくいことを、相手が受け取れる言い方に直して伝えた</span></label></li>
+            <li><label><input type="checkbox" data-side="bal"><span>言いにくいことを、相手が受け取れる言い方で伝えた</span></label></li>
             <li><label><input type="checkbox" data-side="bal"><span>決まったあとに、全員が同じ絵を見ているか確かめた</span></label></li>
           </ul>
         </div>
         <div class="bb-col bb-col--bas">
-          <h3><span class="ico ico-hurdle" aria-hidden="true"></span>地下室側（ベースメント）</h3>
+          <h3>地下室側（ベースメント）</h3>
           <p class="bb-note">同じ力が、自分の側に向いてしまった時の出方です。</p>
           <ul class="bb-list">
-            <li><label><input type="checkbox" data-side="bas"><span>反対の考えがあったのに、場がもめるのが嫌で、言わないまま終えた</span></label></li>
+            <li><label><input type="checkbox" data-side="bas"><span>反対の考えを、もめるのが嫌で言わずに終えた</span></label></li>
             <li><label><input type="checkbox" data-side="bas"><span>納得していない内容に、その場では「いいと思います」と言った</span></label></li>
-            <li><label><input type="checkbox" data-side="bas"><span>会議が終わったあとで、別の人に「本当はね」と話した</span></label></li>
-            <li><label><input type="checkbox" data-side="bas"><span>誰も傷つかない案を探しているうちに、誰も得しない案になった</span></label></li>
+            <li><label><input type="checkbox" data-side="bas"><span>会議のあと、別の人に「本当はね」と話した</span></label></li>
+            <li><label><input type="checkbox" data-side="bas"><span>誰も傷つかない案が、誰も得しない案になった</span></label></li>
           </ul>
         </div>
-      </div>
-
-      <div class="bb-read">
-        <div class="bb-meters" aria-hidden="true">
-          <div class="bb-meter bb-meter--bal">
-            <span class="lb">日なた側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bal"></i></span></span>
-            <span class="num" data-num="bal">0 / 4</span>
-          </div>
-          <div class="bb-meter bb-meter--bas">
-            <span class="lb">地下室側</span>
-            <span class="bb-bar"><span class="bb-rail"><i data-bar="bas"></i></span></span>
-            <span class="num" data-num="bas">0 / 4</span>
-          </div>
-        </div>
-        <p class="bb-say" data-say aria-live="polite">左と右で、印が多くついたのはどちらの列でしたか。数えたら、下の2つを読んでみてください。</p>
-        <div class="bb-advice">
-          <div>
-            <b>出口その1｜満たされていないニーズを先に見る</b>
-            <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多い、とGallupは言っています。調和性のニーズは「合意点、共通の土台」。共通の土台が敷かれていない場に長く座っていると、いちばん早く折れられる人が折れます。だいたい自分です。行動を矯正するより先に、その場に共通の土台があるかを見るほうが早いです。</p>
-          </div>
-          <div>
-            <b>出口その2｜別の資質のバルコニーを出す</b>
-            <p>Gallupの処方は「To avoid the basement of one theme, lean into another theme!」。ひとつのテーマの地下を避けるには、別の資質のバルコニーを出す。調和性を抑えにいく必要はありません。動かすのは、上位にある別の資質のほう。たとえば分析思考が上位なら、「反対です」ではなく「この数字だけ確かめさせてください」から入れます。</p>
-          </div>
+        <div class="bb-read">
+          <p class="bb-count">
+            <span>日なた側　<b data-num="bal">0 / 4</b></span>
+            <span>地下室側　<b data-num="bas">0 / 4</b></span>
+          </p>
+          <p class="bb-say" data-say aria-live="polite">まだ印がついていません。ここ1〜2週間を思い出しながら、心当たりのある行に触れてみてください。</p>
         </div>
       </div>
     </div>
+
+    <div class="col">
+      <h3>地下室から上がる、公式の出口は2つです</h3>
+    </div>
+    <ul class="exits break">
+        <li>
+          <b>満たされていないニーズを、先に見る</b>
+          <p>資質が地下に落ちるのは、その資質のニーズが満たされていない時が多いとGallupは言います。</p>
+          <p>調和性のニーズは「合意点、共通の土台」。土台が無い場に長く座ると、いちばん早く折れられる人が折れます。</p>
+        </li>
+        <li>
+          <b>別の資質のバルコニーを出す</b>
+          <p>公式の処方は「To avoid the basement of one theme, lean into another theme!」。別の資質のバルコニーを出す、です。</p>
+          <p>調和性を抑えにいく必要はありません。分析思考が上位なら、「反対です」ではなく「この数字だけ確かめさせて」から入れます。</p>
+        </li>
+    </ul>
   </section>
 
-  <!-- ============================ 04 ============================ -->
-  <section class="tsec" id="s4" aria-labelledby="h2-4">
-    <div class="tsec-head">
-      <span class="ico ico-swap tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">04</span>
-      <h2 id="h2-4">Gallupが渡す言葉</h2>
-      <p class="tsec-sub">
-        Gallup公式に、34資質ぶんの Bring／Need という一文があります。その人がチームに何を加えるか（Bring）と、力を出すために何が要るか（Need）を、公式の言い方で書いたものです。
+  <!-- ============================ ④ 見分ける ============================ -->
+  <section class="sec" id="s3" aria-labelledby="h-3">
+    <div class="col">
+      <span class="sec-no">03</span>
+      <h2 id="h-3">隣の資質と、見分ける</h2>
+      <p class="sec-lead">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
+    </div>
+
+    <div class="break cmp-wrap">
+      <table class="cmp">
+        <caption class="quote-label" style="text-align:left;padding-bottom:10px">調和性と、似ていると言われやすい4資質。</caption>
+        <thead>
+          <tr><th scope="col">資質</th><th scope="col">見ているもの</th><th scope="col">動き出す合図</th></tr>
+        </thead>
+        <tbody>
+          <tr class="is-self"><th scope="row">調和性</th><td data-lb="見ているもの">全員が立てる床</td><td data-lb="動き出す合図">「そこ、たぶん同じこと言ってる」</td></tr>
+          <tr><th scope="row">共感性</th><td data-lb="見ているもの">相手の感情</td><td data-lb="動き出す合図">「いま、しんどそう」</td></tr>
+          <tr><th scope="row">適応性</th><td data-lb="見ているもの">いま起きていること</td><td data-lb="動き出す合図">「じゃあ、こうしよう」</td></tr>
+          <tr><th scope="row">社交性</th><td data-lb="見ているもの">まだ知らない人</td><td data-lb="動き出す合図">「あの人と話してみたい」</td></tr>
+          <tr><th scope="row">指令性</th><td data-lb="見ているもの">いま向き合うべき対立</td><td data-lb="動き出す合図">「はっきりさせよう」</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col">
+      <p style="margin-top:var(--gap-block)">
+        いちばん近いのは共感性です。ただ単位が違って、一人が泣いていたら動くのが共感性、全員が黙り込んだら動くのが調和性。別の受信機です。
+      </p>
+
+      <h3>掛け合わせると、味が変わります</h3>
+    </div>
+    <ul class="mixes break">
+        <li><b>× 共感性</b><p>輪から外れかけている人に気づいて、席をそっと作れます。声をかけず、隣の椅子を空けておく形でも。</p></li>
+        <li><b>× 達成欲</b><p>「だいたい出そろいましたね、次は」。長引く議論を着地させる役になれます。</p></li>
+        <li><b>× 指令性</b><p>反対のニーズが同居する組み合わせ。対立を出す場を自分で決められます。</p></li>
+    </ul>
+    <div class="col">
+      <h3>「自分の意見がないね」と言われたときは</h3>
+      <p>左は、言われることのある言葉。右は、そのとき中で起きていること。</p>
+      <ul class="flip">
+        <li><span class="a">意見がないと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">全員が立てる床を先に探している</span></li>
+        <li><span class="a">逃げていると言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">揉めている時間を無駄だと見ている</span></li>
+        <li><span class="a">合わせるだけと言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">合わせず、合意点を探している</span></li>
+        <li><span class="a">いい顔をすると言われる</span><span class="arrow" aria-hidden="true">→</span><span class="b">外に置かれる人がいちばん気になる</span></li>
+      </ul>
+
+    </div>
+    <details class="more break">
+      <summary>Gallup公式の言葉で確かめる（弱みの定義／弱みの扱い方4つ）</summary>
+        <div class="more-body">
+          <div class="quote">
+            <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
+            <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
+            <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
+            <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
+          </div>
+          <p>
+            34位のそばにある資質は、壊れている場所ではありません。放っておくと出てこないだけです。
+          </p>
+          <p>
+            調和性の場合、邪魔になっているのは資質ではなく、置かれている場所のことがあります。あるセッションで出た気づきは、活きる環境と消耗する環境は別物だ、というところ。
+          </p>
+          <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
+          <p>
+            自分の弱みかは公式の3つで見ます。①成功を損ねたか。②ネガティブな評価を受けたか。③役割上使うが、消耗するか。
+          </p>
+          <p>
+            扱い方も4つ——<strong>Claim them</strong>（知る）／<strong>Collaborate</strong>（支えを頼む）／<strong>Apply a strength</strong>（別の資質で同じ結果へ）／<strong>Just do it</strong>（腹をくくる）。
+          </p>
+          <p>
+            「弱みに投資しても、強みには決してならない」。だから公式が置いているのは、鍛える道ではなく、扱う道のほうです。レポートにも「あるドメインに上位資質がなくても心配いりません」とあります。別の資質で同じ場所に着くだけです。
+          </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- ============================ ⑤ 今日から ============================ -->
+  <section class="sec is-work" id="s4" aria-labelledby="h-4">
+    <div class="col">
+      <span class="sec-no">04</span>
+      <h2 id="h-4">今日から、できること</h2>
+      <p class="sec-lead">
+        調和性は、育つと強くなるというより、自分をどこに置くかが変わります。
       </p>
     </div>
-
-    <div class="bn">
-      <div class="bn-item">
-        <span class="k">Bring：もたらすもの</span>
-        <p class="ja">平和を愛し、対立に強い姿勢</p>
-        <p class="en">a peace-loving, conflict-resistant approach</p>
-      </div>
-      <div class="bn-item">
-        <span class="k">Need：必要とするもの</span>
-        <p class="ja">合意点、共通の土台</p>
-        <p class="en">areas of agreement, common ground</p>
-      </div>
-    </div>
-    <p class="quote-label">出典：Gallup公式 Bring and Need Statements for All 34 Themes（人間関係構築力／Harmony）</p>
-
-    <p>
-      英語のほうを、いちど見てみてください。conflict-avoiding ではなく <em>conflict-resistant</em> と書いてあります。避けるではなく、耐えられる。
-      もめている場から最初に逃げる人ではなく、最後まで残っていられる人のことだ、と読むこともできます。01で言った誤解のうち2つは、この1語で少しほどけます。
-    </p>
-
-    <h3>この2行、置き場所が2つあります</h3>
-    <p>
-      <strong>1つめは、地下室に落ちる手前の目印。</strong>
-      「合意点、共通の土台」が無い場所に置かれると、調和性は行き場をなくします。
-      全員の前提がバラバラのまま3時間の会議が続く場所で「なんとなく疲れる」なら、疲れやすい性格なのだと片づける前に、上のNeedの欄が空のまま座っていないかを見てください。
-    </p>
-    <p>
-      <strong>2つめは、自己紹介のいちばん最初の1行として。</strong>
-      「平和を愛して、対立に強い姿勢を持ち込みます」——これはGallupのレポートに書いてある言い方なので、盛っていることになりません。
-      プロフィール欄でも、面談のはじめの30秒でも、そのまま使えます。自分の口から自分を褒めるのがどうしても無理な人は、公式に喋ってもらってください。
-    </p>
-    <p>
-      それと、ひとこと言っておくと周りが助かります。「揉めたままで終わるのが、いちばん苦手なんです」。
-      これを知らない人からすると、あなたの譲歩は「どうでもいいと思っている」に見えます。知っていると「あ、床を敷きにきてる」に変わります（笑）
-    </p>
-
-    <h3>反対のニーズが、同じ人の中に並ぶことがあります</h3>
-    <p>
-      調和性のニーズは「合意点」。指令性のニーズは「挑戦と対立」。この2つが、同じ人の上位に並ぶことがあります。
-      あるセッションでも、調和性が1位で指令性が5位、という並びが出ました。
-    </p>
-    <p>
-      Gallupの扱い方は、はっきりしています。矛盾として指摘せず、両方に出口を用意する発想で問う。
-      片方を抑えても、もう片方のニーズが飢えるだけです。たとえば、対立を出していい場と、合意点を作りにいく場を、時間で分けて別々に持つ。
-      どちらかを選ぶ話ではなく、置き場所を2つ作る話になります。
-    </p>
-    <p class="quote-label">出典：Gallup公式（Bring and Need Statements）／おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
-    <p class="tsec-sub">
-      自分のレポートを持っている人は、「あなたの調和性がユニークな理由」の欄を開いてみてください。同じ調和性1位でも、あの欄の文章は人によって違います。あなたの回答から作られた一点ものだからです。
-    </p>
-  </section>
-
-  <!-- ============================ 05 ============================ -->
-  <section class="tsec" id="s5" aria-labelledby="h2-5">
-    <div class="tsec-head">
-      <span class="ico ico-shine tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">05</span>
-      <h2 id="h2-5">調和性が輝く場面</h2>
-      <p class="tsec-sub">仕事だけの話にしません。オフ会でも、家でも、同じ形で出ます。</p>
-    </div>
-    <ul class="cards cards--2">
-      <li class="card">
-        <h3><span class="n">01</span>意見が割れて、場が止まった時</h3>
-        <p>「どっちが正しいか」の前に、「どこまでは合っているか」を置けます。この順番を変えられる人が、その場にいるかどうかで、会議の長さが変わります。</p>
-        <p class="eg">たとえば、進め方が2案に割れた会議。「納期は動かせない、そこは2人とも同じですよね」から始められる。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>新しい人が入ってきた最初の1週間</h3>
-        <p>その人が輪の外にいるのが分かるので、席を作れます。作った本人は当たり前の顔をしていますが、作られた側は、たいてい忘れません。</p>
-        <p class="eg">たとえば、オンラインの集まりで一度も発言していない人。「◯◯さんはどう思いました？」を、詰めずに渡せる。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>決まったあと、全員が同じ絵を見ているか</h3>
-        <p>会議室では全員うなずいたのに、席に戻ると解釈が3通りに割れている。その日のうちに気づけます。ここで揃えた1回が、来週の揉め事を1件消します。</p>
-        <p class="eg">たとえば、「来週までに」が人によって金曜と月曜に割れている。そこだけ確かめておく。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">04</span>気の合わない2人のあいだ</h3>
-        <p>通訳ができます。同じことを言っているのに言い方だけが違う場面を、これまでたくさん見てきているはずです。</p>
-        <p class="eg">たとえば、片方の「雑だ」と、もう片方の「遅い」。どちらも「良いものを出したい」から出ている、と見える。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============================ 06 ============================ -->
-  <section class="tsec" id="s6" aria-labelledby="h2-6">
-    <div class="tsec-head">
-      <span class="ico ico-hurdle tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">06</span>
-      <h2 id="h2-6">弱みに見えるとき</h2>
-      <p class="tsec-sub">まず、見え方のズレから。左に並べたのは、言われがちな言葉です。右のほうが実際に近いか、1行ずつ確かめてみてください。</p>
-    </div>
-
-    <ul class="flip">
-      <li><span class="a">自分の意見がないと言われる</span><span class="arrow">→</span><span class="b">意見より先に、全員が立てる床を探している</span></li>
-      <li><span class="a">対立から逃げていると言われる</span><span class="arrow">→</span><span class="b">揉めている時間そのものを、無駄だと見ている</span></li>
-      <li><span class="a">まわりに合わせているだけだと言われる</span><span class="arrow">→</span><span class="b">合わせているのではなく、合意点を探している</span></li>
-      <li><span class="a">誰にでもいい顔をすると言われる</span><span class="arrow">→</span><span class="b">誰かが外に置かれるのが、いちばん気になる</span></li>
+    <ul class="today break">
+        <li>
+          <div>
+            <b>「賛成」の前に、自分の一票を置く</b>
+            <p>「私は◯◯がいいと思っています。そのうえで、みんなが乗れるならどちらでも」。前半をつけるだけで、譲歩ではなく判断として届きます。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>割れた時に使う一文を、3つ持っておく</b>
+            <p>「重なっている部分はここですよね」「やり方は違いますが、目指すところは同じでは」「意見は出そろったので、そろそろ決めませんか」。その場で考えると出てこないので、先に3つ持っておきます。</p>
+          </div>
+        </li>
+        <li>
+          <div>
+            <b>自分の守り方を、先に言っておく</b>
+            <p>「大事な話し合いの前に、少し準備の時間をもらえると助かります」。わがままではなく、力を出すための条件を伝えるだけ。壊れてから言うより、ずっと軽く済みます。</p>
+          </div>
+        </li>
     </ul>
 
-    <h3>Gallupは、弱みをこう言っています</h3>
-    <div class="quote">
-      <p>弱みとは、あなたの成功の邪魔をするものすべて。</p>
-      <p class="en">Gallup defines a weakness as anything that gets in the way of your success.</p>
-      <p>下位の資質も邪魔をしうる。ただし、それらは必ずしも弱みではない。単に、自然には出てこないだけ。</p>
-      <p class="quote-label">出典：Gallup公式 What Is a Weakness?／当サイトの整理ノート</p>
-    </div>
-
-    <p>
-      ここは取り違えやすいところです。34位に近い資質は弱みではなくて、頼まないと出てきてくれないもの、くらいの意味です。
-      そして調和性の場合、邪魔になっているのは資質のほうではなく、置かれている場所のことがあります。
-    </p>
-    <p>
-      あるセッションで、こういう話が出ました。まわりとの調和のために一人で動き続けて、消耗している。
-      一緒にやってくれる人がいない場所で、全部を引き受けてしまっている。
-      その日いちばん大きかった気づきは、調和性が強みとして活きる環境と、消耗する環境は別物だ、というところでした。
-      資質を直す話ではなくて、どこで使うかの話です。
-    </p>
-    <p class="quote-label">出典：おけもんのセッションでの観察。個人が特定できる内容は載せていません。</p>
-
-    <h3>自分の弱みかどうかは、この3つで見ます</h3>
-    <ul class="cards">
-      <li class="card"><h3><span class="n">01</span>損ねたことがあるか</h3><p>この資質が、自分の成功を損ねたことがあったか。</p></li>
-      <li class="card"><h3><span class="n">02</span>言われたことがあるか</h3><p>この資質について、ネガティブなフィードバックを受けたことがあるか。</p></li>
-      <li class="card"><h3><span class="n">03</span>消耗するか</h3><p>役割上その資質を使う必要があるけれど、使うと消耗するか。</p></li>
-    </ul>
-
-    <h3>弱みは、鍛えるものではありません</h3>
-    <p>
-      Gallupの言い方はきっぱりしていて、「強みと弱みは対義語ではない。弱みに投資しても、強みには決してならない」。
-      だから公式が置いているのは、鍛える道ではなく、扱う道の4つです。
-    </p>
-    <ul class="cards cards--2">
-      <li class="card"><h3><span class="n">01</span>Claim them</h3><p>自分の弱みと、それがどう邪魔をするかを知る。</p></li>
-      <li class="card"><h3><span class="n">02</span>Collaborate</h3><p>パートナーに支えを頼む。</p></li>
-      <li class="card"><h3><span class="n">03</span>Apply a strength</h3><p>別の資質を使って、同じ結果に到達する。</p></li>
-      <li class="card"><h3><span class="n">04</span>Just do it</h3><p>腹をくくってやる。ベストを尽くす。</p></li>
-    </ul>
-    <p class="tsec-sub">
-      レポートの本文には、こんな一文もあります——「あるドメインに上位資質がなくても心配いりません」。
-      人間関係構築力が上位にない人が、関係を築けないという意味ではありません。別のドメインの強い資質を使って、同じ場所に着いているだけです。
-    </p>
-  </section>
-
-  <!-- ============================ 07 ============================ -->
-  <section class="tsec" id="s7" aria-labelledby="h2-7">
-    <div class="tsec-head">
-      <span class="ico ico-facets tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">07</span>
-      <h2 id="h2-7">隣の資質と見分ける</h2>
-      <p class="tsec-sub">似ていると言われる資質と並べると、見ている場所が違うのが分かります。</p>
-    </div>
-    <ul class="cmp">
-      <li class="is-self">
-        <span class="nm">調和性</span>
-        <span><span class="lb">見ているもの</span>全員が立てる床</span>
-        <span><span class="lb">動き出す合図</span>「そこ、たぶん同じこと言ってる」</span>
-      </li>
-      <li>
-        <span class="nm">指令性</span>
-        <span><span class="lb">見ているもの</span>いま向き合うべき対立</span>
-        <span><span class="lb">動き出す合図</span>「はっきりさせよう」</span>
-      </li>
-      <li>
-        <span class="nm">共感性</span>
-        <span><span class="lb">見ているもの</span>相手の感情</span>
-        <span><span class="lb">動き出す合図</span>「いま、しんどそう」</span>
-      </li>
-      <li>
-        <span class="nm">社交性</span>
-        <span><span class="lb">見ているもの</span>まだ知らない人</span>
-        <span><span class="lb">動き出す合図</span>「あの人と話してみたい」</span>
-      </li>
-      <li>
-        <span class="nm">適応性</span>
-        <span><span class="lb">見ているもの</span>いま起きていること</span>
-        <span><span class="lb">動き出す合図</span>「じゃあ、こうしよう」</span>
-      </li>
-      <li>
-        <span class="nm">公平性</span>
-        <span><span class="lb">見ているもの</span>人によって変わる差</span>
-        <span><span class="lb">動き出す合図</span>「それ、みんな同じ？」</span>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      いちばん近いのは共感性です。ただ、見ている単位が違います。一人が泣いていたら動くのが共感性で、全員が黙り込んだら動くのが調和性。
-      感情を受け取るのと、場を受け取るのは、別の受信機です。
-    </p>
-
-    <h3>掛け合わせると、味が変わります</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3>調和性 × 共感性</h3>
-        <p>誰かが輪から外れかけているのに気づいて、その人の席をそっと作れます。声をかけずに、隣の椅子を1つ空けておく、みたいなこともできます。</p>
-      </li>
-      <li class="card">
-        <h3>調和性 × 達成欲</h3>
-        <p>議論が長引くとそわそわするのは、早く前に進めたいからです。「だいたい出そろいましたね、次は何をしましょうか」で会議を着地させる役になれます。</p>
-      </li>
-      <li class="card">
-        <h3>調和性 × 指令性</h3>
-        <p>04で書いた、反対のニーズが同居する組み合わせです。対立を出していい場を自分で決められるので、必要な時だけ火をつけて、そのあと消して回れます。</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============================ 08 ============================ -->
-  <section class="tsec" id="s8" aria-labelledby="h2-8">
-    <div class="tsec-head">
-      <span class="ico ico-sprout tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">08</span>
-      <h2 id="h2-8">板挟みから、架け橋へ</h2>
-      <p class="tsec-sub">調和性は、育つと使い方が変わります。強くなるというより、自分をどこに置くかが変わります。</p>
-    </div>
-    <ul class="steps">
-      <li>
-        <span class="st">STEP 1</span>
-        <b>「いい人」で止まる時期</b>
-        <p>自分の考えを置かないまま、場をおさめる時期です。その場は静かになりますが、決まったことの中に自分が入っていないので、あとから「本当はね」が出ます。飲み込んだぶんだけ、家に持ち帰ることになります。</p>
-      </li>
-      <li class="is-goal">
-        <span class="st">STEP 2</span>
-        <b>橋がかかる時期</b>
-        <p>自分の考えを場に置いたうえで、全員が乗れる一点を作る時期です。順番が変わるだけで、通る意見の数が増えます。同じ穏やかさなのに、頼られ方が変わります。</p>
-      </li>
-    </ul>
-
-    <h3>今日からできる3つ</h3>
-    <ul class="cards">
-      <li class="card">
-        <h3><span class="n">01</span>「賛成」の前に、自分の一票を置く</h3>
-        <p>「私は◯◯がいいと思っています。そのうえで、みんなが乗れるならどちらでも」。前半をつけるだけで、うなずきの意味が変わります。言っている結論は同じでも、譲歩ではなく判断として受け取られます。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">02</span>割れた時に使う一文を、3つ持っておく</h3>
-        <p>「お二人が言っていること、重なっている部分はここですよね」「やり方は違いますが、目指しているところは同じではないでしょうか」「意見は出そろったと思うので、そろそろ決めませんか」。その場で考えると出ないので、先に3つ持っておきます。</p>
-      </li>
-      <li class="card">
-        <h3><span class="n">03</span>自分の守り方を、先に言っておく</h3>
-        <p>「大事な話し合いの前に、少し準備の時間をもらえると助かります」。わがままではなく、力を出すための条件を伝えるだけです。壊れてから言うより、先に言うほうがずっと軽く済みます。</p>
-      </li>
-    </ul>
-    <p class="tsec-sub">
-      それと、休んでください。調和性は場の温度をずっと受信しているので、受信を切る時間が要ります。
-      誰の機嫌も気にしなくていい場所に、1日15分でいいので座ってください。ラジオをつけっぱなしにしていたら、電池は減ります。
-    </p>
-  </section>
-
-  <!-- ============================ 09 ============================ -->
-  <section class="tsec is-work" id="s9" aria-labelledby="h2-9">
-    <div class="tsec-head">
-      <span class="ico ico-pen tsec-ico" aria-hidden="true"></span>
-      <span class="tsec-no">09</span>
-      <h2 id="h2-9">書いて持ち帰るワーク</h2>
-      <p class="tsec-sub">
-        Gallup公式の3段階です。読んで分かった状態のことを、公式は「Name it で止まっている」と呼んで、はっきり失敗として名前をつけています。
-        3つの問いは公式の日本語版の言い回しそのままなので、そのまま自分に聞いてください。
+    <div class="break work" data-work="chouwa">
+      <h3 class="work-h">書いて持ち帰る（理解する！／受容する！／活用する！）</h3>
+      <p class="work-note">
+        Gallup公式の3段階です。読んで分かった状態を、公式は「Name it で止まっている」と呼んで失敗として名指しします。当てはまらない行は空けたままで大丈夫です。
       </p>
-    </div>
-
-    <div class="work" data-work="chouwa">
-      <div class="work-head">
-        <h3>理解する！／受容する！／活用する！</h3>
-        <p>これは、あなたを決める紙ではありません。当てはまらない行は、空けたままで大丈夫です。</p>
-      </div>
-      <div class="work-body">
+      <div class="work-steps">
         <div class="work-step">
           <span class="badge">理解する！（NAME IT!）</span>
           <p class="q">この資質の説明の中で、強く共感できる説明は何ですか？</p>
-          <p class="hint">このページの中から、1行そのまま抜いてきてください。全部に共感しなくて大丈夫です。</p>
+          <p class="hint">このページから1行、そのまま抜いてきてください。</p>
           <textarea id="w1" aria-label="理解する！の答え" rows="3" placeholder="例：割れたまま解散した日は、家に帰ってからも会議が続く、のところ"></textarea>
         </div>
         <div class="work-step">
           <span class="badge">受容する！（CLAIM IT!）</span>
           <p class="q">この資質が、過去、あなたの成功に役立ったのはいつですか？</p>
-          <p class="hint">公式の定義は「行動に表れた自分の才能を認識し、感謝する」です。思い出すだけでは半分で、ありがたく思うところまで来ると、次に進めます。</p>
+          <p class="hint">公式の定義は「行動に表れた自分の才能を認識し、感謝する」。思い出すだけでは半分です。</p>
           <textarea id="w2" aria-label="受容する！の答え" rows="3" placeholder="例：こじれた打ち合わせで、両方が乗れる一点を見つけて前に進めたとき"></textarea>
         </div>
         <div class="work-step">
           <span class="badge">活用する！（AIM IT!）</span>
           <p class="q">これからもっと意図的にこの資質を利用できる方法を2つ挙げてください。</p>
-          <p class="hint">Gallupはこの手前に「どこへ行きたいか。あなたにとっての卓越とは何か」を置いています。行き先が決まっていると、2つが具体的になります。</p>
-          <textarea id="w3" aria-label="活用する！の答え" rows="4" placeholder="1つめ：&#10;2つめ："></textarea>
+          <p class="hint">公式はこの手前に「どこへ行きたいか。あなたにとっての卓越とは何か」を置いています。</p>
+          <textarea id="w3" aria-label="活用する！の答え" rows="3" placeholder="1つめ：&#10;2つめ："></textarea>
         </div>
         <div class="work-step">
           <span class="badge">これから育てるもの</span>
           <p class="q">上の3つを見て、これから育てると決めたことを1つだけ書いてください。</p>
           <p class="hint">1つで足ります。3つ書くと、たいてい1つも残りません（笑）</p>
-          <textarea id="w4" aria-label="これから育てるもの" rows="2" placeholder="例：賛成する前に、自分の一票を先に置く"></textarea>
+          <textarea id="w4" aria-label="これから育てるもの" rows="3" placeholder="例：賛成する前に、自分の一票を先に置く"></textarea>
         </div>
       </div>
       <div class="work-tools">
-        <button class="btn" type="button" data-print><span class="ico ico-pen" aria-hidden="true"></span>印刷して持ち帰る</button>
-        <button class="btn" type="button" data-clear>書いたものを消す</button>
+        <button class="btn" type="button" data-print>印刷して持ち帰る</button>
+        <button class="btn btn--ghost" type="button" data-clear>書いたものを消す</button>
         <span class="work-save" data-save-note>書いた内容は、この端末のブラウザにだけ残ります</span>
       </div>
     </div>
 
-    <h3>オフ会で回すなら、この順番で</h3>
-    <ul class="run">
-      <li><span class="t">2分</span><span><b>ペアを作る</b>初対面でも大丈夫です。調和性が上位ではない人と組むと、見え方の差が出ておもしろくなります。</span></li>
-      <li><span class="t">3分×2</span><span><b>02の「あるある」を見ながら話す</b>4つのうち、どれがいちばん自分に近かったかを話します。当たっていない行があるのも、大事な情報です。</span></li>
-      <li><span class="t">3分×2</span><span><b>受容する！を声に出す</b>過去に役立った場面を、相手に1つ話します。声に出すと、書いた時よりも自分で受け取れます。</span></li>
-      <li><span class="t">5分</span><span><b>「言わずに飲み込んだこと」を出し合う</b>最近そのままにした一言を、1つずつ出します。言ってみると、だいたい相手も似たものを飲み込んでいます。</span></li>
-    </ul>
-    <p class="tsec-sub">
-      進行役の人へ。相手がどう働くかを教える会にしないでください。誘導する問いも要りません。Gallupがはっきり書いています——才能のテーマは、人に貼りつけるラベルではない。
-    </p>
-  </section>
-
-  <!-- ============================ 10 ============================ -->
-  <section class="closing" id="s10" aria-labelledby="h2-10">
-    <div class="closing-in">
-    <span class="ico ico-mail closing-ico" aria-hidden="true"></span>
-    <h2 id="h2-10">調和性を持つあなたへ</h2>
-    <p>
-      あなたが消した揉め事は、記録に残りません。起きなかった対立には名前がつかないし、静かに終わった会議は「もともと揉める話じゃなかった」ような顔をして片づいていきます。
-    </p>
-    <p>
-      それでも、あの日あの場が荒れなかったのは、誰かが先に床を敷いたからです。
-      敷いた人がいなければ、みんなは違う高さのまま話し続けていました。
-    </p>
-    <p>
-      帰り道に1行だけ持って帰るとしたら、ここです。
-      <strong>合意点を探すことと、自分の意見を消すことは、別のことです。</strong>
-      前は力で、後ろは疲れている日のくせです。見分け方は03に置いてあるので、しんどくなった日にまた開いてください。
-    </p>
-    <p>
-      この解説を作っているおけもんも、調和性が1位です。セッションで「僕も調和性1位で、向き合い方は悩んだ」と話しています。
-      同じところで一回つまずいた人が書いた、と思って読んでもらえたら嬉しいです。
-    </p>
-    <p>
-      あなたが見つけた「全員が乗れる一点」を、明日もどうぞ。
-    </p>
-    <p class="sign">資質徹底解説シリーズ ／ 06 調和性（Harmony）・2026年9月版</p>
+    <div class="col">
     </div>
   </section>
 
-  <!-- ============================ 出典 ============================ -->
-  <nav class="t-series-nav" aria-label="シリーズの他の資質">
-    <p class="t-series-h">資質徹底解説シリーズ（全6本）</p>
-    <ul class="t-series-list">
+  <!-- ============================ 締め ============================ -->
+  <section class="closing" id="s5" aria-labelledby="h-5">
+    <div class="col">
+      <h2 id="h-5">調和性を持つ、あなたへ</h2>
+      <p>
+        あなたが消した揉め事は、記録に残りません。起きなかった対立には名前がつかないし、静かに終わった会議は「もともと揉める話じゃなかった」顔で片づいていきます。
+      </p>
+      <p>
+        それでも荒れなかったのは、誰かが先に床を敷いたからです。帰り道に1つだけ持って帰るなら、これを。<strong>合意点を探すことと、自分の意見を消すことは、別のことです。</strong>
+      </p>
+      <p>
+        この解説を作っているおけもんも、調和性が1位です。セッションで「僕も調和性1位で、向き合い方は悩んだ」と話しています。あなたが見つけた「全員が乗れる一点」を、明日もどうぞ。
+      </p>
+      <p class="quote-label">出典：おけもんのセッションでの発言。個人が特定できる内容は載せていません。</p>
+      <p class="sign">資質徹底解説シリーズ ／ 06 調和性（Harmony）・2026年9月版</p>
+    </div>
+  </section>
+
+  <nav class="series col" id="series" aria-label="シリーズの他の資質">
+    <p class="series-h">資質徹底解説シリーズ（全6本）</p>
+    <ul>
       <li><a href="trait-kaifuku.html"><span class="no">01</span>回復志向</a></li>
       <li><a href="trait-kouheisei.html"><span class="no">02</span>公平性</a></li>
       <li><a href="trait-shinchou.html"><span class="no">03</span>慎重さ</a></li>
@@ -577,13 +408,9 @@
       <li><a href="trait-kobetsuka.html"><span class="no">05</span>個別化</a></li>
       <li><span class="is-current"><span class="no">06</span>調和性</span></li>
     </ul>
-    <div class="t-series-move">
-      <a href="trait-kobetsuka.html"><span class="ico ico-back" aria-hidden="true"></span>前：05 個別化</a>
-      <a href="trait-kaifuku.html">次：01 回復志向<span class="ico ico-fwd" aria-hidden="true"></span></a>
-    </div>
   </nav>
 
-  <section class="src" aria-labelledby="src-h">
+  <section class="src col" aria-labelledby="src-h">
     <h2 id="src-h">このページが使っている一次情報</h2>
     <ul>
       <li>Gallup公式 <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">34 CliftonStrengths Themes</a>（調和性＝Harmony／人間関係構築力）</li>
@@ -592,26 +419,38 @@
       <li>Gallup公式 日本語版ワークシート「理解する！／受容する！／活用する！」（Name it / Claim it / Aim it）</li>
     </ul>
     <p>
-      このほかに、当サイトで使っている「資質図解ガイド」（34資質の要約メモ）を参照しています。これはGallup公式の資料ではなく、当方の整理です。本文でそこから引いた箇所は「資質図解ガイドの言い方では」と書き分けています。
-    </p>
-    <p>
-      本文中の日本語訳は、上記を当方で訳したものです。英語の原文を併記した箇所は、Gallupの表記そのままです。
+      このほか、当サイトの「資質図解ガイド」（34資質の要約メモ）を参照しています。これは公式資料ではなく当方の整理で、そこから引いた箇所は本文で書き分けています。日本語訳は当方のもの、英語を併記した箇所はGallupの表記そのままです。
     </p>
   </section>
 
 </main>
 
+<nav class="toc" aria-label="このページの並び">
+  <p class="toc-h">Contents</p>
+  <ol>
+    <li><a href="#s1"><span class="no">01</span>起きていること</a></li>
+    <li><a href="#s2"><span class="no">02</span>日なたと地下室</a></li>
+    <li><a href="#s3"><span class="no">03</span>隣と見分ける</a></li>
+    <li><a href="#s4"><span class="no">04</span>今日から</a></li>
+    <li><a href="#s5"><span class="no">05</span>あなたへ</a></li>
+  </ol>
+</nav>
+
+</div>
+
 <footer class="site-footer">
-  <p>
-    本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。
-  </p>
-  <p>
-    公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
-    <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
-    商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
-  </p>
+  <div class="col">
+    <p>
+      本ページは、おけもん式の自己理解・強み活用ガイドです。Gallup、CliftonStrengths、StrengthsFinderの公式文言を転載するものではなく、Gallup社による承認・提携・推薦を示すものではありません。
+    </p>
+    <p>
+      公式情報は <a href="https://www.gallup.com/cliftonstrengths/en/253715/34-cliftonstrengths-themes.aspx" target="_blank" rel="noopener noreferrer">Gallup 34 Themes</a>、
+      <a href="https://www.gallup.com/cliftonstrengths/en/253790/science-of-cliftonstrengths.aspx" target="_blank" rel="noopener noreferrer">Science of CliftonStrengths</a>、
+      商標・利用条件は <a href="https://loginq.gallup.com/Home/ProductTerms?clientId=Gallup.IdentityServer" target="_blank" rel="noopener noreferrer">Gallup Product Terms</a> を確認してください。
+    </p>
+  </div>
 </footer>
 
-<script src="trait.js"></script>
+<script src="trait2.js"></script>
 </body>
 </html>
