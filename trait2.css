@@ -42,7 +42,7 @@
   --col: 38em;      /* 本文の柱＝18px×38＝684px（正本の日本語38〜44em内） */
   --break: 1080px;  /* 幅を破るものの上限 */
   --gut: 24px;
-  --toc: 232px;
+  --toc: 196px;
 
   /* ---- 余白の3階層。この3つ以外の縦マージンを新しく作らない ---- */
   --gap-chapter: 100px;
@@ -91,6 +91,10 @@ body {
   width: min(var(--break), 100% - var(--gut) * 2);
   margin-inline: auto;
 }
+/* 狭い画面に「幅を破る」は無い。柱と同じ左右24pxへ戻す（375で x≥24 を実測） */
+@media (max-width: 720px) {
+  .break { width: calc(100% - var(--gut) * 2); }
+}
 
 /* ---------- ヘッダー ----------------------------------------------------- */
 .tbar {
@@ -125,7 +129,7 @@ body {
 .cover {
   background: var(--domain);
   color: #fff;
-  padding: 84px 0 76px;
+  padding: 60px 0 54px;
 }
 .cover-domain {
   font-family: Inter, system-ui, sans-serif;
@@ -139,7 +143,7 @@ body {
 .cover h1 {
   font-family: "Noto Serif JP", serif;
   font-weight: 600;
-  font-size: 60px;
+  font-size: 52px;
   line-height: 1.25;
   letter-spacing: 0.02em;
   margin: 0;
@@ -155,8 +159,8 @@ body {
 }
 /* 一言メタファー。表紙で最も大事な1行なので、罫を1本だけ引いて持ち上げる */
 .cover-line {
-  margin: 30px 0 0;
-  padding-top: 26px;
+  margin: 24px 0 0;
+  padding-top: 22px;
   border-top: 1px solid rgba(255, 255, 255, 0.34);
   font-family: "Noto Serif JP", serif;
   font-size: 25px;
@@ -166,17 +170,44 @@ body {
 }
 .cover-lead {
   margin: 22px 0 0;
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.9;
   opacity: 0.9;
 }
 .cover-meta {
-  margin: 26px 0 0;
+  margin: 20px 0 0;
   font-family: Inter, system-ui, sans-serif;
   font-size: 12.5px;
   letter-spacing: 0.06em;
   opacity: 0.72;
 }
+
+/* 🟡7 表紙直下の出口。読み方と、シリーズの他の資質への1行 */
+.ways {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 32px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-soft);
+}
+.ways b { color: var(--ink); font-weight: 600; }
+.ways a { color: var(--domain-ink); }
+
+/* 🟡9 ③の概念図。線画1枚だけ */
+.floors { margin: var(--gap-block) 0 0; }
+.floors-grid { display: grid; gap: 20px 0; border: 1px solid var(--rule); }
+@media (min-width: 700px) { .floors-grid { grid-template-columns: 1fr 1fr; gap: 0; } }
+.floors-cell { padding: 22px 26px 24px; }
+@media (min-width: 700px) { .floors-cell--bal { border-right: 1px solid var(--rule); } }
+@media (max-width: 699px) { .floors-cell--bal { border-bottom: 1px solid var(--rule); } }
+.floors-cell--bal { color: var(--domain); }
+
+.floors svg { display: block; width: 100%; max-width: 260px; height: auto; margin-bottom: 12px; }
+.floors b { display: block; font-family: "Noto Serif JP", serif; font-size: 19px; color: var(--ink); margin-bottom: 2px; }
+.floors-cell--bal b { color: var(--domain); }
+.floors span { display: block; color: var(--ink-soft); }
+.floors figcaption { margin: 12px 0 0; font-size: 13.5px; color: var(--ink-soft); }
 
 /* ---------- 本文の骨（右sticky目次と本文の2列） -------------------------- */
 .shell {
@@ -189,8 +220,8 @@ body {
      右だけ350px空く（第1骨の実測がまさにこれだった） */
   .shell {
     grid-template-columns: var(--toc) minmax(0, 1fr) var(--toc);
-    gap: 0 40px;
-    max-width: calc(var(--break) + (var(--toc) + 40px) * 2);
+    gap: 0 32px;
+    max-width: calc(var(--break) + (var(--toc) + 32px) * 2);
     margin-inline: auto;
     padding-inline: var(--gut);
   }
@@ -243,7 +274,7 @@ body {
 .toc a.is-here { color: var(--domain); border-left-color: var(--domain); font-weight: 600; }
 
 /* 小さい画面用。畳んで置く */
-.toc-sp { display: block; margin: 32px 0 0; }
+.toc-sp { display: block; margin-block: 32px 0; }
 @media (min-width: 1100px) { .toc-sp { display: none; } }
 .toc-sp summary {
   cursor: pointer;
@@ -281,7 +312,6 @@ body {
 .sec-lead {
   margin: 0 0 var(--gap-block);
   color: var(--ink-soft);
-  font-size: 16.5px;
 }
 .sec h3 {
   font-family: "Noto Serif JP", serif;
@@ -291,6 +321,10 @@ body {
   line-height: 1.6;
   margin: var(--gap-block) 0 var(--gap-para);
 }
+/* 本取説v2（初見検収2周を通った版）と同じ。段落は balance で行を均す。
+   doc-check の「折り返し孤児」は18px以上の段落を全部見るので、
+   1本ずつ文章を足し引きするのではなく、組版側で受ける */
+p, h1, h2, h3, blockquote { text-wrap: balance; }
 .sec p { margin: 0 0 var(--gap-para); }
 .sec p:last-child { margin-bottom: 0; }
 strong { font-weight: 600; }
@@ -304,11 +338,12 @@ strong { font-weight: 600; }
 /* 引用は原文を1字も変えない。だから最終行が1〜2文字だけ残る時は、
    文をいじらず balance で行を均す */
 .quote p { margin: 0 0 8px; text-wrap: balance; }
+.nw { white-space: nowrap; }
 .quote p:last-child { margin-bottom: 0; }
 .quote .en {
   font-family: Inter, system-ui, sans-serif;
-  font-size: 14.5px;
-  line-height: 1.7;
+  font-size: 18px;
+  line-height: 1.8;
   color: var(--ink-soft);
 }
 .quote-label {
@@ -328,7 +363,6 @@ strong { font-weight: 600; }
   cursor: pointer;
   list-style: none;
   padding: 14px 0;
-  font-size: 15px;
   font-weight: 500;
   color: var(--ink-soft);
   display: flex;
@@ -351,7 +385,7 @@ strong { font-weight: 600; }
 .more-body { padding: 0 0 24px; }
 .more-body p { text-wrap: balance; }
 @media (min-width: 1000px) {
-  .more-body { columns: 2; column-gap: 44px; }
+  .more-body { columns: 3; column-gap: 36px; }
   .more-body > * { break-inside: avoid; }
 }
 .more-body > :first-child { margin-top: 0; }
@@ -361,8 +395,8 @@ strong { font-weight: 600; }
 .aru { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px 36px; }
 @media (min-width: 760px) { .aru { grid-template-columns: 1fr 1fr; } }
 .aru li { padding-top: 18px; border-top: 1px solid var(--rule); }
-.aru b { display: block; font-size: 17px; line-height: 1.7; font-weight: 600; margin-bottom: 4px; }
-.aru span { display: block; margin-top: 6px; font-size: 15px; color: var(--ink-soft); }
+.aru b { display: block; line-height: 1.8; font-weight: 600; margin-bottom: 4px; }
+.aru span { display: block; margin-top: 6px; color: var(--ink-soft); }
 
 /* ---------- バルコニー／地下室（③・幅を破る1つめ）----------------------- */
 .bb {
@@ -388,7 +422,7 @@ strong { font-weight: 600; }
   line-height: 1.6;
 }
 .bb-col--bal h3 { color: var(--domain); }
-.bb-note { text-wrap: balance; margin: 0 0 18px; font-size: 13.5px; color: var(--ink-soft); }
+.bb-note { text-wrap: balance; margin: 0 0 18px; color: var(--ink-soft); }
 .bb-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
 .bb-list label {
   display: grid;
@@ -396,8 +430,7 @@ strong { font-weight: 600; }
   gap: 12px;
   align-items: start;
   cursor: pointer;
-  font-size: 15.5px;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 .bb-list input {
   appearance: none;
@@ -433,28 +466,27 @@ strong { font-weight: 600; }
   color: var(--ink-soft);
 }
 .bb-count b { font-weight: 600; color: var(--ink); }
-.bb-say { margin: 0; font-size: 16px; }
+.bb-say { margin: 0; }
 
 /* 出口2つ。塗らずに、番号と左罫で並べる */
 .exits { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 22px; }
 @media (min-width: 760px) { .exits { grid-template-columns: 1fr 1fr; gap: 32px; } }
 .exits li { padding-left: 18px; border-left: 2px solid var(--domain-rule); }
-.exits b { display: block; font-size: 17px; margin-bottom: 6px; }
-.exits p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+.exits b { display: block; font-weight: 600; margin-bottom: 6px; }
+.exits p { margin: 0; color: var(--ink-soft); }
 
 /* ---------- 見分ける表（④・幅を破る2つめ）------------------------------- */
 .cmp-wrap { margin: var(--gap-block) 0 0; }
 .cmp {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
 }
 .cmp th, .cmp td {
   text-align: left;
   padding: 16px 18px;
   border-bottom: 1px solid var(--rule);
   vertical-align: top;
-  line-height: 1.75;
+  line-height: 1.8;
 }
 .cmp thead th {
   font-family: Inter, system-ui, sans-serif;
@@ -469,16 +501,33 @@ strong { font-weight: 600; }
 .cmp tbody th {
   font-family: "Noto Serif JP", serif;
   font-weight: 600;
-  font-size: 17px;
+  font-size: 18px;
   white-space: nowrap;
 }
 /* 自分の資質の行だけ、罫を太くする。塗らない */
 .cmp .is-self th { color: var(--domain); }
 .cmp .is-self th, .cmp .is-self td { border-bottom-color: var(--domain-rule); box-shadow: inset 0 2px 0 -1px var(--domain-rule); }
 
+/* 広い画面では、5行を横に並ぶ帯にする。縦に5段積むとそれだけで1画面になる */
+@media (min-width: 760px) {
+  .cmp, .cmp tbody { display: block; }
+  .cmp caption { display: block; width: 100%; text-align: left; }
+  .cmp thead { display: none; }
+  .cmp tbody { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 0 28px; }
+  .cmp tr { display: block; padding: 16px 0 18px; border-top: 1px solid var(--rule); border-bottom: 0; }
+  .cmp th, .cmp td { display: block; padding: 0; border-bottom: 0; white-space: normal; }
+  .cmp tbody th { margin-bottom: 4px; }
+  .cmp td { color: var(--ink-soft); }
+  .cmp td::before { content: attr(data-lb) "："; }
+  .cmp .is-self { border-top: 2px solid var(--domain-rule); }
+  .cmp .is-self th, .cmp .is-self td { box-shadow: none; }
+}
+
 /* 狭い画面。横に流さず、1資質＝1ブロックへ積み替える */
 @media (max-width: 700px) {
   .cmp, .cmp thead, .cmp tbody, .cmp tr, .cmp th, .cmp td { display: block; }
+  /* display:block のテーブルに置き去りにされた caption は幅を失って縦書きになる */
+  .cmp caption { display: block; width: 100%; text-align: left; }
   .cmp thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .cmp tr { padding: 16px 0; border-bottom: 1px solid var(--rule); }
   .cmp .is-self { box-shadow: inset 2px 0 0 var(--domain-rule); padding-left: 14px; }
@@ -501,7 +550,6 @@ strong { font-weight: 600; }
   align-items: center;
   padding: 12px 0;
   border-bottom: 1px solid var(--rule);
-  font-size: 16px;
 }
 @media (max-width: 640px) { .flip li { grid-template-columns: 1fr; gap: 4px; } }
 .flip .a { color: var(--ink-soft); }
@@ -512,8 +560,8 @@ strong { font-weight: 600; }
 .mixes { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px; }
 @media (min-width: 760px) { .mixes { grid-template-columns: repeat(3, 1fr); gap: 28px; } }
 .mixes li { padding-top: 18px; border-top: 2px solid var(--domain-rule); }
-.mixes b { display: block; font-family: "Noto Serif JP", serif; font-size: 17px; margin-bottom: 6px; }
-.mixes p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+.mixes b { display: block; font-family: "Noto Serif JP", serif; font-size: 18px; margin-bottom: 6px; }
+.mixes p { margin: 0; color: var(--ink-soft); }
 
 /* ---------- 今日から（⑤）------------------------------------------------ */
 .today { list-style: none; margin: var(--gap-block) 0 0; padding: 0; display: grid; gap: 24px 32px; counter-reset: t; }
@@ -535,8 +583,8 @@ strong { font-weight: 600; }
   font-variant-numeric: tabular-nums;
   line-height: 1.9;
 }
-.today b { display: block; font-size: 17px; line-height: 1.7; margin-bottom: 4px; }
-.today p { margin: 0; font-size: 15.5px; color: var(--ink-soft); }
+.today b { display: block; font-weight: 600; line-height: 1.8; margin-bottom: 4px; }
+.today p { margin: 0; color: var(--ink-soft); }
 
 /* 書き込み欄。塗り③ */
 .work {
@@ -546,7 +594,7 @@ strong { font-weight: 600; }
   padding: 30px 28px 28px;
 }
 .work-h { margin: 0 0 4px; font-family: "Noto Serif JP", serif; font-size: 21px; text-wrap: balance; }
-.work-note { margin: 0 0 24px; font-size: 14px; color: var(--ink-soft); }
+.work-note { margin: 0 0 24px; color: var(--ink-soft); }
 .work-steps { display: grid; gap: 22px; }
 @media (min-width: 860px) { .work-steps { grid-template-columns: 1fr 1fr; } }
 .work-step .badge {
@@ -557,8 +605,8 @@ strong { font-weight: 600; }
   color: var(--domain-ink);
   margin-bottom: 4px;
 }
-.work-step .q { text-wrap: balance; margin: 0 0 4px; font-size: 16px; font-weight: 600; line-height: 1.7; }
-.work-step .hint { text-wrap: balance; margin: 0 0 10px; font-size: 13.5px; line-height: 1.8; color: var(--ink-soft); }
+.work-step .q { text-wrap: balance; margin: 0 0 4px; font-weight: 600; line-height: 1.8; }
+.work-step .hint { text-wrap: balance; margin: 0 0 10px; line-height: 1.8; color: var(--ink-soft); }
 .work-step textarea {
   width: 100%;
   padding: 12px 14px;
@@ -566,14 +614,12 @@ strong { font-weight: 600; }
   background: var(--paper);
   color: var(--ink);
   font: inherit;
-  font-size: 15.5px;
   line-height: 1.8;
   resize: vertical;
 }
 .work-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 24px; }
 .btn {
   font: inherit;
-  font-size: 15px;
   padding: 10px 20px;
   border: 1px solid var(--domain);
   background: var(--domain);
@@ -623,7 +669,7 @@ strong { font-weight: 600; }
 .src { padding-top: var(--gap-block); }
 .src h2 { font-family: "Noto Serif JP", serif; font-size: 20px; text-wrap: balance; margin: 0 0 var(--gap-para); }
 .src ul { margin: 0 0 var(--gap-para); padding-left: 1.2em; }
-.src li, .src p { font-size: 14px; line-height: 1.85; color: var(--ink-soft); }
+.src li, .src p { line-height: 1.85; color: var(--ink-soft); }
 .src a, .site-footer a { color: var(--domain); }
 
 .site-footer {
@@ -632,6 +678,11 @@ strong { font-weight: 600; }
   padding: 32px 0 60px;
 }
 .site-footer p { margin: 0 0 10px; font-size: 12.5px; line-height: 1.85; color: var(--ink-soft); }
+
+/* .aru / .exits / .today / .work などは margin ショートハンドを持っている。
+   ショートハンドは margin-inline:auto を 0 に戻すので、幅を破る器の中央寄せは
+   ここで1回だけ確定させる（375pxで .break が左端に貼りついていた実測の直し） */
+.break { margin-inline: auto; }
 
 /* ---------- 印刷 --------------------------------------------------------- */
 /* 「印刷して持ち帰る」は⑤の書き込み欄だけを刷る。全画面刷ると紙が増える */
@@ -654,11 +705,10 @@ strong { font-weight: 600; }
 
 /* ---------- 小さい画面 --------------------------------------------------- */
 @media (max-width: 640px) {
-  body { font-size: 17px; }
   .cover { padding: 52px 0 48px; }
   .cover h1 { font-size: 38px; }
   .cover-line { font-size: 20px; }
-  .sec h2 { font-size: 30px; }        /* 本文17pxの1.76倍 */
+  .sec h2 { font-size: 36px; }        /* 本文18pxの2.0倍 */
   .closing h2 { font-size: 25px; }
   .bb-col, .bb-read { padding: 22px 18px; }
   .work { padding: 24px 18px; }
