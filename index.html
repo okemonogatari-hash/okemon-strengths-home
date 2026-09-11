@@ -22,7 +22,7 @@
     .trait-grid { counter-reset: trait; }
     .trait-card { counter-increment: trait; }
     .trait-card h4::before {
-      content: "0" counter(trait);
+      content: counter(trait, decimal-leading-zero);
       margin-right: 10px;
       font-family: "Inter", sans-serif;
       font-size: 12.5px;
@@ -900,6 +900,26 @@
         <a class="room-card trait-card" href="trait-arrange.html">
           <h4>アレンジ</h4>
           <p>動かせるパーツが多いほど、頭が冴えてくる。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-bunseki.html">
+          <h4>分析思考</h4>
+          <p>理由が分かるまで、体がうなずいてくれない。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-positive.html">
+          <h4>ポジティブ</h4>
+          <p>いる場所の温度が、気づいた時にはもう上がっている。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-naisei.html">
+          <h4>内省</h4>
+          <p>黙っている数十秒のあいだに、いちばん遠くまで行っている。</p>
+          <span class="room-go">ひらく →</span>
+        </a>
+        <a class="room-card trait-card" href="trait-tekiousei.html">
+          <h4>適応性</h4>
+          <p>予定が崩れた瞬間に、体がいちばん軽くなる。</p>
           <span class="room-go">ひらく →</span>
         </a>
       </div>
