@@ -30,6 +30,21 @@
       letter-spacing: 0.08em;
       color: var(--accent-ink);
     }
+
+    /* おけもん経由の割引は、基本オフ会など直接会った人に限る（2026-09-17 本人指示）。
+       スマホ幅で見出しが「2割／引」と語の途中で折れていたので、語のまとまりを保つ */
+    .discount-keep { white-space: nowrap; }
+    .discount-note {
+      margin: -8px 0 24px;
+      padding: 10px 14px;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 4px;
+      font-size: 13.5px;
+      line-height: 1.8;
+      color: var(--ink-soft);
+    }
+    .discount-note strong { color: var(--ink); }
   </style>
 </head>
 <body>
@@ -586,13 +601,14 @@
         <div class="discount-box">
           <div class="discount-content">
             <span class="badge">おけちゃん限定特典</span>
-            <h3>おけもん経由なら「2割引」で受けられます！</h3>
+            <h3>おけもん経由なら<span class="discount-keep">「2割引」</span>で受けられます！</h3>
             <p class="discount-lead">
               認定コーチのアカウントを通すことで、通常よりも2割ほど安く受験できます。
             </p>
             <p class="discount-desc">
               おけもんの方でコードを購入し、受験可能なアクセスコードを直接お渡しします。「自分も受けてみたい！」と思った方は、公式サイトで普通に購入する前に、チャットやDMで<strong>「ストレングスファインダーを受けたいです！」</strong>とお気軽にご連絡ください🌸
             </p>
+            <p class="discount-note">※ おけもん経由の割引コードは、基本的にオフ会など<strong>直接お会いしたことのある方</strong>に限定させていただいています。</p>
             <div class="discount-actions">
               <a href="https://www.gallup.com/cliftonstrengths/ja/home.aspx" target="_blank" rel="noopener noreferrer" class="take-btn-primary">
                 Gallup 公式サイトはこちら ↗
