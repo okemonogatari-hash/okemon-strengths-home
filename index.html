@@ -45,6 +45,48 @@
       color: var(--ink-soft);
     }
     .discount-note strong { color: var(--ink); }
+
+    /* TOP5でよければ本で（2026-09-17 本人指示）。表紙は森の既存例と同じくAmazonの書影URL */
+    .book-box {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      grid-template-areas: "cover head" "cover rest";
+      grid-template-rows: auto 1fr;
+      column-gap: 32px;
+      align-items: start;
+      background: var(--paper);
+      border: 1px solid var(--accent-soft);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .book-cover { grid-area: cover; }
+    .book-head { grid-area: head; }
+    .book-rest { grid-area: rest; }
+    .book-cover img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: var(--shadow-md); }
+    .book-tag {
+      display: inline-block; margin-bottom: 12px; padding: 3px 12px; border-radius: 30px;
+      background: var(--accent-soft); color: var(--accent-ink);
+      font-size: 12.5px; font-weight: 700; letter-spacing: 0.06em;
+    }
+    .book-body h3 {
+      margin: 0 0 12px; font-family: "Noto Serif JP", serif; font-size: 20px; line-height: 1.5;
+      font-weight: 600; color: var(--primary); text-wrap: balance;
+    }
+    .book-body p { margin: 0 0 12px; font-size: 14px; line-height: 1.8; color: var(--ink-soft); }
+    .book-body .book-title { font-size: 14.5px; font-weight: 600; line-height: 1.7; color: var(--ink); }
+    .book-body .book-title span { font-size: 13.5px; font-weight: 500; color: var(--muted); }
+    .book-notes { margin: 0 0 20px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+    .book-notes li {
+      position: relative; padding: 8px 0 8px 16px; border-bottom: 1px solid var(--line);
+      font-size: 13.5px; line-height: 1.8; color: var(--ink-soft);
+    }
+    .book-notes li::before {
+      content: ""; position: absolute; left: 2px; top: 19px; width: 7px; height: 1.5px; background: var(--accent);
+    }
+    @media (max-width: 640px) {
+      .book-box { grid-template-columns: 88px 1fr; grid-template-areas: "cover head" "rest rest"; column-gap: 16px; row-gap: 4px; padding: 22px; }
+      .book-body h3 { font-size: 18px; }
+    }
   </style>
 </head>
 <body>
@@ -565,14 +607,14 @@
             <span class="step-num">01</span>
             <h3>受験方法の選択</h3>
             <p>
-              公式サイトから直接受験するか、おけもんから割引コードを受け取って受験するかの2つのルートがあります。
+              公式サイトで購入するか、本についているコードで受けるか（TOP5まで）、おけもんから割引コードを受け取るかの3つのルートがあります。
             </p>
           </div>
           <div class="take-step-card">
             <span class="step-num">02</span>
             <h3>アセスメントの受験</h3>
             <p>
-              質問は200問。2つの文のうち自分に近いほうを選ぶ形で、1問あたり20秒の制限時間があり、全体で約30〜40分かかります。直感で答えるのが大切です。
+              質問は約200問。2つの文のうち自分に近いほうを選ぶ形で、1問あたり20秒の制限時間があり、全体で約30〜40分かかります。直感で答えるのが大切です。
             </p>
           </div>
           <div class="take-step-card">
@@ -596,6 +638,26 @@
             <li><strong>静かな環境を整える:</strong> 約30〜40分、落ち着いた場所で一気に受けるのがおすすめです。Gallupも「一度に終えるのがいちばん」としています。</li>
             <li><strong>途中で止まっても、やり直しにはなりません:</strong> 回答は自動で保存されています。Gallupにサインインし直して「再開」を選ぶと、止まったところから続けられます。アクセスコードをもう一度入れると「使用済み」と出ますが、それで正常です。</li>
           </ul>
+        </div>
+
+        <!-- TOP5でよければ、本で受ける（2026-09-17 本人指示） -->
+        <div class="book-box">
+          <a class="book-cover" href="https://www.amazon.co.jp/dp/4296118307" target="_blank" rel="noopener noreferrer">
+            <img src="https://m.media-amazon.com/images/P/4296118307.09.LZZZZZZZ.jpg" width="343" height="500" loading="lazy" alt="『さあ、才能（じぶん）に目覚めよう 最新版 ストレングス・ファインダー2.0』の表紙">
+          </a>
+          <div class="book-body book-head">
+            <span class="book-tag">TOP5でよければ</span>
+            <h3>本についているコードで、受けられます</h3>
+            <p class="book-title">『さあ、才能（じぶん）に目覚めよう 最新版 ストレングス・ファインダー2.0』<br><span>日本経済新聞出版・<span style="white-space:nowrap">2,420円（税込）</span></span></p>
+          </div>
+          <div class="book-body book-rest">
+            <p>本の中にアクセスコードが入っていて、上位5つ（TOP5）の資質がわかります。まずは気軽に試してみたい方に。</p>
+            <ul class="book-notes">
+              <li>コードは1回しか使えません。中古だと使用済みのことがあるので、<strong>新品で</strong>買ってください。</li>
+              <li>あとから34資質すべてを見たくなったら、公式ストアでアップグレードできます（7,313円）。本と合わせると9,733円になるので、最初から34資質を見たい方は公式の8,832円のほうがお得です。</li>
+            </ul>
+            <a class="take-btn-primary" href="https://www.amazon.co.jp/dp/4296118307" target="_blank" rel="noopener noreferrer">Amazonで見る ↗</a>
+          </div>
         </div>
 
         <div class="discount-box">
