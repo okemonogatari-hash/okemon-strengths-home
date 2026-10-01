@@ -90,12 +90,12 @@
       /* 最初の画面の絵（2026-10-01）。四角い縁が出ないよう、ふちを丸くぼかす */
     .hero-art { margin: 0 auto; width: 100%; max-width: 380px; }
     .hero-art img { display: block; width: 100%; height: auto;
-      -webkit-mask-image: radial-gradient(closest-side, #000 80%, transparent 100%);
-      mask-image: radial-gradient(closest-side, #000 80%, transparent 100%); }
+      -webkit-mask-image: radial-gradient(closest-side, #000 88%, transparent 100%);
+      mask-image: radial-gradient(closest-side, #000 88%, transparent 100%); }
     /* 1列になる幅では、絵を見出しより先に見せる */
     @media (max-width: 1120px) {
       .hero-dashboard { display: contents; }
-      .hero-art { order: -1; max-width: 240px; position: relative; z-index: 2; margin-bottom: -16px; }
+      .hero-art { order: -1; max-width: 300px; position: relative; z-index: 2; margin-bottom: -16px; }
       .mini-metrics { position: relative; z-index: 2; }
     }
     /* 図解（2026-10-01 追加）。styles.css は共有なのでこのページ内に閉じる */
@@ -143,7 +143,7 @@
       </div>
       <div class="hero-dashboard" aria-label="ストレングスの概要ダッシュボード">
         <figure class="hero-art">
-          <img src="zukai/hero-torisetsu.jpg" width="1000" height="1000" alt="自分の取扱説明書を開いて、中から色とりどりの芽が伸びてくるのに目を輝かせる、おけもん（カピバラとインコ）">
+          <img src="zukai/hero-torisetsu.jpg" width="1000" height="1000" alt="明るい島の庭先で、自分の取扱説明書を開いたら色とりどりの花が飛び出して、目を輝かせるカピバラと、びっくりして飛び上がるインコ">
         </figure>
         <dl class="mini-metrics">
           <div>
