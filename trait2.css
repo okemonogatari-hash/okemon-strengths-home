@@ -182,6 +182,18 @@ body {
   opacity: 0.72;
 }
 
+/* ---------- 資質のサムネイルと説明図解 ------------------------------- */
+.trait-art { margin: var(--gap-block) auto 0; }
+.trait-art img { display: block; width: 100%; height: auto; }
+.trait-art--cover {
+  width: min(var(--col), 100% - var(--gut) * 2);
+  margin-inline: auto;
+}
+.trait-art--cover img {
+  width: min(100%, 360px);
+  margin-inline: auto;
+}
+
 /* 🟡7 表紙直下の出口。読み方と、シリーズの他の資質への1行 */
 .ways {
   display: flex;
